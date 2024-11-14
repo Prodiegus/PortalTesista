@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  mysql:
+    build: ./DataBase
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: keycloak
+      MYSQL_USER: keycloak
+      MYSQL_PASSWORD: keycloakpassword
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+
+  phpmyadmin:
+    build: ./PhpMyAdmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: mysql
+      PMA_USER: root
+      PMA_PASSWORD: rootpassword
+    ports:
+      - "8082:80"
+    depends_on:
+      - mysql
+
+  portal-tesista:
+    build: ./Portal-Tesista
+    container_name: portal-tesista
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+      - api-portal-tesista
+      - keycloak
+
+  api-portal-tesista:
+    build: ./API-Portal-Tesista
+    container_name: api-portal-tesista
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+
+  keycloak:
+    build: ./Keycloak
+    container_name: keycloak
+    environment:
+      KEYCLOAK_USER: admin
+      KEYCLOAK_PASSWORD: admin
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      DB_VENDOR: mysql
+      DB_ADDR: mysql
+      DB_DATABASE: keycloak
+      DB_USER: keycloak
+      DB_PASSWORD: keycloakpassword
+    ports:
+      - "8080:8080"
+    volumes:
+      - keycloak_data:/opt/keycloak/data
+    depends_on:
+      - mysql
+
+volumes:
+  mysql_data:
+  keycloak_data:

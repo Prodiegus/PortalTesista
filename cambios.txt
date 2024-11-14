@@ -1,0 +1,10 @@
+Quitar tipo de usuario de tabla flujo
+Quitar rut dueño de tema
+Falta una llave foranea entre escuera y tema
+Cambiar imagen en fase 1 sale cuando deberia ser 3
+Agrandar imagen del M-R
+Poner M-R con colores
+Quitar conceptos dentro documento y agregarlos a conceptos basicos del marco teorico
+Sacar subseccion de validación de software y usabilidad
+Poner algunas historias y anexar documento de historias
+Anexar carta gantt

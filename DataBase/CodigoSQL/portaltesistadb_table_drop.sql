@@ -1,0 +1,40 @@
+-- Drop foreign key constraints
+ALTER TABLE tema DROP FOREIGN KEY FK_tema_id_fase;
+ALTER TABLE tema DROP FOREIGN KEY FK_tema_rut_guia;
+ALTER TABLE tema DROP FOREIGN KEY FK_tema_nombre_escuela;
+ALTER TABLE flujo DROP FOREIGN KEY FK_flujo_id_tema;
+ALTER TABLE flujo DROP FOREIGN KEY FK_flujo_rut_creador;
+ALTER TABLE avance DROP FOREIGN KEY FK_avance_id_archivo;
+ALTER TABLE avance DROP FOREIGN KEY FK_avance_id_tema;
+ALTER TABLE escuela DROP FOREIGN KEY FK_escuela_id_flujo;
+ALTER TABLE escuela DROP FOREIGN KEY FK_escuela_rut_profesor_cargo;
+ALTER TABLE fase DROP FOREIGN KEY FK_fase_rut_creador;
+ALTER TABLE fase DROP FOREIGN KEY FK_fase_id_flujo;
+ALTER TABLE guia DROP FOREIGN KEY FK_guia_rut_guia;
+ALTER TABLE guia DROP FOREIGN KEY FK_guia_rut_alumno;
+ALTER TABLE solicitud_tema DROP FOREIGN KEY FK_solicitud_tema_rut_alumno;
+ALTER TABLE solicitud_tema DROP FOREIGN KEY FK_solicitud_tema_id_tema;
+ALTER TABLE revisor_asignado DROP FOREIGN KEY FK_revisor_asignado_id_tema;
+ALTER TABLE revisor_asignado DROP FOREIGN KEY FK_revisor_asignado_rut_revisor;
+ALTER TABLE revisor_asignado DROP FOREIGN KEY FK_revisor_asignado_rut_profesor_cargo;
+ALTER TABLE alumno_trabaja DROP FOREIGN KEY FK_alumno_trabaja_rut_alumno;
+ALTER TABLE alumno_trabaja DROP FOREIGN KEY FK_alumno_trabaja_id_tema;
+ALTER TABLE reunion DROP FOREIGN KEY FK_reunion_rut_coordinador;
+ALTER TABLE reunion DROP FOREIGN KEY FK_reunion_id_temas;
+ALTER TABLE dueno DROP FOREIGN KEY FK_dueno_rut;
+ALTER TABLE dueno DROP FOREIGN KEY FK_dueno_id_tema;
+
+-- Drop tables
+DROP TABLE IF EXISTS usuario CASCADE;
+DROP TABLE IF EXISTS tema CASCADE;
+DROP TABLE IF EXISTS archivos CASCADE;
+DROP TABLE IF EXISTS fase CASCADE;
+DROP TABLE IF EXISTS flujo CASCADE;
+DROP TABLE IF EXISTS reunion CASCADE;
+DROP TABLE IF EXISTS avance CASCADE;
+DROP TABLE IF EXISTS escuela CASCADE;
+DROP TABLE IF EXISTS solicitud_tema CASCADE;
+DROP TABLE IF EXISTS revisor_asignado CASCADE;
+DROP TABLE IF EXISTS alumno_trabaja CASCADE;
+DROP TABLE IF EXISTS guia CASCADE;
+DROP TABLE IF EXISTS dueno CASCADE;
