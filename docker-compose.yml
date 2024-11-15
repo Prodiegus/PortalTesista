@@ -52,16 +52,16 @@ services:
     networks:
       - portal-tesista
 
-  api-login:
-    build: ./API-login
-    container_name: api-login
-    ports:
-      - "9090:9090"
-    depends_on:
-      - mysql
-      - keycloak
-    networks:
-      - portal-tesista
+#  api-login:
+#    build: ./API-login
+#    container_name: api-login
+#    ports:
+#      - "9090:9090"
+#    depends_on:
+#      - mysql
+#      - keycloak
+#    networks:
+#      - portal-tesista
 
   keycloak:
     build: ./Keycloak
