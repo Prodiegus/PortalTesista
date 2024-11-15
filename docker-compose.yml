@@ -13,6 +13,8 @@ services:
       - "3306:3306"
     volumes:
       - mysql_data:/var/lib/mysql
+    networks:
+      - portal-tesista
 
   phpmyadmin:
     build: ./PhpMyAdmin
@@ -25,6 +27,8 @@ services:
       - "8082:80"
     depends_on:
       - mysql
+    networks:
+      - portal-tesista
 
   portal-tesista:
     build: ./Portal-Tesista
@@ -35,6 +39,8 @@ services:
       - mysql
       - api-portal-tesista
       - keycloak
+    networks:
+      - portal-tesista
 
   api-portal-tesista:
     build: ./API-Portal-Tesista
@@ -43,6 +49,19 @@ services:
       - "3000:3000"
     depends_on:
       - mysql
+    networks:
+      - portal-tesista
+
+#  api-login:
+#    build: ./API-login
+#    container_name: api-login
+#    ports:
+#      - "9090:9090"
+#    depends_on:
+#      - mysql
+#      - keycloak
+#    networks:
+#      - portal-tesista
 
   keycloak:
     build: ./Keycloak
@@ -63,6 +82,12 @@ services:
       - keycloak_data:/opt/keycloak/data
     depends_on:
       - mysql
+    networks:
+      - portal-tesista
+
+networks:
+  portal-tesista:
+    driver: bridge
 
 volumes:
   mysql_data:
