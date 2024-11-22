@@ -2,7 +2,7 @@ FROM quay.io/keycloak/keycloak:24.0.0
 
 WORKDIR /opt/keycloak
 
-EXPOSE 8080
+EXPOSE 8443
 
 ENV KEYCLOAK_USER=admin
 ENV KEYCLOAK_PASSWORD=admin
