@@ -87,18 +87,6 @@ services:
       - portal-tesista
     command: ["-Djboss.http.port=8080", "-Djboss.https.port=8443", "-Djboss.https.key-store=/etc/ssl/certs/selfsigned.jks", "-Djboss.https.key-store-password=changeit"]
   
-  nginx:
-    image: nginx:stable-alpine
-    container_name: nginx
-    ports:
-      - "443:443"
-    volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./certs:/etc/nginx/certs
-    depends_on:
-      - api-login
-    networks:
-      - portal-tesista
 
 networks:
   portal-tesista:
