@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class Controller {
 
     @GetMapping("/")
-    public String suludo() {
+    public String saludo() {
         return "Portal Tesista API loggin";
     }
 
