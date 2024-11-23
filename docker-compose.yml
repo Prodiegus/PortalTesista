@@ -30,27 +30,27 @@ services:
     networks:
       - portal-tesista
 
-  portal-tesista:
-    build: ./Portal-Tesista
-    container_name: portal-tesista
-    ports:
-      - "80:80"
-    depends_on:
-      - mysql
-      - api-portal-tesista
-      - keycloak
-    networks:
-      - portal-tesista
-
-#  api-portal-tesista:
-#    build: ./API-Portal-Tesista
-#    container_name: api-portal-tesista
+#  portal-tesista:
+#    build: ./Portal-Tesista
+#    container_name: portal-tesista
 #    ports:
-#      - "3000:3000"
+#      - "80:80"
 #    depends_on:
 #      - mysql
+#      - api-portal-tesista
+#      - keycloak
 #    networks:
 #      - portal-tesista
+
+  api-portal-tesista:
+    build: ./API-Portal-Tesista
+    container_name: api-portal-tesista
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+    networks:
+      - portal-tesista
 
 #  api-login:
 #    build: ./API-login
