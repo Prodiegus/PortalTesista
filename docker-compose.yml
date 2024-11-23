@@ -42,15 +42,15 @@ services:
     networks:
       - portal-tesista
 
-  api-portal-tesista:
-    build: ./API-Portal-Tesista
-    container_name: api-portal-tesista
-    ports:
-      - "3000:3000"
-    depends_on:
-      - mysql
-    networks:
-      - portal-tesista
+#  api-portal-tesista:
+#    build: ./API-Portal-Tesista
+#    container_name: api-portal-tesista
+#    ports:
+#      - "3000:3000"
+#    depends_on:
+#      - mysql
+#    networks:
+#      - portal-tesista
 
 #  api-login:
 #    build: ./API-login
