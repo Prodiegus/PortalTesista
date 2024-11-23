@@ -1,9 +1,0 @@
-{
-  "/": {
-    "target": "http://localhost:4200",
-    "secure": false,
-    "headers": {
-      "Content-Security-Policy": "frame-ancestors 'self' http://localhost:8080"
-    }
-  }
-}
