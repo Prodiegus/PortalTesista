@@ -151,7 +151,7 @@ div.kc-logo-text span {
     justify-content: center;
     align-items: flex-start;
     height: 100vh; /* Altura del 100% de la ventana visible */
-    /*margin-top: 300px; /* Margen superior de 300px */
+    margin-top: 300px; /* Margen superior de 300px */
 }
 
 #kc-form-wrapper {
