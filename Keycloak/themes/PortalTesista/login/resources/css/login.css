@@ -149,7 +149,9 @@ div.kc-logo-text span {
 #kc-content-wrapper {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
+    height: 100vh; /* Altura del 100% de la ventana visible */
+    /*margin-top: 300px; /* Margen superior de 300px */
 }
 
 #kc-form-wrapper {
@@ -334,10 +336,6 @@ ul#kc-totp-supported-apps {
 }
 
 .kc-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     max-width: 550px; 
     padding: 20px;
     box-shadow: var(--pf-global--BoxShadow--lg);
