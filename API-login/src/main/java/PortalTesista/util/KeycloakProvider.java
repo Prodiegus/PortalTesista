@@ -8,13 +8,13 @@ import org.keycloak.admin.client.resource.RealmResource;
 import org.keycloak.admin.client.resource.UsersResource;
 
 public class KeycloakProvider {
-    private static final String SERVER_URL = "http://localhost:8080";
+    private static final String SERVER_URL = "https://34.176.220.92:8443/";
     private static final String REALM_NAME = "portal-tesista";
     private static final String REALM_MASTER = "master";
     private static final String ADMIN_CLI = "admin-cli";
     private static final String USER_CONSOLE = "admin";
     private static final String USER_PASSWORD = "admin";
-    private static final String CLIENT_SECRET = "sM7eoI9NhPplqU9FsF8LzHtTZeFf5Itz";
+    private static final String CLIENT_SECRET = "h4rtyVNyy1hAx1MMdnH6jpg29cSxXPGo";
 
     public static RealmResource getRealmResource() {
         Keycloak keycloak = KeycloakBuilder.builder()
