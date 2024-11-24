@@ -13,7 +13,7 @@
         </#list>
     </#if>
     <title>Inicio de sesión Portal Tesista</title>
-    <link rel="icon" href="${url.resourcesPath}/img/favicon.ico" />
+    <link rel="icon" href="${url.resourcesPath}/img/favicon.png" />
     <#if properties.stylesCommon?has_content>
         <#list properties.stylesCommon?split(' ') as style>
             <link href="${url.resourcesCommonPath}/${style}" rel="stylesheet" />
