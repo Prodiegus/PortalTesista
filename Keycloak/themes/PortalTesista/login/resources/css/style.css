@@ -13,3 +13,10 @@
 #kc-login:hover {
     background-color: #F29B33;
 }
+
+.login-logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
