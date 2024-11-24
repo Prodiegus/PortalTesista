@@ -11,7 +11,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 import lombok.RequiredArgsConstructor;
 
-import PortalTesista.controller.*;;
+import PortalTesista.controller.JwtAutenticationConverter;
 
 @Configuration
 @EnableWebSecurity
@@ -21,12 +21,15 @@ public class SecurityConfig {
 
     @Autowired
     private JwtAutenticationConverter JwtAutenticationConverter;
-    
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(http->http.anyRequest().authenticated())
+                .authorizeHttpRequests(http -> http
+                    .requestMatchers("/keycloak/user/**", "/**").permitAll()
+                    .anyRequest().authenticated()
+                )
                 .oauth2ResourceServer(oauth2 -> {
                     oauth2.jwt(jwt -> jwt.jwtAuthenticationConverter(JwtAutenticationConverter));
                 })
