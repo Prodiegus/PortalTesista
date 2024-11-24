@@ -1,14 +1,15 @@
-import {APP_INITIALIZER, NgModule} from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule} from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
-import { LoginComponent } from './login/login.component'
-import { KeycloakService} from './keycloak/keycloak.service';
-import {FormsModule} from '@angular/forms';
+import { LoginComponent } from './login/login.component';
+import { KeycloakService } from './keycloak/keycloak.service';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -26,8 +27,14 @@ import {FormsModule} from '@angular/forms';
   providers: [
     {
       provide: APP_INITIALIZER,
-      deps: [KeycloakService],
-      useFactory: (keycloakService: KeycloakService) => () => keycloakService.init(),
+      deps: [KeycloakService, Router],
+      useFactory: (keycloakService: KeycloakService, router: Router) => () => {
+        const publicRoutes = ['', 'login'];
+        if (publicRoutes.includes(router.url)) {
+          return keycloakService.init();
+        }
+        return Promise.resolve();
+      },
       multi: true
     },
   ],
