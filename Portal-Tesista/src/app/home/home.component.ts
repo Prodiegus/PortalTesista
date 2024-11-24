@@ -14,8 +14,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private keycloakService: KeycloakService, private http: HttpClient) { }
 
-  ngOnInit(): void {
-    this.fetchRole();
+  async ngOnInit() {
+    await this.fetchRole();
   }
 
   async logout() {
@@ -23,22 +23,22 @@ export class HomeComponent implements OnInit {
   }
 
   async fetchRole() {
-    const token = this.keycloakService.keycloak.token;
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    this.http.get<{ role: string }>(this.apiLogin + '/roles', { headers })
-      .subscribe(
-        response => {
-          if (response && response.role) {
-            this.role = response.role;
-          } else {
-            this.role = 'Unexpected response format';
-          }
-        },
-        error => {
-          this.role = 'Error al obtener roles';
+  const token = this.keycloakService.keycloak.token;
+  const headers = new HttpHeaders({
+    'Authorization': `Bearer ${token}`
+  });
+  this.http.get<{ role: string }>(this.apiLogin + '/roles', { headers })
+    .subscribe(
+      response => {
+        if (response && response.role) {
+          this.role = response.role;
+        } else {
+          this.role = 'Unexpected response format';
         }
-      );
+      },
+      error => {
+        this.role = 'Error al obtener roles';
+      }
+    );
   }
 }

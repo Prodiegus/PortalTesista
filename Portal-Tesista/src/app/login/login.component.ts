@@ -17,6 +17,6 @@ export class LoginComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     await this.keycloakService.init();
-    await this.keycloakService.login({redirectUri: window.location.origin + "/home"});
+    await this.keycloakService.login();
   }
 }
