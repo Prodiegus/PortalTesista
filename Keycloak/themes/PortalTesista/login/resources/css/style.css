@@ -2,6 +2,20 @@
 
 /* Override global primary color 100 and 200*/
 :root {
-    --pf-global--primary-color--100: var(--pf-global--palette--purple-600);
-    --pf-global--primary-color--200: var(--pf-global--palette--purple-700);
+    --pf-global--primary-color--100: #60CDCD;
+    --pf-global--primary-color--200: #60CDCD;
+}
+
+.card-pf {
+    max-width: 550px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#kc-login {
+    background-color: #60CDCD;
+}
+
+#kc-login:hover {
+    background-color: #F29B33;
 }
