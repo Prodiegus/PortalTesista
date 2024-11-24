@@ -52,7 +52,7 @@ p.instruction {
 .pf-c-button.pf-m-primary {
     background-color: #60CDCD;
     border-color: #60CDCD;
-    border-radius: 50%;
+    border-radius: 16px;
 }
 
 .pf-c-button.pf-m-primary:hover {
@@ -372,7 +372,7 @@ ul#kc-totp-supported-apps {
     box-shadow: var(--pf-global--BoxShadow--lg);
     border-top: 4px solid var(--pf-global--primary-color--100);
     border-radius: 8px; 
-    background-color: white; 
+    background-color: #F4F4F4; 
 }
 
 /* Show tooltip */
