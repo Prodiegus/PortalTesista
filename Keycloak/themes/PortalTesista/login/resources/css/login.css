@@ -147,7 +147,10 @@ div.kc-logo-text span {
 }
 
 #kc-content-wrapper {
-    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
 #kc-form-wrapper {
@@ -329,6 +332,19 @@ ul#kc-totp-supported-apps {
     position: absolute;
     opacity:0;
     transition:opacity 0.5s;
+}
+
+.kc-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 550px; 
+    padding: 20px;
+    box-shadow: var(--pf-global--BoxShadow--lg);
+    border-top: 4px solid var(--pf-global--primary-color--100);
+    border-radius: 8px; 
+    background-color: white; 
 }
 
 /* Show tooltip */
