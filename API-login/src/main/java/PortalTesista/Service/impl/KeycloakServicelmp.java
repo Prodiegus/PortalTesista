@@ -3,6 +3,9 @@ package PortalTesista.Service.impl;
 import PortalTesista.Service.IkeycloakService;
 import PortalTesista.controller.dto.UserDTO;
 import PortalTesista.util.KeycloakProvider;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.core.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -14,6 +17,9 @@ import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.lang.NonNull;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -147,4 +153,5 @@ public class KeycloakServicelmp implements IkeycloakService {
         // Update the user
         userResource.update(userRepresentation);
     }
+
 }
