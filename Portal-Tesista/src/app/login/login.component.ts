@@ -1,21 +1,22 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {KeycloakService} from '../keycloak/keycloak.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
   username: string = '';
   password: string = '';
   errorMessage: string = '';
 
-  onSubmit() {
-    if (this.username === 'admin' && this.password === 'password123') {
-      console.log('Login successful!');
-      this.errorMessage = '';
-    } else {
-      this.errorMessage = 'Invalid username or password.';
-    }
+  constructor(private keycloakService: KeycloakService) {
+  }
+
+
+  async ngOnInit(): Promise<void> {
+    await this.keycloakService.init();
+    await this.keycloakService.login({redirectUri: window.location.origin + "/home"});
   }
 }

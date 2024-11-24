@@ -1,36 +1,63 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-
 import Keycloak from 'keycloak-js';
+import { environment } from '../../enviroments/enviroment';
+import {UserProfile} from './user-profile';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class KeycloakService {
-  private  _keycloak: Keycloak | undefined;
+  private _keycloak: Keycloak | undefined;
+  private _profile: UserProfile | undefined;
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router) { }
 
   get keycloak(): Keycloak {
     if (!this._keycloak) {
-      this._keycloak = new Keycloak(
-        {
-          url: 'https://34.176.220.92:8443/',
-          realm: 'portal-tesista',
-          clientId: 'api-login'
-        }
-      );
+      this._keycloak = new Keycloak({
+        url: environment.keycloak.url,
+        realm: environment.keycloak.realm,
+        clientId: environment.keycloak.clientId,
+      });
     }
     return this._keycloak;
   }
 
+  get profile(): UserProfile | undefined {
+    return this._profile;
+  }
+
   async init() {
-    console.log('KeycloakService initializing...');
     const authenticated = await this.keycloak.init({
       onLoad: 'login-required',
     });
-    console.log('KeycloakService initialized: ', authenticated ? 'authenticated' : 'not authenticated');
 
+    if (authenticated) {
+      this._profile = (await this.keycloak?.loadUserProfile()) as UserProfile;
+      this._profile.token = this.keycloak?.token;
+    }
+  }
+
+  isInitialized() {
+    return !!this._keycloak;
+  }
+
+  isAuthenticated() {
+    return this.keycloak?.authenticated;
+  }
+
+  login(p: { redirectUri: string }) {
+    return this.keycloak?.login(
+      {
+        redirectUri: p.redirectUri,
+      }
+    );
+  }
+
+  logout(p: { redirectUri: string }) {
+    return this.keycloak?.logout({
+      redirectUri: window.location.origin,
+    });
   }
 }
-
