@@ -27,7 +27,7 @@ public class SecurityConfig {
         return httpSecurity
                 .csrf(csrf -> csrf.disable())
                 .authorizeHttpRequests(http -> http
-                    .requestMatchers("/keycloak/user/**", "/").permitAll()
+                    .requestMatchers("/keycloak/user/**", "/**").permitAll()
                     .anyRequest().authenticated()
                 )
                 .oauth2ResourceServer(oauth2 -> {
