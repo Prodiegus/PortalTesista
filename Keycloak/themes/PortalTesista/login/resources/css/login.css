@@ -5,6 +5,8 @@
 :root {
     --pf-global--primary-color--100: #60CDCD;
     --pf-global--primary-color--200: #60CDCD;
+    --pf-global--BackgroundColor--100: #F4F4F4;
+    --pf-global--BackgroundColor--200: #F4F4F4;
 }
 
 #kc-login {
