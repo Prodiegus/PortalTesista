@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KeycloakService } from '../keycloak/keycloak.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {environment} from '../../enviroments/enviroment';
 
 @Component({
   selector: 'app-home',
@@ -8,98 +9,35 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  protected saludo: string = '';
-  protected saludoAlumno: string = ' ';
-  protected saludoProfesor: string = ' ';
-  protected saludoCargo: string = ' ';
+  protected role: string = '';
+  private apiLogin = environment.apiLogin.url;
 
   constructor(private keycloakService: KeycloakService, private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.fetchSaludo();
-    this.fetchSaludoAlumno();
-    this.fetchSaludoProfesor();
-    this.fetchSaludoCargo();
+    this.fetchRole();
   }
 
   async logout() {
     await this.keycloakService.logout({ redirectUri: window.location.origin });
   }
 
-  async fetchSaludo() {
+  async fetchRole() {
     const token = this.keycloakService.keycloak.token;
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${token}`
     });
-    this.http.get<{ saludo: string }>('http://localhost:9090/', { headers })
+    this.http.get<{ role: string }>(this.apiLogin + '/roles', { headers })
       .subscribe(
         response => {
-          if (response) {
-            this.saludo = response.saludo;
+          if (response && response.role) {
+            this.role = response.role;
           } else {
-            this.saludo = 'Unexpected response format';
+            this.role = 'Unexpected response format';
           }
         },
         error => {
-          this.saludo = 'Error: \n' + error.message;
-        }
-      );
-  }
-
-  async fetchSaludoAlumno() {
-    const token = this.keycloakService.keycloak.token;
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    this.http.get<{ saludo: string }>('http://localhost:9090/alumno', { headers })
-      .subscribe(
-        response => {
-          if (response) {
-            this.saludoAlumno = response.saludo;
-          } else {
-            this.saludoAlumno = 'No se tiene rol alumno';
-          }
-        },
-        error => {
-          this.saludoAlumno = 'Error: \n' + error.message;
-        }
-      );
-  }
-  async fetchSaludoProfesor() {
-    const token = this.keycloakService.keycloak.token;
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    this.http.get<{ saludo: string }>('http://localhost:9090/profesor', { headers })
-      .subscribe(
-        response => {
-          if (response) {
-            this.saludoProfesor = response.saludo;
-          } else {
-            this.saludoProfesor = 'No se tiene rol profesor';
-          }
-        },
-        error => {
-          this.saludoProfesor = 'Error: \n' + error.message;
-        }
-      );
-  }
-  async fetchSaludoCargo() {
-    const token = this.keycloakService.keycloak.token;
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
-    });
-    this.http.get<{ saludo: string }>('http://localhost:9090/cargo', { headers })
-      .subscribe(
-        response => {
-          if (response) {
-            this.saludoCargo = response.saludo;
-          } else {
-            this.saludoCargo = 'No se tiene rol cargo';
-          }
-        },
-        error => {
-          this.saludoCargo = 'Error: \n' + error.message;
+          this.role = 'Error al obtener roles';
         }
       );
   }
