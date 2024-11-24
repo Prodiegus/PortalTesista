@@ -5,6 +5,9 @@
     <#elseif section = "form">
         <div id="kc-form">
           <div id="kc-form-wrapper">
+            <div>
+                <img src="${url.resourcesPath}/img/keycloak-logo.png" alt="Logo" class="login-logo" />
+            </div>
             <#if realm.password>
                 <form id="kc-form-login" onsubmit="login.disabled = true; return true;" action="${url.loginAction}" method="post">
                     <#if !usernameHidden??>
