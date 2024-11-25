@@ -18,4 +18,4 @@ COPY ${PORTALTESISTA_THEME_LOCAL_ROOT_DIR} ${PORTALTESISTA_THEME_BASE_DIR}
 
 COPY certs/selfsigned.jks /etc/ssl/certs/selfsigned.jks
 
-ENTRYPOINT ["./bin/kc.sh", "start-dev", "--https-port=8443", "--https-key-store-file=/etc/ssl/certs/selfsigned.jks", "--https-key-store-password=changeit"]
+ENTRYPOINT ["./bin/kc.sh", "start", "--https-port=8443", "--https-key-store-file=/etc/ssl/certs/selfsigned.jks", "--https-key-store-password=changeit"]
