@@ -14,6 +14,7 @@ WORKDIR /app
 
 # Copiar el certificado al contenedor
 COPY certs/selfsigned.crt /etc/ssl/certs/selfsigned.crt
+COPY certs/selfsigned.p12 /etc/ssl/certs/selfsigned.p12
 
 # Agregar el certificado al almacén de claves de Java
 RUN keytool -import -alias mycert -keystore $JAVA_HOME/lib/security/cacerts -file /etc/ssl/certs/selfsigned.crt -storepass changeit -noprompt
