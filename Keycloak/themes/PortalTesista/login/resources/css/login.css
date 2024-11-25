@@ -595,7 +595,7 @@ ul#kc-totp-supported-apps {
 }
 
 .px300top{
-    height: 30%;
+    height: 20vh;
 }
 
 #kc-form-login div.form-group:last-of-type,
