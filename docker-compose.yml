@@ -52,6 +52,7 @@ services:
     networks:
       - portal-tesista
 
+
 #  api-login:
 #    build: ./API-login
 #    container_name: api-login
@@ -86,7 +87,7 @@ services:
     networks:
       - portal-tesista
     command: ["-Djboss.http.port=8080", "-Djboss.https.port=8443", "-Djboss.https.key-store=/etc/ssl/certs/selfsigned.jks", "-Djboss.https.key-store-password=changeit"]
-  
+
 networks:
   portal-tesista:
     driver: bridge
