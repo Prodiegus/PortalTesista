@@ -1,8 +1,7 @@
 <#import "template.ftl" as layout>
 <@layout.registrationLayout displayMessage=!messagesPerField.existsError('username','password') displayInfo=realm.password && realm.registrationAllowed && !registrationDisabled??; section>
-    <div class="px300top" ></div>
     <#if section = "header">
-        <img src="${url.resourcesPath}/img/keycloak-logo.png" alt="Logo" class="login-logo" />
+        <div class="px300top" ></div>
     <#elseif section = "form">
         <div id="kc-form">
           <div id="kc-form-wrapper">
