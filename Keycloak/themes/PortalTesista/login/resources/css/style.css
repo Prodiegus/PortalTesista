@@ -1,0 +1,22 @@
+/* login/resources/css/styles.css */
+
+/* Override global primary color 100 and 200*/
+:root {
+    --pf-global--primary-color--100: #60CDCD;
+    --pf-global--primary-color--200: #60CDCD;
+}
+
+#kc-login {
+    background-color: #60CDCD;
+}
+
+#kc-login:hover {
+    background-color: #F29B33;
+}
+
+.login-logo {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
