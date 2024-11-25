@@ -6,7 +6,7 @@ export const environment = {
     clientId: 'front',
   },
   apiLogin: {
-    url: 'http://34.176.220.92:9090'
+    url: 'https://34.176.220.92:9090'
   },
   'api-portal-tesista': {
     url: 'http://34.176.220.92:3000'
