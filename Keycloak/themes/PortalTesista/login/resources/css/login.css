@@ -543,7 +543,6 @@ ul#kc-totp-supported-apps {
     box-shadow: var(--pf-global--BoxShadow--lg);
     padding: 0 20px;
     max-width: 500px;
-    border-top: 4px solid var(--pf-global--primary-color--100);
     border-radius: 8px;
     border-color: var(--pf-global--primary-color--100);
 }
@@ -593,6 +592,10 @@ ul#kc-totp-supported-apps {
 
 .login-pf-page .list-view-pf-description {
     width: 100%;
+}
+
+.px300top{
+    height: 300px;
 }
 
 #kc-form-login div.form-group:last-of-type,
