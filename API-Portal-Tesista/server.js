@@ -20,7 +20,7 @@ app.use(express.json());
 
 // Importar rutas
 const routes = require('./routes');
-app.use('/api', routes);
+app.use('/', routes);
 
 // Leer los certificados SSL
 const options = {
@@ -30,5 +30,5 @@ const options = {
 
 // Iniciar el servidor HTTPS
 https.createServer(options, app).listen(port, () => {
-  console.log(`Servidor escuchando en https://localhost:${port}`);
+  console.log(`Servidor escuchando en https://34.176.220.92:${port}`);
 });

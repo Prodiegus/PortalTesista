@@ -1,0 +1,49 @@
+<!-- Header -->
+<div class="row mx-5 px-5 rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
+  <div class="col-2 text-center">
+    Tema
+  </div>
+  <div class="col-2 text-center ">
+    Profesor Guía
+  </div>
+  <div class="col-2 text-center ">
+    Profesor co-Guía
+  </div>
+  <div class="col"></div>
+  <div class="col-2 text-center">
+    Estado
+  </div>
+  <div class="col"></div>
+  <div class="col-2 text-center d-flex justify-content-center ">
+    Detalle
+  </div>
+</div>
+
+<!-- Body -->
+<div class="row h-100 mb-1 px-5 mx-5 secondary-bg bold d-flex align-items-center " *ngFor="let tema of temas; index as i">
+  <div class="col-2 text-center ">
+    {{tema.tema}}
+  </div>
+  <div class="col-2 text-center ">
+    {{tema.ProfesorGuia}}
+  </div>
+  <div class="col-2 text-center ">
+    {{tema.ProfesorCoGuia}}
+  </div>
+  <div class="col"></div>
+  <div class="col-2 font-18 bold text-center d-flex justify-content-center align-items-center">
+    <div class="pill-yellow pill-size-170" *ngIf="tema.Estado === 'Pendiente'">
+      {{tema.Estado}}
+    </div>
+    <div class="pill-white pill-size-170" *ngIf="tema.Estado === 'En trabajo'">
+      {{tema.Estado}}
+    </div>
+    <div class="pill-green pill-size-170" *ngIf="tema.Estado === 'Finalizado'">
+      {{tema.Estado}}
+    </div>
+  </div>
+  <div class="col"></div>
+  <div class="col-2 d-flex justify-content-center align-items-center ">
+    <button class="button secondary btn-size-150 bold" (click)="detalleTema(tema)">Ver</button>
+  </div>
+</div>

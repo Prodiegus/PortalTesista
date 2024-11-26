@@ -10,13 +10,21 @@ import { LoginComponent } from './login/login.component';
 import { KeycloakService } from './keycloak/keycloak.service';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FooterComponent } from './common/footer/footer.component';
+import { LandingHeaderComponent } from './common/landing-header/landing-header.component';
+import { LandingBodyComponent } from './landing/landing-body/landing-body.component';
+import { TablaTemasComponent } from './landing/landing-body/tabla-temas/tabla-temas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LandingComponent,
-    LoginComponent
+    LoginComponent,
+    FooterComponent,
+    LandingHeaderComponent,
+    LandingBodyComponent,
+    TablaTemasComponent,
   ],
   imports: [
     BrowserModule,

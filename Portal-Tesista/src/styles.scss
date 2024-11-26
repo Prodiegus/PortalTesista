@@ -1,1 +1,141 @@
-/* You can add global styles to this file, and also import other style files */
+// src/styles.scss
+@import './styles/color.scss';
+@import './styles/componentes.scss';
+@import './styles/text.scss';
+@import './styles/buttons.scss';
+@import './styles/Spiner.scss';
+@import './styles/pills.scss';
+
+// Definición de variables de colores
+$primary-color: #60CDCD;
+$secondary-color: #A2A2A0;
+$accent-color: #F29B33;
+$light-color: #ffffff;
+$dark-color: #000000;
+
+$gray-color: #f4f4f4;
+$red-color: #FFD8D8;
+$yellow-color: #FAF2B1;
+$green-color: #BAE4A6;
+
+$danger-color: #e74c3c;
+$background-color: #ecf0f1;
+$text-color: #000000;
+
+// Estilos para botones
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+
+  &.primary {
+    background-color: $primary-color;
+    &:hover {
+      background-color: $accent-color;
+    }
+  }
+
+  &.login{
+    border-radius: 4px;
+    background-color: $primary-color;
+    &:hover {
+      color: $primary-color;
+      background-color: $light-color;
+    }
+  }
+
+  &.secondary {
+    border-radius: 50px;
+    background-color: $secondary-color;
+    &:hover {
+      color: $primary-color;
+      border: 1px solid $primary-color;
+      background-color: $light-color;
+    }
+  }
+
+  &.naked {
+    background-color: $light-color;
+    &.primary {
+      color: $primary-color;
+      border: 2px solid $primary-color;
+      &.r16{
+        border-radius: 16px;
+      }
+    }
+    &.secondary {
+      color: $secondary-color;
+      border: 2px solid $secondary-color;
+      &.r16{
+        border-radius: 16px;
+      }
+    }
+    &.gray {
+      color: $gray-color;
+      border: 2px solid $gray-color;
+    }
+
+  }
+
+  &.danger {
+    background-color: $danger-color;
+  }
+}
+
+// Estilos para contenedores
+.container {
+  padding: 20px;
+
+  &.centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  &.padded {
+    padding: 40px;
+  }
+}
+
+.border {
+  background: $light-color;
+  &.primary {
+    border: 2px solid $primary-color;
+    &.no-start {
+      border-left: 2px solid $light-color;
+    }
+    &.no-end {
+      border-right: 2px solid $light-color;
+    }
+  }
+  &.secondary {
+    border: 1px solid $secondary-color;
+  }
+  &.accent {
+    border: 1px solid $accent-color;
+  }
+  &.light {
+    border: 1px solid $light-color;
+  }
+  &.dark {
+    border: 1px solid $dark-color;
+  }
+}
+
+.r-16{
+  border-radius: 16px;
+}
+
+.re-16{
+  border-radius: 0px 16px 16px 0px;
+}
+
+.rs-16{
+  border-radius: 16px 0px 0px 16px;
+}
+
+
