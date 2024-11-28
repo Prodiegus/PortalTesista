@@ -17,7 +17,7 @@ public class BeansConfig {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration config = new CorsConfiguration();
         config.setAllowCredentials(true);
-        config.setAllowedOrigins(List.of("http://localhost:4200", "https://34.176.220.92"));
+        config.setAllowedOrigins(List.of("http://localhost:4200", "https://34.176.220.92", "http://portaltesista.me/", "https://portaltesista.ovniscorp.tech/"));
         config.setAllowedHeaders(Arrays.asList(
                 "Origin",
                 "Content-Type",
