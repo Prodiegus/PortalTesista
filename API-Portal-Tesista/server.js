@@ -8,8 +8,21 @@ const app = express();
 
 // Configurar CORS
 app.use(cors({
-  //origin: ['https://34.176.220.92', 'https://localhost:4200'],
-  origin: ['*'],
+  origin: [
+    'https://34.176.220.92', 
+    'https://localhost:4200',
+    'https://portaltesista.me',
+    'https://portaltesista.ovniscorp.tech',
+    'https://181.163.68.173:4200',
+    'http://192.168.1.86:4200',
+    'http://localhost:4200',
+    'http://181.163.68.173:4200',
+    'https://181.163.68.173',
+    'http://192.168.1.86',
+    'http://localhost',
+    'http://181.163.68.173',
+  ],
+  //origin: ['*'],
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Origin', 'Content-Type', 'Accept', 'Authorization'],
   credentials: true
