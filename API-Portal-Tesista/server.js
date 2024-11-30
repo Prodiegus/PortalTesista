@@ -3,8 +3,8 @@ const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const cors = require('cors');
+const config = require('./config'); // Importar configuración
 const app = express();
-const port = 3000;
 
 // Configurar CORS
 app.use(cors({
@@ -24,11 +24,10 @@ app.use('/', routes);
 
 // Leer los certificados SSL
 const options = {
-  key: fs.readFileSync('/etc/ssl/certs/selfsigned.key'),
-  cert: fs.readFileSync('/etc/ssl/certs/selfsigned.crt')
+  key: fs.readFileSync(config.sslKeyPath),
+  cert: fs.readFileSync(config.sslCertPath)
 };
 
-// Iniciar el servidor HTTPS
-https.createServer(options, app).listen(port, () => {
-  console.log(`Servidor escuchando en https://34.176.220.92:${port}`);
+https.createServer(options, app).listen(config.port, config.host, () => {
+  console.log(`Server is running on https://${config.host}:${config.port}`);
 });

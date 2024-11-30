@@ -11,7 +11,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "api-portal-tesista": "file:",
+    "axios": "^1.7.8",
     "cors": "^2.8.5",
-    "express": "^4.21.1"
+    "dotenv": "^16.4.5",
+    "express": "^4.21.1",
+    "qs": "^6.13.1"
   }
 }
