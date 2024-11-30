@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {CONST} from '../../../common/const/const';
+import { CONST } from '../../../common/const/const';
 
 @Component({
   selector: 'app-tabla-temas',

@@ -1,5 +1,6 @@
 package PortalTesista.controller;
 
+import PortalTesista.controller.dto.NameResponse;
 import PortalTesista.controller.dto.RoleResponse;
 import PortalTesista.controller.dto.SaludoResponse;
 import org.springframework.security.core.Authentication;
@@ -56,5 +57,15 @@ public class Controller {
             }
         }
         return new RoleResponse("No role found");
+    }
+
+    @GetMapping("/userName")
+    public NameResponse getUserName() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            return new NameResponse(authentication.getName());
+        } else {
+            return new NameResponse("No name found");
+        }
     }
 }
