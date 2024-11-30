@@ -9,7 +9,6 @@ async function runQuery(query) {
                 reject(err);
                 return;
             }
-            console.log('Conexión a la base de datos exitosa');
         });
         connection.query(query, (error, results) => {
             if (error) {
