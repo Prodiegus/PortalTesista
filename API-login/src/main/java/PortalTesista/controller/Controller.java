@@ -61,11 +61,10 @@ public class Controller {
     }
 
     @GetMapping("/userName")
-    @ResponseBody
     public NameResponse getUserName() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if (authentication != null) {
-            return new NameResponse(authentication.getName());
+            return new NameResponse("authentication.getName()");
         } else {
             return new NameResponse("No name found");
         }

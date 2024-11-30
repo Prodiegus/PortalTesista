@@ -1,5 +1,8 @@
 package PortalTesista.controller.dto;
 
+import lombok.Data;
+
+@Data
 public class NameResponse {
     private String name;
 
