@@ -63,8 +63,10 @@ public class Controller {
     @GetMapping("/userName")
     public NameResponse getUserName() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if (authentication != null) {
-            return new NameResponse("authentication.getName()");
+        if (authentication != null && authentication.getPrincipal() instanceof org.springframework.security.oauth2.jwt.Jwt) {
+            org.springframework.security.oauth2.jwt.Jwt jwt = (org.springframework.security.oauth2.jwt.Jwt) authentication.getPrincipal();
+            String preferredUsername = jwt.getClaim("preferred_username");
+            return new NameResponse(preferredUsername);
         } else {
             return new NameResponse("No name found");
         }
