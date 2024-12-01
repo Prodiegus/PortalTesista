@@ -51,8 +51,10 @@ async function readAll(req, res) {
         if (keycloakUsers === "no user") {
             return res.status(404).send('Usuarios no encontrados');
         }
-        const query = `SELECT * FROM usuario`;
-        const results = await runQuery(query);
+        const query = `SELECT * FROM usuario WHERE escuela = ?`;
+        const { escuela } = req.params;
+        const params = [escuela];
+        const results = await runParametrizedQuery(query, params);
         
         let response = [];
         for (result of results) {
