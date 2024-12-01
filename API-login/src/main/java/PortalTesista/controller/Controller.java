@@ -1,10 +1,12 @@
 package PortalTesista.controller;
 
+import PortalTesista.controller.dto.NameResponse;
 import PortalTesista.controller.dto.RoleResponse;
 import PortalTesista.controller.dto.SaludoResponse;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -56,5 +58,17 @@ public class Controller {
             }
         }
         return new RoleResponse("No role found");
+    }
+
+    @GetMapping("/userName")
+    public NameResponse getUserName() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null && authentication.getPrincipal() instanceof org.springframework.security.oauth2.jwt.Jwt) {
+            org.springframework.security.oauth2.jwt.Jwt jwt = (org.springframework.security.oauth2.jwt.Jwt) authentication.getPrincipal();
+            String preferredUsername = jwt.getClaim("preferred_username");
+            return new NameResponse(preferredUsername);
+        } else {
+            return new NameResponse("No name found");
+        }
     }
 }

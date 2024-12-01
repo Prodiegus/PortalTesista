@@ -1,46 +1,45 @@
-version: '3.8'
-
 services:
   mysql:
     build: ./DataBase
     container_name: mysql
     environment:
-      MYSQL_ROOT_PASSWORD: rootpassword
-      MYSQL_DATABASE: keycloak
-      MYSQL_USER: keycloak
-      MYSQL_PASSWORD: keycloakpassword
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
     ports:
       - "3306:3306"
     volumes:
       - ./DataBase/data:/var/lib/mysql
     networks:
-      - portal-tesista
+      - mysql
 
   phpmyadmin:
     build: ./PhpMyAdmin
     container_name: phpmyadmin
     environment:
-      PMA_HOST: mysql
-      PMA_USER: root
-      PMA_PASSWORD: rootpassword
+      PMA_HOST: ${PMA_HOST}
+      PMA_USER: ${PMA_USER}
+      PMA_PASSWORD: ${PMA_PASSWORD}
     ports:
       - "8082:80"
     depends_on:
       - mysql
     networks:
-      - portal-tesista
+      - phpmyadmin
 
-#  portal-tesista:
-#    build: ./Portal-Tesista
-#    container_name: portal-tesista
-#    ports:
-#      - "80:80"
-#    depends_on:
-#      - mysql
-#      - api-portal-tesista
-#      - keycloak
-#    networks:
-#      - portal-tesista
+  portal-tesista:
+    build: ./Portal-Tesista
+    container_name: portal-tesista
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - mysql
+      - api-portal-tesista
+      - keycloak
+    networks:
+      - portal-tesista
 
   api-portal-tesista:
     build: ./API-Portal-Tesista
@@ -50,33 +49,32 @@ services:
     depends_on:
       - mysql
     networks:
-      - portal-tesista
+      - api-portal-tesista
 
-
-#  api-login:
-#    build: ./API-login
-#    container_name: api-login
-#    ports:
-#      - "9090:9090"
-#    depends_on:
-#      - mysql
-#      - keycloak
-#    networks:
-#      - portal-tesista
+  api-login:
+    build: ./API-login
+    container_name: api-login
+    ports:
+      - "9090:9090"
+    depends_on:
+      - mysql
+      - keycloak
+    networks:
+      - api-login
 
   keycloak:
     build: ./Keycloak
     container_name: keycloak
     environment:
-      KEYCLOAK_USER: admin
-      KEYCLOAK_PASSWORD: admin
-      KEYCLOAK_ADMIN: admin
-      KEYCLOAK_ADMIN_PASSWORD: admin
-      DB_VENDOR: mysql
-      DB_ADDR: mysql
-      DB_DATABASE: keycloak
-      DB_USER: keycloak
-      DB_PASSWORD: keycloakpassword
+      KEYCLOAK_USER: ${KEYCLOAK_USER}
+      KEYCLOAK_PASSWORD: ${KEYCLOAK_PASSWORD}
+      KEYCLOAK_ADMIN: ${KEYCLOAK_ADMIN}
+      KEYCLOAK_ADMIN_PASSWORD: ${KEYCLOAK_ADMIN_PASSWORD}
+      DB_VENDOR: ${DB_VENDOR}
+      DB_ADDR: ${DB_ADDR}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
     ports:
       - "8443:8443"
     volumes:
@@ -85,9 +83,19 @@ services:
     depends_on:
       - mysql
     networks:
-      - portal-tesista
+      - keycloak
     command: ["-Djboss.http.port=8080", "-Djboss.https.port=8443", "-Djboss.https.key-store=/etc/ssl/certs/selfsigned.jks", "-Djboss.https.key-store-password=changeit"]
 
 networks:
   portal-tesista:
+    driver: bridge
+  api-portal-tesista:
+    driver: bridge
+  api-login:
+    driver: bridge
+  mysql:
+    driver: bridge
+  phpmyadmin:
+    driver: bridge
+  keycloak:
     driver: bridge

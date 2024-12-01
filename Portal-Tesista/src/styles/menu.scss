@@ -1,0 +1,30 @@
+// src/styles/menu.scss
+// @import "../styles.scss";
+
+.overlay {
+  position: fixed;
+  top: 0;
+  right: -100%;
+  width: 300px;
+  height: 100%;
+  background-color: $gray-color;
+  transition: right 0.3s ease;
+  z-index: 1000;
+}
+
+.overlay.show {
+  right: 0;
+}
+
+.overlay-content {
+  padding: 20px;
+  color: white;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 24px;
+  cursor: pointer;
+}

@@ -11,7 +11,7 @@ export const authGuard: CanActivateFn = async () => {
   }
 
   if (!keycloakService.isAuthenticated()) {
-    router.navigate(['home']);
+    router.navigate(['']);
     return false;
   }
   return true;

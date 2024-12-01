@@ -79,7 +79,7 @@ public class KeycloakServicelmp implements IkeycloakService {
             String userId = path.substring(path.lastIndexOf("/")+1);
 
             CredentialRepresentation credentialRepresentation = new CredentialRepresentation();
-            credentialRepresentation.setTemporary(false);
+            credentialRepresentation.setTemporary(true);
             credentialRepresentation.setType(OAuth2Constants.PASSWORD);
             credentialRepresentation.setValue(userDTO.getPassword());
 

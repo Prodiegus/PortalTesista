@@ -32,6 +32,7 @@ export class KeycloakService {
     const authenticated = await this.keycloak.init({
       onLoad: 'login-required',
       pkceMethod: 'S256',
+      redirectUri: window.location.origin + '/home',
     });
 
     if (authenticated) {
@@ -48,12 +49,11 @@ export class KeycloakService {
     return this.keycloak?.authenticated;
   }
 
-  login(p: { redirectUri: string }) {
-    return this.keycloak?.login(
-      {
-        redirectUri: p.redirectUri,
-      }
-    );
+  login() {
+    if (this.isAuthenticated()) {
+      this.keycloak?.logout();
+    }
+    this.keycloak?.login();
   }
 
   logout(p: { redirectUri: string }) {

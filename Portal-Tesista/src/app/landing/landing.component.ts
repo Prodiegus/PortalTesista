@@ -9,11 +9,4 @@ import {Router} from '@angular/router';
 })
 export class LandingComponent {
 
-  constructor(private keycloakService: KeycloakService, private router: Router) {
-  }
-
-  async goHome() {
-    await this.keycloakService.init();
-    await this.keycloakService.login({redirectUri: window.location.origin + '/home'});
-  }
 }
