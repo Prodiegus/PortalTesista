@@ -1,0 +1,42 @@
+$gray-color: #F4F4F4;
+$white-color: #FFFFFF;
+
+.dropdown-menu {
+  position: fixed;
+  top: 0;
+  right: -300px;
+  width: 415px;
+  height: 100%;
+  transition: right 0.3s ease;
+  z-index: 1000;
+  overflow: auto; /* Asegura que el contenido sea visible si es más grande que el contenedor */
+}
+
+.dropdown-menu.show {
+  right: 0;
+}
+
+.dropdown-content {
+  padding: 0 20px 20px 20px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.overlay-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.25);
+  z-index: 999;
+}
+
+.logout{
+  position: absolute;
+  bottom: 0;
+}

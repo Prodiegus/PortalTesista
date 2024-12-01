@@ -1,8 +1,12 @@
 FROM phpmyadmin/phpmyadmin
 
-ENV PMA_HOST=mysql
-ENV PMA_USER=root
-ENV PMA_PASSWORD=rootpassword
+ARG PMA_HOST
+ARG PMA_USER
+ARG PMA_PASSWORD
+
+ENV PMA_HOST=${PMA_HOST}
+ENV PMA_USER=${PMA_USER}
+ENV PMA_PASSWORD=${PMA_PASSWORD}
 
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
 
