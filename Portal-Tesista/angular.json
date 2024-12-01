@@ -49,7 +49,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/favicon.ico",
+                "input": "src",
                 "output": "/"
               }
             ]
@@ -80,7 +80,7 @@
               },
               {
                 "glob": "**/*",
-                "input": "src/favicon.ico",
+                "input": "src",
                 "output": "/"
               }
             ],

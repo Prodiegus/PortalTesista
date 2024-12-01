@@ -13,6 +13,8 @@ import { FooterComponent } from './common/footer/footer.component';
 import { LandingHeaderComponent } from './common/landing-header/landing-header.component';
 import { LandingBodyComponent } from './landing/landing-body/landing-body.component';
 import { TablaTemasComponent} from './landing/landing-body/tabla-temas/tabla-temas.component';
+import { HomeHeaderComponent } from './common/home-header/home-header.component';
+import { MenuAdminComponent } from './common/menu-admin/menu-admin.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { TablaTemasComponent} from './landing/landing-body/tabla-temas/tabla-tem
     LandingHeaderComponent,
     LandingBodyComponent,
     TablaTemasComponent,
+    HomeHeaderComponent,
+    MenuAdminComponent,
   ],
   imports: [
     BrowserModule,

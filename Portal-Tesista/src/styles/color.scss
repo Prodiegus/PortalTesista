@@ -17,6 +17,10 @@ $text-accent: #fff; // Un color claro para contrastar con el color de acento osc
 $text-light: #000000; // Un color oscuro para contrastar con el color claro
 $text-dark: #fff; // Un color claro para contrastar con el color oscuro
 
+.accent-border {
+    border: 2px solid $accent-color;
+}
+
 .primary-bg {
     background-color: $primary-color;
     color: $text-primary;
@@ -35,6 +39,14 @@ $text-dark: #fff; // Un color claro para contrastar con el color oscuro
 .light-bg {
     background-color: $light-color;
     color: $text-light;
+}
+
+.light-bg-interactive {
+    background-color: $light-color;
+    color: $text-light;
+    &:hover {
+        background-color: darken($light-color, 10%);
+    }
 }
 
 .dark-bg {
@@ -138,7 +150,7 @@ $text-dark: #fff; // Un color claro para contrastar con el color oscuro
 
 .gray-border {
     border: 1px solid $gray;
-}   
+}
 
 .debug{
     border: 1px solid red;
@@ -147,7 +159,7 @@ $text-dark: #fff; // Un color claro para contrastar con el color oscuro
 /*
 $primary-color (#60CDCD): Este color verde azulado es vibrante y llamativo,
  lo que lo convierte en una excelente opción para elementos principales que deben destacar.
-$secondary-color (#F4F4F4): Un gris claro que es sutil y neutral, ideal para 
+$secondary-color (#F4F4F4): Un gris claro que es sutil y neutral, ideal para
  fondos o elementos secundarios que complementan el color principal.
 $accent-color (#F29B33): El color naranja sirve como un fuerte acento, atrayendo
  la atención hacia áreas específicas sin abrumar al color principal.

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { KeycloakService } from '../keycloak/keycloak.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {environment} from '../../enviroments/enviroment';
+import { HttpRequestService } from '../common/Http-request.service';
 
 @Component({
   selector: 'app-home',
@@ -9,36 +9,46 @@ import {environment} from '../../enviroments/enviroment';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  protected role: string = '';
-  private apiLogin = environment.apiLogin.url;
+  protected userRepresentation: any;
+  protected loading = true;
 
-  constructor(private keycloakService: KeycloakService, private http: HttpClient) { }
+  constructor(
+    private keycloakService: KeycloakService,
+    private http: HttpClient,
+    private httpRequestService: HttpRequestService
+  ) { }
 
   async ngOnInit() {
-    await this.fetchRole();
+    this.loading = true;
+    await this.initializeData();
+    this.loading = false;
   }
 
   async logout() {
     await this.keycloakService.logout({ redirectUri: window.location.origin });
   }
 
-  async fetchRole() {
-  const token = this.keycloakService.keycloak.token;
-  const headers = new HttpHeaders({
-    'Authorization': `Bearer ${token}`
-  });
-  this.http.get<{ role: string }>(this.apiLogin + '/roles', { headers })
-    .subscribe(
-      response => {
-        if (response && response.role) {
-          this.role = response.role;
-        } else {
-          this.role = 'Unexpected response format';
-        }
-      },
-      error => {
-        this.role = 'Error al obtener roles';
-      }
-    );
+  private async initializeData() {
+    const token = this.keycloakService.keycloak.token;
+    await Promise.all([
+      this.fetchUserRepresentation(token),
+    ]);
+  }
+
+  private async fetchUserRepresentation(token: string | undefined) {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.getUserData(token).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.userRepresentation = data;
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error fetching user data: ', error);
+            reject(error);
+          }
+        );
+      });
+    });
   }
 }
