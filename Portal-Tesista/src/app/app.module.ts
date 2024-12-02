@@ -16,6 +16,7 @@ import { TablaTemasComponent} from './landing/landing-body/tabla-temas/tabla-tem
 import { HomeHeaderComponent } from './common/home-header/home-header.component';
 import { MenuAdminComponent } from './common/menu-admin/menu-admin.component';
 import { ProfesoresComponent } from './home/profesores/profesores.component';
+import { TablaProfesoresComponent } from './home/profesores/tabla-profesores/tabla-profesores.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ProfesoresComponent } from './home/profesores/profesores.component';
     HomeHeaderComponent,
     MenuAdminComponent,
     ProfesoresComponent,
+    TablaProfesoresComponent,
   ],
   imports: [
     BrowserModule,
