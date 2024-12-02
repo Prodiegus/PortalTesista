@@ -40,6 +40,11 @@ export class MenuAdminComponent {
     this.router.navigate(['/home']);
   }
 
+  goToProfesores() {
+    this.isVisible = false;
+    this.router.navigate(['/home/profesores']);
+  }
+
   async logout() {
     await this.keycloakService.logout({ redirectUri: window.location.origin });
   }
