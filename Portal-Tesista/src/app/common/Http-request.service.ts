@@ -19,4 +19,9 @@ export class HttpRequestService {
 
     return this.http.get<any>(endpoint, { headers });
   }
+
+  async getProfesores(escuela: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/allUser/`+escuela;
+    return this.http.get<any>(endpoint);
+  }
 }

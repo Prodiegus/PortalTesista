@@ -1,5 +1,6 @@
 CREATE TABLE usuario (
     nombre VARCHAR(255),
+    apellido VARCHAR(255),
     rut VARCHAR(255),
     escuela VARCHAR(255),
     correo VARCHAR(255),
