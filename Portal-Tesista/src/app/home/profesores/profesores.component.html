@@ -5,16 +5,7 @@
   </div>
   <div *ngIf="!loading">
     <app-home-header [userRepresentation]="userRepresentation"></app-home-header>
-    <div *ngFor="let profesor of profesores; index as i">
-        <div class="row h-100 mb-1 px-5 mx-5 secondary-bg bold d-flex align-items-center ">
-            <div class="col-2 text-center ">
-            {{profesor.nombre}}
-            </div>
-            <div class="col-2 text-center ">
-            {{profesor.correo}}
-            </div>
-        </div>
-    </div>
+    <app-tabla-profesores [profesores]="profesores"></app-tabla-profesores>
     <div class="h-450"></div>
     <app-footer></app-footer>
   </div>
