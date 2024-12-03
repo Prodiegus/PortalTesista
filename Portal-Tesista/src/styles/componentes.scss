@@ -158,6 +158,18 @@ body {
     margin-bottom: 108px;
 }
 
+.mb-96 {
+    margin-bottom: 96px;
+}
+
+.mb-86{
+    margin-bottom: 86px;
+}
+
+.mb-82 {
+    margin-bottom: 82px;
+}
+
 .mb-52 {
     margin-bottom: 52px;
 }
@@ -329,6 +341,16 @@ body {
     width: 170px;
 }
 
+.size-200-45 {
+    height: 45px;
+    width: 200px;
+}
+
+.size-220-45 {
+    height: 45px;
+    width: 220px;
+}
+
 .underlay {
     position: fixed;
     top: 0;
@@ -343,9 +365,10 @@ body {
     position: fixed;
     top: 50%;
     left: 50%;
-    width: 700px !important;
-    height: 500px !important;
+    min-width: 700px;
+    min-height: 500px;
     @extend .light-bg;
+  background-color: rgba(0, 0, 0, 0.25);
     transform: translate(-50%, -50%);
     z-index: 1000;
     border: 0;
