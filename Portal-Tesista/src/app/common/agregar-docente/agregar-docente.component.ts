@@ -54,7 +54,7 @@ export class AgregarDocenteComponent {
       await this.add(this.addDocente);
       console.log(this.addResponse);
     } catch (error) {
-      console.error('Error adding docente: ', error);
+      console.log('Error adding docente');
     } finally {
       this.loading = false;
       this.closeOverlay();
@@ -69,8 +69,7 @@ export class AgregarDocenteComponent {
             this.addResponse = data;
             resolve();
           },
-          (error: HttpErrorResponse) => {
-            console.error('Error adding docente: ', error);
+          (error: any) => {
             reject(error);
           });
         });
