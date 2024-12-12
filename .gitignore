@@ -1,0 +1,8 @@
+# Ignorar archivos de configuración de sistema
+.env
+
+# Ignorar archivos .env en cualquier subdirectorio
+**/.env
+
+# Ignorar node_modules en cualquier subdirectorio
+**/node_modules/

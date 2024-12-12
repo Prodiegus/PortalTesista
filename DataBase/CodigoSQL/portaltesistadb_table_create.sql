@@ -10,8 +10,6 @@ CREATE TABLE usuario (
     PRIMARY KEY (rut)
 );
 
-CREATE UNIQUE INDEX idx_tipo_usuario ON usuario (tipo);
-
 CREATE TABLE tema (
     id INT AUTO_INCREMENT,
     titulo VARCHAR(255),
