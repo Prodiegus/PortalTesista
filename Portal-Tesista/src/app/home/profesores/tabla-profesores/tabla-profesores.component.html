@@ -65,8 +65,16 @@
   </div>
 </div>
 
-<div *ngIf="showAgregarDocente" class="overlay" (click)="onOverlayClick($event)">
+<!-- Agregar docentes -->
+<div *ngIf="showAgregarDocente" class="overlay">
   <div class="overlay-content">
-    <app-agregar-docente (close)="closeAgregarDocente()"></app-agregar-docente>
+    <app-agregar-docente [userRepresentation]="userRepresentation" (close)="closeAgregarDocente()"></app-agregar-docente>
+  </div>
+</div>
+
+<!-- Loader -->
+<div class="container-fluid d-flex justify-content-center align-items-center fullscreen" *ngIf="loading">
+  <div class="spinner-grow primary-normal div-size-72" role="status">
+    <span class="visually-hidden">cargando...</span>
   </div>
 </div>

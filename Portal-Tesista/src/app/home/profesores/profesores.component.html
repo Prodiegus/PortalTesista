@@ -1,11 +1,4 @@
-<div class="container-fluid d-flex justify-content-center align-items-center fullscreen" *ngIf="loading">
-    <div class="spinner-grow primary-normal div-size-72" role="status">
-      <span class="visually-hidden">cargando...</span>
-    </div>
-  </div>
-  <div *ngIf="!loading">
-    <app-home-header [userRepresentation]="userRepresentation"></app-home-header>
-    <app-tabla-profesores [profesores]="profesores"></app-tabla-profesores>
-    <div class="h-450"></div>
-    <app-footer></app-footer>
-  </div>
+<app-home-header [userRepresentation]="userRepresentation"></app-home-header>
+<app-tabla-profesores [userRepresentation]="userRepresentation"></app-tabla-profesores>
+<div class="h-450"></div>
+<app-footer></app-footer>

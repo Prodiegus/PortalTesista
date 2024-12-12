@@ -24,4 +24,9 @@ export class HttpRequestService {
     const endpoint = `${this.apiUrl}/read/allUser/`+escuela;
     return this.http.get<any>(endpoint);
   }
+
+  async addDocente(addDocente: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/create/user`;
+    return this.http.post<any>(endpoint, addDocente);
+  }
 }
