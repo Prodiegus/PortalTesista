@@ -57,21 +57,32 @@ async function readAll(req, res) {
         const results = await runParametrizedQuery(query, params);
         
         let response = [];
+        let keycloakUser;
         for (result of results) {
-            for (keycloakUser of keycloakUsers) {
-                if (result.rut == keycloakUser.username) {
-                    response.push({
-                        id: keycloakUser.id,
-                        nombre: result.nombre+' '+result.apellido,
-                        rut: result.rut,
-                        escuela: result.escuela,
-                        correo: result.correo,
-                        tipo: result.tipo,
-                        activo: result.activo
-                    });
-                }
+            keycloakUser = keycloakUsers.find(user => user.username === result.rut);
+            if (keycloakUser) {
+                response.push({
+                    id: keycloakUser.id,
+                    nombre: result.nombre + ' ' + result.apellido,
+                    rut: result.rut,
+                    escuela: result.escuela,
+                    correo: result.correo,
+                    tipo: result.tipo,
+                    activo: result.activo
+                });
+            } else {
+                response.push({
+                    id: null,
+                    nombre: result.nombre + ' ' + result.apellido,
+                    rut: result.rut,
+                    escuela: result.escuela,
+                    correo: result.correo,
+                    tipo: result.tipo,
+                    activo: result.activo
+                });
             }
         }
+        
         res.status(200).send(response);
     } catch (error) {
         console.error('Error obteniendo usuarios:', error.response ? error.response.data : error.message);
