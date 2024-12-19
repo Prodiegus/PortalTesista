@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { KeycloakService } from '../keycloak/keycloak.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { HttpRequestService } from '../common/Http-request.service';
+import { UserService } from '../common/user.service';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +16,14 @@ export class HomeComponent implements OnInit {
   constructor(
     private keycloakService: KeycloakService,
     private http: HttpClient,
-    private httpRequestService: HttpRequestService
+    private httpRequestService: HttpRequestService,
+    private userService: UserService
   ) { }
 
   async ngOnInit() {
     this.loading = true;
     await this.initializeData();
+    this.userService.setUser(this.userRepresentation);
     this.loading = false;
   }
 

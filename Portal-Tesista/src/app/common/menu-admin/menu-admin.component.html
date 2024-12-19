@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class="row accent-border drop-shadow my-22"></div>
-    <div class="row h-55 r-8 light-bg-interactive d-flex align-items-center" (click)="goHome()">
+    <div class="row h-55 r-8 light-bg-interactive d-flex align-items-center pointer" (click)="goHome()">
         <div class="col-2">
          <i class="ms-1 bi bi-house font-30"></i>
         </div>
@@ -18,38 +18,39 @@
           Inicio
         </div>
     </div>
-    <div class="row h-55 r-8 my-22 light-bg-interactive d-flex align-items-center"
-         *ngIf="userRepresentation.tipo === 'cargo'"
-      >
-      <div class="col-2">
-        <i class="ms-1 bi bi-person-plus-fill font-30"></i>
-      </div>
-      <div class="col font-20">
-        Crear un nuevo profesor a cargo
-      </div>
-    </div>
-    <div class="row h-55 r-8 my-22 light-bg-interactive d-flex align-items-center"
+    <div class="row h-55 r-8 my-22 light-bg-interactive  pointer d-flex align-items-center"
          *ngIf="userRepresentation.tipo === 'cargo' || userRepresentation.tipo === 'guia'"
+          (click)="goToProfesores()"
     >
       <div class="col-2">
-        <i class="ms-1 bi bi-person-plus font-30"></i>
+        <i class="ms-1 bi bi-person font-30"></i>
       </div>
       <div class="col font-20">
-        Crear un nuevo profesor guia
+        Gestionar profesores
       </div>
     </div>
-    <div class="row h-55 r-8 my-22 light-bg-interactive d-flex align-items-center"
+    <div class="row h-55 r-8 my-22 light-bg-interactive d-flex align-items-center pointer"
          *ngIf="userRepresentation.tipo === 'cargo'"
     >
       <div class="col-2">
         <i class="ms-1 bi bi-backpack2 font-30"></i>
       </div>
       <div class="col font-20">
-        Fundar un escuela
+        Fundar una escuela
+      </div>
+    </div>
+    <div class="row h-55 r-8 my-22 light-bg-interactive d-flex align-items-center pointer"
+         *ngIf="userRepresentation.tipo === 'cargo'"
+    >
+      <div class="col-2">
+        <i class="ms-1 bi bi-diagram-3 font-30"></i>
+      </div>
+      <div class="col font-20">
+        Gestionar flujo de escuela
       </div>
     </div>
   </div>
-  <div class="logout container-fluid h-90 w-100 light-bg d-flex align-self-end align-items-center" (click)="logout()">
+  <div class="logout container-fluid h-90 w-100 light-bg d-flex align-self-end align-items-center pointer" (click)="logout()">
     <div class="col-5 mx-5 font-20 d-flex align-items-center">
       Salir
     </div>

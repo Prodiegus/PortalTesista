@@ -15,6 +15,9 @@ import { LandingBodyComponent } from './landing/landing-body/landing-body.compon
 import { TablaTemasComponent} from './landing/landing-body/tabla-temas/tabla-temas.component';
 import { HomeHeaderComponent } from './common/home-header/home-header.component';
 import { MenuAdminComponent } from './common/menu-admin/menu-admin.component';
+import { ProfesoresComponent } from './home/profesores/profesores.component';
+import { TablaProfesoresComponent } from './home/profesores/tabla-profesores/tabla-profesores.component';
+import { AgregarDocenteComponent } from './common/agregar-docente/agregar-docente.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +30,9 @@ import { MenuAdminComponent } from './common/menu-admin/menu-admin.component';
     TablaTemasComponent,
     HomeHeaderComponent,
     MenuAdminComponent,
+    ProfesoresComponent,
+    TablaProfesoresComponent,
+    AgregarDocenteComponent,
   ],
   imports: [
     BrowserModule,

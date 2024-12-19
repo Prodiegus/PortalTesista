@@ -1,5 +1,6 @@
 CREATE TABLE usuario (
     nombre VARCHAR(255),
+    apellido VARCHAR(255),
     rut VARCHAR(255),
     escuela VARCHAR(255),
     correo VARCHAR(255),
@@ -8,8 +9,6 @@ CREATE TABLE usuario (
     activo BOOLEAN,
     PRIMARY KEY (rut)
 );
-
-CREATE UNIQUE INDEX idx_tipo_usuario ON usuario (tipo);
 
 CREATE TABLE tema (
     id INT AUTO_INCREMENT,

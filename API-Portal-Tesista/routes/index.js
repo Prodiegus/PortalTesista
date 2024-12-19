@@ -17,7 +17,7 @@ router.get('/read/user', async (req, res) => {
   await read(req, res); 
 });
 
-router.get('/read/allUser', async (req, res) => {
+router.get('/read/allUser/:escuela', async (req, res) => {
   await readAll(req, res); 
 });
 
