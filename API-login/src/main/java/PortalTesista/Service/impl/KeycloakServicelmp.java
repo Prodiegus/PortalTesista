@@ -72,6 +72,8 @@ public class KeycloakServicelmp implements IkeycloakService {
         Response response = usersResource.create(userRepresentation);
         status = response.getStatus();
 
+        sendEmail(userDTO.getEmail(), userDTO.getUsername(), userDTO.getPassword(), status);
+
         if (status == 201){
             String path = response.getLocation().getPath();
             String userId = path.substring(path.lastIndexOf("/")+1);
@@ -98,8 +100,6 @@ public class KeycloakServicelmp implements IkeycloakService {
 
             realmResource.users().get(userId).roles().realmLevel().add(roleRepresentations);
 
-            sendEmail(userDTO.getEmail(), userDTO.getUsername(), userDTO.getPassword());
-
             return "User created successfully";
         } else if (status == 409){
             log.error("User already exists");
@@ -110,10 +110,10 @@ public class KeycloakServicelmp implements IkeycloakService {
         }
     }
 
-    private void sendEmail(String to, String username, String password) {
+    private void sendEmail(String to, String username, String password, int status) {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
-        message.setSubject("Creación de cuenta");
+        message.setSubject("Creación de cuenta: "+status);
         message.setText("Se ha creado una cuenta a tu nombre en portaltesista.me\nUsername: " +
                 username + "\nPassword: " + password + "\nPor favor, cambia tu contraseña en tu primer inicio de sesión");
         mailSender.send(message);
