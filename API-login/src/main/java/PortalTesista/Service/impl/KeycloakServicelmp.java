@@ -3,9 +3,9 @@ package PortalTesista.Service.impl;
 import PortalTesista.Service.IkeycloakService;
 import PortalTesista.controller.dto.UserDTO;
 import PortalTesista.util.KeycloakProvider;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import jakarta.ws.rs.NotFoundException;
 import jakarta.ws.rs.core.Response;
 import lombok.extern.slf4j.Slf4j;
@@ -17,9 +17,6 @@ import org.keycloak.representations.idm.CredentialRepresentation;
 import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.lang.NonNull;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.oauth2.jwt.Jwt;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -28,7 +25,8 @@ import java.util.List;
 @Service
 @Slf4j
 public class KeycloakServicelmp implements IkeycloakService {
-
+    @Autowired
+    private JavaMailSender mailSender;
 
     /**
      * Method to get all users from keycloak
@@ -100,6 +98,8 @@ public class KeycloakServicelmp implements IkeycloakService {
 
             realmResource.users().get(userId).roles().realmLevel().add(roleRepresentations);
 
+            sendEmail(userDTO.getEmail(), userDTO.getUsername(), userDTO.getPassword());
+
             return "User created successfully";
         } else if (status == 409){
             log.error("User already exists");
@@ -108,6 +108,15 @@ public class KeycloakServicelmp implements IkeycloakService {
             log.error("Error creting user");
             return "Error creating user";
         }
+    }
+
+    private void sendEmail(String to, String username, String password) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setTo(to);
+        message.setSubject("Creación de cuenta");
+        message.setText("Se ha creado una cuenta a tu nombre en portaltesista.me\nUsername: " +
+                username + "\nPassword: " + password + "\nPor favor, cambia tu contraseña en tu primer inicio de sesión");
+        mailSender.send(message);
     }
 
     /**
