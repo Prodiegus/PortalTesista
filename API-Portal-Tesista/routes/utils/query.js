@@ -31,7 +31,6 @@ async function runParametrizedQuery(query, params) {
                 reject(err);
                 return;
             }
-            console.log('Conexión a la base de datos exitosa');
         });
         connection.query(query, params, (error, results) => {
             if (error) {

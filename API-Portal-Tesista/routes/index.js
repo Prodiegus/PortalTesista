@@ -2,6 +2,8 @@
 const express = require('express');
 const create = require('./user/create');
 const { read, readAll} = require('./user/read');
+const { create_flow, read_flow, edit_flow } = require('./flow/manage_flow');
+const { create_phase, read_phase, edit_phase } = require('./flow/manage_phase');
 const disable = require('./user/disable');
 const enable = require('./user/enable');
 
@@ -30,5 +32,31 @@ router.post('/disable/user', async (req, res) => {
 router.post('/enable/user', async (req, res) => {
   await enable(req, res); 
 });
+
+router.get('/read/work-flow/:type', async (req, res) => {
+  await read_flow(req, res);
+});
+
+router.post('/edit/work-flow', async (req, res) => {
+  await edit_flow(req, res);
+});
+
+router.post('/create/work-flow', async (req, res) => {
+  await create_flow(req, res);
+});
+
+router.get('/read/phase/:type', async (req, res) => {
+  await read_phase(req, res);
+});
+
+router.post('/edit/phase', async (req, res) => {
+  await edit_phase(req, res);
+});
+
+router.post('/create/phase', async (req, res) => {
+  await create_phase(req, res);
+});
+
+
 
 module.exports = router;
