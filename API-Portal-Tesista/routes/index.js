@@ -4,6 +4,7 @@ const create = require('./user/create');
 const { read, readAll} = require('./user/read');
 const { create_flow, read_flow, edit_flow } = require('./flow/manage_flow');
 const { create_phase, read_phase, edit_phase } = require('./flow/manage_phase');
+const { create_topic, read_topic, read_all_topics, edit_topic, change_topic_status } = require('./topic/topic_manager');
 const disable = require('./user/disable');
 const enable = require('./user/enable');
 
@@ -42,6 +43,7 @@ router.post('/edit/work-flow', async (req, res) => {
 });
 
 router.post('/create/work-flow', async (req, res) => {
+  // para flujos generales unicamente se pueden crear al crear una escuela
   await create_flow(req, res);
 });
 
@@ -57,6 +59,26 @@ router.post('/create/phase', async (req, res) => {
   await create_phase(req, res);
 });
 
+// leer todos los temas
+router.get('/read/topic', async (req, res) => {
+  await read_all_topics(req, res);
+});
 
+// leer los temas de un usuario
+router.get('/read/topic/:rut', async (req, res) => {
+  await read_topic(req, res);
+});
+
+router.post('/create/topic', async (req, res) => {
+  await create_topic(req, res);
+});
+
+router.post('/edit/topic', async (req, res) => {
+  await edit_topic(req, res);
+});
+
+router.post('/change/topic-status', async (req, res) => {
+  await change_topic_status(req, res);
+});
 
 module.exports = router;

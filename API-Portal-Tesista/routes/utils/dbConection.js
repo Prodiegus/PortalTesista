@@ -8,8 +8,13 @@ const dbConfig = {
     database: process.env.DATABASE
 };
 
+const pool = mysql.createPool(dbConfig);
+
 const getDBConnection = () => {
     return mysql.createConnection(dbConfig);
 };
 
-module.exports = getDBConnection;
+module.exports = {
+    pool,
+    getDBConnection
+};
