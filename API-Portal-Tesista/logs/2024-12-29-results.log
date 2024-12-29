@@ -1,0 +1,10 @@
+2024-12-29 13:16:02 info: Server is running on https://localhost:3000
+2024-12-29 13:16:15 info: POST /change/topic-status
+2024-12-29 13:16:15 info: Consulta post a /change/topic-status:  [object Object]
+2024-12-29 13:16:25 info: GET /read/topic/20509736
+2024-12-29 13:16:25 info: Consulta get a /read/topic/:rut:  [object Object]
+2024-12-29 13:18:06 info: Server is running on https://localhost:3000
+2024-12-29 13:18:14 info: POST /change/topic-status
+2024-12-29 13:18:14 info: Consulta post a /change/topic-status:  {"id":4,"titulo":"Portal Tesista","resumen":"La revolución digital, impulsada por la pandemia, ha expuesto desafíos en la supervisión de proyectos de titulación, como la falta de reglamentación y transparencia. Además, la dificultad de acceso a información crítica ha afectado la calidad y el progreso de estos proyectos. Portal Tesista es un portal web integral para la gestión de proyectos de titulación en la Universidad de Talca. Este sistema centraliza la gestión, supervisión y evaluación de proyectos, facilitando el registro y seguimiento del avance, administración de usuarios, y gestión de la propiedad intelectual. Además, permite la reasignación de profesores, colaboración externa, y visualización de estadísticas. Incluye herramientas para organizar reuniones, aplicar criterios de evaluación y gestionar versiones de proyectos, mejorando la transparencia en la supervisión y desarrollo de los proyectos de titulación.","estado":"Pendiente","numero_fase":1,"id_fase":1,"nombre_escuela":"Ingeniería Civil en Computación","rut_guia":"20509736"}
+2024-12-29 13:18:20 info: GET /read/topic/20509736
+2024-12-29 13:18:20 info: Consulta get a /read/topic/:rut:  {}

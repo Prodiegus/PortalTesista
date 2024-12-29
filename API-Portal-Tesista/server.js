@@ -1,12 +1,57 @@
-// server.js
 const express = require('express');
 const https = require('https');
 const fs = require('fs');
 const cors = require('cors');
-const config = require('./config'); // Importar configuración
+const config = require('./config');
 const app = express();
+const winston = require('winston');
+const DailyRotateFile = require('winston-daily-rotate-file');
 
-// Configurar CORS
+// Configurar winston para guardar logs en archivos separados por día
+const logDirectory = './logs';
+if (!fs.existsSync(logDirectory)) {
+    fs.mkdirSync(logDirectory);
+}
+
+const logger = winston.createLogger({
+    level: 'info',
+    format: winston.format.combine(
+        winston.format.timestamp({
+            format: 'YYYY-MM-DD HH:mm:ss'
+        }),
+        winston.format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
+    ),
+    transports: [
+        new DailyRotateFile({
+            filename: `${logDirectory}/%DATE%-results.log`,
+            datePattern: 'YYYY-MM-DD',
+            zippedArchive: true,
+            maxSize: '20m',
+            maxFiles: '14d'
+        }),
+        new winston.transports.Console({
+            format: winston.format.combine(
+                winston.format.colorize(),
+                winston.format.simple()
+            )
+        })
+    ]
+});
+
+// Sobrescribir los métodos de console para usar winston
+console.log = (...args) => logger.info(args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : arg).join(' '));
+console.error = (...args) => logger.error(args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : arg).join(' '));
+console.warn = (...args) => logger.warn(args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : arg).join(' '));
+console.info = (...args) => logger.info(args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : arg).join(' '));
+console.debug = (...args) => logger.debug(args.map(arg => typeof arg === 'object' ? JSON.stringify(arg) : arg).join(' '));
+
+// Middleware para registrar todas las solicitudes
+app.use((req, res, next) => {
+    logger.info(`${req.method} ${req.url}`);
+    next();
+});
+
+// configurar cors
 app.use(cors({
   origin: [
     'https://34.176.220.92', 
