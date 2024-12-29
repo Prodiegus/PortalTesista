@@ -14,7 +14,10 @@ async function disable(req, res) {
         const token = await getToken();
         await deleteUser(req, token);
         const results = await runParametrizedQuery(query, params);
-        res.status(200).send('Usuario desactivado, resultados: ' + results);
+	const response = {
+		estado: "Usuario desactivado"
+	}
+        res.status(200).send(response);
     } catch (error) {
         console.error('Error desactivando usuario:', error.response ? error.response.data : error.message);
         res.status(500).send('Error desactivando usuario');
