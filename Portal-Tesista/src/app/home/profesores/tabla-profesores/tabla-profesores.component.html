@@ -29,7 +29,7 @@
       tipo
     </div>
     <div class="col"></div>
-    <div class="col-2 text-center d-flex justify-content-center " *ngIf="userRepresentation.tipo !== 'cargo'">
+    <div class="col-2 text-center d-flex justify-content-center " *ngIf="userRepresentation.tipo === 'cargo'">
       gestionar
     </div>
   </div>
@@ -55,7 +55,7 @@
       </div>
     </div>
     <div class="col"></div>
-    <div class="col-2 d-flex justify-content-center align-items-center " *ngIf="userRepresentation.tipo !== 'cargo'">
+    <div class="col-2 d-flex justify-content-center align-items-center " *ngIf="userRepresentation.tipo === 'cargo'">
       <div *ngIf="profesor.activo == 1">
         <button class="button secondary btn-size-150 bold" (click)="desactivar(profesor)" [disabled]="userRepresentation.tipo !== 'cargo'">Desactivar</button>
       </div>
