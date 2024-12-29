@@ -148,3 +148,9 @@ $text-color: #000000;
 .pointer{
   cursor: pointer;
 }
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.5; /* Optional: to visually indicate the button is disabled */
+}

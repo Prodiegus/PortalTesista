@@ -1,66 +1,67 @@
-<!-- Barra para crear nuevo profesor -->
-<div class="row">
-  <div class="container">
-    <div class="row px-3 py-2 mx-5 r-16 border primary ">
-      <div class="col-5"></div>
-      <div class="col d-flex justify-content-center align-items-center bold">
-          Gestión de profesores
+<div class="m-0 p-0" *ngIf="!loading">
+  <!-- Barra para crear nuevo profesor -->
+  <div class="row">
+    <div class="container">
+      <div class="row px-3 py-2 mx-5 r-16 border primary ">
+        <div class="col-5"></div>
+        <div class="col d-flex justify-content-center align-items-center bold">
+            Gestión de profesores
+        </div>
+        <div class="col-5 d-flex justify-content-end" (click)="agregarProfesor()">
+          <button class="button primary bold r-16 btn-size-150 font-18">Agregar <i class="ps-2 bi bi-plus-circle font-30"></i></button>
+        </div>
       </div>
-      <div class="col-5 d-flex justify-content-end" (click)="agregarProfesor()">
-        <button class="button primary bold r-16 btn-size-150 font-18">Agregar <i class="ps-2 bi bi-plus-circle font-30"></i></button>
+    </div>
+  </div>
+  <!-- Header -->
+  <div class="row mx-5 px-5 rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
+    <div class="col-2 text-center">
+      nombre
+    </div>
+    <div class="col-2 text-center ">
+     rut
+    </div>
+    <div class="col-2 text-center ">
+      correo
+    </div>
+    <div class="col"></div>
+    <div class="col-2 text-center">
+      tipo
+    </div>
+    <div class="col"></div>
+    <div class="col-2 text-center d-flex justify-content-center " *ngIf="userRepresentation.tipo !== 'cargo'">
+      gestionar
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="row h-100 mb-1 px-5 mx-5 secondary-bg bold d-flex align-items-center " *ngFor="let profesor of profesores; index as i">
+    <div class="col-2 text-center ">
+      {{profesor.nombre}}
+    </div>
+    <div class="col-2 text-center ">
+      {{profesor.rut}}
+    </div>
+    <div class="col-2 text-center ">
+      {{profesor.correo}}
+    </div>
+    <div class="col"></div>
+    <div class="col-2 font-18 bold text-center d-flex justify-content-center align-items-center">
+      <div class="pill-green pill-size-170" *ngIf="profesor.tipo === 'cargo'">
+        profesor a cargo
+      </div>
+      <div class="pill-yellow pill-size-170" *ngIf="profesor.tipo === 'guia'">
+        profesor guía
       </div>
     </div>
-  </div>
-</div>
-
-<!-- Header -->
-<div class="row mx-5 px-5 rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
-  <div class="col-2 text-center">
-    nombre
-  </div>
-  <div class="col-2 text-center ">
-   rut
-  </div>
-  <div class="col-2 text-center ">
-    correo
-  </div>
-  <div class="col"></div>
-  <div class="col-2 text-center">
-    tipo
-  </div>
-  <div class="col"></div>
-  <div class="col-2 text-center d-flex justify-content-center ">
-    gestionar
-  </div>
-</div>
-
-<!-- Body -->
-<div class="row h-100 mb-1 px-5 mx-5 secondary-bg bold d-flex align-items-center " *ngFor="let profesor of profesores; index as i">
-  <div class="col-2 text-center ">
-    {{profesor.nombre}}
-  </div>
-  <div class="col-2 text-center ">
-    {{profesor.rut}}
-  </div>
-  <div class="col-2 text-center ">
-    {{profesor.correo}}
-  </div>
-  <div class="col"></div>
-  <div class="col-2 font-18 bold text-center d-flex justify-content-center align-items-center">
-    <div class="pill-green pill-size-170" *ngIf="profesor.tipo === 'cargo'">
-      profesor a cargo
-    </div>
-    <div class="pill-yellow pill-size-170" *ngIf="profesor.tipo === 'guia'">
-      profesor guía
-    </div>
-  </div>
-  <div class="col"></div>
-  <div class="col-2 d-flex justify-content-center align-items-center ">
-    <div *ngIf="profesor.activo == 1">
-      <button class="button secondary btn-size-150 bold" (click)="desactivar(profesor)">Desactivar</button>
-    </div>
-    <div *ngIf="profesor.activo == 0">
-      <button class="button secondary btn-size-150 bold" (click)="activar(profesor)">activar</button>
+    <div class="col"></div>
+    <div class="col-2 d-flex justify-content-center align-items-center " *ngIf="userRepresentation.tipo !== 'cargo'">
+      <div *ngIf="profesor.activo == 1">
+        <button class="button secondary btn-size-150 bold" (click)="desactivar(profesor)" [disabled]="userRepresentation.tipo !== 'cargo'">Desactivar</button>
+      </div>
+      <div *ngIf="profesor.activo == 0">
+        <button class="button secondary btn-size-150 bold" (click)="activar(profesor)" [disabled]="userRepresentation.tipo !== 'cargo'">activar</button>
+      </div>
     </div>
   </div>
 </div>
