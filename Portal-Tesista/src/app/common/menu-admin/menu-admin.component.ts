@@ -48,4 +48,9 @@ export class MenuAdminComponent {
   async logout() {
     await this.keycloakService.logout({ redirectUri: window.location.origin });
   }
+
+  goToFlujoGeneral() {
+    this.isVisible = false;
+    this.router.navigate(['/home/flujo-general']);
+  }
 }
