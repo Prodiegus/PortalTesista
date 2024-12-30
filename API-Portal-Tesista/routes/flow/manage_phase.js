@@ -34,6 +34,7 @@ async function read_flow_phase(req, res) {
     const query = `SELECT * FROM fase WHERE id_flujo = ?;`;
     try {
         const results = await runParametrizedQuery(query, [id]);
+        console.log('Fases del flujo:', results);
         res.status(200).send(results);
     } catch (error) {
         console.error('Error obteniendo fase:', error.response ? error.response.data : error.message);
