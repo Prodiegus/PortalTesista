@@ -1,0 +1,33 @@
+2024-12-30 14:43:21 info: Server is running on https://localhost:3000
+2024-12-30 14:43:47 info: Server is running on https://localhost:3000
+2024-12-30 14:44:11 info: Server is running on https://localhost:3000
+2024-12-30 14:44:52 info: GET /read/work-flow/escuela/Ingenier%C3%ADa%20Civil%20en%20Computaci%C3%B3n
+2024-12-30 14:44:52 info: Consulta get a /read/work-flow/school/escuela  {"id":2,"rut_creador":"20509736","tipo":"general","fecha_inicio":"2024-01-01","fecha_termino":"2026-01-01"}
+2024-12-30 14:46:13 info: Server is running on https://localhost:3000
+2024-12-30 14:46:18 info: GET /read/work-flow/escuela/Ingenier%C3%ADa%20Civil%20en%20Computaci%C3%B3n
+2024-12-30 14:46:18 info: Consulta get a /read/work-flow/escuela/:school  {"id":2,"rut_creador":"20509736","tipo":"general","fecha_inicio":"2024-01-01","fecha_termino":"2026-01-01"}
+2024-12-30 14:46:59 info: Server is running on https://localhost:3000
+2024-12-30 14:47:06 info: GET /read/work-flow/escuela/Ingenier%C3%ADa%20Civil%20en%20Computaci%C3%B3n
+2024-12-30 14:47:06 info: Consulta get a /read/work-flow/escuela/undefined {"id":2,"rut_creador":"20509736","tipo":"general","fecha_inicio":"2024-01-01","fecha_termino":"2026-01-01"}
+2024-12-30 14:47:22 info: Server is running on https://localhost:3000
+2024-12-30 14:47:25 info: GET /read/work-flow/escuela/Ingenier%C3%ADa%20Civil%20en%20Computaci%C3%B3n
+2024-12-30 14:47:25 info: Consulta get a /read/work-flow/escuela/Ingeniería Civil en Computación {"id":2,"rut_creador":"20509736","tipo":"general","fecha_inicio":"2024-01-01","fecha_termino":"2026-01-01"}
+2024-12-30 14:47:58 info: Server is running on https://localhost:3000
+2024-12-30 14:48:00 info: GET /read/work-flow/escuela/Ingenier%C3%ADa%20Civil%20en%20Computaci%C3%B3n
+2024-12-30 14:48:01 info: Consulta get a /read/work-flow/escuela/Ingeniería Civil en Computación:  {"id":2,"rut_creador":"20509736","tipo":"general","fecha_inicio":"2024-01-01","fecha_termino":"2026-01-01"}
+2024-12-30 14:48:24 info: Server is running on https://localhost:3000
+2024-12-30 14:48:27 info: GET /read/work-flow/escuela/Ingenier%C3%ADa%20Civil%20en%20Computaci%C3%B3n
+2024-12-30 14:48:27 info: Consulta get a /read/work-flow/escuela/Ingeniería Civil en Computación:  {"id":2,"rut_creador":"20509736","tipo":"general","fecha_inicio":"2024-01-01","fecha_termino":"2026-01-01"}
+2024-12-30 14:49:34 info: Server is running on https://localhost:3000
+2024-12-30 14:49:37 info: GET /read/work-flow/escuela/Ingenier%C3%ADa%20Civil%20en%20Computaci%C3%B3n
+2024-12-30 14:49:37 info: Consulta get a /read/work-flow/escuela/Ingeniería Civil en Computación:  {"id":2,"rut_creador":"20509736","tipo":"general","fecha_inicio":"2024-01-01","fecha_termino":"2026-01-01"}
+2024-12-30 14:49:37 info: Flujo obtenido: [{"id":2,"rut_creador":"20509736","tipo":"general","fecha_inicio":"2024-01-01T03:00:00.000Z","fecha_termino":"2026-01-01T03:00:00.000Z"}]
+2024-12-30 15:20:34 info: Server is running on https://localhost:3000
+2024-12-30 15:20:45 info: Server is running on https://localhost:3000
+2024-12-30 15:21:14 info: GET /read/work-flow/phase/2
+2024-12-30 15:21:14 info: Consulta get a /read/work-flow/phase/:id:  {"id":2,"rut_creador":"20509736","tipo":"general","fecha_inicio":"2024-01-01","fecha_termino":"2026-01-01"}
+2024-12-30 15:21:38 info: Server is running on https://localhost:3000
+2024-12-30 15:22:11 info: Server is running on https://localhost:3000
+2024-12-30 15:22:13 info: GET /read/work-flow/phase/2
+2024-12-30 15:22:13 info: Consulta get a /read/work-flow/phase/:id:  {"id":2,"rut_creador":"20509736","tipo":"general","fecha_inicio":"2024-01-01","fecha_termino":"2026-01-01"}
+2024-12-30 15:22:13 info: Fases del flujo: [{"id":1,"numero":1,"nombre":"Etapa 1","descripcion":"Fase 1 Try","tipo":"general","fecha_inicio":"2024-12-12T03:00:00.000Z","fecha_termino":"2025-03-03T03:00:00.000Z","rut_creador":"20509736","id_flujo":2}]
