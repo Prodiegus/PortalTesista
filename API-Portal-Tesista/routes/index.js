@@ -66,6 +66,11 @@ router.get('/read/phase/:type', async (req, res) => {
   await read_phase(req, res);
 });
 
+router.get(`/read/work-flow/phase/:id`, async (req, res) => {
+  console.log('Consulta get a /read/work-flow/phase/:id: ', req.body);
+  await read_phase(req, res);
+});
+
 router.post('/edit/phase', async (req, res) => {
   console.log('Consulta post a /edit/phase: ', req.body);
   await edit_phase(req, res);
