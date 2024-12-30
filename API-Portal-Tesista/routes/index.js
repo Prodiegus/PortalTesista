@@ -2,7 +2,7 @@
 const express = require('express');
 const create = require('./user/create');
 const { read, readAll} = require('./user/read');
-const { create_flow, read_flow, edit_flow } = require('./flow/manage_flow');
+const { create_flow, read_flow, read_school_flow, edit_flow } = require('./flow/manage_flow');
 const { create_phase, read_phase, edit_phase } = require('./flow/manage_phase');
 const { create_topic, read_topic, read_all_topics, edit_topic, change_topic_status } = require('./topic/topic_manager');
 const disable = require('./user/disable');
@@ -43,6 +43,11 @@ router.post('/enable/user', async (req, res) => {
 router.get('/read/work-flow/:type', async (req, res) => {
   console.log('Consulta get a /read/work-flow: ', req.body);
   await read_flow(req, res);
+});
+
+router.get('/read/work-flow/escuela/:school', async (req, res) => {
+  console.log('Consulta get a /read/work-flow/escuela/'+req.params.school+': ', req.body);
+  await read_school_flow(req, res);
 });
 
 router.post('/edit/work-flow', async (req, res) => {
