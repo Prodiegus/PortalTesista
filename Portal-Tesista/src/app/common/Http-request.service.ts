@@ -35,8 +35,18 @@ export class HttpRequestService {
     return this.http.post<any>(endpoint, docente);
   }
 
-    async activarDocente(docente: any): Promise<Observable<any>> {
-        const endpoint = `${this.apiUrl}/enable/user`;
-        return this.http.post<any>(endpoint, docente);
-    }
+  async activarDocente(docente: any): Promise<Observable<any>> {
+      const endpoint = `${this.apiUrl}/enable/user`;
+      return this.http.post<any>(endpoint, docente);
+  }
+
+  async getFlujosGenerales(escuela: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/work-flow/escuela/${escuela}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async getFasesFlujo(id: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/work-flow/phase/${id}`;
+    return this.http.get<any>(endpoint);
+  }
 }
