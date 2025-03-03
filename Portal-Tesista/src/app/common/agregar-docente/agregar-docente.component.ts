@@ -1,6 +1,5 @@
 import { Component, Output, EventEmitter, ElementRef, HostListener, Input } from '@angular/core';
 import { HttpRequestService } from '../Http-request.service';
-import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-agregar-docente',
@@ -40,6 +39,9 @@ export class AgregarDocenteComponent {
   }
 
   async onSubmit() {
+    if (!this.nombre || !this.apellido || !this.rut || !this.correo || !this.tipo) {
+      return;
+    }
     this.loading = true;
     this.addDocente = {
       nombre: this.nombre,

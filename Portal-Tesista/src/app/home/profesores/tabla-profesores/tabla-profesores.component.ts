@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import { Input } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { UserService } from '../../../common/user.service';
 import { HttpRequestService } from '../../../common/Http-request.service';
 
@@ -12,9 +11,9 @@ export class TablaProfesoresComponent {
   @Input() userRepresentation: any;
 
   protected profesores: any;
-  
+
   showAgregarDocente: boolean = false;
-  loading = true;
+  protected loading = true;
 
   constructor(
     private userService: UserService,
@@ -44,16 +43,68 @@ export class TablaProfesoresComponent {
     });
   }
 
-  verProfe(profesor: any) {
-    console.log(profesor);
+  async desactivar(profesor: any) {
+    this.loading = true;
+    const body = {
+      id: profesor.id,
+      rut: profesor.rut
+    };
+
+    try {
+      const observable = await this.httpRequestService.desactivarDocente(body);
+      observable.subscribe(
+        async (data: any) => {
+          if (data && data.estado === "Usuario desactivado") {
+            console.log('Profesor desactivado:', data);
+            await this.fetchProfesores();
+            this.loading = false;
+          } else {
+            console.error('Error desactivando profesor: ', data);
+          }
+        },
+        (error: any) => {
+          console.error('Error desactivando profesor:', error);
+        }
+      );
+    } catch (error) {
+      console.error('Error en la solicitud de desactivación:', error);
+    }
+
   }
 
-  desactivar(profesor: any) {
-    console.log(profesor);
-  }
+  async activar(profesor: any) {
+    this.loading = true;
+    const nombre_split = profesor.nombre.split(" ");
+    const nombre = nombre_split[0];
+    const apellido = nombre_split[1];
+    const body = {
+      nombre: nombre,
+      apellido: apellido,
+      rut: profesor.rut,
+      correo: profesor.correo,
+      tipo: profesor.tipo,
+    };
 
-  activar(profesor: any) {
-    console.log(profesor);
+    try {
+      const observable = await this.httpRequestService.activarDocente(body);
+      observable.subscribe(
+        async (data: any) => {
+          if (data && data.estado === "Usuario activado") {
+            console.log('Profesor activado:', data);
+            await this.fetchProfesores();
+            this.loading = false;
+          } else {
+            console.error('Error activando profesor: ', data);
+          }
+        },
+        (error: any) => {
+          console.error('Error activando profesor:', error);
+        }
+      );
+    } catch (error) {
+      console.error('Error en la solicitud de activación:', error);
+    }
+
   }
 
   agregarProfesor() {

@@ -50,6 +50,8 @@ services:
       - mysql
     networks:
       - api-portal-tesista
+    volumes:
+      - ./API-Portal-Tesista/logs:/usr/src/app/logs
 
   api-login:
     build: ./API-login

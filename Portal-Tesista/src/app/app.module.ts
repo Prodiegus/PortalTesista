@@ -18,6 +18,8 @@ import { MenuAdminComponent } from './common/menu-admin/menu-admin.component';
 import { ProfesoresComponent } from './home/profesores/profesores.component';
 import { TablaProfesoresComponent } from './home/profesores/tabla-profesores/tabla-profesores.component';
 import { AgregarDocenteComponent } from './common/agregar-docente/agregar-docente.component';
+import { FlujoGeneralComponent } from './common/flujo-general/flujo-general.component';
+import { DateFormatPipe } from './pipe/date-format.pipe';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import { AgregarDocenteComponent } from './common/agregar-docente/agregar-docent
     ProfesoresComponent,
     TablaProfesoresComponent,
     AgregarDocenteComponent,
+    FlujoGeneralComponent,
+    DateFormatPipe,
   ],
   imports: [
     BrowserModule,
