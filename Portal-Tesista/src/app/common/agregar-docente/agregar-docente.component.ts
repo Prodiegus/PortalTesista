@@ -54,7 +54,6 @@ export class AgregarDocenteComponent {
     };
     try {
       await this.add(this.addDocente);
-      console.log(this.addResponse);
     } catch (error) {
       console.log('Error adding docente');
     } finally {
