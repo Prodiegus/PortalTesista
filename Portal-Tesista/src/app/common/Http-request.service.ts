@@ -49,4 +49,9 @@ export class HttpRequestService {
     const endpoint = `${this.apiUrl}/read/work-flow/phase/${id}`;
     return this.http.get<any>(endpoint);
   }
+
+  async addFaseFlujo(faseFlujo: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/create/phase`;
+    return this.http.post<any>(endpoint, faseFlujo);
+  }
 }

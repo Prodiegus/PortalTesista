@@ -1,14 +1,23 @@
 <div *ngIf="!loading">
   <app-home-header [userRepresentation]="userRepresentation"></app-home-header>
   <div class="container-fluid">
-    <div class="row d-flex align-items-center justify-content-center bold font-22">
-      Flujo general escuela {{userRepresentation.escuela}}
+    <div class="row mx-5 d-flex align-items-center justify-content-center bold font-22">
+      <div class="col-3 text-center"></div>
+      <div class="col-6 text-center">
+        Flujo general escuela {{userRepresentation.escuela}}
+      </div>
+      <div class="col-3 d-flex justify-content-end">
+        <button class="button primary r-16 btn-size-150 bold" (click)="toggleAddPhase()">
+          Agregar
+          <i class="ps-2 bi bi-plus-circle font-30"></i>
+        </button>
+      </div>
     </div>
   </div>
   <!-- Header -->
-  <div class="row mx-5 px-5 rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
+  <div class="row mt-3 mx-5 px-5 rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
     <div class="col-2 text-center">
-      nombre
+      Nombre
     </div>
     <div class="col-2 text-center ">
       Creador
@@ -18,7 +27,7 @@
     </div>
     <div class="col"></div>
     <div class="col-2 text-center">
-      Termino
+      Término
     </div>
     <div class="col"></div>
     <div class="col-2 text-center d-flex justify-content-center">
@@ -42,12 +51,24 @@
     </div>
     <div class="col"></div>
     <div class="col-2 d-flex justify-content-center align-items-center " *ngIf="userRepresentation.tipo === 'cargo'">
-      <button class="button secondary btn-size-150 bold">ver</button>
+      <button class="button secondary btn-size-150 bold">Ver</button>
   </div>
+</div>
 </div>
 <!-- Loader -->
 <div class="container-fluid d-flex justify-content-center align-items-center fullscreen" *ngIf="loading">
   <div class="spinner-grow primary-normal div-size-72" role="status">
     <span class="visually-hidden">cargando...</span>
+  </div>
+</div>
+<!-- Agregar fase popup -->
+<div *ngIf="showAgregarFase" class="overlay">
+  <div class="overlay-content">
+    <app-agregar-fase-flujo
+      [userRepresentation]="userRepresentation"
+      [id_flujo]="flujoGeneral.id"
+      [tipo]="flujoGeneral.tipo"
+      [numero]="fasesFlujo.length + 1"
+      (close)="closeAddPhase()"></app-agregar-fase-flujo>
   </div>
 </div>

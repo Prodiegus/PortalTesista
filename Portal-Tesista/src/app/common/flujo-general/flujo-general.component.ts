@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../user.service';
 import { HttpRequestService } from '../Http-request.service';
 
+
 @Component({
   selector: 'app-flujo-general',
   templateUrl: './flujo-general.component.html',
@@ -12,6 +13,7 @@ export class FlujoGeneralComponent implements OnInit {
   userRepresentation: any;
   flujoGeneral: any;
   fasesFlujo: any;
+  protected showAgregarFase = false;
 
   constructor(
     private userService: UserService,
@@ -62,5 +64,17 @@ export class FlujoGeneralComponent implements OnInit {
         );
       });
     });
+  }
+
+  toggleAddPhase() {
+    this.showAgregarFase =true;
+  }
+
+  async closeAddPhase() {
+    this.showAgregarFase = false;
+    this.loading = true;
+    await this.fetchFasesFlujo();
+    await this.fetchFlujoGeneral();
+    this.loading = false;
   }
 }
