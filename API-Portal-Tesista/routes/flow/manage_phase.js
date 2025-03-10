@@ -45,11 +45,21 @@ async function read_flow_phase(req, res) {
 async function edit_phase(req, res) {
     const {id, numero, nombre, descripcion, fecha_inicio, fecha_termino, id_flujo} = req.body;
 
+    
     // Verificar si ya existe una fase con el nuevo número en el mismo flujo
     const checkQuery = `SELECT id, numero FROM fase WHERE numero = ? AND id_flujo = ?`;
     const checkParams = [numero, id_flujo];
-
+    
     try {
+        const query = `
+            UPDATE fase
+            SET nombre = ?, descripcion = ?, fecha_inicio = ?, fecha_termino = ?, id_flujo = ?
+            WHERE id = ?
+        `;
+    
+        const params = [numero, nombre, descripcion, fecha_inicio, fecha_termino, id_flujo, id];
+        await runParametrizedQuery(query, params);
+        
         const existingPhase = await runParametrizedQuery(checkQuery, checkParams);
 
         if (existingPhase.length > 0) {
@@ -67,15 +77,6 @@ async function edit_phase(req, res) {
             const swapQuery2 = `UPDATE fase SET numero = ? WHERE id = ?`;
             const swapParams2 = [numero, id];
             await runParametrizedQuery(swapQuery2, swapParams2);
-        } else {
-            // Si no existe una fase con el nuevo número, actualizar la fase normalmente
-            const query = `
-                UPDATE fase
-                SET numero = ?, nombre = ?, descripcion = ?, fecha_inicio = ?, fecha_termino = ?, id_flujo = ?
-                WHERE id = ?
-            `;
-            const params = [numero, nombre, descripcion, fecha_inicio, fecha_termino, id_flujo, id];
-            await runParametrizedQuery(query, params);
         }
 
         res.status(200).send('Fase editada correctamente');
@@ -90,6 +91,7 @@ async function delete_phase(req, res) {
     const query = `DELETE FROM fase WHERE id = ?`;
     try {
         const results = await runParametrizedQuery(query, [id]);
+        console.log('Fase eliminada resultados:', results);
         res.status(200).send('Fase eliminada resultados: ' + results);
     } catch (error) {
         console.error('Error eliminando fase:', error.response ? error.response.data : error.message);

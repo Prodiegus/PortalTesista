@@ -62,6 +62,12 @@ export class HttpRequestService {
 
   async deleteFaseFlujo(faseFlujo: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/delete/phase`;
-    return this.http.delete<any>(endpoint, faseFlujo);
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(faseFlujo)
+    };
+    return this.http.delete<any>(endpoint, options);
   }
 }
