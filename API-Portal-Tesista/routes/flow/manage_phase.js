@@ -90,6 +90,7 @@ async function delete_phase(req, res) {
     const query = `DELETE FROM fase WHERE id = ?`;
     try {
         const results = await runParametrizedQuery(query, [id]);
+        console.log('Fase eliminada resultados:', results);
         res.status(200).send('Fase eliminada resultados: ' + results);
     } catch (error) {
         console.error('Error eliminando fase:', error.response ? error.response.data : error.message);
