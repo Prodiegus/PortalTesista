@@ -20,6 +20,7 @@ import { TablaProfesoresComponent } from './home/profesores/tabla-profesores/tab
 import { AgregarDocenteComponent } from './common/agregar-docente/agregar-docente.component';
 import { FlujoGeneralComponent } from './common/flujo-general/flujo-general.component';
 import { DateFormatPipe } from './pipe/date-format.pipe';
+import { AgregarFaseFlujoComponent } from './common/agregar-fase-flujo/agregar-fase-flujo.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { DateFormatPipe } from './pipe/date-format.pipe';
     AgregarDocenteComponent,
     FlujoGeneralComponent,
     DateFormatPipe,
+    AgregarFaseFlujoComponent,
   ],
   imports: [
     BrowserModule,
