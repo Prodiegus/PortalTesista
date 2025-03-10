@@ -81,7 +81,6 @@ export class FlujoGeneralComponent implements OnInit {
     await this.fetchFlujoGeneral();
     this.loading = false;
   }
-
   abrirDetalleFase(fase: any) {
     this.faseSeleccionada = fase;
     this.showDetalleFase = true;
