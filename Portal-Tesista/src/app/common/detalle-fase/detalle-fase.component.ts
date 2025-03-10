@@ -1,6 +1,6 @@
 import { Component, ElementRef, EventEmitter, Host, HostListener, Input, OnInit, Output } from '@angular/core';
 import { HttpRequestService } from '../Http-request.service';
-import { tr } from 'date-fns/locale';
+import { id, tr } from 'date-fns/locale';
 
 @Component({
   selector: 'app-detalle-fase',
@@ -107,7 +107,7 @@ export class DetalleFaseComponent implements OnInit {
   async eliminarFase() {
     this.eliminando = true;
     return new Promise<void>((resolve, reject) => {
-      this.httpRequestService.deleteFaseFlujo(this.fase).then(observable => {
+      this.httpRequestService.deleteFaseFlujo({id: this.fase.id}).then(observable => {
         observable.subscribe(
           (data: any) => {
             this.editResponse = data;
