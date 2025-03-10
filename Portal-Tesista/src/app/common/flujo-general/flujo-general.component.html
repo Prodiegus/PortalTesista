@@ -51,7 +51,7 @@
     </div>
     <div class="col"></div>
     <div class="col-2 d-flex justify-content-center align-items-center " *ngIf="userRepresentation.tipo === 'cargo'">
-      <button class="button secondary btn-size-150 bold">Ver</button>
+      <button class="button secondary btn-size-150 bold" (click)="abrirDetalleFase(fase)" >Ver</button>
   </div>
 </div>
 </div>
@@ -70,5 +70,17 @@
       [tipo]="flujoGeneral.tipo"
       [numero]="fasesFlujo.length + 1"
       (close)="closeAddPhase()"></app-agregar-fase-flujo>
+  </div>
+</div>
+<!-- Detalle fase popup -->
+<div *ngIf="showDetalleFase" class="overlay">
+  <div class="overlay-content">
+    <app-detalle-fase
+      [userRepresentation]="userRepresentation"
+      [fase]="faseSeleccionada"
+      [id_flujo]="flujoGeneral.id"
+      [numeros]="numeros"
+      (close)="closeDetalleFase()">
+    </app-detalle-fase>
   </div>
 </div>

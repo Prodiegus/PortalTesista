@@ -54,4 +54,14 @@ export class HttpRequestService {
     const endpoint = `${this.apiUrl}/create/phase`;
     return this.http.post<any>(endpoint, faseFlujo);
   }
+
+  async editFaseFlujo(faseFlujo: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/edit/phase`;
+    return this.http.post<any>(endpoint, faseFlujo);
+  }
+
+  async deleteFaseFlujo(faseFlujo: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/delete/phase`;
+    return this.http.delete<any>(endpoint, faseFlujo);
+  }
 }
