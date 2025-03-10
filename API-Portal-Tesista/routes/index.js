@@ -81,7 +81,7 @@ router.post('/create/phase', async (req, res) => {
   await create_phase(req, res);
 });
 
-router.post('/delete/phase', async (req, res) => {
+router.delete('/delete/phase', async (req, res) => {
   console.log('Consulta delete a /delete/phase: ', req.body);
   await delete_phase(req, res);
 });
