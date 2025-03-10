@@ -107,7 +107,7 @@ export class DetalleFaseComponent implements OnInit {
   async eliminarFase() {
     this.eliminando = true;
     return new Promise<void>((resolve, reject) => {
-      this.httpRequestService.deleteFaseFlujo({id: this.fase.id}).then(observable => {
+      this.httpRequestService.deleteFaseFlujo({ id: this.fase.id }).then(observable => {
         observable.subscribe(
           (data: any) => {
             this.editResponse = data;
