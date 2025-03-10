@@ -66,7 +66,7 @@ export class HttpRequestService {
       headers: new HttpHeaders({
         'Content-Type': 'application/json'
       }),
-      body: faseFlujo
+      body: JSON.stringify(faseFlujo)
     };
     return this.http.delete<any>(endpoint, options);
   }

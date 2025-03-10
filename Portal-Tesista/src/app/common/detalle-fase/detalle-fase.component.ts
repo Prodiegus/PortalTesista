@@ -104,16 +104,25 @@ export class DetalleFaseComponent implements OnInit {
     this.close.emit();
   }
 
-  async eliminarFase() {
+  async eliminarFaseConfirm() {
     this.eliminando = true;
+    try {
+      await this.eliminarFase();
+    } catch (error) {
+      console.log('Error deleting fase flujo');
+    } finally {
+      this.eliminando = false;
+      this.closeOverlay();
+    }
+  }
+
+  async eliminarFase() {
     return new Promise<void>((resolve, reject) => {
       this.httpRequestService.deleteFaseFlujo({ id: this.fase.id }).then(observable => {
         observable.subscribe(
           (data: any) => {
             this.editResponse = data;
-            this.eliminando = false;
             resolve();
-            this.closeOverlay();
           },
           (error: any) => {
             console.error('Error deleting fase flujo');
