@@ -22,6 +22,8 @@ import { FlujoGeneralComponent } from './common/flujo-general/flujo-general.comp
 import { DateFormatPipe } from './pipe/date-format.pipe';
 import { AgregarFaseFlujoComponent } from './common/agregar-fase-flujo/agregar-fase-flujo.component';
 import { DetalleFaseComponent } from './common/detalle-fase/detalle-fase.component';
+import { TemasViewComponent } from './home/temas-view/temas-view.component';
+import { AgregarTemaComponent } from './common/agregar-tema/agregar-tema.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,8 @@ import { DetalleFaseComponent } from './common/detalle-fase/detalle-fase.compone
     DateFormatPipe,
     AgregarFaseFlujoComponent,
     DetalleFaseComponent,
+    TemasViewComponent,
+    AgregarTemaComponent,
   ],
   imports: [
     BrowserModule,

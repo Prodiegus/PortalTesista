@@ -70,4 +70,9 @@ export class HttpRequestService {
     };
     return this.http.delete<any>(endpoint, options);
   }
+
+  async getTemasUsuario(rut: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/topic/${rut}`;
+    return this.http.get<any>(endpoint);
+  }
 }
