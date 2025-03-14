@@ -1,16 +1,26 @@
-const {runParametrizedQuery} = require('../utils/query');
+const { runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, commitTransaction } = require('../utils/query');
 
 async function create_flow(req, res) {
-    const {rut_creador, tipo, fecha_inicio, fecha_termino} = req.body;
-    const query = `
-            INSERT INTO flujo (rut_creador, tipo, fecha_inicio, fecha_termino)
-            VALUES (?, ?, ?, ?)
-        `;
-    const params = [rut_creador, tipo, fecha_inicio, fecha_termino];
+    const { rut_creador, tipo, fecha_inicio, fecha_termino } = req.body;
+    const query_insert_flow = `
+        INSERT INTO flujo (rut_creador, tipo, fecha_inicio, fecha_termino)
+        VALUES (?, ?, ?, ?);
+    `;
+    const params_insert_flow = [rut_creador, tipo, fecha_inicio, fecha_termino];
+    const query_get_LastId = `SELECT LAST_INSERT_ID() AS id;`;
+
+    let connection;
     try {
-        const results = await runParametrizedQuery(query, params);
-        res.status(200).send('Flujo creado resultados: ' + results);
+        connection = await beginTransaction();
+        await runParametrizedQuery(query_insert_flow, params_insert_flow, connection);
+        const id_flujo_res = await runQuery(query_get_LastId, connection);
+        const id_flujo = id_flujo_res[0].id;
+        await commitTransaction(connection);
+        res.status(200).json({ id_flujo });
     } catch (error) {
+        if (connection) {
+            await rollbackTransaction(connection);
+        }
         console.error('Error creando flujo:', error.response ? error.response.data : error.message);
         res.status(500).send('Error creando flujo');
     }
