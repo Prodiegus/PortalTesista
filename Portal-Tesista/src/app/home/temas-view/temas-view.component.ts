@@ -1,6 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { tr } from 'date-fns/locale';
 import { CONST } from '../../common/const/const';
+import {observable} from 'rxjs';
+import {UserService} from '../../common/user.service';
+import { HttpRequestService } from '../../common/Http-request.service';
 
 @Component({
   selector: 'app-temas-view',
@@ -11,15 +14,38 @@ export class TemasViewComponent implements OnInit{
   @Input() userRepresentation: any;
 
   loading = true;
-  agregarTema = true;
+  agregarTema = false;
   verDetalle = false;
 
   temaSeleccionado: any;
 
-  protected temas = CONST.temas;
+  protected temas: any[] = [];
 
-  ngOnInit(): void {
+  constructor(
+    private userService: UserService,
+    private httpRequestService: HttpRequestService,
+  ) {}
+
+  async ngOnInit() {
+    await this.fetchTemas();
     this.loading = false;
+  }
+
+  async fetchTemas(){
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.getTemasUsuario(this.userRepresentation.rut).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.temas = data;
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error fetching temas');
+            reject(error);
+          }
+        );
+      });
+    });
   }
 
   showAgregarTema() {

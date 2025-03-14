@@ -1,3 +1,4 @@
+<script src="../profesores/tabla-profesores/tabla-profesores.component.ts"></script>
 <div class="container-fluid mx-5 w-95" *ngIf="!loading">
     <div class="row d-flex align-items-center justify-content-center mb-3 r-8 primary-border">
         <div class="col"></div>
@@ -33,24 +34,24 @@
     <div class="row h-100 mb-1 secondary-bg bold d-flex align-items-center "
         *ngFor="let tema of temas; index as i">
         <div class="col-2 text-center ">
-            {{tema.tema}}
+            {{tema.titulo}}
         </div>
         <div class="col-2 text-center ">
             {{tema.ProfesorGuia}}
         </div>
-        <div class="col-2 text-center ">
+        <div class="col-2 text-center">
             {{tema.ProfesorCoGuia}}
         </div>
         <div class="col"></div>
         <div class="col-2 font-18 bold text-center d-flex justify-content-center align-items-center">
-            <div class="pill-yellow pill-size-170" *ngIf="tema.Estado === 'Pendiente'">
-                {{tema.Estado}}
+            <div class="pill-yellow pill-size-170" *ngIf="tema.estado === 'Pendiente'">
+                {{tema.estado}}
             </div>
-            <div class="pill-white pill-size-170" *ngIf="tema.Estado === 'En trabajo'">
-                {{tema.Estado}}
+            <div class="pill-white pill-size-170" *ngIf="tema.estado === 'En trabajo'">
+                {{tema.estado}}
             </div>
-            <div class="pill-green pill-size-170" *ngIf="tema.Estado === 'Finalizado'">
-                {{tema.Estado}}
+            <div class="pill-green pill-size-170" *ngIf="tema.estado === 'Finalizado'">
+                {{tema.estado}}
             </div>
         </div>
         <div class="col"></div>
@@ -68,8 +69,8 @@
 <!-- Agregar tema popup -->
 <div *ngIf="agregarTema" class="overlay">
     <div class="overlay-content">
-        <app-agregar-tema 
-            [userRepresentation]="userRepresentation" 
+        <app-agregar-tema
+            [userRepresentation]="userRepresentation"
             (close)="closeAddTema()">
         </app-agregar-tema>
     </div>
