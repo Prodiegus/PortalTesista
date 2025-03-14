@@ -91,6 +91,9 @@ async function create_topic(req, res) {
         INSERT INTO flujo_tiene_tema (id_flujo, id_tema)
         VALUES (?, ?);
     `;
+    query_insert_FTP = `
+        INSERT INTO flujo_tiene_padre (id_flujo, id_phase)
+        VALUES (?, ?);`
     const query_insert_dueno = `INSERT INTO dueno (rut, id_tema) VALUES (?, ?);`;
     const params_id_flujo = [nombre_escuela];
     
@@ -248,6 +251,32 @@ async function read_topic(req, res) {
         if(!ids.has(topic.id)) {
             uniqueTopics.push(topic);
             ids.add(topic.id);
+        }
+    }
+
+    const query_user_name = `SELECT nombre, apellido FROM usuario WHERE rut = ?;`;
+    const topics_res = [];
+    for (const topic of uniqueTopics) {
+        const params = [topic.rut_guia];
+        try {
+            const user_name_res = await runParametrizedQuery(query_user_name, params);
+            const user_name = user_name_res[0];
+            const topic_res = {
+                id: topic.id,
+                titulo: topic.titulo,
+                resumen: topic.resumen,
+                estado: topic.estado,
+                numero_fase: topic.numero_fase,
+                id_fase: topic.id_fase,
+                nombre_escuela: topic.nombre_escuela,
+                rut_guia: topic.rut_guia,
+                guia: user_name.nombre + ' ' + user_name.apellido,
+                co_guias: ['-']
+            };
+            topics_res.push(topic_res);
+        } catch (error) {
+            console.error('Error obteniendo nombre de usuario:', error.response ? error.response.data : error.message);
+            res.status(500).send('Error obteniendo nombre de usuario');
         }
     }
 
