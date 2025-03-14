@@ -2,6 +2,8 @@ const {runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, co
 const cron = require('node-cron');
 const fs = require('fs');
 const path = require('path');
+const {create_flow, read_flow, read_school_flow, edit_flow} = require('../flow/manage_flow');
+const {read_phase, create_phase, edit_phase, read_flow_phase, delete_phase} = require('../flow/manage_phase');
 
 const scheduledChangesFilePath = path.join(__dirname, 'scheduled_changes.json');
 
@@ -91,12 +93,13 @@ async function create_topic(req, res) {
     `;
     const query_insert_dueno = `INSERT INTO dueno (rut, id_tema) VALUES (?, ?);`;
     const params_id_flujo = [nombre_escuela];
+    
     let connection;
     try {
         connection = await beginTransaction();
 
-        const id_flujo_res = await runParametrizedQuery(query_id_flujo, params_id_flujo, connection);
-        const id_flujo = id_flujo_res[0].id_flujo;
+        let id_flujo_res = await runParametrizedQuery(query_id_flujo, params_id_flujo, connection);
+        let id_flujo = id_flujo_res[0].id_flujo;
         const id_fase_res = await runParametrizedQuery(query_id_fase, [id_flujo, numero_fase], connection);
         const id_fase = id_fase_res[0].id;
         const params_insert_topic = [titulo, resumen, estado, numero_fase, id_fase, nombre_escuela, rut_guia];
@@ -110,9 +113,63 @@ async function create_topic(req, res) {
             throw new Error('No se pudo obtener el ID del tema recién insertado');
         }
 
-        const params_insert_FTT = [id_flujo, id_tema];
+        let params_insert_FTT = [id_flujo, id_tema];
         await runParametrizedQuery(query_insert_FTT, params_insert_FTT, connection);
         
+        let fases_flujo_general;
+        const res_for_http_request = {
+            status: (code) => {
+                console.log(`Status: ${code}`);
+                return res_for_http_request;
+            },
+            send: (data) => {
+                fases_flujo_general = data;
+                console.log(data);
+            },
+            json: (data) => {
+                fases_flujo_general = data;
+                console.log(JSON.stringify(data));
+            }
+        };
+
+        await read_flow_phase({params: {id: id_flujo}}, res_for_http_request);
+
+        if (Array.isArray(fases_flujo_general)) {
+            for (let i = 0; i < fases_flujo_general.length; i++) {
+                const fase = fases_flujo_general[i];
+                const create_flow_req = {
+                    body: {
+                        rut_creador: rut_guia,
+                        tipo: 'guia',
+                        fecha_inicio: fase.fecha_inicio,
+                        fecha_termino: fase.fecha_termino
+                    }
+                };
+
+                let new_id_flujo;
+                const res_for_create_flow = {
+                    status: (code) => {
+                        console.log(`Status: ${code}`);
+                        return res_for_create_flow;
+                    },
+                    send: (data) => {
+                        new_id_flujo = data.id_flujo;
+                        console.log(data);
+                    },
+                    json: (data) => {
+                        new_id_flujo = data.id_flujo;
+                        console.log(JSON.stringify(data));
+                    }
+                };
+
+                await create_flow(create_flow_req, res_for_create_flow);
+                params_insert_FTT = [new_id_flujo, id_tema];
+                await runParametrizedQuery(query_insert_FTT, params_insert_FTT, connection);
+            }
+        } else {
+            throw new Error('Fases del flujo no es un array');
+        }
+
         const params_insert_dueno = [rut_guia, id_tema];
         await runParametrizedQuery(query_insert_dueno, params_insert_dueno, connection);
 
