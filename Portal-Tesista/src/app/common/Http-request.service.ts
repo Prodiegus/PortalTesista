@@ -54,7 +54,7 @@ export class HttpRequestService {
     const endpoint = `${this.apiUrl}/create/phase`;
     return this.http.post<any>(endpoint, faseFlujo);
   }
-  
+
   async editFaseFlujo(faseFlujo: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/edit/phase`;
     return this.http.post<any>(endpoint, faseFlujo);
@@ -74,5 +74,10 @@ export class HttpRequestService {
   async getTemasUsuario(rut: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/read/topic/${rut}`;
     return this.http.get<any>(endpoint);
+  }
+
+  async addTema(tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/create/topic`;
+    return this.http.post<any>(endpoint, tema);
   }
 }

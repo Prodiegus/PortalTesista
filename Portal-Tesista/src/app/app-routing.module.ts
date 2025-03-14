@@ -5,13 +5,17 @@ import { LandingComponent} from './landing/landing.component';
 import {authGuard} from './guard/auth.guard';
 import { ProfesoresComponent } from './home/profesores/profesores.component';
 import { FlujoGeneralComponent } from './common/flujo-general/flujo-general.component';
+import {TemaViewComponent} from './home/tema-view/tema-view.component';
+import {EdicionTemaComponent} from './common/edicion-tema/edicion-tema.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
   { path: 'home', component: HomeComponent, canActivate: [authGuard] },
   { path: 'home/profesores', component: ProfesoresComponent, canActivate: [authGuard] },
-  { path: 'home/flujo-general', component: FlujoGeneralComponent, canActivate: [authGuard] }
-];
+  { path: 'home/flujo-general', component: FlujoGeneralComponent, canActivate: [authGuard] },
+  { path: 'home/tema/:id', component: TemaViewComponent, canActivate: [authGuard] },
+  { path: 'home/editar-tema/:id', component: EdicionTemaComponent, canActivate: [authGuard] },
+];TemaViewComponent
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

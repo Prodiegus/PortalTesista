@@ -1,0 +1,69 @@
+<div class="container-fluid px-5" *ngIf="!edicion && !loading">
+  <div class="row d-flex align-items-center justify-content-center">
+    <p class="bold font-24 text-center" >{{tema.titulo}}</p>
+  </div>
+  <div class="row r-8 secondary-bg container-fluid m-0 p-3">
+    <div class="row px-3">
+      <div class="col-6">
+        <table>
+          <tbody>
+            <tr>
+              <td class="text-end bold pe-1">Estado: </td>
+              <td>
+                <div class="text-center">
+                  <div class="pill-yellow pill-size-100" *ngIf="tema.estado === 'Pendiente'">
+                    {{tema.estado}}
+                  </div>
+                  <div class="pill-white pill-size-100" *ngIf="tema.estado === 'En trabajo'">
+                    {{tema.estado}}
+                  </div>
+                  <div class="pill-green pill-size-100" *ngIf="tema.estado === 'Finalizado'">
+                    {{tema.estado}}
+                  </div>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <td class="text-end bold pe-1">Flujo: </td>
+              <td> Funcion no implementada </td>
+            </tr>
+            <tr>
+              <td class="text-end bold pe-1">Avance: </td>
+              <td>{{avance}}% Funcion no implementada </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-4">
+        <table>
+          <tbody>
+            <tr>
+              <td class="text-end bold pe-1">Dueño: </td>
+              <td>Funcion no implementada</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-2 d-flex align-items-start justify-content-end">
+        <i class="bi bi-pencil-square font-24 bold pointer" (click)="edicionTema()" ></i>
+      </div>
+    </div>
+    <div class="row px-3 pt-4">
+      <div class="progress custom-progress p-0">
+        <div class="progress-bar custom-progress-bar" role="progressbar"
+             [style.width]="avance+'%'"
+             [attr.aria-valuenow]="avance"
+             [attr.aria-label]="avance+'%'"
+             aria-valuemin="0"
+             aria-valuemax="100">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- loader -->
+<div class="container-fluid d-flex justify-content-center align-items-center fullscreen" *ngIf="loading">
+  <div class="spinner-grow primary-normal div-size-72" role="status">
+    <span class="visually-hidden">cargando...</span>
+  </div>
+</div>

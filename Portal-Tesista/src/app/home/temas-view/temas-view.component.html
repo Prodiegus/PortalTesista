@@ -4,7 +4,7 @@
         <div class="col"></div>
         <div class="col d-flex justify-content-center align-items-center font-20 bold">Temas</div>
         <div class="col d-flex justify-content-end p-1 mx-1">
-            <button class="button primary btn-size-150 r-8 bold" (click)="showAgregarTema()">
+            <button class="button primary btn-size-170 r-8 bold" (click)="showAgregarTema()">
                 <span>Crear tema</span>
                 <span class="ms-1 bi bi-plus-circle font-24"></span>
             </button>
@@ -39,8 +39,10 @@
         <div class="col-2 text-center ">
             {{tema.guia}}
         </div>
-        <div class="col-2 text-center">
-            {{tema.ProfesorCoGuia}}
+        <div class="col-2 container-fluid text-center">
+            <div class="row w-100 d-flex justify-content-center" *ngFor="let co_guia of tema.co_guias">
+              {{co_guia}}
+            </div>
         </div>
         <div class="col"></div>
         <div class="col-2 font-18 bold text-center d-flex justify-content-center align-items-center">
