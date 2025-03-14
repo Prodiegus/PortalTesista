@@ -14,6 +14,30 @@
     color: white;
 }
 
+.btn-primary-naked-16 {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid $primary-color;
+    border-radius: 16px;
+    color: $primary-color;
+}
+
+.btn-primary-naked-16:hover {
+    background-color: $primary-color;
+    color: white;
+}
+
+.btn-red-naked-16 {
+    background-color: rgba(0, 0, 0, 0);
+    border: 1px solid red;
+    border-radius: 16px;
+    color: red;
+}
+
+.btn-red-naked-16:hover {
+    background-color: red;
+    color: white;
+}
+
 .btn-primary-16:hover {
     background-color: $accent-color;
 }

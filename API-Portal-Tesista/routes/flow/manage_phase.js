@@ -44,25 +44,74 @@ async function read_flow_phase(req, res) {
 
 async function edit_phase(req, res) {
     const {id, numero, nombre, descripcion, fecha_inicio, fecha_termino, id_flujo} = req.body;
-    const query = `
-            UPDATE fase
-            SET numero = ?, nombre = ?, descripcion = ?, fecha_inicio = ?, fecha_termino = ?, id_flujo = ?
-            WHERE id = ?
-        `;
-    const params = [numero, nombre, descripcion, fecha_inicio, fecha_termino, id_flujo, id];
+    
     try {
-        const results = await runParametrizedQuery(query, params);
-        res.status(200).send('Fase editada resultados: ' + results);
+        const params = [nombre, descripcion, fecha_inicio, fecha_termino, id_flujo, id];
+        await updatePhase(params);
+        
+        const existingPhase = await existingPhaseCheck(numero, id_flujo);
+
+        if (existingPhase.length > 0) {
+            // Si existe una fase con el nuevo número, intercambiar los números
+            await swap_numbers(existingPhase, id, numero);
+        }
+
+        res.status(200).send('Fase editada correctamente');
     } catch (error) {
         console.error('Error editando fase:', error.response ? error.response.data : error.message);
         res.status(500).send('Error editando fase');
     }
-    
+}
+
+async function updatePhase(params) {
+    const query = `
+        UPDATE fase
+        SET nombre = ?, descripcion = ?, fecha_inicio = ?, fecha_termino = ?, id_flujo = ?
+        WHERE id = ?
+    `;
+    return await runParametrizedQuery(query, params);
+}
+
+async function existingPhaseCheck(numero, id_flujo) {
+    const checkQuery = `SELECT id, numero FROM fase WHERE numero = ? AND id_flujo = ?`;
+    const checkParams = [numero, id_flujo];
+    return await runParametrizedQuery(checkQuery, checkParams);
+}
+
+async function swap_numbers(existingPhase, id, numero) {
+    const existingPhaseId = existingPhase[0].id;
+    const currentPhaseQuery = `SELECT numero FROM fase WHERE id = ?`;
+    const currentPhaseParams = [id];
+    const currentPhase = await runParametrizedQuery(currentPhaseQuery, currentPhaseParams);
+    const currentPhaseNumero = currentPhase[0].numero;
+
+    const swapQuery1 = `UPDATE fase SET numero = ? WHERE id = ?`;
+    const swapParams1 = [currentPhaseNumero, existingPhaseId];
+    await runParametrizedQuery(swapQuery1, swapParams1);
+
+    const swapQuery2 = `UPDATE fase SET numero = ? WHERE id = ?`;
+    const swapParams2 = [numero, id];
+    await runParametrizedQuery(swapQuery2, swapParams2);
+}
+
+
+async function delete_phase(req, res) {
+    const {id} = req.body;
+    const query = `DELETE FROM fase WHERE id = ?`;
+    try {
+        const results = await runParametrizedQuery(query, [id]);
+        console.log('Fase eliminada resultados:', results);
+        res.status(200).send('Fase eliminada resultados: ' + results);
+    } catch (error) {
+        console.error('Error eliminando fase:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error eliminando fase');
+    }
 }
 
 module.exports = {
     create_phase,
     read_phase,
     read_flow_phase,
-    edit_phase
+    edit_phase,
+    delete_phase
 };

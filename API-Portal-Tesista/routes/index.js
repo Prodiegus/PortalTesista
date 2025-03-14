@@ -3,7 +3,7 @@ const express = require('express');
 const create = require('./user/create');
 const { read, readAll} = require('./user/read');
 const { create_flow, read_flow, read_school_flow, edit_flow } = require('./flow/manage_flow');
-const { create_phase, read_phase, edit_phase, read_flow_phase } = require('./flow/manage_phase');
+const { create_phase, read_phase, edit_phase, read_flow_phase, delete_phase } = require('./flow/manage_phase');
 const { create_topic, read_topic, read_all_topics, edit_topic, change_topic_status } = require('./topic/topic_manager');
 const disable = require('./user/disable');
 const enable = require('./user/enable');
@@ -80,6 +80,12 @@ router.post('/create/phase', async (req, res) => {
   console.log('Consulta post a /create/phase: ', req.body);
   await create_phase(req, res);
 });
+
+router.delete('/delete/phase', async (req, res) => {
+  console.log('Consulta delete a /delete/phase: ', req.body);
+  await delete_phase(req, res);
+});
+
 
 // leer todos los temas
 router.get('/read/topic', async (req, res) => {

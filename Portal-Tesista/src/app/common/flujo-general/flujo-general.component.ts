@@ -13,6 +13,9 @@ export class FlujoGeneralComponent implements OnInit {
   userRepresentation: any;
   flujoGeneral: any;
   fasesFlujo: any;
+  faseSeleccionada: any;
+  numeros: number[] = [];
+  protected showDetalleFase = false;
   protected showAgregarFase = false;
 
   constructor(
@@ -54,7 +57,8 @@ export class FlujoGeneralComponent implements OnInit {
       this.httpRequestService.getFasesFlujo(this.flujoGeneral.id).then(observable => {
         observable.subscribe(
           (data: any) => {
-            this.fasesFlujo = data;
+            this.fasesFlujo = data.sort((a: any, b: any) => a.numero - b.numero);
+            this.numeros = this.fasesFlujo.map((fase: any) => fase.numero);
             resolve();
           },
           (error: any) => {
@@ -72,6 +76,18 @@ export class FlujoGeneralComponent implements OnInit {
 
   async closeAddPhase() {
     this.showAgregarFase = false;
+    this.loading = true;
+    await this.fetchFasesFlujo();
+    await this.fetchFlujoGeneral();
+    this.loading = false;
+  }
+  abrirDetalleFase(fase: any) {
+    this.faseSeleccionada = fase;
+    this.showDetalleFase = true;
+  }
+
+  async closeDetalleFase() {
+    this.showDetalleFase = false;
     this.loading = true;
     await this.fetchFasesFlujo();
     await this.fetchFlujoGeneral();

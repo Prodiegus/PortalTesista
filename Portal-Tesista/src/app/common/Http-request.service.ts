@@ -54,4 +54,25 @@ export class HttpRequestService {
     const endpoint = `${this.apiUrl}/create/phase`;
     return this.http.post<any>(endpoint, faseFlujo);
   }
+  
+  async editFaseFlujo(faseFlujo: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/edit/phase`;
+    return this.http.post<any>(endpoint, faseFlujo);
+  }
+
+  async deleteFaseFlujo(faseFlujo: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/delete/phase`;
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json'
+      }),
+      body: JSON.stringify(faseFlujo)
+    };
+    return this.http.delete<any>(endpoint, options);
+  }
+
+  async getTemasUsuario(rut: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/topic/${rut}`;
+    return this.http.get<any>(endpoint);
+  }
 }
