@@ -280,7 +280,7 @@ async function read_topic(req, res) {
         }
     }
 
-    res.status(200).send(uniqueTopics);
+    res.status(200).send(topics_res);
 }
 
 async function read_all_topics(req, res) {
