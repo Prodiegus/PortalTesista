@@ -4,6 +4,7 @@ import { CONST } from '../../common/const/const';
 import {observable} from 'rxjs';
 import {UserService} from '../../common/user.service';
 import { HttpRequestService } from '../../common/Http-request.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-temas-view',
@@ -15,15 +16,13 @@ export class TemasViewComponent implements OnInit{
 
   loading = true;
   agregarTema = false;
-  verDetalle = false;
-
-  temaSeleccionado: any;
 
   protected temas: any[] = [];
 
   constructor(
     private userService: UserService,
     private httpRequestService: HttpRequestService,
+    private router: Router
   ) {}
 
   async ngOnInit() {
@@ -53,11 +52,19 @@ export class TemasViewComponent implements OnInit{
   }
 
   detalleTema(tema: any){
-    this.temaSeleccionado = tema;
-    this.verDetalle = true;
+    this.router.navigate(['/home/tema', tema.id], {
+        state: {
+          tema: tema,
+          userRepresentation: this.userRepresentation
+        }
+      });
   }
 
   closeAddTema(){
     this.agregarTema = false;
+    this.loading = true;
+    this.fetchTemas().then(() => {
+      this.loading = false;
+    });
   }
 }

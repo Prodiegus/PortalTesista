@@ -1,0 +1,15 @@
+<div class="container-fluid px-3" *ngIf="!loading">
+  <div class="row font-20 bold d-flex align-items-center justify-content-center pb-3">
+    Edición Tema
+  </div>
+  <button class="button secondary btn-size-150 bold" (click)="goVistaGenera()">Vista General</button>
+  <div class="row container-fluid background">
+
+  </div>
+</div>
+<!--loader-->
+<div class="container-fluid d-flex justify-content-center align-items-center fullscreen" *ngIf="loading">
+  <div class="spinner-grow primary-normal div-size-72" role="status">
+    <span class="visually-hidden">cargando...</span>
+  </div>
+</div>

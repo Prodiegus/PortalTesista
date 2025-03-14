@@ -24,6 +24,12 @@ import { AgregarFaseFlujoComponent } from './common/agregar-fase-flujo/agregar-f
 import { DetalleFaseComponent } from './common/detalle-fase/detalle-fase.component';
 import { TemasViewComponent } from './home/temas-view/temas-view.component';
 import { AgregarTemaComponent } from './common/agregar-tema/agregar-tema.component';
+import { TemaViewComponent } from './home/tema-view/tema-view.component';
+import { TemaSummaryComponent } from './common/tema-summary/tema-summary.component';
+import { CalendarioTemaComponent } from './common/calendario-tema/calendario-tema.component';
+import { EdicionTemaComponent } from './common/edicion-tema/edicion-tema.component';
+import { PanelDeEdicionTemaComponent } from './common/edicion-tema/panel-de-edicion-tema/panel-de-edicion-tema.component';
+import { DetalleComponent } from './common/edicio-tema/panel-de-edicion-tema/detalle/detalle.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +51,12 @@ import { AgregarTemaComponent } from './common/agregar-tema/agregar-tema.compone
     DetalleFaseComponent,
     TemasViewComponent,
     AgregarTemaComponent,
+    TemaViewComponent,
+    TemaSummaryComponent,
+    CalendarioTemaComponent,
+    EdicionTemaComponent,
+    PanelDeEdicionTemaComponent,
+    DetalleComponent,
   ],
   imports: [
     BrowserModule,

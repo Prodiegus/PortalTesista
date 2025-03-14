@@ -149,6 +149,23 @@ $text-color: #000000;
   cursor: pointer;
 }
 
+.custom-progress {
+  height: 22px;
+  background-color: $light-color;
+  border-radius: 4px;
+  border: 1px solid $primary-color;
+  overflow: hidden;
+}
+
+.custom-progress-bar {
+  background-color: $primary-color;
+  text-align: center;
+  color: white;
+  line-height: 22px;
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
 button:disabled {
   cursor: not-allowed;
   pointer-events: none;
