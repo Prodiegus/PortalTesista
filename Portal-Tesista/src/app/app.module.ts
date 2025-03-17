@@ -30,6 +30,11 @@ import { CalendarioTemaComponent } from './common/calendario-tema/calendario-tem
 import { EdicionTemaComponent } from './common/edicion-tema/edicion-tema.component';
 import { PanelDeEdicionTemaComponent } from './common/edicion-tema/panel-de-edicion-tema/panel-de-edicion-tema.component';
 import { DetalleComponent } from './common/edicio-tema/panel-de-edicion-tema/detalle/detalle.component';
+import { EditarDetalleComponent } from './common/edicion-tema/editar-detalle/editar-detalle.component';
+import { EditarFlujoComponent } from './common/edicion-tema/editar-flujo/editar-flujo.component';
+import { VerAvancesComponent } from './common/edicion-tema/ver-avances/ver-avances.component';
+import { VerReunionesComponent } from './common/edicion-tema/ver-reuniones/ver-reuniones.component';
+import { EditarDuenosComponent } from './common/edicion-tema/editar-duenos/editar-duenos.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +62,11 @@ import { DetalleComponent } from './common/edicio-tema/panel-de-edicion-tema/det
     EdicionTemaComponent,
     PanelDeEdicionTemaComponent,
     DetalleComponent,
+    EditarDetalleComponent,
+    EditarFlujoComponent,
+    VerAvancesComponent,
+    VerReunionesComponent,
+    EditarDuenosComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,9 +2,63 @@
   <div class="row font-20 bold d-flex align-items-center justify-content-center pb-3">
     Edición Tema
   </div>
-  <button class="button secondary btn-size-150 bold" (click)="goVistaGenera()">Vista General</button>
-  <div class="row container-fluid background">
-
+  <div class="row container-fluid p-0 mx-0">
+    <div class="row h-55 d-flex align-items-end">
+      <div class="col w-220 h-40 p-0 rt-16 d-flex justify-content-center align-items-center pointer bold"
+           [ngClass]="{'primary-bg': !detalle, 'secondary-bg': detalle}"
+           (click)="selectDetalle()"
+      >
+        Detalle
+      </div>
+      <div class="col w-220 h-40 p-0 rt-16 mx-1 d-flex justify-content-center align-items-center pointer bold"
+           [ngClass]="{'primary-bg': !flujo, 'secondary-bg': flujo}"
+           (click)="selectFlujo()"
+      >
+        Flujo
+      </div>
+      <div class="col w-220 h-40 p-0 rt-16 mx-1 d-flex justify-content-center align-items-center pointer bold"
+           [ngClass]="{'primary-bg': !avances, 'secondary-bg': avances}"
+           (click)="selectAvances()"
+      >
+        Avances
+      </div>
+      <div class="col w-220 h-40 p-0 rt-16 mx-1 d-flex justify-content-center align-items-center pointer bold"
+           [ngClass]="{'primary-bg': !reuniones, 'secondary-bg': reuniones}"
+           (click)="selectReunione()"
+      >
+        Reuniones
+      </div>
+      <div class="col w-220 h-40 p-0 rt-16 d-flex justify-content-center align-items-center pointer bold"
+           [ngClass]="{'primary-bg': !duenos, 'secondary-bg': duenos}"
+           (click)="selectDuenos()"
+      >
+        Duenos
+      </div>
+      <div class="col d-flex justify-content-end align-self-center">
+        <button class="button secondary btn-size-150 bold" (click)="goVistaGenera()">Vista General</button>
+      </div>
+    </div>
+    <div class="row primary-bg mx-0 w-100 r-4-ci h-12"></div>
+  </div>
+  <div class="row pt-4">
+    <ng-template class="row" [ngIf]="detalle">
+      <app-editar-detalle
+        [userRepresentation]="userRepresentation"
+        [tema]="tema"
+      ></app-editar-detalle>
+    </ng-template>
+    <ng-template class="row" [ngIf]="flujo">
+      <app-editar-flujo></app-editar-flujo>
+    </ng-template>
+    <ng-template class="row" [ngIf]="avances">
+      <app-ver-avances></app-ver-avances>
+    </ng-template>
+    <ng-template class="row" [ngIf]="reuniones">
+      <app-ver-reuniones></app-ver-reuniones>
+    </ng-template>
+    <ng-template class="row" [ngIf]="duenos">
+      <app-editar-duenos></app-editar-duenos>
+    </ng-template>
   </div>
 </div>
 <!--loader-->
