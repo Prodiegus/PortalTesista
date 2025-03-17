@@ -44,7 +44,7 @@
 
 .btn-primary:hover {
     background-color: $accent-color;
-    
+
 }
 
 .btn-secondary {
@@ -92,6 +92,12 @@
 .btn-gray:hover {
     background-color: darken($gray, 10%);
 }
+
+.btn-size-170 {
+  width: 170px;
+  height: 40px;
+}
+
 .btn-size-150 {
     width: 150px;
     height: 40px;

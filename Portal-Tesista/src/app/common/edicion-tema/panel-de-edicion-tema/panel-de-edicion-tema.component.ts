@@ -30,4 +30,44 @@ export class PanelDeEdicionTemaComponent {
       }
     });
   }
+
+  selectDetalle() {
+    this.detalle = true;
+    this.flujo = false;
+    this.avances = false;
+    this.reuniones = false;
+    this.duenos = false;
+  }
+
+  selectReunione() {
+    this.detalle = false;
+    this.flujo = false;
+    this.avances = false;
+    this.reuniones = true;
+    this.duenos = false;
+  }
+
+  selectAvances() {
+    this.detalle = false;
+    this.flujo = false;
+    this.avances = true;
+    this.reuniones = false;
+    this.duenos = false;
+  }
+
+  selectFlujo() {
+    this.detalle = false;
+    this.flujo = true;
+    this.avances = false;
+    this.reuniones = false;
+    this.duenos = false;
+  }
+
+  selectDuenos() {
+    this.detalle = false;
+    this.flujo = false;
+    this.avances = false;
+    this.reuniones = false;
+    this.duenos = true;
+  }
 }

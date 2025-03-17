@@ -34,6 +34,9 @@ function saveScheduledChanges() {
         } else {
             console.error('Error guardando cambios programados:', error);
         }
+    } finally {
+        console.log('Cambios programados guardados en', scheduledChangesFilePath);
+        schedulePendingChanges();
     }
 }
 

@@ -35,6 +35,9 @@ $text-color: #000000;
 
   &.primary {
     background-color: $primary-color;
+    &.round {
+      border-radius: 50px;
+    }
     &:hover {
       background-color: $accent-color;
     }
