@@ -35,6 +35,7 @@ import { EditarFlujoComponent } from './common/edicion-tema/editar-flujo/editar-
 import { VerAvancesComponent } from './common/edicion-tema/ver-avances/ver-avances.component';
 import { VerReunionesComponent } from './common/edicion-tema/ver-reuniones/ver-reuniones.component';
 import { EditarDuenosComponent } from './common/edicion-tema/editar-duenos/editar-duenos.component';
+import { TemaPopupComponent } from './landing/landing-body/tema-popup/tema-popup.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { EditarDuenosComponent } from './common/edicion-tema/editar-duenos/edita
     VerAvancesComponent,
     VerReunionesComponent,
     EditarDuenosComponent,
+    TemaPopupComponent,
   ],
   imports: [
     BrowserModule,
