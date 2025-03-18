@@ -289,7 +289,7 @@ async function read_topic(req, res) {
 async function read_all_topics(req, res) {
     const query = `SELECT * FROM tema`;
     const query_user_name = `SELECT nombre, apellido FROM usuario WHERE rut = ?;`;
-    const topic_res = [];
+    const topics_res = [];
     try {
         const results = await runQuery(query);
         for (const topic of results) {
@@ -310,7 +310,7 @@ async function read_all_topics(req, res) {
             };
             topics_res.push(topic_res);
         }
-        res.status(200).send(topic_res);
+        res.status(200).send(topics_res);
     } catch (error) {
         console.error('Error obteniendo temas:', error.response ? error.response.data : error.message);
         res.status(500).send('Error obteniendo temas');
