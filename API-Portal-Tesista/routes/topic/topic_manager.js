@@ -288,9 +288,29 @@ async function read_topic(req, res) {
 
 async function read_all_topics(req, res) {
     const query = `SELECT * FROM tema`;
+    const query_user_name = `SELECT nombre, apellido FROM usuario WHERE rut = ?;`;
+    const topic_res = [];
     try {
         const results = await runQuery(query);
-        res.status(200).send(results);
+        for (const topic of results) {
+            const params = [topic.rut_guia];
+            const user_name_res = await runParametrizedQuery(query_user_name, params);
+            const user_name = user_name_res[0];
+            const topic_res = {
+                id: topic.id,
+                titulo: topic.titulo,
+                resumen: topic.resumen,
+                estado: topic.estado,
+                numero_fase: topic.numero_fase,
+                id_fase: topic.id_fase,
+                nombre_escuela: topic.nombre_escuela,
+                rut_guia: topic.rut_guia,
+                guia: user_name.nombre + ' ' + user_name.apellido,
+                co_guias: ['-']
+            };
+            topics_res.push(topic_res);
+        }
+        res.status(200).send(topic_res);
     } catch (error) {
         console.error('Error obteniendo temas:', error.response ? error.response.data : error.message);
         res.status(500).send('Error obteniendo temas');

@@ -71,6 +71,11 @@ export class HttpRequestService {
     return this.http.delete<any>(endpoint, options);
   }
 
+  async getTemas(): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/topic`;
+    return this.http.get<any>(endpoint);
+  }
+
   async getTemasUsuario(rut: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/read/topic/${rut}`;
     return this.http.get<any>(endpoint);
