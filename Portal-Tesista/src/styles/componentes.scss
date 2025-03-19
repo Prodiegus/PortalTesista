@@ -67,10 +67,6 @@ input[type="date"]::-webkit-calendar-picker-indicator {
     transform: scale(1.1);
 }
 
-.pointer {
-    cursor: pointer;
-}
-
 body {
     -ms-overflow-style: none;  /* IE and Edge */
     scrollbar-width: none;  /* Firefox */
@@ -329,6 +325,11 @@ body {
 
 .r-24{
     border-radius: 24px;
+}
+
+.rt-16 {
+    border-top-right-radius: 16px;
+    border-top-left-radius: 16px;
 }
 
 .rt-50 {

@@ -11,6 +11,9 @@ export class AgregarTemaComponent {
 
   @Output() close = new EventEmitter<void>();
 
+  protected titulo: string = '';
+  protected resumen: string = '';
+
   loading = false;
 
   constructor(
@@ -20,9 +23,42 @@ export class AgregarTemaComponent {
 
   async onSubmit() {
     this.loading = true;
+    if (this.titulo === '' || this.resumen === '') {
+      this.loading = false;
+      return;
+    }
 
-    this.loading = false;
-    this.closeOverlay();
+    const tema = {
+      titulo: this.titulo,
+      resumen: this.resumen,
+      nombre_escuela: this.userRepresentation.escuela,
+      rut_guia: this.userRepresentation.rut
+    };
+
+    try {
+      await this.crearTema(tema);
+    } catch (error) {
+      console.error('Error creando tema');
+    } finally {
+      this.loading = false;
+      this.closeOverlay();
+    }
+  }
+
+  async crearTema(tema: any){
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.addTema(tema).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error creando tema');
+            reject(error);
+          }
+        );
+      });
+    });
   }
 
   @HostListener('document:click', ['$event'])

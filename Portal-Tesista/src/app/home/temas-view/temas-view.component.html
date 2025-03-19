@@ -1,9 +1,10 @@
+<script src="../profesores/tabla-profesores/tabla-profesores.component.ts"></script>
 <div class="container-fluid mx-5 w-95" *ngIf="!loading">
     <div class="row d-flex align-items-center justify-content-center mb-3 r-8 primary-border">
         <div class="col"></div>
         <div class="col d-flex justify-content-center align-items-center font-20 bold">Temas</div>
         <div class="col d-flex justify-content-end p-1 mx-1">
-            <button class="button primary btn-size-150 r-8 bold" (click)="showAgregarTema()">
+            <button class="button primary btn-size-170 r-8 bold" (click)="showAgregarTema()">
                 <span>Crear tema</span>
                 <span class="ms-1 bi bi-plus-circle font-24"></span>
             </button>
@@ -33,24 +34,26 @@
     <div class="row h-100 mb-1 secondary-bg bold d-flex align-items-center "
         *ngFor="let tema of temas; index as i">
         <div class="col-2 text-center ">
-            {{tema.tema}}
+            {{tema.titulo}}
         </div>
         <div class="col-2 text-center ">
-            {{tema.ProfesorGuia}}
+            {{tema.guia}}
         </div>
-        <div class="col-2 text-center ">
-            {{tema.ProfesorCoGuia}}
+        <div class="col-2 container-fluid text-center">
+            <div class="row w-100 d-flex justify-content-center" *ngFor="let co_guia of tema.co_guias">
+              {{co_guia}}
+            </div>
         </div>
         <div class="col"></div>
         <div class="col-2 font-18 bold text-center d-flex justify-content-center align-items-center">
-            <div class="pill-yellow pill-size-170" *ngIf="tema.Estado === 'Pendiente'">
-                {{tema.Estado}}
+            <div class="pill-yellow pill-size-170" *ngIf="tema.estado === 'Pendiente'">
+                {{tema.estado}}
             </div>
-            <div class="pill-white pill-size-170" *ngIf="tema.Estado === 'En trabajo'">
-                {{tema.Estado}}
+            <div class="pill-white pill-size-170" *ngIf="tema.estado === 'En trabajo'">
+                {{tema.estado}}
             </div>
-            <div class="pill-green pill-size-170" *ngIf="tema.Estado === 'Finalizado'">
-                {{tema.Estado}}
+            <div class="pill-green pill-size-170" *ngIf="tema.estado === 'Finalizado'">
+                {{tema.estado}}
             </div>
         </div>
         <div class="col"></div>
@@ -68,8 +71,8 @@
 <!-- Agregar tema popup -->
 <div *ngIf="agregarTema" class="overlay">
     <div class="overlay-content">
-        <app-agregar-tema 
-            [userRepresentation]="userRepresentation" 
+        <app-agregar-tema
+            [userRepresentation]="userRepresentation"
             (close)="closeAddTema()">
         </app-agregar-tema>
     </div>

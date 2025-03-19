@@ -24,6 +24,18 @@ import { AgregarFaseFlujoComponent } from './common/agregar-fase-flujo/agregar-f
 import { DetalleFaseComponent } from './common/detalle-fase/detalle-fase.component';
 import { TemasViewComponent } from './home/temas-view/temas-view.component';
 import { AgregarTemaComponent } from './common/agregar-tema/agregar-tema.component';
+import { TemaViewComponent } from './home/tema-view/tema-view.component';
+import { TemaSummaryComponent } from './common/tema-summary/tema-summary.component';
+import { CalendarioTemaComponent } from './common/calendario-tema/calendario-tema.component';
+import { EdicionTemaComponent } from './common/edicion-tema/edicion-tema.component';
+import { PanelDeEdicionTemaComponent } from './common/edicion-tema/panel-de-edicion-tema/panel-de-edicion-tema.component';
+import { DetalleComponent } from './common/edicio-tema/panel-de-edicion-tema/detalle/detalle.component';
+import { EditarDetalleComponent } from './common/edicion-tema/editar-detalle/editar-detalle.component';
+import { EditarFlujoComponent } from './common/edicion-tema/editar-flujo/editar-flujo.component';
+import { VerAvancesComponent } from './common/edicion-tema/ver-avances/ver-avances.component';
+import { VerReunionesComponent } from './common/edicion-tema/ver-reuniones/ver-reuniones.component';
+import { EditarDuenosComponent } from './common/edicion-tema/editar-duenos/editar-duenos.component';
+import { TemaPopupComponent } from './landing/landing-body/tema-popup/tema-popup.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +57,18 @@ import { AgregarTemaComponent } from './common/agregar-tema/agregar-tema.compone
     DetalleFaseComponent,
     TemasViewComponent,
     AgregarTemaComponent,
+    TemaViewComponent,
+    TemaSummaryComponent,
+    CalendarioTemaComponent,
+    EdicionTemaComponent,
+    PanelDeEdicionTemaComponent,
+    DetalleComponent,
+    EditarDetalleComponent,
+    EditarFlujoComponent,
+    VerAvancesComponent,
+    VerReunionesComponent,
+    EditarDuenosComponent,
+    TemaPopupComponent,
   ],
   imports: [
     BrowserModule,

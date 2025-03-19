@@ -54,7 +54,7 @@ export class HttpRequestService {
     const endpoint = `${this.apiUrl}/create/phase`;
     return this.http.post<any>(endpoint, faseFlujo);
   }
-  
+
   async editFaseFlujo(faseFlujo: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/edit/phase`;
     return this.http.post<any>(endpoint, faseFlujo);
@@ -71,8 +71,28 @@ export class HttpRequestService {
     return this.http.delete<any>(endpoint, options);
   }
 
+  async getTemas(): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/topic`;
+    return this.http.get<any>(endpoint);
+  }
+
   async getTemasUsuario(rut: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/read/topic/${rut}`;
     return this.http.get<any>(endpoint);
+  }
+
+  async addTema(tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/create/topic`;
+    return this.http.post<any>(endpoint, tema);
+  }
+
+  async editTema(tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/edit/topic`;
+    return this.http.post<any>(endpoint, tema);
+  }
+
+  async cambiarEstadoTema(tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/change/topic-status`;
+    return this.http.post<any>(endpoint, tema);
   }
 }

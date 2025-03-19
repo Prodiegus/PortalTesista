@@ -1,0 +1,32 @@
+<div class="container">
+  <div class="row mb-3 font-18 d-flex justify-content-center">
+    {{tema.titulo}}
+  </div>
+  <div class="row my-1">
+    <div class="col-3 text-end me-1 bold">Creación:</div>
+    <div class="col text-start">Aun no implementado</div>
+  </div>
+  <div class="row my-1">
+    <div class="col-3 text-end me-1 bold">Profesor Guia:</div>
+    <div class="col text-start">{{tema.guia}}</div>
+  </div>
+  <div class="row my-1">
+    <div class="col-3 text-end me-1 bold">Profesor Co-Guia:</div>
+    <div class="col container-fluid ms-3">
+      <div class="row" *ngFor="let co_guia of tema.co_guias">
+        {{co_guia}}
+      </div>
+    </div>
+  </div>
+  <div class="row my-1">
+    <div class="col-3 text-end me-1 bold">Escuela:</div>
+    <div class="col text-start">{{tema.nombre_escuela}}</div>
+  </div>
+  <div class="row my-1">
+    <div class="col-3 text-end me-1 bold">Estado:</div>
+    <div class="col text-start">{{tema.estado}}</div>
+  </div>
+  <div class="row mx-5 p-1 secondary-bg r-8 drop-shadow my-1" style="height: 280px; overflow-y: scroll;">
+    {{tema.resumen}}
+  </div>
+</div>

@@ -86,7 +86,6 @@ router.delete('/delete/phase', async (req, res) => {
   await delete_phase(req, res);
 });
 
-
 // leer todos los temas
 router.get('/read/topic', async (req, res) => {
   console.log('Consulta get a /read/topic: ', req.body);
