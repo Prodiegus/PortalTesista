@@ -18,6 +18,7 @@ CREATE TABLE tema (
     id_fase INT,
     nombre_escuela VARCHAR(255),
     rut_guia VARCHAR(255),
+    creacion TIMESTAMP,
     PRIMARY KEY (id)
 );
 

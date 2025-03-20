@@ -52,6 +52,12 @@ app.use((req, res, next) => {
 });
 
 // configurar cors
+app.use('/read/topic', cors({
+  origin: '*', // Permitir todas las solicitudes
+  methods: ['GET'],
+  allowedHeaders: ['Origin', 'Content-Type', 'Accept']
+}));
+
 app.use(cors({
   origin: [
     'https://34.176.220.92', 
