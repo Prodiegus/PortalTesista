@@ -277,7 +277,8 @@ async function read_topic(req, res) {
                 nombre_escuela: topic.nombre_escuela,
                 rut_guia: topic.rut_guia,
                 guia: user_name.nombre + ' ' + user_name.apellido,
-                co_guias: ['-']
+                co_guias: ['-'],
+                creacion: topic.creacion
             };
             topics_res.push(topic_res);
         } catch (error) {
@@ -309,7 +310,8 @@ async function read_all_topics(req, res) {
                 nombre_escuela: topic.nombre_escuela,
                 rut_guia: topic.rut_guia,
                 guia: user_name.nombre + ' ' + user_name.apellido,
-                co_guias: ['-']
+                co_guias: ['-'],
+                creacion: topic.creacion
             };
             topics_res.push(topic_res);
         }
