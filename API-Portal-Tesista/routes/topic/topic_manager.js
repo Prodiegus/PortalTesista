@@ -401,6 +401,9 @@ async function change_topic_status(req, res) {
 async function requestTopic(req, res) {
     const {topic_id, nombre, apellido, rut, escuela, correo, mensaje} = req.body;
 
+    const userExistsQuery = `SELECT * FROM usuario WHERE rut = ?;`;
+    const userExistsParams = [rut];
+
     const insertUserQuery = 
     `
         INSERT INTO usuario (nombre, apellido, rut, escuela, correo, password, tipo, activo)
@@ -417,7 +420,10 @@ async function requestTopic(req, res) {
     const insertRequestParams = [topic_id, rut, mensaje];
 
     try {
-        await runParametrizedQuery(insertUserQuery, insertUserParams);
+        const userExists = await runParametrizedQuery(userExistsQuery, userExistsParams);
+        if (userExists.length === 0) {
+            await runParametrizedQuery(insertUserQuery, insertUserParams);
+        }
         await runParametrizedQuery(insertRequestQuery, insertRequestParams);
         res.status(200).send('Solicitud enviada con éxito');
     } catch (error) {

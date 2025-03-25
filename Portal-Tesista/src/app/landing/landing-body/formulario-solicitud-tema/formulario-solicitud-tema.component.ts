@@ -88,7 +88,7 @@ export class FormularioSolicitudTemaComponent implements OnInit{
       this.httpRequestService.solicitarTema(solicitud).then(observable => {
         observable.subscribe(
           (data: any) => {
-            resolve();
+            resolve(data);
           },
           (error: any) => {
             console.error('Error solicitando tema');
