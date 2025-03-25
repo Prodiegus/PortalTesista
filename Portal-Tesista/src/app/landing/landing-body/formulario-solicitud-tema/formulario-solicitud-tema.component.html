@@ -1,0 +1,83 @@
+<div class="container-fluid">
+  <div class="row d-flex align-items-center justify-content-center text-center p-1">
+    <p class="font-20 bold">Formulario de Solicitud</p>
+  </div>
+  <div class="row d-flex align-items-center">
+    <div class="col container-fluid">
+      <div class="row d-flex align-items-center justify-content-center text-center my-3">
+        {{tema.titulo}}
+      </div>
+      <div class="row container-fluid">
+        <div class="col d-flex align-items-center justify-content-end bold">Creación:</div>
+        <div class="col d-flex align-items-center justify-content-start">{{tema.creacion | dateFormat}}</div>
+      </div>
+      <div class="row container-fluid">
+        <div class="col d-flex align-items-center justify-content-end bold">Profesor Guía:</div>
+        <div class="col d-flex align-items-center justify-content-start">{{tema.guia}}</div>
+      </div>
+      <div class="row container-fluid">
+        <div class="col d-flex justify-content-end bold">Profesor Co-Guía:</div>
+        <div class="col container-fluid">
+          <div class="row d-flex justify-content-start p-0 mx-0 my-1" *ngFor="let co_guia of tema.co_guias">
+            {{co_guia}}
+          </div>
+        </div>
+      </div>
+      <div class="row container-fluid">
+        <div class="col d-flex align-items-center justify-content-end bold">Escuela:</div>
+        <div class="col d-flex align-items-center justify-content-start">{{tema.nombre_escuela}}</div>
+      </div>
+      <div class="row container-fluid">
+        <div class="col d-flex align-items-center justify-content-end bold">Estado:</div>
+        <div class="col d-flex align-items-center justify-content-start">{{tema.estado}}</div>
+      </div>
+    </div>
+    <div class="col-4 container-fluid ">
+      <form (ngSubmit)="onSubmit()">
+        <div class="row w-100 container-fluid d-flex justify-content-center secondary-bg r-8 drop-shadow mb-3">
+          <div class="row d-flex justify-content-center mt-3">
+            <input id="nombre" [(ngModel)]="nombre" name="nombre" class="form-control size-220" placeholder="Nombre..." required />
+          </div>
+          <div class="row d-flex justify-content-center mt-3">
+            <input id="apellido" [(ngModel)]="apellido" name="apellido" class="form-control size-220" placeholder="Apellido..." required />
+          </div>
+          <div class="row d-flex justify-content-center mt-3">
+            <input id="rut" [(ngModel)]="rut" name="rut" class="form-control size-220" placeholder="Rut (sin puntos ni guión)..." required />
+          </div>
+          <div class="row d-flex justify-content-center mt-3">
+            <input id="Escuela" [(ngModel)]="escuela" name="escuela" class="form-control size-220" placeholder="Escuela..." required />
+          </div>
+          <div class="row d-flex justify-content-center mt-3">
+            <input id="correo" [(ngModel)]="correo" name="correo" class="form-control size-220" placeholder="Correo..." required />
+          </div>
+          <div class="row w-100 d-flex justify-content-center my-3">
+            <label class="text-center font-12 secondary-darken" for="mensaje">¿Por qué quieres este proyecto?</label>
+            <textarea id="mensaje" [(ngModel)]="mensaje" name="mensaje" class="form-control w-220" rows="2" required></textarea>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col d-flex justify-content-end">
+            <div class="row h-40">
+              <button class="button secondary bold" (click)="closeOverlay()">
+                Cancelar
+              </button>
+            </div>
+          </div>
+          <div class="col ms-2 d-flex justify-content-start">
+            <div class="row h-40">
+              <button type="submit" class="button primary rounded-5 bold" type="submit">
+                <span>Solicitar</span>
+                <span
+                  class="ms-1 spinner-border spinner-border-sm"
+                  aria-hidden="true"
+                  *ngIf="loading"
+                ></span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
