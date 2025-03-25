@@ -10,8 +10,8 @@ async function create_phase(req, res) {
     const query_get_last_id = `SELECT LAST_INSERT_ID() AS id;`;
     const params = [numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo];
 
+    const connection = await beginTransaction(); 
     try {
-        const connection = await beginTransaction(); 
         await runParametrizedQuery(query_insert, params, connection);
         const results = await runQuery(query_get_last_id, connection);
         const newPhaseId = results[0].id;
