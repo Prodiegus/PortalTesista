@@ -10,6 +10,7 @@ export class FormularioSolicitudTemaComponent implements OnInit{
   @Input() tema: any;
   @Output() close = new EventEmitter<void>();
 
+  working: boolean = false;
   loading: boolean = false;
 
   nombre: string = '';
@@ -26,11 +27,25 @@ export class FormularioSolicitudTemaComponent implements OnInit{
     private httpRequestService: HttpRequestService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
+    await this.fetchEscuelas();
   }
 
-  fetchEscuelas() {
-
+  async fetchEscuelas() {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.getEscuelas().then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.escuelas = data;
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error fetching escuelas');
+            reject(error);
+          }
+        );
+      });
+    });
   }
 
   @HostListener('document:click', ['$event'])

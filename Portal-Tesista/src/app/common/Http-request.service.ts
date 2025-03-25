@@ -11,6 +11,11 @@ export class HttpRequestService {
 
   constructor(private http: HttpClient) { }
 
+  async getEscuelas() {
+    const endpoint = `${this.apiUrl}/read/schools`;
+    return this.http.get<any>(endpoint);
+  }
+
   async getUserData(token: string | undefined): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/read/user`;
     const headers = new HttpHeaders({
