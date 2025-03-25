@@ -1,6 +1,7 @@
 const {runParametrizedQuery} = require('../utils/query');
 
 async function create_phase(req, res) {
+    console.log('Creando fase:', req.body);
     const { numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo } = req.body;
     const query_insert = `
         INSERT INTO fase (numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo)
