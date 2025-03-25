@@ -1,4 +1,4 @@
-const {runParametrizedQuery} = require('../utils/query');
+const {runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, commitTransaction} = require('../utils/query');
 
 async function create_phase(req, res) {
     console.log('Creando fase:', req.body);
