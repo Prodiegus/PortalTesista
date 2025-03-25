@@ -11,7 +11,8 @@ import {HttpRequestService} from '../../../common/Http-request.service';
 export class TablaTemasComponent implements OnInit{
   protected temas:any[] = [];
   loading = true;
- protected detalle = false;
+  protected detalle = false;
+  protected formulario = false;
   temaSeleccionado: any;
 
   constructor(
@@ -52,6 +53,15 @@ export class TablaTemasComponent implements OnInit{
 
   detalleTemaClose() {
     this.detalle = false;
+  }
+
+  solicitarTema() {
+    this.detalleTemaClose();
+    this.formulario = true;
+  }
+
+  solicitarTemaClose() {
+    this.formulario = false;
   }
 
 }

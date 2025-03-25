@@ -174,3 +174,25 @@ button:disabled {
   pointer-events: none;
   opacity: 0.5; /* Optional: to visually indicate the button is disabled */
 }
+
+/* Estilos para los inputs y text areas */
+.form-control {
+  border: 2px solid $primary-color;
+  border-radius: 16px;
+  padding: 10px;
+  font-size: 14px;
+  color: $primary-color;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: $primary-color;
+  color: $primary-color;
+  box-shadow: 0 0 5px rgba($primary-color, 0.5);
+}
+
+.form-control:-webkit-autofill {
+  border-color: $primary-color;
+  color: $primary-color;
+  box-shadow: 0 0 5px rgba($primary-color, 0.5);
+}
