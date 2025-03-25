@@ -472,9 +472,6 @@ async function requestTopic(req, res) {
 
 async function acept_topic_request(req, res) {
     const {topic_id, rut_alumno} = req.body;
-
-    const fases_flujo_query = `
-    
 }
 
 module.exports = {
