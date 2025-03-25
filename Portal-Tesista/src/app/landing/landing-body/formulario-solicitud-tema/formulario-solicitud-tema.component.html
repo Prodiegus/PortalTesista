@@ -45,7 +45,10 @@
             <input id="rut" [(ngModel)]="rut" name="rut" class="form-control size-220" placeholder="Rut (sin puntos ni guión)..." required />
           </div>
           <div class="row d-flex justify-content-center mt-3">
-            <input id="Escuela" [(ngModel)]="escuela" name="escuela" class="form-control size-220" placeholder="Escuela..." required />
+            <select id="escuela" [(ngModel)]="escuela" name="escuela" class="form-control " required>
+              <option value="" hidden selected>Escuela...</option>
+              <option *ngFor="let escuela of escuelas" [value]="escuela">{{escuela}}</option>
+            </select>
           </div>
           <div class="row d-flex justify-content-center mt-3">
             <input id="correo" [(ngModel)]="correo" name="correo" class="form-control size-220" placeholder="Correo..." required />

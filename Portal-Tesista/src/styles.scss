@@ -191,6 +191,11 @@ button:disabled {
   box-shadow: 0 0 5px rgba($primary-color, 0.5);
 }
 
+.form-control:placeholder-shown {
+  border-color: $primary-color;
+  color: $primary-color;
+}
+
 .form-control:-webkit-autofill {
   border-color: $primary-color;
   color: $primary-color;

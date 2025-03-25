@@ -7,7 +7,7 @@ const { create_phase, read_phase, edit_phase, read_flow_phase, delete_phase } = 
 const { create_topic, read_topic, read_all_topics, edit_topic, change_topic_status, requestTopic } = require('./topic/topic_manager');
 const disable = require('./user/disable');
 const enable = require('./user/enable');
-const getSchools = require('./school/school_manager');
+const {getSchools} = require('./school/school_manager');
 
 const router = express.Router();
 
