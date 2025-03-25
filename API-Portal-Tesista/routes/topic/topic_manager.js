@@ -410,7 +410,7 @@ async function requestTopic(req, res) {
 
     const insertRequestQuery = 
     `
-        INSERT INTO solicitud_tema (id_tema, rut, mensaje)
+        INSERT INTO solicitud_tema (id_tema, rut_alumno, mensaje)
         VALUES (?, ?, ?)
     `;
 

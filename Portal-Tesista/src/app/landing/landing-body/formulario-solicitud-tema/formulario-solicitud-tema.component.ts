@@ -10,7 +10,6 @@ export class FormularioSolicitudTemaComponent implements OnInit{
   @Input() tema: any;
   @Output() close = new EventEmitter<void>();
 
-  working: boolean = false;
   loading: boolean = false;
 
   nombre: string = '';
@@ -20,7 +19,7 @@ export class FormularioSolicitudTemaComponent implements OnInit{
   escuela: string = '';
   mensaje: string = '';
 
-  escuelas: string[] = [];
+  escuelas: any[] = [];
 
   constructor(
     private elementRef: ElementRef,
@@ -60,30 +59,44 @@ export class FormularioSolicitudTemaComponent implements OnInit{
     this.close.emit();
   }
 
-  onSubmit(){
+  async onSubmit(){
+    this.loading = true;
     if (this.nombre === '' || this.apellido === '' || this.correo === '' || this.rut === '' || this.escuela === '' || this.mensaje === '') {
       return;
     }
     const solicitud = {
+      topic_id: this.tema.id,
       nombre: this.nombre,
       apellido: this.apellido,
-      correo: this.correo,
       rut: this.rut,
       escuela: this.escuela,
-      mensaje: this.mensaje,
-      tema: this.tema
+      correo: this.correo,
+      mensaje: this.mensaje
     };
     try {
-      this.solicitarTema(solicitud);
+      await this.solicitarTema(solicitud);
     } catch (error) {
       console.error('Error solicitando tema');
     } finally {
+      this.loading = false;
       this.closeOverlay();
     }
   }
 
-  solicitarTema(solicitud: any) {
-    console.log(solicitud);
+  async solicitarTema(solicitud: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.solicitarTema(solicitud).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error solicitando tema');
+            reject(error);
+          }
+        );
+      });
+    });
   }
 
 }

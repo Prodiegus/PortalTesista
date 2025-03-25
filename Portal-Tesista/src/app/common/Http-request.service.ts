@@ -100,4 +100,9 @@ export class HttpRequestService {
     const endpoint = `${this.apiUrl}/change/topic-status`;
     return this.http.post<any>(endpoint, tema);
   }
+
+  async solicitarTema(tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/request/topic`;
+    return this.http.post<any>(endpoint, tema);
+  }
 }
