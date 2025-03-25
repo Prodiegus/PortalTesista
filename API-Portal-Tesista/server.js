@@ -90,7 +90,8 @@ app.use('/', routes);
 // Leer los certificados SSL
 const options = {
   key: fs.readFileSync(config.sslKeyPath),
-  cert: fs.readFileSync(config.sslCertPath)
+  cert: fs.readFileSync(config.sslCertPath),
+  rejectUnauthorized: false
 };
 
 https.createServer(options, app).listen(config.port, config.host, () => {
