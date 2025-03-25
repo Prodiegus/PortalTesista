@@ -4,6 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const {create_flow, read_flow, read_school_flow, edit_flow} = require('../flow/manage_flow');
 const {read_phase, create_phase, edit_phase, read_flow_phase, delete_phase} = require('../flow/manage_phase');
+const { request } = require('http');
+const getRandomPassword = require('../utils/getRandomPassword');
 
 const scheduledChangesFilePath = path.join(__dirname, 'scheduled_changes.json');
 
@@ -396,10 +398,40 @@ async function change_topic_status(req, res) {
     }
 }
 
+async function requestTopic(req, res) {
+    const {topic_id, nombre, apellido, rut, escuela, correo, mensaje} = req.body;
+
+    const insertUserQuery = 
+    `
+        INSERT INTO usuario (nombre, apellido, rut, escuela, correo, password, tipo, activo)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    const insertUserParams = [nombre, apellido, rut, escuela, correo, getRandomPassword(8), 'alumno', 1];
+
+    const insertRequestQuery = 
+    `
+        INSERT INTO solicitud_tema (id_tema, rut, mensaje)
+        VALUES (?, ?, ?)
+    `;
+
+    const insertRequestParams = [topic_id, rut, mensaje];
+
+    try {
+        await runParametrizedQuery(insertUserQuery, insertUserParams);
+        await runParametrizedQuery(insertRequestQuery, insertRequestParams);
+        res.status(200).send('Solicitud enviada con éxito');
+    } catch (error) {
+        console.error('Error solicitando tema:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error solicitando tema');
+    }
+    
+}
+
 module.exports = {
     create_topic,
     read_topic,
     read_all_topics,
     edit_topic,
-    change_topic_status
+    change_topic_status,
+    requestTopic
 };
