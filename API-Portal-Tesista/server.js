@@ -55,7 +55,8 @@ app.use((req, res, next) => {
 app.use('/read/topic', cors({
   origin: '*', // Permitir todas las solicitudes
   methods: ['GET'],
-  allowedHeaders: ['Origin', 'Content-Type', 'Accept']
+  allowedHeaders: ['Origin', 'Content-Type', 'Accept', 'Authorization'],
+  credentials: true
 }));
 
 app.use(cors({
