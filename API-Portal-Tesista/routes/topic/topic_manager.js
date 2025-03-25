@@ -4,7 +4,8 @@ const fs = require('fs');
 const path = require('path');
 const {create_flow, read_flow, read_school_flow, edit_flow} = require('../flow/manage_flow');
 const {read_phase, create_phase, edit_phase, read_flow_phase, delete_phase} = require('../flow/manage_phase');
-const { request } = require('http');
+const {getToken} = require('../utils/getToken');
+const {createUsuario} = require('../keycloak/crearUsuario');
 const getRandomPassword = require('../utils/getRandomPassword');
 
 const scheduledChangesFilePath = path.join(__dirname, 'scheduled_changes.json');
@@ -96,6 +97,12 @@ async function create_topic(req, res) {
         INSERT INTO flujo_tiene_tema (id_flujo, id_tema)
         VALUES (?, ?);
     `;
+
+    const query_insert_fase = `
+        INSERT INTO fase (numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?); 
+    `;
+
     query_insert_FTP = `
         INSERT INTO flujo_tiene_padre (id_flujo, id_phase)
         VALUES (?, ?);`
@@ -176,6 +183,36 @@ async function create_topic(req, res) {
                 await create_flow(create_flow_req, res_for_create_flow);
                 params_insert_FTT = [new_id_flujo, id_tema];
                 await runParametrizedQuery(query_insert_FTT, params_insert_FTT, connection);
+                let new_id_fase;
+                const create_phase_req = {
+                    body: {
+                        numero: 1,
+                        nombre: fase.nombre,
+                        descripcion: 'Fase auto generada',
+                        tipo: 'guia',
+                        fecha_inicio: fase.fecha_inicio,
+                        fecha_termino: fase.fecha_termino,
+                        rut_creador: rut_guia,
+                        id_flujo: new_id_flujo
+                    }
+                };
+                const res_for_create_fase = {
+                    status: (code) => {
+                        console.log(`Status: ${code}`);
+                        return res_for_create_fase;
+                    },
+                    send: (data) => {
+                        new_id_fase = data.id;
+                        console.log(data);
+                    },
+                    json: (data) => {
+                        new_id_fase = data.id;
+                        console.log(JSON.stringify(data));
+                    }
+                };
+                await create_phase(create_phase_req, res_for_create_fase);
+                const params_insert_FTP = [new_id_flujo, new_id_fase];
+                await runParametrizedQuery(query_insert_FTP, params_insert_FTP, connection);
             }
         } else {
             throw new Error('Fases del flujo no es un array');
@@ -430,6 +467,13 @@ async function requestTopic(req, res) {
         console.error('Error solicitando tema:', error.response ? error.response.data : error.message);
         res.status(500).send('Error solicitando tema');
     }
+    
+}
+
+async function acept_topic_request(req, res) {
+    const {topic_id, rut_alumno} = req.body;
+
+    const fases_flujo_query = `
     
 }
 
