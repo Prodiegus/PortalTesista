@@ -7,6 +7,7 @@ const { create_phase, read_phase, edit_phase, read_flow_phase, delete_phase } = 
 const { create_topic, read_topic, read_all_topics, edit_topic, change_topic_status, requestTopic } = require('./topic/topic_manager');
 const disable = require('./user/disable');
 const enable = require('./user/enable');
+const getSchools = require('./school/school_manager');
 
 const router = express.Router();
 
@@ -116,6 +117,12 @@ router.post('/change/topic-status', async (req, res) => {
 router.post('/request/topic', async (req, res) => {
   console.log('Consulta post a /request/topic: ', req.body);
   await requestTopic(req, res);
+});
+
+// leer todas las escuelas
+router.get('/read/schools', async (req, res) => {
+  console.log('Consulta get a /read/schools: ', req.body);
+  await getSchools(req, res);
 });
 
 module.exports = router;
