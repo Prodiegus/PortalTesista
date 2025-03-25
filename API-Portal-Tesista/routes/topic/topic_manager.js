@@ -104,7 +104,7 @@ async function create_topic(req, res) {
     `;
 
     query_insert_FTP = `
-        INSERT INTO flujo_tiene_padre (id_flujo, id_phase)
+        INSERT INTO fase_tiene_padre (id_flujo, id_phase)
         VALUES (?, ?);`
     const query_insert_dueno = `INSERT INTO dueno (rut, id_tema) VALUES (?, ?);`;
     const params_id_flujo = [nombre_escuela];
