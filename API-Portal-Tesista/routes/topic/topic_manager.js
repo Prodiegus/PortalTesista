@@ -183,6 +183,7 @@ async function create_topic(req, res) {
                 await create_flow(create_flow_req, res_for_create_flow);
                 params_insert_FTT = [new_id_flujo, id_tema];
                 await runParametrizedQuery(query_insert_FTT, params_insert_FTT, connection);
+                
                 let new_id_fase;
                 const create_phase_req = {
                     body: {
@@ -202,15 +203,26 @@ async function create_topic(req, res) {
                         return res_for_create_fase;
                     },
                     send: (data) => {
-                        new_id_fase = data.id;
-                        console.log(data);
+                        try {
+                            const parsedData = typeof data === 'string' ? JSON.parse(data) : data;
+                            new_id_fase = parsedData.id;
+                            console.log(parsedData);
+                        } catch (error) {
+                            console.error('Error parsing response from create_phase:', error);
+                        }
                     },
                     json: (data) => {
                         new_id_fase = data.id;
                         console.log(JSON.stringify(data));
                     }
                 };
+
                 await create_phase(create_phase_req, res_for_create_fase);
+
+                if (!new_id_fase) {
+                    throw new Error('No se pudo obtener el ID de la nueva fase');
+                }
+
                 const params_insert_FTP = [new_id_flujo, new_id_fase];
                 await runParametrizedQuery(query_insert_FTP, params_insert_FTP, connection);
             }
@@ -472,9 +484,6 @@ async function requestTopic(req, res) {
 
 async function acept_topic_request(req, res) {
     const {topic_id, rut_alumno} = req.body;
-
-    const fases_flujo_query = `
-    
 }
 
 module.exports = {
