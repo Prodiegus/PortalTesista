@@ -26,4 +26,12 @@ export class TemaPopupComponent {
   closeOverlay(){
     this.close.emit();
   }
+
+  solicitarTema(){
+    console.log(this.tema);
+  };
+
+  descargarTema(){
+    console.log(this.tema);
+  };
 }
