@@ -86,8 +86,8 @@ async function create_topic(req, res) {
     const query_id_flujo = `SELECT id_flujo FROM escuela WHERE nombre = ?;`;
     const query_id_fase = `SELECT id FROM fase WHERE id_flujo = ? AND numero = ?;`;
     const query_insert_topic = `
-        INSERT INTO tema (titulo, resumen, estado, numero_fase, id_fase, nombre_escuela, rut_guia)
-        VALUES (?, ?, ?, ?, ?, ?, ?);
+        INSERT INTO tema (titulo, resumen, estado, numero_fase, id_fase, nombre_escuela, rut_guia, creacion)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
     `;
     const query_get_LastId = `SELECT LAST_INSERT_ID() AS id;`;
     const query_insert_FTT = `
@@ -100,6 +100,9 @@ async function create_topic(req, res) {
     const query_insert_dueno = `INSERT INTO dueno (rut, id_tema) VALUES (?, ?);`;
     const params_id_flujo = [nombre_escuela];
     
+    const raw_timestamp = new Date();
+    const current_date_time = raw_timestamp.toISOString().slice(0, 19).replace('T', ' ');
+
     let connection;
     try {
         connection = await beginTransaction();
@@ -108,7 +111,7 @@ async function create_topic(req, res) {
         let id_flujo = id_flujo_res[0].id_flujo;
         const id_fase_res = await runParametrizedQuery(query_id_fase, [id_flujo, numero_fase], connection);
         const id_fase = id_fase_res[0].id;
-        const params_insert_topic = [titulo, resumen, estado, numero_fase, id_fase, nombre_escuela, rut_guia];
+        const params_insert_topic = [titulo, resumen, estado, numero_fase, id_fase, nombre_escuela, rut_guia, current_date_time];
         await runParametrizedQuery(query_insert_topic, params_insert_topic, connection);
         
         // Obtener el ID del tema recién insertado
@@ -274,7 +277,8 @@ async function read_topic(req, res) {
                 nombre_escuela: topic.nombre_escuela,
                 rut_guia: topic.rut_guia,
                 guia: user_name.nombre + ' ' + user_name.apellido,
-                co_guias: ['-']
+                co_guias: ['-'],
+                creacion: topic.creacion
             };
             topics_res.push(topic_res);
         } catch (error) {
@@ -306,7 +310,8 @@ async function read_all_topics(req, res) {
                 nombre_escuela: topic.nombre_escuela,
                 rut_guia: topic.rut_guia,
                 guia: user_name.nombre + ' ' + user_name.apellido,
-                co_guias: ['-']
+                co_guias: ['-'],
+                creacion: topic.creacion
             };
             topics_res.push(topic_res);
         }
