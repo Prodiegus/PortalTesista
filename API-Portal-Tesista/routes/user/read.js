@@ -82,6 +82,12 @@ async function readAll(req, res) {
                 });
             }
         }
+
+        for (user of response){
+            if (user.tipo == 'alumno'){
+                response.pop(user);
+            }
+        }
         
         res.status(200).send(response);
     } catch (error) {
