@@ -104,8 +104,16 @@ public class KeycloakServicelmp implements IkeycloakService {
             log.error("User already exists");
             return "User already exists";
         } else {
-            log.error("Error creting user"+response);
-            return "Error creating user";
+            String errorMessage;
+            try {
+                errorMessage = response.readEntity(String.class);
+            } catch (Exception e) {
+                errorMessage = "No se pudo leer el cuerpo de la respuesta.";
+                log.error("Error leyendo el cuerpo de la respuesta: ", e);
+            }
+        
+            log.error("Error creando usuario: " + errorMessage);
+            return "Error creando usuario";
         }
     }
 
