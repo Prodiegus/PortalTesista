@@ -83,9 +83,10 @@ async function readAll(req, res) {
             }
         }
 
-        for (user of response){
-            if (user.tipo == 'alumno'){
-                response.pop(user);
+        for (let i = 0; i < response.length; i++) {
+            if (response[i].tipo === 'alumno') {
+                response.splice(i, 1);
+                i--; 
             }
         }
         
