@@ -516,7 +516,7 @@ async function acept_topic_request(req, res) {
     let connection;
     try{
         connection = await beginTransaction();
-        const fases_flujo_guia = getPhasesTopic(topic_id, 'guia', connection);
+        const fases_flujo_guia = await getPhasesTopic(topic_id, 'guia', connection);
         console.log("fases encontradas: "+fases_flujo_guia);
         if (!fases_flujo_guia) {
             throw new Error('No se encontraron fases para el flujo del guía');
