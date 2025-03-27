@@ -104,7 +104,7 @@ public class KeycloakServicelmp implements IkeycloakService {
             log.error("User already exists");
             return "User already exists";
         } else {
-            log.error("Error creting user");
+            log.error("Error creting user"+response);
             return "Error creating user";
         }
     }
