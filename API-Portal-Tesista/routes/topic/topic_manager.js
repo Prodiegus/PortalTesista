@@ -568,8 +568,29 @@ async function acept_topic_request(req, res) {
         console.error('Error aceptando solicitud de tema:', error.response ? error.response.data : error.message);
         res.status(500).send('Error aceptando solicitud de tema');
     }
+}
 
-
+async function read_topic_request(req, res) {
+    const {topic_id} = req.params;
+    const query = `
+        SELECT mensaje, usuario.*
+        FROM usuario JOIN solicitud_tema ON rut_alumno = rut
+        WHERE id_tema = ?;
+    `;
+    const params = [topic_id];
+    let connection;
+    try {
+        connection = await beginTransaction();
+        const results = await runParametrizedQuery(query, params, connection);
+        await commitTransaction(connection);
+        res.status(200).send(results);
+    } catch (error) {
+        if (connection) {
+            await rollbackTransaction(connection);
+        }
+        console.error('Error obteniendo solicitudes de tema:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error obteniendo solicitudes de tema');
+    }
 }
 
 module.exports = {
@@ -578,5 +599,6 @@ module.exports = {
     read_all_topics,
     edit_topic,
     change_topic_status,
-    requestTopic
+    requestTopic,
+    read_topic_request
 };
