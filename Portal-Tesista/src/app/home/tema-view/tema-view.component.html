@@ -12,7 +12,10 @@
   ></app-tema-summary>
   <div class="mt-4">
     <app-calendario-tema *ngIf="tema.estado === 'En trabajo' || tema.estado === 'Finalizado'"></app-calendario-tema>
-    <app-solicitudes-tema *ngIf="tema.estado === 'Pendiente'"></app-solicitudes-tema>
+    <app-solicitudes-tema *ngIf="tema.estado === 'Pendiente'"
+      [userRepresentation]="userRepresentation"
+      [tema]="tema"
+    ></app-solicitudes-tema>
   </div>
   <app-footer></app-footer>
 </div>

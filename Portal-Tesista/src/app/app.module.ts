@@ -38,6 +38,7 @@ import { EditarDuenosComponent } from './common/edicion-tema/editar-duenos/edita
 import { TemaPopupComponent } from './landing/landing-body/tema-popup/tema-popup.component';
 import { FormularioSolicitudTemaComponent } from './landing/landing-body/formulario-solicitud-tema/formulario-solicitud-tema.component';
 import { SolicitudesTemaComponent } from './common/solicitudes-tema/solicitudes-tema.component';
+import { DetalleSolicitudComponent } from './common/detalle-solicitud/detalle-solicitud.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { SolicitudesTemaComponent } from './common/solicitudes-tema/solicitudes-
     TemaPopupComponent,
     FormularioSolicitudTemaComponent,
     SolicitudesTemaComponent,
+    DetalleSolicitudComponent,
   ],
   imports: [
     BrowserModule,

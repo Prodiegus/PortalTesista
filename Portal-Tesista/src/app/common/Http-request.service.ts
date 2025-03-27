@@ -110,4 +110,9 @@ export class HttpRequestService {
     const endpoint = `${this.apiUrl}/accept/topic`;
     return this.http.post<any>(endpoint, tema);
   }
+
+  async getSolicitudes(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/topic-request/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
 }

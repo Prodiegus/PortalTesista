@@ -1,1 +1,56 @@
-<p>solicitudes-tema works!</p>
+<script src="../agregar-docente/agregar-docente.component.ts"></script>
+<div class="container-fluid mx-5 w-95" *ngIf="!loading">
+  <div class="row d-flex align-items-center justify-content-center mb-3 r-16 primary-border h-55">
+    <div class="col"></div>
+    <div class="col d-flex justify-content-center align-items-center font-20 bold">Solicitudes</div>
+    <div class="col"></div>
+  </div>
+  <!-- Header -->
+  <div class="row rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
+    <div class="col-3 text-center">
+      Nombre
+    </div>
+    <div class="col-3 text-center ">
+      Escuela
+    </div>
+    <div class="col-3 text-center ">
+      Correo
+    </div>
+    <div class="col-3 text-center d-flex justify-content-center ">
+      Detalle
+    </div>
+  </div>
+  <!-- Body -->
+  <div class="row h-100 mb-1 secondary-bg bold d-flex align-items-center "
+       *ngFor="let solicitud of solicitudes; index as i">
+    <div class="col-3 text-center ">
+      {{solicitud.nombre+' '+solicitud.apellido}}
+    </div>
+    <div class="col-3 text-center ">
+      {{solicitud.escuela}}
+    </div>
+    <div class="col-3 text-center">
+      {{solicitud.correo}}
+    </div>
+    <div class="col-3 d-flex justify-content-center align-items-center ">
+      <button class="button secondary btn-size-150 bold" (click)="mostrarDetalleSolicitud(solicitud)">Ver</button>
+    </div>
+  </div>
+</div>
+<!-- loader -->
+<div class="container-fluid d-flex justify-content-center align-items-center fullscreen" *ngIf="loading">
+  <div class="spinner-grow primary-normal div-size-72" role="status">
+    <span class="visually-hidden">cargando...</span>
+  </div>
+</div>
+<!-- detalle-solicitud overlay -->
+<div class="overlay" *ngIf="detalleSolicitud">
+  <div class="overlay-content">
+    <app-detalle-solicitud
+      [solicitud]="solicitudSeleccionada"
+      [userRepresentation]="userRepresentation"
+      [tema]="tema"
+      (close)="closeDetalleSolicitud()"
+    ></app-detalle-solicitud>
+  </div>
+</div>
