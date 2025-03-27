@@ -118,7 +118,7 @@ async function delete_phase(req, res) {
     }
 }
 
-async function getPhasesTopic(id_topic, type){
+async function getPhasesTopic(id_topic, type, connection) {
     const query = `
         SELECT fase.* 
         FROM fase
@@ -132,7 +132,7 @@ async function getPhasesTopic(id_topic, type){
     `;
     const params = [id_topic, type];
     try {
-        const results = await runParametrizedQuery(query, params);
+        const results = await runParametrizedQuery(query, params, connection);
         return results;
     } catch (error) {
         console.error('Error obteniendo fase:', error.response ? error.response.data : error.message);
