@@ -113,8 +113,19 @@ public class KeycloakServicelmp implements IkeycloakService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
         message.setSubject("Creación de cuenta");
-        message.setText("Se ha creado una cuenta a tu nombre en portaltesista.me\nUsername: " +
-                username + "\nPassword: " + password + "\nPor favor, cambia tu contraseña en tu primer inicio de sesión");
+        message.setText(
+            "¡Hola!\n\n" +
+            "Se ha creado una cuenta a tu nombre en Portal Tesista.\n\n" +
+            "Detalles de tu cuenta:\n" +
+            "---------------------------------\n" +
+            "Usuario: " + username + "\n" +
+            "Contraseña: " + password + "\n" +
+            "---------------------------------\n\n" +
+            "Por favor, cambia tu contraseña en tu primer inicio de sesión para mayor seguridad.\n\n" +
+            "Saludos cordiales,\n" +
+            "Equipo de Portal Tesista\n\n" +
+            "Ya puedes empezar a utilizar la plataforma en: https://portaltesista.me"
+        );
         mailSender.send(message);
     }
 
