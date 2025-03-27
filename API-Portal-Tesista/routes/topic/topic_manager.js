@@ -516,7 +516,7 @@ async function acept_topic_request(req, res) {
     let connection;
     try{
         connection = await beginTransaction();
-        const fases_flujo_guia = getPhasesTopic(topic_id, 'guia');
+        const fases_flujo_guia = getPhasesTopic(topic_id, 'guia', connection);
         console.log("fases encontradas: "+fases_flujo_guia);
         if (!fases_flujo_guia) {
             throw new Error('No se encontraron fases para el flujo del guía');
@@ -528,6 +528,7 @@ async function acept_topic_request(req, res) {
         }
         
         for (let i = 0; i < fases_flujo_guia.length; i++){
+            console.log("fase: "+fases_flujo_guia[i]);
             const fase = fases_flujo_guia[i];
             const create_flow_params = [rut_alumno, 'alumno', fase.fecha_inicio, fase.fecha_termino];
             await runParametrizedQuery(query_insert_flow, create_flow_params, connection);
@@ -570,6 +571,9 @@ async function acept_topic_request(req, res) {
         await runParametrizedQuery(query_insert_alumno_trabaja, alumno_trabaja_params, connection);
         await runParametrizedQuery(query_update_topic_status, update_topic_status_params, connection);
 
+        await commitTransaction(connection);
+        res.status(200).send('Solicitud de tema aceptada con éxito');
+        
     } catch (error) {
         if (connection) {
             await rollbackTransaction(connection);
