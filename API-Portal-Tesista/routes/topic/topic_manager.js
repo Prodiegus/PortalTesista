@@ -517,7 +517,16 @@ async function acept_topic_request(req, res) {
     try{
         connection = await beginTransaction();
         const fases_flujo_guia = getPhasesTopic(topic_id, 'guia');
-
+        console.log("fases encontradas: "+fases_flujo_guia);
+        if (!fases_flujo_guia) {
+            throw new Error('No se encontraron fases para el flujo del guía');
+            res.status(500).send('Error aceptando solicitud de tema');
+        }
+        if (fases_flujo_guia.length === 0) {
+            throw new Error('No se encontraron fases para el flujo del guía');
+            res.status(500).send('Error aceptando solicitud de tema');
+        }
+        
         for (let i = 0; i < fases_flujo_guia.length; i++){
             const fase = fases_flujo_guia[i];
             const create_flow_params = [rut_alumno, 'alumno', fase.fecha_inicio, fase.fecha_termino];
