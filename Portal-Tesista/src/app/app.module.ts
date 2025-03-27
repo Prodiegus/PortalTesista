@@ -37,6 +37,7 @@ import { VerReunionesComponent } from './common/edicion-tema/ver-reuniones/ver-r
 import { EditarDuenosComponent } from './common/edicion-tema/editar-duenos/editar-duenos.component';
 import { TemaPopupComponent } from './landing/landing-body/tema-popup/tema-popup.component';
 import { FormularioSolicitudTemaComponent } from './landing/landing-body/formulario-solicitud-tema/formulario-solicitud-tema.component';
+import { SolicitudesTemaComponent } from './common/solicitudes-tema/solicitudes-tema.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { FormularioSolicitudTemaComponent } from './landing/landing-body/formula
     EditarDuenosComponent,
     TemaPopupComponent,
     FormularioSolicitudTemaComponent,
+    SolicitudesTemaComponent,
   ],
   imports: [
     BrowserModule,
