@@ -600,5 +600,6 @@ module.exports = {
     edit_topic,
     change_topic_status,
     requestTopic,
-    read_topic_request
+    read_topic_request,
+    acept_topic_request
 };
