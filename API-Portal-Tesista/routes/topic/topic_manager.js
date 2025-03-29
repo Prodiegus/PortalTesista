@@ -247,7 +247,8 @@ async function read_topic(req, res) {
         SELECT tema.* 
         FROM tema JOIN alumno_trabaja 
         ON tema.id = alumno_trabaja.id_tema 
-        WHERE alumno_trabaja.rut_alumno = ?;
+        WHERE alumno_trabaja.rut_alumno = ?
+        AND (alumno_trabaja.fecha_termino IS NULL OR alumno_trabaja.fecha_termino <= CURRENT_DATE);
     `;
     const query_alumnos_guia = `SELECT rut_alumno FROM guia WHERE rut_guia = ?;`;
     const query_temas_revisor = `
