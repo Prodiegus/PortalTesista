@@ -406,13 +406,14 @@ async function change_topic_status(req, res) {
     const params_get_fechas_flow = [id];
     let fechaCambio;
 
+    const ahora = new Date();
     try {
         const results = await runParametrizedQuery(query_get_fechas_flow, params_get_fechas_flow);
         // Obtendremos la fecha de termino mas proxima
         fechaCambio = new Date(results[0].fecha);
         for (let i = 1; i < results.length; i++) {
             const fecha = new Date(results[i].fecha);
-            if (fecha < fechaCambio) {
+            if (fecha < fechaCambio && fecha > ahora) {
                 fechaCambio = fecha;
             }
         }
@@ -424,7 +425,6 @@ async function change_topic_status(req, res) {
     //fechaCambio = new Date("2024-12-29T12:32:00");
 
     // Programar el cambio de estado
-    const ahora = new Date();
     const delay = fechaCambio - ahora;
 
     if (delay > 0) {
