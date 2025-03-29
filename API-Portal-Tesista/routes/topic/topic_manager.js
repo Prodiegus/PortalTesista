@@ -70,10 +70,14 @@ function schedulePendingChanges() {
 async function executeChange(change) {
     const query_update_estado = `UPDATE tema SET estado = ? WHERE id = ?;`;
     const params_update_estado = [change.estado, change.id];
+    const query_finalizar_trabajo_alumno = `UPDATE alumno_trabaja SET fecha_termino = ? WHERE id_tema = ?;`;
+    const params_finalizar_trabajo_alumno = [change.fechaCambio, change.id];
+
     try {
         await runParametrizedQuery(query_update_estado, params_update_estado);
         console.log(`Estado del tema con ID ${change.id} actualizado a ${change.estado}`);
-        // Eliminar el cambio programado después de ejecutarlo
+        await runParametrizedQuery(query_finalizar_trabajo_alumno, params_finalizar_trabajo_alumno);
+        console.log(`Trabajo del alumno en tema ${change.id} finalizado`);
         scheduledChanges = scheduledChanges.filter(c => c.id !== change.id || c.estado !== change.estado);
         saveScheduledChanges();
     } catch (error) {
