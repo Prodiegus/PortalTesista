@@ -3,7 +3,11 @@ const cron = require('node-cron');
 const fs = require('fs');
 const path = require('path');
 const {create_flow, read_flow, read_school_flow, edit_flow} = require('../flow/manage_flow');
-const {read_phase, create_phase, edit_phase, read_flow_phase, delete_phase} = require('../flow/manage_phase');
+const {read_phase, create_phase, edit_phase, read_flow_phase, delete_phase, getPhasesTopic} = require('../flow/manage_phase');
+const getToken = require('../utils/getToken');
+const createUsuario = require('../keycloak/crearUsuario');
+const getRandomPassword = require('../utils/getRandomPassword');
+const { get } = require('http');
 
 const scheduledChangesFilePath = path.join(__dirname, 'scheduled_changes.json');
 
@@ -94,8 +98,9 @@ async function create_topic(req, res) {
         INSERT INTO flujo_tiene_tema (id_flujo, id_tema)
         VALUES (?, ?);
     `;
+
     query_insert_FTP = `
-        INSERT INTO flujo_tiene_padre (id_flujo, id_phase)
+        INSERT INTO fase_tiene_padre (id_padre, id_hijo)
         VALUES (?, ?);`
     const query_insert_dueno = `INSERT INTO dueno (rut, id_tema) VALUES (?, ?);`;
     const params_id_flujo = [nombre_escuela];
@@ -174,6 +179,48 @@ async function create_topic(req, res) {
                 await create_flow(create_flow_req, res_for_create_flow);
                 params_insert_FTT = [new_id_flujo, id_tema];
                 await runParametrizedQuery(query_insert_FTT, params_insert_FTT, connection);
+                
+                let new_id_fase;
+                const create_phase_req = {
+                    body: {
+                        numero: 1,
+                        nombre: fase.nombre,
+                        descripcion: 'Fase auto generada',
+                        tipo: 'guia',
+                        fecha_inicio: fase.fecha_inicio,
+                        fecha_termino: fase.fecha_termino,
+                        rut_creador: rut_guia,
+                        id_flujo: new_id_flujo
+                    }
+                };
+                const res_for_create_fase = {
+                    status: (code) => {
+                        console.log(`Status: ${code}`);
+                        return res_for_create_fase;
+                    },
+                    send: (data) => {
+                        try {
+                            const parsedData = typeof data === 'string' ? JSON.parse(data) : data;
+                            new_id_fase = parsedData.id;
+                            console.log(parsedData);
+                        } catch (error) {
+                            console.error('Error parsing response from create_phase:', error);
+                        }
+                    },
+                    json: (data) => {
+                        new_id_fase = data.id;
+                        console.log(JSON.stringify(data));
+                    }
+                };
+
+                await create_phase(create_phase_req, res_for_create_fase);
+
+                if (!new_id_fase) {
+                    throw new Error('No se pudo obtener el ID de la nueva fase');
+                }
+
+                const params_insert_FTP = [new_id_flujo, new_id_fase];
+                await runParametrizedQuery(query_insert_FTP, params_insert_FTP, connection);
             }
         } else {
             throw new Error('Fases del flujo no es un array');
@@ -396,10 +443,176 @@ async function change_topic_status(req, res) {
     }
 }
 
+async function requestTopic(req, res) {
+    const {topic_id, nombre, apellido, rut, escuela, correo, mensaje} = req.body;
+
+    const userExistsQuery = `SELECT * FROM usuario WHERE rut = ?;`;
+    const userExistsParams = [rut];
+
+    const insertUserQuery = 
+    `
+        INSERT INTO usuario (nombre, apellido, rut, escuela, correo, password, tipo, activo)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    const insertUserParams = [nombre, apellido, rut, escuela, correo, getRandomPassword(8), 'alumno', 1];
+
+    const insertRequestQuery = 
+    `
+        INSERT INTO solicitud_tema (id_tema, rut_alumno, mensaje)
+        VALUES (?, ?, ?)
+    `;
+
+    const insertRequestParams = [topic_id, rut, mensaje];
+
+    try {
+        const userExists = await runParametrizedQuery(userExistsQuery, userExistsParams);
+        if (userExists.length === 0) {
+            await runParametrizedQuery(insertUserQuery, insertUserParams);
+        }
+        await runParametrizedQuery(insertRequestQuery, insertRequestParams);
+        res.status(200).send('Solicitud enviada con éxito');
+    } catch (error) {
+        console.error('Error solicitando tema:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error solicitando tema');
+    }
+    
+}
+
+async function acept_topic_request(req, res) {
+    const {topic_id, rut_alumno} = req.body;
+
+    const query_insert_flow = `
+        INSERT INTO flujo (rut_creador, tipo, fecha_inicio, fecha_termino)
+        VALUES (?, ?, ?, ?);
+    `;
+    const query_get_last_id = `SELECT LAST_INSERT_ID() AS id;`;
+    const query_insert_FTT = `
+        INSERT INTO flujo_tiene_tema (id_flujo, id_tema)
+        VALUES (?, ?);
+    `;
+    const query_insert_phase = `
+        INSERT INTO fase (numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?);
+    `;
+    const query_insert_FTP = `
+        INSERT INTO fase_tiene_padre (id_padre, id_hijo)
+        VALUES (?, ?);
+    `;
+    const query_insert_alumno_trabaja = `
+        INSERT INTO alumno_trabaja (rut_alumno, id_tema, fecha_inicio, fecha_termino)
+        VALUES (?, ?, ?, ?);
+    `;
+    const alumno_trabaja_params = [rut_alumno, topic_id, new Date(), null];
+    const query_select_alumno = `SELECT * FROM usuario WHERE rut = ?;`;
+    const select_alumno_params = [rut_alumno];
+
+    const query_update_topic_status = `
+        UPDATE tema
+        SET estado = 'En trabajo'
+        WHERE id = ?;
+    `;
+    const update_topic_status_params = [topic_id];
+
+    let connection;
+    try{
+        connection = await beginTransaction();
+        const fases_flujo_guia = await getPhasesTopic(topic_id, 'guia', connection);
+        console.log("fases encontradas: "+fases_flujo_guia);
+        if (!fases_flujo_guia) {
+            throw new Error('No se encontraron fases para el flujo del guía');
+            res.status(500).send('Error aceptando solicitud de tema');
+        }
+        if (fases_flujo_guia.length === 0) {
+            throw new Error('No se encontraron fases para el flujo del guía');
+            res.status(500).send('Error aceptando solicitud de tema');
+        }
+        
+        for (let i = 0; i < fases_flujo_guia.length; i++){
+            console.log("fase: "+fases_flujo_guia[i]);
+            const fase = fases_flujo_guia[i];
+            const create_flow_params = [rut_alumno, 'alumno', fase.fecha_inicio, fase.fecha_termino];
+            await runParametrizedQuery(query_insert_flow, create_flow_params, connection);
+
+            const new_id_flujo_res = await runQuery(query_get_last_id, connection);
+            const new_id_flujo = new_id_flujo_res[0].id;
+
+            const query_insert_FTT_params = [new_id_flujo, topic_id];
+            await runParametrizedQuery(query_insert_FTT, query_insert_FTT_params, connection);
+
+            const create_phase_params = [fase.numero, fase.nombre, 'fase autogenerada', 'alumno', fase.fecha_inicio, fase.fecha_termino, rut_alumno, new_id_flujo];
+            await runParametrizedQuery(query_insert_phase, create_phase_params, connection);
+
+            const new_id_fase_res = await runQuery(query_get_last_id, connection);
+            const new_id_fase = new_id_fase_res[0].id;
+
+            const query_insert_FTP_params = [new_id_flujo, new_id_fase];
+            await runParametrizedQuery(query_insert_FTP, query_insert_FTP_params, connection);
+        }
+
+        const alumno_res = await runParametrizedQuery(query_select_alumno, select_alumno_params, connection);
+        if (alumno_res.length === 0) {
+            throw new Error('No se encontró el alumno');
+        }
+        const alumno = alumno_res[0];
+        const token = await getToken();
+
+        const createUsuarioReq = {
+            body: {
+                nombre: alumno.nombre,
+                apellido: alumno.apellido,
+                rut: alumno.rut,
+                correo: alumno.correo,
+                tipo: 'alumno'
+            }
+        };
+
+        await createUsuario(createUsuarioReq, token, alumno.password);
+
+        await runParametrizedQuery(query_insert_alumno_trabaja, alumno_trabaja_params, connection);
+        await runParametrizedQuery(query_update_topic_status, update_topic_status_params, connection);
+
+        await commitTransaction(connection);
+        res.status(200).send('Solicitud de tema aceptada con éxito');
+        
+    } catch (error) {
+        if (connection) {
+            await rollbackTransaction(connection);
+        }
+        console.error('Error aceptando solicitud de tema:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error aceptando solicitud de tema');
+    }
+}
+
+async function read_topic_request(req, res) {
+    const {topic_id} = req.params;
+    const query = `
+        SELECT mensaje, usuario.*
+        FROM usuario JOIN solicitud_tema ON rut_alumno = rut
+        WHERE id_tema = ?;
+    `;
+    const params = [topic_id];
+    let connection;
+    try {
+        connection = await beginTransaction();
+        const results = await runParametrizedQuery(query, params, connection);
+        await commitTransaction(connection);
+        res.status(200).send(results);
+    } catch (error) {
+        if (connection) {
+            await rollbackTransaction(connection);
+        }
+        console.error('Error obteniendo solicitudes de tema:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error obteniendo solicitudes de tema');
+    }
+}
+
 module.exports = {
     create_topic,
     read_topic,
     read_all_topics,
     edit_topic,
-    change_topic_status
+    change_topic_status,
+    requestTopic,
+    read_topic_request,
+    acept_topic_request
 };

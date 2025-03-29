@@ -36,6 +36,9 @@ import { VerAvancesComponent } from './common/edicion-tema/ver-avances/ver-avanc
 import { VerReunionesComponent } from './common/edicion-tema/ver-reuniones/ver-reuniones.component';
 import { EditarDuenosComponent } from './common/edicion-tema/editar-duenos/editar-duenos.component';
 import { TemaPopupComponent } from './landing/landing-body/tema-popup/tema-popup.component';
+import { FormularioSolicitudTemaComponent } from './landing/landing-body/formulario-solicitud-tema/formulario-solicitud-tema.component';
+import { SolicitudesTemaComponent } from './common/solicitudes-tema/solicitudes-tema.component';
+import { DetalleSolicitudComponent } from './common/detalle-solicitud/detalle-solicitud.component';
 
 @NgModule({
   declarations: [
@@ -69,6 +72,9 @@ import { TemaPopupComponent } from './landing/landing-body/tema-popup/tema-popup
     VerReunionesComponent,
     EditarDuenosComponent,
     TemaPopupComponent,
+    FormularioSolicitudTemaComponent,
+    SolicitudesTemaComponent,
+    DetalleSolicitudComponent,
   ],
   imports: [
     BrowserModule,

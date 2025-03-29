@@ -109,8 +109,9 @@ CREATE TABLE revisor_asignado (
 CREATE TABLE alumno_trabaja (
     rut_alumno VARCHAR(255),
     id_tema INT,
-    semestre VARCHAR(255),
-    PRIMARY KEY (rut_alumno, id_tema, semestre)
+    fecha_inicio DATETIME,
+    fecha_termino DATETIME DEFAULT NULL,
+    PRIMARY KEY (rut_alumno, id_tema, fecha_inicio)
 );
 
 CREATE TABLE guia (
@@ -150,3 +151,23 @@ ALTER TABLE reunion ADD CONSTRAINT FK_reunion_rut_coordinador FOREIGN KEY (rut_c
 ALTER TABLE reunion ADD CONSTRAINT FK_reunion_id_temas FOREIGN KEY (id_temas) REFERENCES tema(id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE dueno ADD CONSTRAINT FK_dueno_rut FOREIGN KEY (rut) REFERENCES usuario(rut) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE dueno ADD CONSTRAINT FK_dueno_id_tema FOREIGN KEY (id_tema) REFERENCES tema(id) ON DELETE CASCADE ON UPDATE CASCADE;
+
+DELIMITER $$
+
+CREATE TRIGGER alumno_trabaja_before_insert
+BEFORE INSERT ON alumno_trabaja
+FOR EACH ROW
+BEGIN
+    -- Verificar si ya existe un registro con el mismo id_tema y fecha_termino IS NULL
+    IF EXISTS (
+        SELECT 1
+        FROM alumno_trabaja
+        WHERE id_tema = NEW.id_tema
+          AND fecha_termino IS NULL
+    ) THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'No se puede insertar un nuevo registro porque ya existe un alumno trabajando en este tema con fecha_termino NULL.';
+    END IF;
+END$$
+
+DELIMITER ;

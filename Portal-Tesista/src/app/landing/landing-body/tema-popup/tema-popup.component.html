@@ -4,7 +4,7 @@
   </div>
   <div class="row my-1">
     <div class="col-3 text-end me-1 bold">Creación:</div>
-    <div class="col text-start">Aun no implementado</div>
+    <div class="col text-start">{{tema.creacion | dateFormat}}</div>
   </div>
   <div class="row my-1">
     <div class="col-3 text-end me-1 bold">Profesor Guia:</div>
@@ -28,5 +28,14 @@
   </div>
   <div class="row mx-5 p-1 secondary-bg r-8 drop-shadow my-1" style="height: 280px; overflow-y: scroll;">
     {{tema.resumen}}
+  </div>
+  <div class="row d-flex justify-content-center my-3" *ngIf="tema.estado === 'Pendiente'">
+    <button class="button primary btn-size-150 rounded-5 bold" (click)="solicitarTema()">Solicitar</button>
+  </div>
+  <div class="row d-flex justify-content-center my-3" *ngIf="tema.estado === 'Finalizado'">
+    <button class="button primary btn-size-150 rounded-5 bold" (click)="descargarTema()">
+      <span>Descargar</span>
+      <span class="ms-1 bi bi-download font-24"></span>
+    </button>
   </div>
 </div>

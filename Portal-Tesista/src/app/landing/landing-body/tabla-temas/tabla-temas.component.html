@@ -63,7 +63,17 @@
   <div class="overlay-content">
     <app-tema-popup
       [tema]="temaSeleccionado"
-      (close)="detalleTemaClose()">
+      (close)="detalleTemaClose()"
+      (solicitar)="solicitarTema()">
     </app-tema-popup>
   </div>
 </div>
+<!-- Solicitar tema popup -->
+<div *ngIf="formulario" class="overlay">
+  <div class="overlay-content">
+    <app-formulario-solicitud-tema
+      [tema]="temaSeleccionado"
+      (close)="solicitarTemaClose()">
+    </app-formulario-solicitud-tema>
+  </div>
+

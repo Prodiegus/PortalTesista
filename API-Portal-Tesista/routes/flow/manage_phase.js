@@ -1,21 +1,31 @@
-const {runParametrizedQuery} = require('../utils/query');
+const {runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, commitTransaction} = require('../utils/query');
 
 async function create_phase(req, res) {
-    const {numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo} = req.body;
-    const query = `
-            INSERT INTO fase (numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
-        `;
+    console.log('Creando fase:', req.body);
+    const { numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo } = req.body;
+    const query_insert = `
+        INSERT INTO fase (numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+    const query_get_last_id = `SELECT LAST_INSERT_ID() AS id;`;
     const params = [numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo];
+
+    const connection = await beginTransaction(); 
     try {
-        const results = await runParametrizedQuery(query, params);
-        res.status(200).send('Fase creada resultados: ' + results);
+        await runParametrizedQuery(query_insert, params, connection);
+        const results = await runQuery(query_get_last_id, connection);
+        const newPhaseId = results[0].id;
+        await commitTransaction(connection);
+
+        res.status(200).json({ id: newPhaseId, message: 'Fase creada con éxito' });
     } catch (error) {
+        if (connection) {
+            await rollbackTransaction(connection);
+        }
         console.error('Error creando fase:', error.response ? error.response.data : error.message);
         res.status(500).send('Error creando fase');
     }
 }
-
 async function read_phase(req, res) {
     const {type} = req.params;
     const query = `SELECT * FROM fase WHERE tipo = ?`;
@@ -108,10 +118,33 @@ async function delete_phase(req, res) {
     }
 }
 
+async function getPhasesTopic(id_topic, type, connection) {
+    const query = `
+        SELECT fase.* 
+        FROM fase
+        JOIN (
+            SELECT id
+            FROM flujo_tiene_tema
+            JOIN flujo ON flujo_tiene_tema.id_flujo = flujo.id
+            WHERE flujo_tiene_tema.id_tema = ? AND tipo = ?
+        ) as flujos
+        ON fase.id_flujo = flujos.id;
+    `;
+    const params = [id_topic, type];
+    try {
+        const results = await runParametrizedQuery(query, params, connection);
+        return results;
+    } catch (error) {
+        console.error('Error obteniendo fase:', error.response ? error.response.data : error.message);
+        return [];
+    }
+}
+
 module.exports = {
     create_phase,
     read_phase,
     read_flow_phase,
     edit_phase,
-    delete_phase
+    delete_phase,
+    getPhasesTopic
 };

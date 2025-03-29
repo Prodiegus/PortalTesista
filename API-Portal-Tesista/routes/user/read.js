@@ -82,6 +82,13 @@ async function readAll(req, res) {
                 });
             }
         }
+
+        for (let i = 0; i < response.length; i++) {
+            if (response[i].tipo === 'alumno') {
+                response.splice(i, 1);
+                i--; 
+            }
+        }
         
         res.status(200).send(response);
     } catch (error) {

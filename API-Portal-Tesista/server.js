@@ -51,19 +51,11 @@ app.use((req, res, next) => {
     next();
 });
 
-// configurar cors
-app.use('/read/topic', cors({
-  origin: '*', // Permitir todas las solicitudes
-  methods: ['GET'],
-  allowedHeaders: ['Origin', 'Content-Type', 'Accept']
-}));
-
 app.use(cors({
   origin: [
     'https://34.176.220.92', 
     'https://localhost:4200',
     'https://portaltesista.me',
-    'https://portaltesista.ovniscorp.tech',
     'https://181.163.68.173:4200',
     'http://192.168.1.86:4200',
     'http://localhost:4200',
@@ -89,7 +81,8 @@ app.use('/', routes);
 // Leer los certificados SSL
 const options = {
   key: fs.readFileSync(config.sslKeyPath),
-  cert: fs.readFileSync(config.sslCertPath)
+  cert: fs.readFileSync(config.sslCertPath),
+  rejectUnauthorized: false
 };
 
 https.createServer(options, app).listen(config.port, config.host, () => {

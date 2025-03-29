@@ -9,6 +9,7 @@ import {HttpRequestService} from '../../../common/Http-request.service';
 export class TemaPopupComponent {
   @Input() tema: any;
   @Output() close = new EventEmitter<void>();
+  @Output() solicitar = new EventEmitter<void>();
 
   constructor(
     private elementRef: ElementRef,
@@ -26,4 +27,12 @@ export class TemaPopupComponent {
   closeOverlay(){
     this.close.emit();
   }
+
+  solicitarTema(){
+    this.solicitar.emit();
+  };
+
+  descargarTema(){
+    console.log(this.tema);
+  };
 }

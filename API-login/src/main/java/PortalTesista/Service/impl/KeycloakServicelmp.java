@@ -104,8 +104,16 @@ public class KeycloakServicelmp implements IkeycloakService {
             log.error("User already exists");
             return "User already exists";
         } else {
-            log.error("Error creting user");
-            return "Error creating user";
+            String errorMessage;
+            try {
+                errorMessage = response.readEntity(String.class);
+            } catch (Exception e) {
+                errorMessage = "No se pudo leer el cuerpo de la respuesta.";
+                log.error("Error leyendo el cuerpo de la respuesta: ", e);
+            }
+        
+            log.error("Error creando usuario: " + errorMessage);
+            return "Error creando usuario";
         }
     }
 
@@ -113,8 +121,19 @@ public class KeycloakServicelmp implements IkeycloakService {
         SimpleMailMessage message = new SimpleMailMessage();
         message.setTo(to);
         message.setSubject("Creación de cuenta");
-        message.setText("Se ha creado una cuenta a tu nombre en portaltesista.me\nUsername: " +
-                username + "\nPassword: " + password + "\nPor favor, cambia tu contraseña en tu primer inicio de sesión");
+        message.setText(
+            "¡Hola!\n\n" +
+            "Se ha creado una cuenta a tu nombre en Portal Tesista.\n\n" +
+            "Detalles de tu cuenta:\n" +
+            "---------------------------------\n" +
+            "Usuario: " + username + "\n" +
+            "Contraseña: " + password + "\n" +
+            "---------------------------------\n\n" +
+            "Por favor, cambia tu contraseña en tu primer inicio de sesión para mayor seguridad.\n\n" +
+            "Saludos cordiales,\n" +
+            "Equipo de Portal Tesista\n\n" +
+            "Ya puedes empezar a utilizar la plataforma en: https://portaltesista.me"
+        );
         mailSender.send(message);
     }
 

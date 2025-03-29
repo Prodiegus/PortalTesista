@@ -1,0 +1,47 @@
+<div class="container-fluid p-3">
+  <div class="row text-center">
+    <h5>Solicitud de trabajo en Tema</h5>
+  </div>
+  <div class="row d-flex justify-content-center align-items-center mt-3">
+    <div class="col-3 d-flex justify-content-end text-end bold me-1">
+      Nombre:
+    </div>
+    <div class="col d-flex justify-content-start text-start">
+      {{solicitud.nombre+' '+solicitud.apellido}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3 d-flex justify-content-end text-end bold me-1">
+      Escuela:
+    </div>
+    <div class="col d-flex justify-content-start text-start">
+      {{solicitud.escuela}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3 d-flex justify-content-end text-end bold me-1">
+      Correo:
+    </div>
+    <div class="col d-flex justify-content-start text-start">
+      {{solicitud.correo}}
+    </div>
+  </div>
+  <div class="row secondary-bg r-8 drop-shadow p-3 mt-3 mx-5" style="height: 275px; overflow-y: scroll;">
+    {{solicitud.mensaje}}
+  </div>
+  <div class="row mt-3">
+    <div class="col d-flex justify-content-end">
+      <button class="button secondary btn-size-150 rounded-5 bold" (click)="closeOverlay()">Cerrar</button>
+    </div>
+    <div class="col d-flex justify-content-start ms-2">
+      <button class="button primary btn-size-150 rounded-5 bold" (click)="aceptarSolicitud()">
+        <span>Aceptar</span>
+        <span
+          class="ms-1 spinner-border spinner-border-sm"
+          aria-hidden="true"
+          *ngIf="loading"
+        ></span>
+      </button>
+    </div>
+  </div>
+</div>
