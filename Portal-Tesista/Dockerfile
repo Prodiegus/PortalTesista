@@ -18,6 +18,8 @@ COPY default.conf /etc/nginx/conf.d/default.conf
 COPY certs/selfsigned.crt /etc/nginx/certs/selfsigned.crt
 COPY certs/selfsigned.key /etc/nginx/certs/selfsigned.key
 
+COPY .well-known /usr/share/nginx/html/.well-known
+
 EXPOSE 80
 EXPOSE 443
 
