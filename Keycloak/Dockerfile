@@ -31,6 +31,6 @@ RUN mkdir ${PORTALTESISTA_THEME_BASE_DIR}
 
 COPY ${PORTALTESISTA_THEME_LOCAL_ROOT_DIR} ${PORTALTESISTA_THEME_BASE_DIR}
 
-COPY certs/selfsigned.jks /etc/ssl/certs/selfsigned.jks
+COPY certs/portaltesista_me.jks /etc/ssl/certs/portaltesista_me.jks
 
-ENTRYPOINT ["./bin/kc.sh", "start-dev", "--https-port=8443", "--https-key-store-file=/etc/ssl/certs/selfsigned.jks", "--https-key-store-password=changeit"]
+ENTRYPOINT ["./bin/kc.sh", "start-dev", "--https-port=8443", "--https-key-store-file=/etc/ssl/certs/portaltesista_me.jks", "--https-key-store-password=changeit"]
