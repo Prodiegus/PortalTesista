@@ -32,8 +32,8 @@ services:
     build: ./Portal-Tesista
     container_name: portal-tesista
     ports:
-      - "80:80"
-      - "443:443"
+      - "8085:80"
+      - "4843:443"
     depends_on:
       - mysql
       - api-portal-tesista
@@ -88,7 +88,22 @@ services:
       - keycloak
     command: ["-Djboss.http.port=8080", "-Djboss.https.port=8443", "-Djboss.https.key-store=/etc/ssl/certs/selfsigned.jks", "-Djboss.https.key-store-password=changeit"]
 
+  npm:
+    image: jc21/nginx-proxy-manager:latest
+    restart: unless-stopped
+    ports:
+      - "80:80"    # HTTP
+      - "443:443"  # HTTPS
+      - "81:81"    # Admin UI
+    volumes:
+      - ./data:/data
+      - ./letsencrypt:/etc/letsencrypt
+    networks:
+      - proxy_network
+
 networks:
+  proxy_network:
+    driver: bridge
   portal-tesista:
     driver: bridge
   api-portal-tesista:
