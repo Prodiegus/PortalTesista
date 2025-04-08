@@ -307,3 +307,4 @@
 2025/04/08 16:21:08 [error] 192#192: *1185 open() "/var/www/html/etc/app/config.ini" failed (2: No such file or directory), client: 45.148.10.35, server: localhost-nginx-proxy-manager, request: "GET /etc/app/config.ini HTTP/1.1", host: "34.176.220.92"
 2025/04/08 16:24:35 [error] 192#192: *1187 open() "/var/www/html/.env" failed (2: No such file or directory), client: 78.153.140.147, server: localhost-nginx-proxy-manager, request: "GET /.env HTTP/1.1", host: "34.176.220.92"
 2025/04/08 19:19:31 [error] 192#192: *762 open() "/var/www/html/GponForm/diag_Form" failed (2: No such file or directory), client: 27.215.124.176, server: localhost-nginx-proxy-manager, request: "POST /GponForm/diag_Form?images/ HTTP/1.1", host: "127.0.0.1:80"
+2025/04/08 20:01:34 [error] 186#186: *46 open() "/var/www/html/.env" failed (2: No such file or directory), client: 78.153.140.147, server: localhost-nginx-proxy-manager, request: "GET /.env HTTP/1.1", host: "34.176.220.92"
