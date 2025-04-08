@@ -243,3 +243,4 @@
 [08/Apr/2025:20:33:12 +0000] - 200 200 - GET http portaltesista.me "/robots.txt" [Client 34.243.195.158] [Length 1985] [Gzip 2.51] [Sent-to 34.176.220.92] "Pandalytics/2.0 (https://domainsbot.com/pandalytics/)" "-"
 [08/Apr/2025:20:33:12 +0000] - 200 200 - GET http portaltesista.me "/" [Client 34.243.195.158] [Length 1985] [Gzip 2.51] [Sent-to 34.176.220.92] "Pandalytics/2.0 (https://domainsbot.com/pandalytics/)" "-"
 [08/Apr/2025:20:43:40 +0000] - 200 200 - GET https portaltesista.me "/" [Client 54.156.251.192] [Length 4950] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (compatible)" "-"
+[08/Apr/2025:21:30:57 +0000] - 200 200 - GET https portaltesista.me "/" [Client 91.84.87.137] [Length 1983] [Gzip 2.51] [Sent-to 34.176.220.92] "Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0.0.0 Mobile Safari/537.36" "-"
