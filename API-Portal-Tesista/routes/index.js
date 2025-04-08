@@ -8,6 +8,7 @@ const { create_topic, read_topic, read_all_topics, edit_topic, change_topic_stat
 const disable = require('./user/disable');
 const enable = require('./user/enable');
 const {getSchools} = require('./school/school_manager');
+const {addPreview} = require('./update/topic_preview_manager');
 
 const router = express.Router();
 
@@ -134,6 +135,12 @@ router.get('/read/topic-request/:topic_id', async (req, res) => {
 router.get('/read/schools', async (req, res) => {
   console.log('Consulta get a /read/schools: ', req.body);
   await getSchools(req, res);
+});
+
+// subir un avance
+router.post('/upload/preview', async (req, res) => {
+  console.log('Consulta post a /upload/preview: ', req.body);
+  await addPreview(req, res);
 });
 
 module.exports = router;
