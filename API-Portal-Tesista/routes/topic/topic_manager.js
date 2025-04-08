@@ -70,10 +70,14 @@ function schedulePendingChanges() {
 async function executeChange(change) {
     const query_update_estado = `UPDATE tema SET estado = ? WHERE id = ?;`;
     const params_update_estado = [change.estado, change.id];
+    const query_finalizar_trabajo_alumno = `UPDATE alumno_trabaja SET fecha_termino = ? WHERE id_tema = ?;`;
+    const params_finalizar_trabajo_alumno = [change.fechaCambio, change.id];
+
     try {
         await runParametrizedQuery(query_update_estado, params_update_estado);
         console.log(`Estado del tema con ID ${change.id} actualizado a ${change.estado}`);
-        // Eliminar el cambio programado después de ejecutarlo
+        await runParametrizedQuery(query_finalizar_trabajo_alumno, params_finalizar_trabajo_alumno);
+        console.log(`Trabajo del alumno en tema ${change.id} finalizado`);
         scheduledChanges = scheduledChanges.filter(c => c.id !== change.id || c.estado !== change.estado);
         saveScheduledChanges();
     } catch (error) {
@@ -247,7 +251,8 @@ async function read_topic(req, res) {
         SELECT tema.* 
         FROM tema JOIN alumno_trabaja 
         ON tema.id = alumno_trabaja.id_tema 
-        WHERE alumno_trabaja.rut_alumno = ?;
+        WHERE alumno_trabaja.rut_alumno = ?
+        AND (alumno_trabaja.fecha_termino IS NULL OR alumno_trabaja.fecha_termino <= CURRENT_DATE);
     `;
     const query_alumnos_guia = `SELECT rut_alumno FROM guia WHERE rut_guia = ?;`;
     const query_temas_revisor = `
@@ -401,13 +406,14 @@ async function change_topic_status(req, res) {
     const params_get_fechas_flow = [id];
     let fechaCambio;
 
+    const ahora = new Date();
     try {
         const results = await runParametrizedQuery(query_get_fechas_flow, params_get_fechas_flow);
         // Obtendremos la fecha de termino mas proxima
         fechaCambio = new Date(results[0].fecha);
         for (let i = 1; i < results.length; i++) {
             const fecha = new Date(results[i].fecha);
-            if (fecha < fechaCambio) {
+            if (fecha < fechaCambio && fecha > ahora) {
                 fechaCambio = fecha;
             }
         }
@@ -419,7 +425,6 @@ async function change_topic_status(req, res) {
     //fechaCambio = new Date("2024-12-29T12:32:00");
 
     // Programar el cambio de estado
-    const ahora = new Date();
     const delay = fechaCambio - ahora;
 
     if (delay > 0) {
