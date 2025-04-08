@@ -211,3 +211,5 @@
 2025/04/08 15:09:53 [error] 213#213: *7571 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /admin/assets/js/views/login.js HTTP/1.1", upstream: "http://127.0.0.1:80/admin/assets/js/views/login.js", host: "34.176.220.92"
 2025/04/08 15:33:46 [alert] 213#213: 512 worker_connections are not enough
 2025/04/08 15:33:46 [error] 212#212: *8648 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:80/favicon.ico", host: "www.portaltesista.me"
+2025/04/08 15:56:29 [error] 186#186: *24 open() "/var/www/html/logon.htm" failed (2: No such file or directory), client: 5.183.209.244, server: localhost-nginx-proxy-manager, request: "GET /logon.htm HTTP/1.1", host: "127.0.0.1"
+2025/04/08 16:00:32 [error] 186#186: *33 open() "/var/www/html/.env" failed (2: No such file or directory), client: 196.251.71.111, server: localhost-nginx-proxy-manager, request: "GET /.env HTTP/1.1", host: "34.176.220.92"
