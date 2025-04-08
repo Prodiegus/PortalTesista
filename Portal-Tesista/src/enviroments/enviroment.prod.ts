@@ -1,7 +1,7 @@
 export const environment = {
   production: false,
   keycloak: {
-    url: 'https://34.176.220.92:8443/',
+    url: 'https://keycloak.portaltesista.me/',
     realm: 'portal-tesista',
     clientId: 'front',
   },

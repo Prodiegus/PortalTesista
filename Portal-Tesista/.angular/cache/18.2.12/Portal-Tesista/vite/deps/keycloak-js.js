@@ -608,9 +608,9 @@ function Keycloak(config) {
       } else {
         kc.silentCheckSsoFallback = true;
       }
-      if (initOptions.pkceMethod) {
-        if (initOptions.pkceMethod !== "S256") {
-          throw new TypeError(`Invalid value for 'pkceMethod', expected 'S256' but got '${initOptions.pkceMethod}'.`);
+      if (typeof initOptions.pkceMethod !== "undefined") {
+        if (initOptions.pkceMethod !== "S256" && initOptions.pkceMethod !== false) {
+          throw new TypeError(`Invalid value for pkceMethod', expected 'S256' or false but got ${initOptions.pkceMethod}.`);
         }
         kc.pkceMethod = initOptions.pkceMethod;
       } else {
@@ -1328,7 +1328,7 @@ function Keycloak(config) {
     if (token) {
       kc.token = token;
       kc.tokenParsed = jwtDecode(token);
-      kc.sessionId = kc.tokenParsed.session_state;
+      kc.sessionId = kc.tokenParsed.sid;
       kc.authenticated = true;
       kc.subject = kc.tokenParsed.sub;
       kc.realmAccess = kc.tokenParsed.realm_access;
