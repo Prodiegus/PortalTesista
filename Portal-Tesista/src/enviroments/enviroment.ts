@@ -6,9 +6,9 @@ export const environment = {
     clientId: 'front',
   },
   apiLogin: {
-    url: 'https://api-login.portaltesista.me/',
+    url: 'https://api-login.portaltesista.me',
   },
   'api-portal-tesista': {
-    url: 'https://api.portaltesista.me/',
+    url: 'https://api.portaltesista.me',
   }
 };
