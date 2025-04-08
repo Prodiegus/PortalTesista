@@ -101,18 +101,21 @@ export class CalendarioTemaComponent implements OnInit {
       const file = input.files[0];
       if (file.type === 'application/pdf') {
         console.log('PDF file selected:', file);
-        const formData = new FormData();
-        formData.append('file', file);
-        const avance = {
-          id_tema: this.tema.id_tema,
-          nombre_archivo: file.name,
-          archivo64: formData,
-          fecha: this.currentDate,
-        }
-        this.loading = true;
-        this.subirAvance(avance).then(() => {
-          this.loading = false;
-        });
+        const reader = new FileReader();
+        reader.onload = () => {
+          const fileContent = reader.result as string;
+          const formData = {
+            id_tema: this.tema.id_tema,
+            nombre_archivo: file.name,
+            archivo64: fileContent,
+            fecha: this.currentDate.toISOString(),
+          };
+          this.loading = true;
+          this.subirAvance(formData).then(() => {
+            this.loading = false;
+          });
+        };
+        reader.readAsDataURL(file);
       } else {
         console.error('Solo se acepta PDF.');
       }
