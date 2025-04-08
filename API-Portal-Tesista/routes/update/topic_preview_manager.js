@@ -3,6 +3,11 @@ const {runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, co
 async function addPreview(req, res) {
     const { id_tema, nombre_archivo, archivo64, fecha} = req.body;
 
+    // Validar que los campos requeridos no estén vacíos
+    if (!id_tema || !nombre_archivo || !archivo64 || !fecha) {
+        return res.status(400).send('Faltan campos requeridos en la solicitud');
+    }
+
     const query_insert_file = `
         INSERT INTO archivos (nombre, file, fecha, tipo)
         VALUES (?, ?, ?, ?)
