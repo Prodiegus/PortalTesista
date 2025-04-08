@@ -39,6 +39,7 @@ import { TemaPopupComponent } from './landing/landing-body/tema-popup/tema-popup
 import { FormularioSolicitudTemaComponent } from './landing/landing-body/formulario-solicitud-tema/formulario-solicitud-tema.component';
 import { SolicitudesTemaComponent } from './common/solicitudes-tema/solicitudes-tema.component';
 import { DetalleSolicitudComponent } from './common/detalle-solicitud/detalle-solicitud.component';
+import { TwoDigitDayPipe } from './pipe/two-digit-day.pipe';
 
 @NgModule({
   declarations: [
@@ -75,6 +76,7 @@ import { DetalleSolicitudComponent } from './common/detalle-solicitud/detalle-so
     FormularioSolicitudTemaComponent,
     SolicitudesTemaComponent,
     DetalleSolicitudComponent,
+    TwoDigitDayPipe,
   ],
   imports: [
     BrowserModule,
