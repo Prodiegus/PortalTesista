@@ -29,15 +29,18 @@ export class KeycloakService {
   }
 
   async init() {
+    console.log('Initializing...');
     const authenticated = await this.keycloak.init({
       onLoad: 'login-required',
       pkceMethod: 'S256',
       redirectUri: window.location.origin + '/home',
     });
+    console.log('Authenticated:', authenticated);
 
     if (authenticated) {
       this._profile = (await this.keycloak?.loadUserProfile()) as UserProfile;
       this._profile.token = this.keycloak?.token;
+      console.log('Authenticated:', this._profile);
     }
   }
 
@@ -51,6 +54,7 @@ export class KeycloakService {
 
   login() {
     if (this.isAuthenticated()) {
+      console.log('Authenticated');
       this.keycloak?.logout();
     }
     this.keycloak?.login();
