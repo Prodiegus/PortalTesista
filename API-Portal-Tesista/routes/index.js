@@ -139,7 +139,7 @@ router.get('/read/schools', async (req, res) => {
 
 // subir un avance
 router.post('/upload/preview', async (req, res) => {
-  console.log('Consulta post a /upload/preview: ', req.body);
+  console.log('Consulta post a /upload/preview: ');
   await addPreview(req, res);
 });
 
