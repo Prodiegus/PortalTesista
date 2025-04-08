@@ -1,4 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import { HttpRequestService } from '../Http-request.service';
 
 @Component({
   selector: 'app-calendario-tema',
@@ -8,6 +9,8 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CalendarioTemaComponent implements OnInit {
   @Input() userRepresentation!: any;
   @Input() tema!: any;
+
+  @ViewChild('fileInput') fileInput!: ElementRef;
 
   hoveredCell: { weekIndex: number; dayIndex: number } | null = null;
 
@@ -19,6 +22,10 @@ export class CalendarioTemaComponent implements OnInit {
   currentDate: Date = new Date();
   mes: number = 0;
   year: number = 0;
+
+  constructor(
+    private httpRequestService: HttpRequestService,
+  ) {}
 
   ngOnInit() {
     this.loading = true;
@@ -75,11 +82,56 @@ export class CalendarioTemaComponent implements OnInit {
   }
 
   onMouseEnter(weekIndex: number, dayIndex: number): void {
-    this.hoveredCell = { weekIndex, dayIndex };
+    if(this.userRepresentation.tipo === "alumno"){
+      this.hoveredCell = { weekIndex, dayIndex };
+    }
   }
 
   onMouseLeave(): void {
     this.hoveredCell = null;
   }
 
+  triggerFileInput(): void {
+    this.fileInput.nativeElement.click();
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      if (file.type === 'application/pdf') {
+        console.log('PDF file selected:', file);
+        const formData = new FormData();
+        formData.append('file', file);
+        const avance = {
+          id_tema: this.tema.id_tema,
+          nombre_archivo: file.name,
+          archivo64: formData,
+          fecha: this.currentDate,
+        }
+        this.loading = true;
+        this.subirAvance(avance).then(() => {
+          this.loading = false;
+        });
+      } else {
+        console.error('Solo se acepta PDF.');
+      }
+    }
+  }
+
+  async subirAvance(avance: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.subirAvance(avance).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error subiendo avance');
+            reject(error);
+          }
+        );
+      });
+    });
+  }
 }

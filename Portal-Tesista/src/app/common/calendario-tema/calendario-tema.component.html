@@ -28,7 +28,14 @@
       [ngClass]="{'hovered': hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j}"
     >
       <ng-container *ngIf="hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j; else showDay">
-        <i class="bi bi-plus-circle"></i>
+        <i class="bi bi-plus-circle pointer" (click)="triggerFileInput()"></i>
+        <input
+          type="file"
+          #fileInput
+          class="d-none"
+          accept="application/pdf"
+          (change)="onFileSelected($event)"
+        />
       </ng-container>
       <ng-template #showDay>
         {{dia | twoDigitDay}}
