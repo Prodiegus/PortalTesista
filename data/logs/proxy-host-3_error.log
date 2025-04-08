@@ -1,0 +1,1 @@
+2025/04/08 20:42:39 [error] 191#191: *291 upstream prematurely closed connection while reading response header from upstream, client: 181.163.34.130, server: api.portaltesista.me, request: "POST /upload/preview HTTP/1.1", upstream: "https://34.176.220.92:3000/upload/preview", host: "api.portaltesista.me", referrer: "http://localhost:4200/"

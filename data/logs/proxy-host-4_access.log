@@ -35,3 +35,4 @@
 [08/Apr/2025:16:29:27 +0000] - 200 200 - GET https api-login.portaltesista.me "/userName" [Client 181.163.34.130] [Length 30] [Gzip -] [Sent-to 34.176.220.92] "PostmanRuntime/7.43.2" "-"
 [08/Apr/2025:16:31:16 +0000] - 200 200 - GET https api-login.portaltesista.me "/userName" [Client 181.163.34.130] [Length 30] [Gzip -] [Sent-to 34.176.220.92] "PostmanRuntime/7.43.2" "-"
 [08/Apr/2025:20:12:24 +0000] - 200 200 - GET http api-login.portaltesista.me "/" [Client 172.111.15.0] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (iPad; CPU OS 11_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.0 Mobile/15E148 Safari/604.1" "-"
+[08/Apr/2025:20:13:43 +0000] - 200 200 - GET http api-login.portaltesista.me "/" [Client 161.123.3.103] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (iPhone; CPU iPhone OS 16_6_1 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.5 Mobile/15E148 Safari/604.1" "-"
