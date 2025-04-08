@@ -11,7 +11,7 @@ async function addPreview(req, res) {
 
     const query_get_last_id = `SELECT LAST_INSERT_ID() AS id;`;
     const query_insert_preview = `
-        INSERT INTO avance (id_tema, id_archivo, comentarios, nota, aprobado, fecha, revision_visible)
+        INSERT INTO avance (id_archivo, id_tema, comentarios, nota, aprobado, fecha, revision_visible)
         VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
 
@@ -23,7 +23,7 @@ async function addPreview(req, res) {
         const newFileId = results[0].id;
 
         // Insertar el avance
-        const params_insert_preview = [id_tema, newFileId, null, null, null, fecha, 0];
+        const params_insert_preview = [newFileId, id_tema, null, null, null, fecha, 0];
         await runParametrizedQuery(query_insert_preview, params_insert_preview, connection);
 
         await commitTransaction(connection);

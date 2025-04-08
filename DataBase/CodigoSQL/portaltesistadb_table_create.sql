@@ -27,7 +27,7 @@ CREATE INDEX idx_tema_id_fase ON tema (id_fase);
 CREATE TABLE archivos (
     id INT AUTO_INCREMENT,
     nombre VARCHAR(255),
-    file BLOB,
+    file LONGBLOB,
     fecha DATETIME,
     tipo VARCHAR(255),
     PRIMARY KEY (id)
