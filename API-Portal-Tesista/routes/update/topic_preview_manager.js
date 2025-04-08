@@ -15,8 +15,8 @@ async function addPreview(req, res) {
         VALUES (?, ?, ?, ?, ?, ?, ?)
     `;
 
+    const connection = await beginTransaction(); 
     try {
-        const connection = await beginTransaction(); 
         // Insertar el archivo
         await runParametrizedQuery(query_insert_file, params_insert_file, connection);
         const results = await runQuery(query_get_last_id, connection);

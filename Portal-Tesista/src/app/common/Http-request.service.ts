@@ -115,4 +115,9 @@ export class HttpRequestService {
     const endpoint = `${this.apiUrl}/read/topic-request/${id_tema}`;
     return this.http.get<any>(endpoint);
   }
+
+  async subirAvance(avance: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/upload/preview`;
+    return this.http.post<any>(endpoint, avance);
+  }
 }
