@@ -117,8 +117,9 @@ CREATE TABLE alumno_trabaja (
 CREATE TABLE guia (
     rut_guia VARCHAR(255),
     rut_alumno VARCHAR(255),
-    semestre VARCHAR(255),
-    PRIMARY KEY (rut_guia, rut_alumno, semestre)
+    fecha_inicio DATETIME,
+    fecha_termino DATETIME DEFAULT NULL,
+    PRIMARY KEY (rut_guia, rut_alumno, fecha_inicio)
 );
 
 CREATE TABLE dueno (

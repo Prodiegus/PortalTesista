@@ -486,6 +486,12 @@ async function requestTopic(req, res) {
 async function acept_topic_request(req, res) {
     const {topic_id, rut_alumno} = req.body;
 
+    const query_insert_guia = `
+        INSERT INTO guia (rut_guia, rut_alumno, fecha_inicio, fecha_termino)
+        VALUES (?, ?, ?, ?);
+    `;
+    const params_insert_guia = [rut_alumno, rut_alumno, new Date(), null];
+
     const query_insert_flow = `
         INSERT INTO flujo (rut_creador, tipo, fecha_inicio, fecha_termino)
         VALUES (?, ?, ?, ?);
@@ -575,6 +581,8 @@ async function acept_topic_request(req, res) {
 
         await runParametrizedQuery(query_insert_alumno_trabaja, alumno_trabaja_params, connection);
         await runParametrizedQuery(query_update_topic_status, update_topic_status_params, connection);
+
+        await runParametrizedQuery(query_insert_guia, params_insert_guia, connection);
 
         await commitTransaction(connection);
         res.status(200).send('Solicitud de tema aceptada con éxito');

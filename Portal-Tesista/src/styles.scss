@@ -201,3 +201,22 @@ button:disabled {
   color: $primary-color;
   box-shadow: 0 0 5px rgba($primary-color, 0.5);
 }
+
+.base-style {
+  background-color: $gray-color;
+  color: $primary-color;
+  font-size: 16px;
+  display: flex;
+  align-items: start;
+  justify-content: end;
+}
+
+.hovered {
+  background-color: $gray-color;
+  color: $primary-color;
+  font-size: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+

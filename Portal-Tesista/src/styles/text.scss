@@ -22,6 +22,16 @@
     font-weight: bold;
 }
 
+.dark-normal {
+    color: $dark-color;
+    font-weight: normal;
+}
+
+.dark-bold {
+    color: $dark-color;
+    font-weight: bold;
+}
+
 .secondary-darken {
     // hacemos el color secundario un poco mas oscuro
     color: darken($secondary-color, 40%);

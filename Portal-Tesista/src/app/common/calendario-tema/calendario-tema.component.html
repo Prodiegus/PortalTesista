@@ -1,1 +1,45 @@
-<div class="background"></div>
+<div class="container-fluid m-0 px-5" *ngIf="!loading">
+  <div class="row font-20 bold d-flex align-items-center justify-content-center mt-24 r-16 border primary px-3 mb-3 mx-1">
+    <div class="col d-flex justify-content-start pointer" (click)="mesAnterior()">
+      <i class="bi bi-arrow-left primary-normal font-40"></i>
+    </div>
+    <div class="col bold d-flex justify-content-center">
+      {{meses[mes]}} {{year}}
+    </div>
+    <div class="col d-flex justify-content-end pointer" (click)="mesSiguiente()">
+      <i class="bi bi-arrow-right primary-normal font-40"></i>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <div class="row rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
+    <div class="col text-center"  *ngFor="let dia of dias; index as i">
+      {{dia}}
+    </div>
+  </div>
+
+  <!-- Body -->
+  <div class="row" *ngFor="let semana of calendario; index as i">
+    <div
+      class="col square secondary-bg bold border primary base-style"
+      *ngFor="let dia of semana; index as j"
+      (mouseenter)="onMouseEnter(i, j)"
+      (mouseleave)="onMouseLeave()"
+      [ngClass]="{'hovered': hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j}"
+    >
+      <ng-container *ngIf="hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j; else showDay">
+        <i class="bi bi-plus-circle"></i>
+      </ng-container>
+      <ng-template #showDay>
+        {{dia | twoDigitDay}}
+      </ng-template>
+    </div>
+  </div>
+</div>
+
+<!-- loader -->
+<div class="container-fluid d-flex justify-content-center align-items-center fullscreen" *ngIf="loading">
+  <div class="spinner-grow primary-normal div-size-72" role="status">
+    <span class="visually-hidden">cargando...</span>
+  </div>
+</div>
