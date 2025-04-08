@@ -106,7 +106,7 @@ export class CalendarioTemaComponent implements OnInit {
           const fileContent = reader.result as string;
           const formattedDate = this.currentDate.toISOString().slice(0, 19).replace('T', ' ');
           const formData = {
-            id_tema: this.tema.id_tema,
+            id_tema: this.tema.id,
             nombre_archivo: file.name,
             archivo64: fileContent,
             fecha: formattedDate,
