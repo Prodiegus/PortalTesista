@@ -644,3 +644,4 @@
 [08/Apr/2025:21:30:25 +0000] 200 - GET http 34.176.220.92 "/" [Client 154.81.156.35] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
 [08/Apr/2025:21:31:11 +0000] 200 - GET http 34.176.220.92 "/" [Client 154.81.156.54] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
 [08/Apr/2025:21:42:37 +0000] 200 - GET http 34.176.220.92 "/" [Client 154.81.156.34] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
+[08/Apr/2025:21:46:42 +0000] 400 - - http localhost-nginx-proxy-manager "-" [Client 92.255.57.58] [Length 154] [Gzip -] "-" "-"
