@@ -4,7 +4,7 @@ async function addPreview(req, res) {
     const { id_tema, nombre_archivo, archivo64, fecha} = req.body;
 
     const query_insert_file = `
-        INSERT INTO archivo (nombre, file, fecha, tipo)
+        INSERT INTO archivos (nombre, file, fecha, tipo)
         VALUES (?, ?, ?, ?)
     `;
     const params_insert_file = [nombre_archivo, archivo64, fecha, 'avance'];
