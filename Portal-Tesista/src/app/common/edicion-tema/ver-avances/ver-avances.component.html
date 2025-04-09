@@ -1,5 +1,67 @@
 <div class="container-fluid" *ngIf="!loading">
+  <div class="row r-8 secondary-bg container-fluid m-0 p-3" *ngIf="esCargo">
+    <div class="row bold font-18 mb-3">
+      Revisores asignados:
+    </div>
+    <div class="row">
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z0">
+        <ng-container matColumnDef="nombre">
+          <th mat-header-cell *matHeaderCellDef class="text-center">Nombre</th>
+          <td mat-cell *matCellDef="let element" class="text-center">
+            {{element.nombre}}
+          </td>
+        </ng-container>
 
+        <ng-container matColumnDef="email">
+          <th mat-header-cell *matHeaderCellDef class="text-center">Correo</th>
+          <td mat-cell *matCellDef="let element" class="text-center">
+            {{element.email}}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Activar Revision">
+          <th mat-header-cell *matHeaderCellDef class="text-center">Activar Revisión</th>
+          <td mat-cell *matCellDef="let element" class="text-center">
+            <button mat-icon-button (click)="activarRevision(element)">
+              <i class="bi bi-check-square font-24"></i>
+            </button>
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Sacar">
+          <th mat-header-cell *matHeaderCellDef class="text-center">Sacar</th>
+          <td mat-cell *matCellDef="let element" class="text-center">
+            <button mat-icon-button (click)="sacarRevisor(element)">
+              <i class="bi bi-x-square font-24"></i>
+            </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </div>
+    <div class="row w-50">
+      <form (ngSubmit)="agregarRevisor()">
+        <div class="input-group">
+          <select [(ngModel)]="profesorSeleccionado"
+                  id="add-revisor"
+                  class="form-select"
+                  aria-label="Profesor"
+                  required>
+            <option value="Seleccionar profesor..." disabled selected>Seleccionar profesor...</option>
+            <option *ngFor="let profesor of profesores" [value]="profesor.rut">
+              {{profesor.rut}}|{{profesor.nombre}}
+            </option>
+          </select>
+          <button class="button primary" type="submit">Aregar revisor</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row background" *ngFor="let avance of avances">
+    {{avance.fecha | dateFormat}}
+  </div>
 </div>
 
 <!-- loader -->
