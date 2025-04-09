@@ -22,6 +22,8 @@ async function addPreview(req, res) {
     `;
 
     let connection;
+    let connectionReleased = false; // Indicador para rastrear si la conexión ya fue liberada
+
     try {
         connection = await beginTransaction();
 
@@ -37,17 +39,19 @@ async function addPreview(req, res) {
         await runParametrizedQuery(query_insert_file, params_insert_file, connection);
 
         await commitTransaction(connection);
+        connectionReleased = true; // La conexión se libera automáticamente después de commitTransaction
 
         res.status(200).json({ id: newPreviewId, message: 'Preview added successfully' });
     } catch (error) {
-        if (connection) {
+        if (connection && !connectionReleased) {
             await rollbackTransaction(connection);
+            connectionReleased = true; // La conexión se libera automáticamente después de rollbackTransaction
         }
         console.error('Error adding preview:', error.response ? error.response.data : error.message);
         res.status(500).send('Error adding preview');
     } finally {
-        if (connection) {
-            connection.release(); // Liberar la conexión al pool
+        if (connection && !connectionReleased) {
+            connection.release(); // Liberar la conexión solo si no ha sido liberada
         }
     }
 }
