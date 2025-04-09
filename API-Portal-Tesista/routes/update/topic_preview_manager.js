@@ -88,4 +88,5 @@ async function getTopicPreviews(req, res) {
 
 module.exports = {
     addPreview,
+    getTopicPreviews
 };
