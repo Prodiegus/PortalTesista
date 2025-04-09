@@ -1,27 +1,30 @@
 const {runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, commitTransaction} = require('../utils/query');
 
 async function addPreview(req, res) {
-    const { id_tema, nombre_archivo, archivo64, fecha} = req.body;
+    const { id_tema, nombre_archivo, archivo64, fecha } = req.body;
 
     // Validar que los campos requeridos no estén vacíos
     if (!id_tema || !nombre_archivo || !archivo64 || !fecha) {
         return res.status(400).send('Faltan campos requeridos en la solicitud');
     }
 
-    
     const query_insert_preview = `
-    INSERT INTO avance (id_tema, comentarios, nota, aprobado, fecha, revision_visible)
-    VALUES (?, ?, ?, ?, ?, ?)
+        INSERT INTO avance (id_tema, comentarios, nota, aprobado, fecha, revision_visible)
+        VALUES (?, ?, ?, ?, ?, ?)
     `;
     const params_insert_preview = [id_tema, null, null, null, fecha, 0];
+
     const query_get_last_id = `SELECT LAST_INSERT_ID() AS id;`;
-    
+
     const query_insert_file = `
         INSERT INTO archivo (id_avance, nombre, file, fecha, tipo)
         VALUES (?, ?, ?, ?, ?)
     `;
-    const connection = await beginTransaction(); 
+
+    let connection;
     try {
+        connection = await beginTransaction();
+
         // Insertar el avance
         await runParametrizedQuery(query_insert_preview, params_insert_preview, connection);
 
@@ -32,15 +35,20 @@ async function addPreview(req, res) {
 
         // Insertar el archivo
         await runParametrizedQuery(query_insert_file, params_insert_file, connection);
+
         await commitTransaction(connection);
 
-        res.status(200).json({ id: newFileId, message: 'Preview added successfully' });
+        res.status(200).json({ id: newPreviewId, message: 'Preview added successfully' });
     } catch (error) {
         if (connection) {
             await rollbackTransaction(connection);
         }
         console.error('Error adding preview:', error.response ? error.response.data : error.message);
         res.status(500).send('Error adding preview');
+    } finally {
+        if (connection) {
+            connection.release(); // Liberar la conexión al pool
+        }
     }
 }
 
