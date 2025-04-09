@@ -24,14 +24,17 @@ CREATE TABLE tema (
 
 CREATE INDEX idx_tema_id_fase ON tema (id_fase);
 
-CREATE TABLE archivos (
+CREATE TABLE archivo (
     id INT AUTO_INCREMENT,
+    id_avance INT,
     nombre VARCHAR(255),
     file LONGBLOB,
     fecha DATETIME,
     tipo VARCHAR(255),
     PRIMARY KEY (id)
 );
+
+CREATE INDEX idx_archivo_id_avance ON archivo (id_avance);
 
 CREATE TABLE fase (
     id INT AUTO_INCREMENT,
@@ -69,7 +72,6 @@ CREATE TABLE reunion (
 
 CREATE TABLE avance (
     id INT AUTO_INCREMENT,
-    id_archivo INT,
     id_tema INT,
     comentarios TEXT,
     nota DECIMAL(5,2),
@@ -79,7 +81,6 @@ CREATE TABLE avance (
     PRIMARY KEY (id)
 );
 
-CREATE INDEX idx_avance_id_archivo ON avance (id_archivo);
 CREATE INDEX idx_avance_id_tema ON avance (id_tema);
 
 CREATE TABLE escuela (
@@ -133,7 +134,7 @@ ALTER TABLE tema ADD CONSTRAINT FK_tema_rut_guia FOREIGN KEY (rut_guia) REFERENC
 ALTER TABLE tema ADD CONSTRAINT FK_tema_nombre_escuela FOREIGN KEY (nombre_escuela) REFERENCES escuela(nombre) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE flujo ADD CONSTRAINT FK_flujo_id_tema FOREIGN KEY (id_tema) REFERENCES tema(id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE flujo ADD CONSTRAINT FK_flujo_rut_creador FOREIGN KEY (rut_creador) REFERENCES usuario(rut) ON DELETE CASCADE ON UPDATE CASCADE;
-ALTER TABLE avance ADD CONSTRAINT FK_avance_id_archivo FOREIGN KEY (id_archivo) REFERENCES archivos(id) ON DELETE CASCADE ON UPDATE CASCADE;
+ALTER TABLE archivo ADD CONSTRAINT FK_archivo_id_avance FOREIGN KEY (id_avance) REFERENCES avance(id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE avance ADD CONSTRAINT FK_avance_id_tema FOREIGN KEY (id_tema) REFERENCES tema(id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE escuela ADD CONSTRAINT FK_escuela_id_flujo FOREIGN KEY (id_flujo) REFERENCES flujo(id) ON DELETE CASCADE ON UPDATE CASCADE;
 ALTER TABLE escuela ADD CONSTRAINT FK_escuela_rut_profesor_cargo FOREIGN KEY (rut_profesor_cargo) REFERENCES usuario(rut) ON DELETE SET NULL ON UPDATE CASCADE;

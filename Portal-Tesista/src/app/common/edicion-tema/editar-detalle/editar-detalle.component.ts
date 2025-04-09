@@ -27,11 +27,16 @@ export class EditarDetalleComponent implements OnInit{
   private originalData: any = {};
   private editResponse: any = {};
 
+  protected esGuia:boolean = false;
+
   constructor(
     private httpRequestService: HttpRequestService
   ) {}
 
   ngOnInit() {
+    if(this.userRepresentation.tipo === 'guia') {
+      this.esGuia = true;
+    }
     this.setOriginalData();
   }
 

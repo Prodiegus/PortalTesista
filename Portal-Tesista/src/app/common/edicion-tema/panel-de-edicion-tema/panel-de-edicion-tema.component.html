@@ -51,7 +51,10 @@
       <app-editar-flujo></app-editar-flujo>
     </ng-template>
     <ng-template class="row" [ngIf]="avances">
-      <app-ver-avances></app-ver-avances>
+      <app-ver-avances
+        [userRepresentation]="userRepresentation"
+        [tema]="tema"
+      ></app-ver-avances>
     </ng-template>
     <ng-template class="row" [ngIf]="reuniones">
       <app-ver-reuniones></app-ver-reuniones>

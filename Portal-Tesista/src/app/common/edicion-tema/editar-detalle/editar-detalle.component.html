@@ -6,13 +6,26 @@
                 <div class="form-group row my-2">
                   <label for="titulo" class="col-form-label col-2 bold">Título:</label>
                   <div class="col">
-                    <input type="text" id="titulo" class="form-control secondary-bg" [(ngModel)]="titulo" name="titulo" required>
+                    <input
+                      type="text"
+                      id="titulo"
+                      class="form-control secondary-bg"
+                      [(ngModel)]="titulo"
+                      name="titulo"
+                      [disabled]="!esGuia"
+                      required>
                   </div>
                 </div>
                 <div class="form-group row my-2">
                   <label for="estado" class="col-form-label col-2 bold">Estado:</label>
                   <div class="col">
-                    <select id="estado" class="form-control secondary-bg" [(ngModel)]="estado" name="estado" required>
+                    <select
+                      id="estado"
+                      class="form-control secondary-bg"
+                      [(ngModel)]="estado"
+                      name="estado"
+                      [disabled]="!esGuia"
+                      required>
                       <option value="Pendiente">Pendiente</option>
                       <option value="En trabajo">En trabajo</option>
                     </select>
@@ -21,7 +34,13 @@
                 <div class="form-group row my-2">
                   <label for="escuela" class="col-form-label col-2 bold">Escuela:</label>
                   <div class="col">
-                    <select id="escuela" class="form-control secondary-bg" [(ngModel)]="escuela" name="escuela" required>
+                    <select
+                      id="escuela"
+                      class="form-control secondary-bg"
+                      [(ngModel)]="escuela"
+                      name="escuela"
+                      [disabled]="!esGuia"
+                      required>
                       <option *ngFor="let escuela of escuelas" [value]="escuela">{{ escuela }}</option>
                     </select>
                   </div>
@@ -29,20 +48,41 @@
                 <div class="form-group row my-2">
                   <label for="guia" class="col-form-label col-2 bold">Guía:</label>
                   <div class="col">
-                    <select id="guia" class="form-control secondary-bg" [(ngModel)]="guia" name="guia" required>
+                    <select
+                      id="guia"
+                      class="form-control secondary-bg"
+                      [(ngModel)]="guia"
+                      name="guia"
+                      [disabled]="!esGuia"
+                      required>
                       <option *ngFor="let profesor of profesores" [value]="profesor">{{ profesor }}</option>
                     </select>
                   </div>
                 </div>
                 <div class="form-group row my-2">
                   <label for="resumen" class="col-form-label bold">Resumen:</label>
-                  <textarea id="resumen" class="form-control secondary-bg" [(ngModel)]="resumen" name="resumen" rows="12" required></textarea>
+                  <textarea
+                    id="resumen"
+                    class="form-control secondary-bg"
+                    [(ngModel)]="resumen"
+                    name="resumen"
+                    rows="12"
+                    [disabled]="!esGuia"
+                    required>
+                  </textarea>
                 </div>
-                <div class="form-group row my-2">
+                <div class="form-group row my-2" *ngIf="esGuia">
                   <div class="col-3"></div>
                   <div class="col-9 d-flex justify-content-end">
-                    <button type="button" class="button secondary btn-size-150 bold me-1" (click)="onCancel()">Deshacer</button>
-                    <button type="submit" class="button primary round btn-size-150 bold ms-1">
+                    <button
+                      type="button"
+                      class="button secondary btn-size-150 bold me-1"
+                      (click)="onCancel()">
+                      Deshacer
+                    </button>
+                    <button
+                      type="submit"
+                      class="button primary round btn-size-150 bold ms-1">
                       <span>Guardar</span>
                       <span class="ms-1 spinner-border spinner-border-sm" role="status" *ngIf="guardando" aria-hidden="true"></span>
                     </button>
