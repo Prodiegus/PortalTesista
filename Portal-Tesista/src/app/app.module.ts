@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { LandingComponent } from './landing/landing.component';
 import { KeycloakService } from './keycloak/keycloak.service';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
 import { FooterComponent } from './common/footer/footer.component';
 import { LandingHeaderComponent } from './common/landing-header/landing-header.component';
@@ -41,6 +41,19 @@ import { SolicitudesTemaComponent } from './common/solicitudes-tema/solicitudes-
 import { DetalleSolicitudComponent } from './common/detalle-solicitud/detalle-solicitud.component';
 import { TwoDigitDayPipe } from './pipe/two-digit-day.pipe';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import {
+  MatCell,
+  MatCellDef,
+  MatColumnDef,
+  MatHeaderCell,
+  MatHeaderCellDef,
+  MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
+  MatTable
+} from '@angular/material/table';
+import {MatIconButton} from '@angular/material/button';
+import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from "@angular/material/autocomplete";
+import {MatFormField} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
 
 @NgModule({
   declarations: [
@@ -83,7 +96,24 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatTable,
+    MatColumnDef,
+    MatHeaderCell,
+    MatHeaderCellDef,
+    MatCell,
+    MatCellDef,
+    MatHeaderRow,
+    MatHeaderRowDef,
+    MatRow,
+    MatRowDef,
+    MatIconButton,
+    MatAutocomplete,
+    MatFormField,
+    MatInput,
+    MatAutocompleteTrigger,
+    ReactiveFormsModule,
+    MatOption
   ],
   providers: [
     {
