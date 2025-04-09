@@ -40,6 +40,7 @@ import { FormularioSolicitudTemaComponent } from './landing/landing-body/formula
 import { SolicitudesTemaComponent } from './common/solicitudes-tema/solicitudes-tema.component';
 import { DetalleSolicitudComponent } from './common/detalle-solicitud/detalle-solicitud.component';
 import { TwoDigitDayPipe } from './pipe/two-digit-day.pipe';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { TwoDigitDayPipe } from './pipe/two-digit-day.pipe';
       },
       multi: true
     },
+    provideAnimationsAsync(),
   ],
   bootstrap: [AppComponent]
 })
