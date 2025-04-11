@@ -55,7 +55,7 @@ async function deleteReviewer(req, res){
     const params_delete_reviewer = [id_tema, rut_revisor];
 
     try {
-        await runParametrizedQuery(query_delete_reviewer, params_delete_reviewer, connection);
+        await runParametrizedQuery(query_delete_reviewer, params_delete_reviewer);
 
         res.status(200).json({ message: 'Reviewer deleted successfully' });
     } catch (error) {
