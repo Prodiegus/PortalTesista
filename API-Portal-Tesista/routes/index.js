@@ -163,8 +163,8 @@ router.get('/read/reviewer/:id_tema', async (req, res) => {
 });
 
 // eliminar revisor de un tema
-router.delete('/delete/reviewer', async (req, res) => {
-  console.log('Consulta delete a /delete/reviewer: ', req.body);
+router.post('/delete/reviewer', async (req, res) => {
+  console.log('Consulta POST a /delete/reviewer: ', req.body);
   await deleteReviewer(req, res);
 });
 

@@ -125,4 +125,25 @@ export class HttpRequestService {
     const endpoint = `${this.apiUrl}/read/preview/${id_tema}`;
     return this.http.get<any>(endpoint);
   }
+
+  async getRevisoresTema(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/reviewer/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async addRevisor(revisor: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/add/reviewer`;
+    return this.http.post<any>(endpoint, revisor);
+  }
+
+  async borrarRevisor(revisor: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/delete/reviewer`;
+    return this.http.post<any>(endpoint, revisor);
+  }
+
+  async empezarRevisionAvance(avance: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/start/review`;
+    return this.http.post<any>(endpoint, avance);
+  }
+
 }

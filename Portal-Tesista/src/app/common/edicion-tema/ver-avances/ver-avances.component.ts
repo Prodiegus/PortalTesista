@@ -10,10 +10,6 @@ export interface Profesor {
   email: string;
 }
 
-const ELEMENT_DATA: Profesor[] = [
-  {nombre:'Placeholder', rut: '111111', email: 'placeholder@pt.me'},
-];
-
 @Component({
   selector: 'app-ver-avances',
   templateUrl: './ver-avances.component.html',
@@ -32,7 +28,7 @@ export class VerAvancesComponent implements OnInit{
   profesorSeleccionado: any;
 
   protected dataSource: Profesor[] = [];
-  displayedColumns: string[] = ['nombre', 'email', 'Activar Revision', 'Sacar'];
+  displayedColumns: string[] = ['nombre', 'email', 'Sacar'];
 
   constructor(
     private httpRequestService: HttpRequestService
@@ -43,7 +39,7 @@ export class VerAvancesComponent implements OnInit{
     try {
       await this.fetchAvances();
       await this.fetchProfesores();
-      this.dataSource = ELEMENT_DATA;
+      await this.fetchRevisores();
     } catch (e) {
       this.avances = null;
     } finally {
@@ -52,6 +48,7 @@ export class VerAvancesComponent implements OnInit{
     this.esCargo = this.userRepresentation?.tipo === 'cargo';
 
   }
+
 
   async fetchAvances() {
     return new Promise<void>((resolve, reject) => {
@@ -87,16 +84,126 @@ export class VerAvancesComponent implements OnInit{
     });
   }
 
+  async fetchRevisores() {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.getRevisoresTema(this.tema.id).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.revisores = data;
+            const dataSource: Profesor[] = [];
+            for (const data of this.revisores) {
+              const profesor: Profesor = {
+                nombre: data.nombre+' '+ data.apellido,
+                rut: data.rut,
+                email: data.correo
+              };
+              dataSource.push(profesor);
+            }
+            this.dataSource = dataSource;
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error fetching revisores');
+            reject(error);
+          }
+        );
+      });
+    });
+  }
+
+  async borrarRevisor(revisor: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.borrarRevisor(revisor).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.revisores = data;
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error fetching revisores');
+            reject(error);
+          }
+        );
+      });
+    });
+  }
+
+  async addRevisor (revisor: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.addRevisor(revisor).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.revisores = data;
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error fetching revisores');
+            reject(error);
+          }
+        );
+      });
+    });
+  }
+
+  async deleteRevisor (revisor: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.borrarRevisor(revisor).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.revisores = data;
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error fetching revisores');
+            reject(error);
+          }
+        );
+      });
+    });
+  }
+
   activarRevision(element: Profesor) {
     // logica de activado
   }
 
-  sacarRevisor(element: Profesor) {
-    // logica de sacado
+  async sacarRevisor(element: Profesor) {
+    if (!element) {
+      console.error('Elemento no seleccionado');
+      return;
+    }
+    const revisor = {
+      id_tema: this.tema.id,
+      rut_revisor: element.rut,
+    }
+    this.loading = true;
+    try {
+      await this.deleteRevisor(revisor);
+      await this.fetchRevisores();
+    } catch (e) {
+      console.error('Error al eliminar revisor');
+    } finally {
+      this.loading = false;
+    }
   }
 
-  agregarRevisor() {
-    // logica de agregado
+  async agregarRevisor() {
+    if (!this.profesorSeleccionado) { // Agrega esta validación
+      console.error('Ningún profesor seleccionado');
+      return;
+    }
+    this.loading = true;
+    try {
+      const revisor = {
+        id_tema: this.tema.id,
+        rut_revisor: this.profesorSeleccionado.rut,
+        rut_profesor_cargo: this.userRepresentation.rut
+      }
+      await this.addRevisor(revisor);
+      await this.fetchRevisores();
+    } catch (error) {
+      console.error('Error al agregar revisor');
+    } finally {
+      this.loading = false;
+    }
   }
-
 }
