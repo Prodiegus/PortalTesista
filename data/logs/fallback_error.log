@@ -598,3 +598,6 @@
 2025/04/11 01:08:02 [error] 229#229: *13553 open() "/var/www/html/1.php" failed (2: No such file or directory), client: 142.93.69.231, server: localhost-nginx-proxy-manager, request: "GET /1.php HTTP/1.1", host: "34.176.220.92"
 2025/04/11 01:08:02 [error] 229#229: *13554 open() "/var/www/html/systembc/password.php" failed (2: No such file or directory), client: 142.93.69.231, server: localhost-nginx-proxy-manager, request: "GET /systembc/password.php HTTP/1.1", host: "34.176.220.92"
 2025/04/11 01:08:02 [error] 229#229: *13555 open() "/var/www/html/password.php" failed (2: No such file or directory), client: 142.93.69.231, server: localhost-nginx-proxy-manager, request: "GET /password.php HTTP/1.1", host: "34.176.220.92"
+2025/04/11 03:38:40 [error] 192#192: *511 open() "/var/www/html/druid/index.html" failed (2: No such file or directory), client: 20.98.142.96, server: localhost-nginx-proxy-manager, request: "GET /druid/index.html HTTP/1.1", host: "34.176.220.92"
+2025/04/11 03:39:07 [alert] 192#192: 512 worker_connections are not enough
+2025/04/11 03:39:07 [error] 191#191: *1476 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:80/favicon.ico", host: "34.176.220.92"
