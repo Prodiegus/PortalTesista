@@ -8,27 +8,14 @@ async function addReviewer(req, res){
         VALUES (?, ?, ?)
     `;
     const params_insert_reviewer = [id_tema, rut_revisor, rut_profesor_cargo];
-
-    let connection;
+    
     try {
-        connection = await beginTransaction();
-
-        await runParametrizedQuery(query_insert_reviewer, params_insert_reviewer, connection);
-
-        await commitTransaction(connection);
+        await runParametrizedQuery(query_insert_reviewer, params_insert_reviewer);
 
         res.status(200).json({ message: 'Reviewer added successfully' });
     } catch (error) {
-        if (connection) {
-            await rollbackTransaction(connection);
-        }
         console.error('Error adding reviewer:', error.response ? error.response.data : error.message);
         res.status(500).send('Error adding reviewer');
-    }
-    finally {
-        if (connection) {
-            connection.release(); // Liberar la conexión al pool
-        }
     }
 }
 
@@ -47,25 +34,14 @@ async function getTopicReviewers(req, res){
     `;
     const params_get_reviewers = [id_tema];
 
-    let connection;
     try {
-        connection = await beginTransaction();
 
-        const reviewers = await runParametrizedQuery(query_get_reviewers, params_get_reviewers, connection);
-
-        await commitTransaction(connection);
+        const reviewers = await runParametrizedQuery(query_get_reviewers, params_get_reviewers);
 
         res.status(200).json(reviewers);
     } catch (error) {
-        if (connection) {
-            await rollbackTransaction(connection);
-        }
         console.error('Error getting topic reviewers:', error.response ? error.response.data : error.message);
         res.status(500).send('Error getting topic reviewers');
-    } finally {
-        if (connection) {
-            connection.release(); // Liberar la conexión al pool
-        }
     }
 }
 
@@ -78,26 +54,14 @@ async function deleteReviewer(req, res){
     `;
     const params_delete_reviewer = [id_tema, rut_revisor];
 
-    let connection;
     try {
-        connection = await beginTransaction();
-
         await runParametrizedQuery(query_delete_reviewer, params_delete_reviewer, connection);
-
-        await commitTransaction(connection);
 
         res.status(200).json({ message: 'Reviewer deleted successfully' });
     } catch (error) {
-        if (connection) {
-            await rollbackTransaction(connection);
-        }
         console.error('Error deleting reviewer:', error.response ? error.response.data : error.message);
         res.status(500).send('Error deleting reviewer');
-    } finally {
-        if (connection) {
-            connection.release(); // Liberar la conexión al pool
-        }
-    }
+    } 
 }
 
 async function startPreviewReview(req, res){}
