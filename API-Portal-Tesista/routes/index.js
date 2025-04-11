@@ -9,6 +9,7 @@ const disable = require('./user/disable');
 const enable = require('./user/enable');
 const {getSchools} = require('./school/school_manager');
 const {addPreview, getTopicPreviews} = require('./update/topic_preview_manager');
+const {addReviewer, getTopicReviewers, deleteReviewer, startPreviewReview} = require('./reviewer/reviewer_manager');
 
 const router = express.Router();
 
@@ -147,6 +148,30 @@ router.post('/upload/preview', async (req, res) => {
 router.get('/read/preview/:id_tema', async (req, res) => {
   console.log('Consulta get a /read/preview/:id_tema: ', req.body);
   await getTopicPreviews(req, res);
+});
+
+// agregar revisor a un tema
+router.post('/add/reviewer', async (req, res) => {
+  console.log('Consulta post a /add/reviewer: ', req.body);
+  await addReviewer(req, res);
+});
+
+// leer revisores de un tema
+router.get('/read/reviewer/:id_tema', async (req, res) => {
+  console.log('Consulta get a /read/reviewer/:id_tema: ', req.body);
+  await getTopicReviewers(req, res);
+});
+
+// eliminar revisor de un tema
+router.delete('/delete/reviewer', async (req, res) => {
+  console.log('Consulta delete a /delete/reviewer: ', req.body);
+  await deleteReviewer(req, res);
+});
+
+// iniciar revision de un avance
+router.post('/start/review', async (req, res) => {
+  console.log('Consulta post a /start/review: ', req.body);
+  await startPreviewReview(req, res);
 });
 
 module.exports = router;
