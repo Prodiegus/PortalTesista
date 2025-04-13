@@ -47,13 +47,16 @@ import {
   MatColumnDef,
   MatHeaderCell,
   MatHeaderCellDef,
-  MatHeaderRow, MatHeaderRowDef, MatRow, MatRowDef,
+  MatHeaderRow, MatHeaderRowDef, MatNoDataRow, MatRow, MatRowDef,
   MatTable
 } from '@angular/material/table';
 import {MatIconButton} from '@angular/material/button';
 import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from "@angular/material/autocomplete";
-import {MatFormField} from '@angular/material/form-field';
+import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatPaginator} from '@angular/material/paginator';
+import {MatSort, MatSortHeader} from '@angular/material/sort';
 
 @NgModule({
   declarations: [
@@ -94,6 +97,7 @@ import {MatInput} from '@angular/material/input';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,
@@ -110,10 +114,15 @@ import {MatInput} from '@angular/material/input';
     MatIconButton,
     MatAutocomplete,
     MatFormField,
+    MatFormFieldModule,
     MatInput,
     MatAutocompleteTrigger,
     ReactiveFormsModule,
-    MatOption
+    MatOption,
+    MatPaginator,
+    MatSortHeader,
+    MatNoDataRow,
+    MatSort
   ],
   providers: [
     {

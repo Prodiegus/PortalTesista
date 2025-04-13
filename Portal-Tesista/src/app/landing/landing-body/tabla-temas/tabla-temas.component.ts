@@ -1,12 +1,31 @@
-import {Component, OnInit} from '@angular/core';
-import { CONST } from '../../../common/const/const';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpRequestService} from '../../../common/Http-request.service';
+import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
+import {MatSort, MatSortModule} from '@angular/material/sort';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatTableDataSource, MatTableModule} from '@angular/material/table';
+
+export interface Tema {
+  id: number
+  titulo: string
+  resumen: string
+  estado: string
+  numero_fase: number
+  id_fase: number
+  nombre_escuela: string
+  rut_guia: string
+  guia: string
+  co_guias: string[]
+  creacion: string
+}
+
 
 @Component({
   selector: 'app-tabla-temas',
   templateUrl: './tabla-temas.component.html',
-  styleUrl: './tabla-temas.component.scss'
+  styleUrl: './tabla-temas.component.scss',
 })
 export class TablaTemasComponent implements OnInit{
   protected temas:any[] = [];
@@ -15,17 +34,34 @@ export class TablaTemasComponent implements OnInit{
   protected formulario = false;
   temaSeleccionado: any;
 
+  displayedColumns: string[] = ['Tema', 'Profesor Guía', 'Profesor co-Guía', 'Estado', 'Detalle'];
+  dataSource: MatTableDataSource<Tema> = new MatTableDataSource<Tema>([]);
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatSort) sort!: MatSort;
+
   constructor(
     private httpRequestService: HttpRequestService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     try {
-      this.fetchTemas();
+      await this.fetchTemas();
     } catch (error) {
       console.error('Error fetching temas');
     } finally {
       this.loading = false;
+    }
+  }
+
+  applyFilter(event: Event) {
+    if (this.dataSource) {
+      const filterValue = (event.target as HTMLInputElement).value;
+      this.dataSource.filter = filterValue.trim().toLowerCase();
+
+      if (this.dataSource.paginator) {
+        this.dataSource.paginator.firstPage();
+      }
     }
   }
 
@@ -34,7 +70,35 @@ export class TablaTemasComponent implements OnInit{
       this.httpRequestService.getTemas().then(observable => {
         observable.subscribe(
           (data: any) => {
+            let temas: any[] = [];
             this.temas = data;
+            for (const tema of data){
+              const temaData: Tema = {
+                id: tema.id,
+                titulo: tema.titulo,
+                resumen: tema.resumen,
+                estado: tema.estado,
+                numero_fase: tema.numero_fase,
+                id_fase: tema.id_fase,
+                nombre_escuela: tema.nombre_escuela,
+                rut_guia: tema.rut_guia,
+                guia: tema.guia,
+                co_guias: tema.co_guias,
+                creacion: tema.creacion
+              }
+              temas.push(temaData);
+            }
+            this.dataSource = new MatTableDataSource(temas);
+
+            if (this.paginator) {
+              this.dataSource.paginator = this.paginator;
+            }
+            if (this.sort) {
+              this.dataSource.sort = this.sort;
+            }
+
+            console.log('temas ', this.temas);
+            console.log('temas ', this.dataSource);
             resolve(observable);
           },
           (error: any) => {
