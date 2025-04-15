@@ -156,6 +156,11 @@ $text-dark: #fff; // Un color claro para contrastar con el color oscuro
     border: 1px solid red;
 }
 
+.important-primary-bg{
+  background-color: $primary-color !important;
+  color: $text-primary !important;
+}
+
 /*
 $primary-color (#60CDCD): Este color verde azulado es vibrante y llamativo,
  lo que lo convierte en una excelente opción para elementos principales que deben destacar.

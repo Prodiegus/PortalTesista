@@ -1,24 +1,7 @@
 <ng-container *ngIf="!loading">
   <div class="container-fluid">
-    <div class="row font-28 bold d-flex justify-content-center mt-24">
+    <div class="row font-28 bold d-flex justify-content-center mt-24 mb-5">
       Tabla de temas proyecto de titulación
-    </div>
-    <div class="row">
-      <div class="container">
-        <div class="row px-3 py-2 mx-5 r-16 border primary">
-          <div class="col d-flex justify-content-start">
-            <div class="input-group size-300">
-              <input type="text" class="form-control border primary no-end rs-16" placeholder="Buscar..." aria-label="Buscar" aria-describedby="search-icon">
-              <span class="input-group-text re-16 border primary no-start" id="search-icon">
-                <i class="bi bi-search"></i>
-              </span>
-            </div>
-          </div>
-          <div class="col d-flex justify-content-end">
-            <button class="button naked primary r16 size-300">Filtrar por estado <i class="bi bi-chevron-compact-down"></i></button>
-          </div>
-        </div>
-      </div>
     </div>
     <app-tabla-temas></app-tabla-temas>
   </div>

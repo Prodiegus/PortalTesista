@@ -222,12 +222,13 @@ button:disabled {
   justify-content: center;
 }
 
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 :root {
   @include mat.table-overrides((
     background-color : $gray-color,
+    header-container-height : 55px,
+    row-item-container-height : 100px,
   ));
 }
