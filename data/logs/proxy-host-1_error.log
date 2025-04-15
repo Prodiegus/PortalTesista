@@ -1,1 +1,1 @@
-2025/04/09 21:31:17 [warn] 191#191: *1959 using uninitialized "server" variable while logging request, client: 223.113.128.220, server: portaltesista.me, request: "GET / HTTP/1.1", host: "portaltesista.me"
+2025/04/13 17:20:30 [warn] 285#285: *54229 an upstream response is buffered to a temporary file /var/cache/nginx/proxy_temp/1/80/0000025801 while reading upstream, client: 54.233.56.111, server: portaltesista.me, request: "GET / HTTP/1.1", upstream: "https://34.176.220.92:4843/", host: "portaltesista.me"
