@@ -1,4 +1,4 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
+import {AfterViewChecked, AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {Observable} from 'rxjs';
 import {HttpRequestService} from '../../../common/Http-request.service';
 import {MatPaginator, MatPaginatorModule} from '@angular/material/paginator';
@@ -27,12 +27,14 @@ export interface Tema {
   templateUrl: './tabla-temas.component.html',
   styleUrl: './tabla-temas.component.scss',
 })
-export class TablaTemasComponent implements OnInit{
+export class TablaTemasComponent implements OnInit, AfterViewInit, AfterViewChecked{
   protected temas:any[] = [];
   loading = true;
   protected detalle = false;
   protected formulario = false;
   temaSeleccionado: any;
+
+  paginatorInitialized = false;
 
   displayedColumns: string[] = ['Tema', 'Profesor Guía', 'Profesor co-Guía', 'Estado', 'Detalle'];
   dataSource: MatTableDataSource<Tema> = new MatTableDataSource<Tema>([]);
@@ -51,6 +53,16 @@ export class TablaTemasComponent implements OnInit{
       console.error('Error fetching temas');
     } finally {
       this.loading = false;
+    }
+  }
+
+  ngAfterViewInit() {
+    this.assignPaginatorAndSort();
+  }
+
+  ngAfterViewChecked() {
+    if (!this.paginatorInitialized) {
+      this.assignPaginatorAndSort();
     }
   }
 
@@ -96,9 +108,6 @@ export class TablaTemasComponent implements OnInit{
             if (this.sort) {
               this.dataSource.sort = this.sort;
             }
-
-            console.log('temas ', this.temas);
-            console.log('temas ', this.dataSource);
             resolve(observable);
           },
           (error: any) => {
@@ -126,6 +135,14 @@ export class TablaTemasComponent implements OnInit{
 
   solicitarTemaClose() {
     this.formulario = false;
+  }
+
+  private assignPaginatorAndSort() {
+    if (this.paginator && !this.paginatorInitialized) {
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
+      this.paginatorInitialized = true;
+    }
   }
 
 }

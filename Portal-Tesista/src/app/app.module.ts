@@ -55,8 +55,9 @@ import {MatAutocomplete, MatAutocompleteTrigger, MatOption} from "@angular/mater
 import {MatFormField, MatFormFieldModule} from '@angular/material/form-field';
 import {MatInput} from '@angular/material/input';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MatPaginator} from '@angular/material/paginator';
+import {MatPaginator, MatPaginatorIntl} from '@angular/material/paginator';
 import {MatSort, MatSortHeader} from '@angular/material/sort';
+import {CustomPaginatorIntl} from './common/custom-paginator-intl';
 
 @NgModule({
   declarations: [
@@ -138,7 +139,9 @@ import {MatSort, MatSortHeader} from '@angular/material/sort';
       multi: true
     },
     provideAnimationsAsync(),
+    { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl},
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+
 })
 export class AppModule { }
