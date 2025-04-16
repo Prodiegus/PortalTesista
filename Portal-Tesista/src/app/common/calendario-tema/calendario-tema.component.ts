@@ -95,33 +95,33 @@ export class CalendarioTemaComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
 
-  onFileSelected(event: Event): void {
-    const input = event.target as HTMLInputElement;
-    if (input.files && input.files.length > 0) {
-      const file = input.files[0];
-      if (file.type === 'application/pdf') {
-        console.log('PDF file selected:', file);
-        const reader = new FileReader();
-        reader.onload = () => {
-          const fileContent = reader.result as string;
-          const formattedDate = this.currentDate.toISOString().slice(0, 19).replace('T', ' ');
-          const formData = {
-            id_tema: this.tema.id,
-            nombre_archivo: file.name,
-            archivo64: fileContent,
-            fecha: formattedDate,
-          };
-          this.loading = true;
-          this.subirAvance(formData).then(() => {
-            this.loading = false;
-          });
+onFileSelected(event: Event): void {
+  const input = event.target as HTMLInputElement;
+  if (input.files && input.files.length > 0) {
+    const file = input.files[0];
+    if (file.type === 'application/pdf') {
+      console.log('PDF file selected:', file);
+      const reader = new FileReader();
+      reader.onload = () => {
+        const fileContent = (reader.result as string).split(',')[1]; // Remove the Data URL prefix
+        const formattedDate = this.currentDate.toISOString().slice(0, 19).replace('T', ' ');
+        const formData = {
+          id_tema: this.tema.id,
+          nombre_archivo: file.name,
+          archivo64: fileContent,
+          fecha: formattedDate,
         };
-        reader.readAsDataURL(file);
-      } else {
-        console.error('Solo se acepta PDF.');
-      }
+        this.loading = true;
+        this.subirAvance(formData).then(() => {
+          this.loading = false;
+        });
+      };
+      reader.readAsDataURL(file);
+    } else {
+      console.error('Solo se acepta PDF.');
     }
   }
+}
 
   async subirAvance(avance: any) {
     return new Promise<void>((resolve, reject) => {

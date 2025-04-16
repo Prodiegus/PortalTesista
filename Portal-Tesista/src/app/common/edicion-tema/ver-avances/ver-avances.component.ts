@@ -206,4 +206,33 @@ export class VerAvancesComponent implements OnInit{
       this.loading = false;
     }
   }
+
+descargarAvance(avance: any) {
+  if (!avance || !avance.archivo) {
+    console.error('No file available to download');
+    return;
+  }
+
+  try {
+    // Decode the Base64 string
+    const byteCharacters = atob(avance.archivo); // `avance.archivo` should be a Base64 string
+    const byteNumbers = Array.from(byteCharacters, char => char.charCodeAt(0));
+    const byteArray = new Uint8Array(byteNumbers);
+
+    // Create a Blob from the byte array
+    const blob = new Blob([byteArray], { type: avance.tipoMime || 'application/pdf' });
+    const url = URL.createObjectURL(blob);
+
+    // Create a temporary link and trigger the download
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = avance.nombre_archivo || 'archivo.pdf';
+    a.click();
+
+    // Clean up the URL object
+    URL.revokeObjectURL(url);
+  } catch (error) {
+    console.error('Error decoding or downloading file:', error);
+  }
+}
 }
