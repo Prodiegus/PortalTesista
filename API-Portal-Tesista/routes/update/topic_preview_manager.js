@@ -55,11 +55,10 @@ async function addPreview(req, res) {
 async function getTopicPreviews(req, res) {
     const { id_tema } = req.params;
 
-    // Validar que el id_tema no esté vacío
     if (!id_tema) {
         return res.status(400).send('Falta el id_tema en la solicitud');
     }
-    
+
     const query = `
         SELECT a.*, ar.nombre AS nombre_archivo, ar.file AS archivo
         FROM avance a
@@ -72,7 +71,7 @@ async function getTopicPreviews(req, res) {
         JOIN archivo ar ON subquery.id_avance = ar.id_avance AND subquery.fecha_reciente = ar.fecha
         WHERE a.id_tema = ?
     `;
-    
+
     const params = [id_tema];
     const connection = await beginTransaction();
 
@@ -84,12 +83,30 @@ async function getTopicPreviews(req, res) {
             return res.status(404).send('No se encontraron avances para el tema especificado');
         }
 
-        res.status(200).json(results);
+        const processedResults = results.map(result => {
+            if (result.archivo) {
+                const archivo = result.archivo.toString(); // Convertir a cadena
+                // Verificar si ya es Base64 con prefijo
+                if (archivo.startsWith('data:application/pdf;base64,')) {
+                    return { ...result, archivo }; // Enviar tal cual
+                } else {
+                    // Convertir a Base64 si no tiene el prefijo
+                    const base64String = Buffer.from(result.archivo).toString('base64');
+                    return {
+                        ...result,
+                        archivo: `data:application/pdf;base64,${base64String}`
+                    };
+                }
+            }
+            return { ...result, archivo: null };
+        });
+
+        res.status(200).json(processedResults);
     } catch (error) {
         if (connection) {
             await rollbackTransaction(connection);
         }
-        console.error('Error fetching topic previews:', error.response ? error.response.data : error.message);
+        console.error('Error fetching topic previews:', error.message);
         res.status(500).send('Error fetching topic previews');
     }
 }
