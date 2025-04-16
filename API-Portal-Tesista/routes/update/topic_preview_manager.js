@@ -59,7 +59,7 @@ async function addPreview(req, res) {
 async function getTopicPreviews(req, res) {
     const { id_tema } = req.params;
 
-    // Validar que el id_tema no esté vacío
+    // Validate that id_tema is provided
     if (!id_tema) {
         return res.status(400).send('Falta el id_tema en la solicitud');
     }
@@ -88,7 +88,13 @@ async function getTopicPreviews(req, res) {
             return res.status(404).send('No se encontraron avances para el tema especificado');
         }
 
-        res.status(200).json(results);
+        // Convert the `archivo` field to Base64
+        const processedResults = results.map(result => ({
+            ...result,
+            archivo: result.archivo ? Buffer.from(result.archivo).toString('base64') : null
+        }));
+
+        res.status(200).json(processedResults);
     } catch (error) {
         if (connection) {
             await rollbackTransaction(connection);

@@ -27,7 +27,7 @@ export class TemasViewComponent implements OnInit{
 
   async ngOnInit() {
     await this.fetchTemas();
-    if (this.temas.length == 1) {
+    if (this.temas.length == 1 && this.userRepresentation.tipo === 'alumno') {
       this.detalleTema(this.temas[0]);
     }
     this.loading = false;
