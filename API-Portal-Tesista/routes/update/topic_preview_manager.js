@@ -22,8 +22,6 @@ async function addPreview(req, res) {
     `;
 
     let connection;
-    let connectionReleased = false; // Indicador para rastrear si la conexión ya fue liberada
-
     try {
         connection = await beginTransaction();
 
@@ -39,19 +37,17 @@ async function addPreview(req, res) {
         await runParametrizedQuery(query_insert_file, params_insert_file, connection);
 
         await commitTransaction(connection);
-        connectionReleased = true; // La conexión se libera automáticamente después de commitTransaction
 
         res.status(200).json({ id: newPreviewId, message: 'Preview added successfully' });
     } catch (error) {
-        if (connection && !connectionReleased) {
+        if (connection) {
             await rollbackTransaction(connection);
-            connectionReleased = true; // La conexión se libera automáticamente después de rollbackTransaction
         }
         console.error('Error adding preview:', error.response ? error.response.data : error.message);
         res.status(500).send('Error adding preview');
     } finally {
-        if (connection && !connectionReleased) {
-            connection.release(); // Liberar la conexión solo si no ha sido liberada
+        if (connection) {
+            connection.release(); // Liberar la conexión al pool
         }
     }
 }
@@ -59,7 +55,7 @@ async function addPreview(req, res) {
 async function getTopicPreviews(req, res) {
     const { id_tema } = req.params;
 
-    // Validate that id_tema is provided
+    // Validar que el id_tema no esté vacío
     if (!id_tema) {
         return res.status(400).send('Falta el id_tema en la solicitud');
     }
@@ -88,13 +84,7 @@ async function getTopicPreviews(req, res) {
             return res.status(404).send('No se encontraron avances para el tema especificado');
         }
 
-        // Convert the `archivo` field to Base64
-        const processedResults = results.map(result => ({
-            ...result,
-            archivo: result.archivo ? Buffer.from(result.archivo).toString('base64') : null
-        }));
-
-        res.status(200).json(processedResults);
+        res.status(200).json(results);
     } catch (error) {
         if (connection) {
             await rollbackTransaction(connection);
