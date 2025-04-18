@@ -26,6 +26,50 @@ async function create_phase(req, res) {
         res.status(500).send('Error creando fase');
     }
 }
+
+async function create_subphase(req, res) {
+    const {
+        nombre,
+        descripcion,
+        tipo,
+        fecha_inicio,
+        fecha_termino,
+        rut_creador,
+        id_flujo,
+        id_padre, // ID de la fase padre
+        id_tema, // ID del tema al que pertenece la fase
+     } = req.body;
+     // numero se calcula con la cantidad de fases hijas del padre + 1 en el tema actual
+    const query_number = `
+        SELECT count(*)
+        FROM (
+            SELECT id_flujo, id, numero
+            FROM fase_tiene_padre JOIN fase ON fase_tiene_padre.id_hijo = fase.id
+            where fase_tiene_padre.id_padre = ?
+        ) as fases_padre JOIN flujo_tiene_tema ON fases_padre.id_flujo = flujo_tiene_tema.id_flujo
+        WHERE flujo_tiene_tema.id_tema = ?;
+    `;
+    const number_params = [id_padre, id_tema];
+    const query_insert = `
+        INSERT INTO fase (numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    try {
+        const results = await runParametrizedQuery(query_number, number_params);
+        const numero = results[0]['count(*)'] + 1; // Número de la nueva fase
+
+        const insert_params = [numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo];
+
+        await runParametrizedQuery(query_insert, insert_params);
+
+        res.status(200).json({ message: 'Fase creada con éxito' });
+    } catch (error) {
+        console.error('Error creando subfase:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error creando subfase');
+    }
+}
+
 async function read_phase(req, res) {
     const {type} = req.params;
     const query = `SELECT * FROM fase WHERE tipo = ?`;
@@ -166,4 +210,5 @@ module.exports = {
     delete_phase,
     getPhasesTopic,
     read_topic_phase,
+    create_subphase,
 };
