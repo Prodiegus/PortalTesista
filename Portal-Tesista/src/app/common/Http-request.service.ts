@@ -50,6 +50,16 @@ export class HttpRequestService {
     return this.http.get<any>(endpoint);
   }
 
+  async getFasesTema(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/topic-phase/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async addFasesTema(fase: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/create/subphase`;
+    return this.http.post<any>(endpoint, fase);
+  }
+
   async getFasesFlujo(id: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/read/work-flow/phase/${id}`;
     return this.http.get<any>(endpoint);
