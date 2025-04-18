@@ -41,6 +41,7 @@ async ngOnInit() {
   try {
     await this.fetchFlujoGeneral();
     await this.fetchFasesFlujo();
+    await this.fetchFasesTema();
   } catch (error) {
     console.error('Error fetching flujo general or fases flujo:', error);
   } finally {
@@ -75,6 +76,23 @@ async ngOnInit() {
           (data: any) => {
             this.fasesFlujo = data.sort((a: any, b: any) => a.numero - b.numero);
             this.numeros = this.fasesFlujo.map((fase: any) => fase.numero);
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error fetching fases flujo');
+            reject(error);
+          }
+        );
+      });
+    });
+  }
+
+  private async fetchFasesTema(){
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.getFasesTema(this.tema.id).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+
             resolve();
           },
           (error: any) => {

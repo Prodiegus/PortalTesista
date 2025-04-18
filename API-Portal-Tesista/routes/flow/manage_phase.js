@@ -1,3 +1,4 @@
+const { json } = require('express');
 const {runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, commitTransaction} = require('../utils/query');
 
 async function create_phase(req, res) {
@@ -108,8 +109,24 @@ async function read_topic_phase(req, res) {
     const params = [id];
     try {
         const results = await runParametrizedQuery(query, params);
-        console.log('Fases del tema:', results);
-        res.status(200).send(results);
+        
+        json_res = {
+            "fases": results.map((fase) => {
+                return {
+                    id: fase.id,
+                    numero: fase.numero,
+                    nombre: fase.nombre,
+                    descripcion: fase.descripcion,
+                    tipo: fase.tipo,
+                    fecha_inicio: fase.fecha_inicio,
+                    fecha_termino: fase.fecha_termino,
+                    id_flujo: fase.id_flujo,
+                    id_padre: fase_tiene_padre.id_padre
+                };
+            })
+        };
+        console.log('Fases del tema:', json_res);
+        res.status(200).send(json_res);
     } catch (error) {
         console.error('Error obteniendo fase:', error.response ? error.response.data : error.message);
         res.status(500).send('Error obteniendo fase');
