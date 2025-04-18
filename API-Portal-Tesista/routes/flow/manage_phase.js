@@ -99,9 +99,11 @@ async function read_flow_phase(req, res) {
 async function read_topic_phase(req, res) {
     const { id } = req.params;
     const query = `
-    SELECT fase.*, fase_tiene_padre.id_padre
-    FROM flujo_tiene_tema JOIN fase ON flujo_tiene_tema.id_flujo = fase.id_flujo, fase_tiene_padre
-    WHERE id_tema = ? AND fase_tiene_padre.id_hijo = fase.id;
+        SELECT fase.*, fase_tiene_padre.id_padre
+        FROM flujo_tiene_tema
+        JOIN fase ON flujo_tiene_tema.id_flujo = fase.id_flujo
+        JOIN fase_tiene_padre ON fase_tiene_padre.id_hijo = fase.id
+        WHERE flujo_tiene_tema.id_tema = ?;
     `;
     const params = [id];
     try {
