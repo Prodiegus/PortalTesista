@@ -52,6 +52,24 @@ async function read_flow_phase(req, res) {
     }
 }
 
+async function read_topic_phase(req, res) {
+    const { id } = req.params;
+    const query = `
+    SELECT fase.*, fase_tiene_padre.id_padre
+    FROM flujo_tiene_tema JOIN fase ON flujo_tiene_tema.id_flujo = fase.id_flujo, fase_tiene_padre
+    WHERE id_tema = ? AND fase_tiene_padre.id_hijo = fase.id;
+    `;
+    const params = [id];
+    try {
+        const results = await runParametrizedQuery(query, params);
+        console.log('Fases del tema:', results);
+        res.status(200).send(results);
+    } catch (error) {
+        console.error('Error obteniendo fase:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error obteniendo fase');
+    }
+}
+
 async function edit_phase(req, res) {
     const {id, numero, nombre, descripcion, fecha_inicio, fecha_termino, id_flujo} = req.body;
     
@@ -106,7 +124,7 @@ async function swap_numbers(existingPhase, id, numero) {
 
 
 async function delete_phase(req, res) {
-    const {id} = req.body;
+    const {id_tema} = req.body;
     const query = `DELETE FROM fase WHERE id = ?`;
     try {
         const results = await runParametrizedQuery(query, [id]);
@@ -146,5 +164,6 @@ module.exports = {
     read_flow_phase,
     edit_phase,
     delete_phase,
-    getPhasesTopic
+    getPhasesTopic,
+    read_topic_phase,
 };
