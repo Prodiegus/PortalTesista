@@ -223,7 +223,7 @@ async function create_topic(req, res) {
                     throw new Error('No se pudo obtener el ID de la nueva fase');
                 }
 
-                const params_insert_FTP = [new_id_flujo, new_id_fase];
+                const params_insert_FTP = [fase.id, new_id_fase];
                 await runParametrizedQuery(query_insert_FTP, params_insert_FTP, connection);
             }
         } else {
@@ -556,7 +556,7 @@ async function acept_topic_request(req, res) {
             const new_id_fase_res = await runQuery(query_get_last_id, connection);
             const new_id_fase = new_id_fase_res[0].id;
 
-            const query_insert_FTP_params = [new_id_flujo, new_id_fase];
+            const query_insert_FTP_params = [fase.id, new_id_fase];
             await runParametrizedQuery(query_insert_FTP, query_insert_FTP_params, connection);
         }
 
