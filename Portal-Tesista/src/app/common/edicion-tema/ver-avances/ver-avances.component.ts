@@ -214,8 +214,15 @@ descargarAvance(avance: any) {
   }
 
   try {
+    let base64String = avance.archivo;
+
+    // Remove the prefix if it exists
+    if (base64String.startsWith('data:application/pdf;base64,')) {
+      base64String = base64String.replace('data:application/pdf;base64,', '');
+    }
+
     // Decode the Base64 string
-    const byteCharacters = atob(avance.archivo); // `avance.archivo` should be a Base64 string
+    const byteCharacters = atob(base64String);
     const byteNumbers = Array.from(byteCharacters, char => char.charCodeAt(0));
     const byteArray = new Uint8Array(byteNumbers);
 
@@ -236,3 +243,5 @@ descargarAvance(avance: any) {
   }
 }
 }
+
+
