@@ -48,7 +48,10 @@
       ></app-editar-detalle>
     </ng-template>
     <ng-template class="row" [ngIf]="flujo">
-      <app-editar-flujo></app-editar-flujo>
+      <app-editar-flujo
+        [userRepresentation]="userRepresentation"
+        [tema]="tema"
+      ></app-editar-flujo>
     </ng-template>
     <ng-template class="row" [ngIf]="avances">
       <app-ver-avances

@@ -1,3 +1,51 @@
-<div class="background bold font-55">
-  Flujo
+<div class="container-fluid mb-108" *ngIf="!loading">
+  <!-- Header -->
+  <div class="row mt-3 px-5 rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
+    <div class="col-2 text-center">
+      Nombre
+    </div>
+    <div class="col-2 text-center ">
+      Creador
+    </div>
+    <div class="col-2 text-center ">
+      Inicio
+    </div>
+    <div class="col"></div>
+    <div class="col-2 text-center">
+      Término
+    </div>
+    <div class="col"></div>
+    <div class="col-2 text-center d-flex justify-content-center">
+      Gestionar
+    </div>
+  </div>
+  <!-- Body -->
+  <div class="row h-100 mb-1 px-5 secondary-bg bold d-flex align-items-center " *ngFor="let fase of fasesFlujo; index as i">
+    <div class="col-2 text-center ">
+      {{fase.nombre}}
+    </div>
+    <div class="col-2 text-center ">
+      {{flujoGeneral.rut_creador}}
+    </div>
+    <div class="col-2 text-center ">
+      {{fase.fecha_inicio | dateFormat}}
+    </div>
+    <div class="col"></div>
+    <div class="col-2 text-center">
+      {{fase.fecha_termino | dateFormat}}
+    </div>
+    <div class="col"></div>
+    <div class="col-2 d-flex justify-content-center align-items-center " *ngIf="userRepresentation.tipo === 'guia'">
+      <button class="button secondary btn-size-150 bold" (click)="agregarFase(fase)">
+        <i class="bi bi-plus-circle font-24"></i>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- loader -->
+<div class="container-fluid d-flex justify-content-center align-items-center fullscreen" *ngIf="loading">
+  <div class="spinner-grow primary-normal div-size-72" role="status">
+    <span class="visually-hidden">cargando...</span>
+  </div>
 </div>
