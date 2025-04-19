@@ -35,7 +35,6 @@ async function create_subphase(req, res) {
         fecha_inicio,
         fecha_termino,
         rut_creador,
-        id_flujo,
         id_padre, // ID de la fase padre
         id_tema, // ID del tema al que pertenece la fase
      } = req.body;
@@ -54,20 +53,75 @@ async function create_subphase(req, res) {
         INSERT INTO fase (numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)
     `;
+    const query_id_flujo = `
+        SELECT fase.id_flujo
+        FROM (
+            SELECT fase.* FROM fase_tiene_padre JOIN fase ON fase_tiene_padre.id_hijo = fase.id WHERE fase_tiene_padre.id_padre = ?
+        ) as fase JOIN flujo_tiene_tema ON fase.id_flujo = flujo_tiene_tema.id_flujo
+        WHERE flujo_tiene_tema.id_tema = ?;
+    `;
+    const id_flujo_params = [id_padre, id_tema];
 
+    const query_create_flow = `
+        INSERT INTO flujo (tipo, fecha_inicio, fecha_termino, rut_creador)
+        VALUES (?, ?, ?, ?);
+    `;
+    const flow_params = [tipo, fecha_inicio, fecha_termino, rut_creador];
+    const query_get_last_id = `SELECT LAST_INSERT_ID() AS id;`;
+
+    const query_insert_flujo_tema = `
+        INSERT INTO flujo_tiene_tema (id_flujo, id_tema)
+        VALUES (?, ?);
+    `;
+
+    const query_insert_fase_tiene_padre = `
+        INSERT INTO fase_tiene_padre (id_padre, id_hijo)
+        VALUES (?, ?);
+    `;
+
+    let connection = null;
     try {
-        const results = await runParametrizedQuery(query_number, number_params);
+
+        connection = await beginTransaction(); // Iniciar transacción
+        // Verificar si la fase padre tiene un flujo asociado
+        const flujoResults = await runParametrizedQuery(query_id_flujo, id_flujo_params, connection);
+        let id_flujo = null;
+        if (flujoResults.length > 0) {
+            id_flujo = flujoResults[0].id_flujo; // Obtener el ID del flujo existente
+        } else {
+            // Si no existe un flujo asociado, crear uno nuevo
+            await runParametrizedQuery(query_create_flow, flow_params, connection);
+            const results = await runQuery(query_get_last_id, connection);
+            id_flujo = results[0].id; // Obtener el ID del nuevo flujo creado
+
+            // Crear la relación entre el flujo y el tema
+            await runParametrizedQuery(query_insert_flujo_tema, [id_flujo, id_tema], connection);
+        }
+        // Crear la fase    
+        const results = await runParametrizedQuery(query_number, number_params, connection);
         const numero = results[0]['count(*)'] + 1; // Número de la nueva fase
 
         const insert_params = [numero, nombre, descripcion, tipo, fecha_inicio, fecha_termino, rut_creador, id_flujo];
 
-        await runParametrizedQuery(query_insert, insert_params);
+        await runParametrizedQuery(query_insert, insert_params, connection);
 
+        const results2 = await runQuery(query_get_last_id, connection);
+        const newPhaseId = results2[0].id; // Obtener el ID de la nueva fase creada
+
+        // Crear la relación padre-hijo
+        await runParametrizedQuery(query_insert_fase_tiene_padre, [id_padre, newPhaseId], connection);
+        await commitTransaction(connection); // Confirmar transacción
+        console.log('Subfase creada con éxito:', newPhaseId);
+        // Enviar respuesta al cliente
         res.status(200).json({ message: 'Fase creada con éxito' });
     } catch (error) {
+        if (connection) {
+            await rollbackTransaction(connection); // Revertir transacción en caso de error
+        }
+        // Manejar el error y enviar respuesta al cliente
         console.error('Error creando subfase:', error.response ? error.response.data : error.message);
         res.status(500).send('Error creando subfase');
-    }
+    } 
 }
 
 async function read_phase(req, res) {

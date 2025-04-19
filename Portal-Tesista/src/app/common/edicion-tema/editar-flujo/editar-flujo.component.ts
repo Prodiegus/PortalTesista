@@ -3,11 +3,38 @@ import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {HttpRequestService} from '../../Http-request.service';
 
+interface FaseConSubfase {
+  id: number;
+  numero: number;
+  nombre: string;
+  descripcion: string;
+  tipo: string;
+  fecha_inicio: string;
+  fecha_termino: string;
+  rut_creador: string;
+  id_flujo: number;
+  subfases: fase[];
+}
+
+interface fase {
+  id: number;
+  numero: number;
+  nombre: string;
+  descripcion: string;
+  tipo: string;
+  fecha_inicio: string;
+  fecha_termino: string;
+  rut_creador: string;
+  id_flujo: number;
+}
+
 @Component({
   selector: 'app-editar-flujo',
   templateUrl: './editar-flujo.component.html',
   styleUrl: './editar-flujo.component.scss'
 })
+
+
 export class EditarFlujoComponent implements OnInit{
   @Input() userRepresentation!: any;
   @Input() tema!: any;
@@ -16,6 +43,9 @@ export class EditarFlujoComponent implements OnInit{
   flujoGeneral: any;
   fasesFlujo: any;
   numeros: number[] = [];
+
+  subfasesGuia = false;
+  faseShowNumero = 0;
 
   constructor(
     private router: Router,
@@ -87,12 +117,44 @@ async ngOnInit() {
     });
   }
 
-  private async fetchFasesTema(){
+  private async fetchFasesTema() {
     return new Promise<void>((resolve, reject) => {
       this.httpRequestService.getFasesTema(this.tema.id).then(observable => {
         observable.subscribe(
           (data: any) => {
-
+            let fasesConSubfases: FaseConSubfase[] = []; // Explicitly typed as FaseConSubfase[]
+            for (const fase of this.fasesFlujo) {
+              let faseConSubfase: FaseConSubfase = {
+                id: fase.id,
+                numero: fase.numero,
+                nombre: fase.nombre,
+                descripcion: fase.descripcion,
+                tipo: fase.tipo,
+                fecha_inicio: fase.fecha_inicio,
+                fecha_termino: fase.fecha_termino,
+                rut_creador: fase.rut_creador,
+                id_flujo: fase.id_flujo,
+                subfases: [],
+              };
+              for (const subfase of data) {
+                if (fase.id === subfase.id_padre) {
+                  const faseSub: fase = {
+                    id: subfase.id,
+                    numero: subfase.numero,
+                    nombre: subfase.nombre,
+                    descripcion: subfase.descripcion,
+                    tipo: subfase.tipo,
+                    fecha_inicio: subfase.fecha_inicio,
+                    fecha_termino: subfase.fecha_termino,
+                    rut_creador: subfase.rut_creador,
+                    id_flujo: subfase.id_flujo
+                  }
+                  faseConSubfase.subfases.push(faseSub);
+                }
+              }
+              fasesConSubfases.push(faseConSubfase);
+            }
+            this.fasesFlujo = fasesConSubfases;
             resolve();
           },
           (error: any) => {
@@ -106,5 +168,10 @@ async ngOnInit() {
 
   agregarFase(fase: any) {
 
+  }
+
+  toggleSubfasesGuia(i: number) {
+    this.subfasesGuia = !this.subfasesGuia;
+    this.faseShowNumero = i;
   }
 }
