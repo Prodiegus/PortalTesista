@@ -57,6 +57,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {MatPaginator, MatPaginatorIntl} from '@angular/material/paginator';
 import {MatSort, MatSortHeader} from '@angular/material/sort';
 import {CustomPaginatorIntl} from './common/custom-paginator-intl';
+import { AgregarFaseTemaComponent } from './common/agregar-fase-tema/agregar-fase-tema.component';
 
 @NgModule({
   declarations: [
@@ -93,6 +94,7 @@ import {CustomPaginatorIntl} from './common/custom-paginator-intl';
     SolicitudesTemaComponent,
     DetalleSolicitudComponent,
     TwoDigitDayPipe,
+    AgregarFaseTemaComponent,
   ],
   imports: [
     BrowserModule,

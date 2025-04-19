@@ -47,6 +47,12 @@ export class EditarFlujoComponent implements OnInit{
   subfasesGuia = false;
   faseShowNumero = 0;
 
+  id_padre = 0;
+  agregarFasePopup = false;
+
+  showDetalleFase = false;
+  faseSeleccionada: any;
+
   constructor(
     private router: Router,
     private httpRequestService: HttpRequestService,
@@ -167,7 +173,46 @@ async ngOnInit() {
   }
 
   agregarFase(fase: any) {
+    this.id_padre = fase.id;
+    this.agregarFasePopup = true;
+  }
 
+  async closeAgregarFase() {
+    this.agregarFasePopup = false;
+    try {
+      this.loading = true;
+      await this.fetchFlujoGeneral();
+      await this.fetchFasesFlujo();
+      await this.fetchFasesTema();
+    } catch (error) {
+      console.error('Error fetching flujo general or fases flujo:', error);
+    } finally {
+      this.loading = false;
+    }
+  }
+
+  abrirDetalleFase(fase: any, subfase: any) {
+    this.faseSeleccionada = subfase;
+    for (let i = 0; i < fase.subfases.length; i++) {
+      this.numeros.push(fase.subfases[i].numero);
+    }
+    this.showDetalleFase = true;
+  }
+
+  async closeDetalleFase(){
+    this.showDetalleFase = false;
+    this.faseSeleccionada = null;
+    this.numeros = [];
+    try {
+      this.loading = true;
+      await this.fetchFlujoGeneral();
+      await this.fetchFasesFlujo();
+      await this.fetchFasesTema();
+    } catch (error) {
+      console.error('Error fetching flujo general or fases flujo:', error);
+    } finally {
+      this.loading = false;
+    }
   }
 
   toggleSubfasesGuia(i: number) {

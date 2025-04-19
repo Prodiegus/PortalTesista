@@ -1,4 +1,7 @@
 <div class="container-fluid mb-108" *ngIf="!loading">
+  <div class="row bold font-22 d-flex justify-content-center">
+    Edición de flujo
+  </div>
   <!-- Header -->
   <div class="row mt-3 mx-0 px-5 rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
     <div class="col-2 text-center">
@@ -15,7 +18,7 @@
       Término
     </div>
     <div class="col"></div>
-    <div class="col-2 text-center d-flex justify-content-center">
+    <div class="col-2 text-center d-flex justify-content-center" *ngIf="userRepresentation.tipo === 'guia'">
       Gestionar
     </div>
   </div>
@@ -43,6 +46,9 @@
       </div>
     </div>
     @if (subfasesGuia && fase.id === faseShowNumero){
+      <div class="row h-60 mb-1 px-5 mx-0 secondary-bg font-20 d-flex align-items-center justify-content-center">
+        {{fase.descripcion}}
+      </div>
       @for (subfase of fase.subfases; track subfase.id) {
         <div class="row h-60 mb-1 px-5 mx-0 secondary-bg bold d-flex align-items-center">
           <div class="col-2 text-center ">
@@ -61,13 +67,7 @@
           <div class="col"></div>
           @if (userRepresentation.tipo === 'guia'){
             <div class="col-2 d-flex justify-content-center align-items-center ">
-              <button class="button secondary btn-size-150 bold">
-                ver
-              </button>
-            </div>
-          } @else {
-            <div class="col-2 d-flex justify-content-center align-items-center ">
-              <button class="button secondary btn-size-150 bold">
+              <button class="button secondary btn-size-150 bold" (click)="abrirDetalleFase(fase, subfase)">
                 ver
               </button>
             </div>
@@ -82,5 +82,30 @@
 <div class="container-fluid d-flex justify-content-center align-items-center fullscreen" *ngIf="loading">
   <div class="spinner-grow primary-normal div-size-72" role="status">
     <span class="visually-hidden">cargando...</span>
+  </div>
+</div>
+
+<!-- agregar fase popup -->
+<div *ngIf="agregarFasePopup" class="overlay">
+  <div class="overlay-content">
+    <app-agregar-fase-tema
+      [userRepresentation]="userRepresentation"
+      [id_padre]="id_padre"
+      [id_tema]="tema.id"
+      (close)="closeAgregarFase()"
+    ></app-agregar-fase-tema>
+  </div>
+</div>
+
+<!-- Detalle fase popup -->
+<div *ngIf="showDetalleFase" class="overlay">
+  <div class="overlay-content">
+    <app-detalle-fase
+      [userRepresentation]="userRepresentation"
+      [fase]="faseSeleccionada"
+      [id_flujo]="faseSeleccionada.id_flujo"
+      [numeros]="numeros"
+      (close)="closeDetalleFase()">
+    </app-detalle-fase>
   </div>
 </div>
