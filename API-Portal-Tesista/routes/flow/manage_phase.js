@@ -224,7 +224,7 @@ async function swap_numbers(existingPhase, id, numero) {
 
 
 async function delete_phase(req, res) {
-    const {id_tema} = req.body;
+    const {id} = req.body;
     const query = `DELETE FROM fase WHERE id = ?`;
     try {
         const results = await runParametrizedQuery(query, [id]);
