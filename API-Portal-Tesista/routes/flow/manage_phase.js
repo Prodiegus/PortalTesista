@@ -335,7 +335,6 @@ async function move_phase_backward(req, res) {
 
     try {
         const alumno_phases = await getPhasesTopic(id_tema, 'alumno', connection);
-        console.log('Fases de alumno:', alumno_phases);
         await commitTransaction(connection); // Confirmar transacción
 
         const query_update_topic = `
@@ -371,9 +370,12 @@ async function move_phase_backward(req, res) {
                 res.status(200).send('No se encontró una fase anterior');
                 return;
             } else {
+                console.log('Fase actual:', currentPhase);
+                console.log('Fase anterior:', previousPhase);
+                console.log('phase.fecha_inicio < currentPhase.fecha_inicio:', phase.fecha_inicio < currentPhase.fecha_inicio);
                 if (phase.fecha_inicio < currentPhase.fecha_inicio) {
                     // Seleccionar la fase con la fecha de inicio más próxima
-                    if (!previousPhase || phase.fecha_inicio > previousPhase.fecha_inicio) {
+                    if (phase.fecha_inicio > previousPhase.fecha_inicio) {
                         previousPhase = phase;
                     }
                 }
