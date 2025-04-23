@@ -393,58 +393,20 @@ async function edit_topic(req, res) {
 
 async function change_topic_status(req, res) {
     const { id, estado } = req.body;
-    const query_get_fechas_flow = `
-        SELECT fecha_termino as fecha 
-        FROM fase JOIN (
-            SELECT id_flujo 
-            FROM tema JOIN escuela 
-            ON tema.nombre_escuela = escuela.nombre 
-            WHERE id = ?
-        ) as flujo
-        ON fase.id_flujo = flujo.id_flujo;
-    `;
-    const params_get_fechas_flow = [id];
-    let fechaCambio;
-
-    const ahora = new Date();
+    const query_change_status = `UPDATE tema SET estado = ? WHERE id = ?;`;
+    const params_change_status = [estado, id];
+    const query_set_end_date = `UPDATE alumno_trabaja SET fecha_termino = ? WHERE id_tema = ?;`;
+    const params_set_end_date = [new Date(), id];
     try {
-        const results = await runParametrizedQuery(query_get_fechas_flow, params_get_fechas_flow);
-        // Obtendremos la fecha de termino mas proxima
-        fechaCambio = new Date(results[0].fecha);
-        for (let i = 1; i < results.length; i++) {
-            const fecha = new Date(results[i].fecha);
-            if (fecha < fechaCambio && fecha > ahora) {
-                fechaCambio = fecha;
-            }
+        if(estado !== 'Pendiente'){
+            await runParametrizedQuery(query_set_end_date, params_set_end_date);
         }
+        await runParametrizedQuery(query_change_status, params_change_status);
+        res.status(200).send('Estado del tema cambiado con éxito');
+
     } catch (error) {
         console.error('Error obteniendo fecha de cambio de estado:', error.response ? error.response.data : error.message);
         res.status(500).send('Error obteniendo fecha de cambio de estado');
-    }
-
-    //fechaCambio = new Date("2024-12-29T12:32:00");
-
-    // Programar el cambio de estado
-    const delay = fechaCambio - ahora;
-
-    if (delay > 0) {
-        scheduledChanges.push({ id, estado, fechaCambio });
-        saveScheduledChanges();
-        if (delay > 2147483647) { // 2^31-1 milisegundos, aproximadamente 24.8 días
-            setInterval(() => {
-                const now = new Date();
-                if (now >= fechaCambio) {
-                    executeChange({ id, estado });
-                }
-            }, 2147483647);
-        } else {
-            setTimeout(() => {
-                executeChange({ id, estado });
-            }, delay);
-        }
-        res.status(200).send('Cambio de estado programado con éxito para la fecha ' + fechaCambio);
-    } else {
-        res.status(400).send('La fecha de cambio de estado debe ser en el futuro');
     }
 }
 

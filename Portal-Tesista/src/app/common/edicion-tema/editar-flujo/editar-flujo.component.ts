@@ -13,6 +13,7 @@ interface FaseConSubfase {
   fecha_termino: string;
   rut_creador: string;
   id_flujo: number;
+  id_padre?: number;
   subfases: fase[];
 }
 
@@ -26,6 +27,7 @@ interface fase {
   fecha_termino: string;
   rut_creador: string;
   id_flujo: number;
+  id_padre?: number;
 }
 
 @Component({
@@ -45,7 +47,9 @@ export class EditarFlujoComponent implements OnInit{
   numeros: number[] = [];
 
   subfasesGuia = false;
+  subfasesAlumno = false;
   faseShowNumero = 0;
+  subfaseShowNumero = 0;
 
   id_padre = 0;
   agregarFasePopup = false;
@@ -111,7 +115,6 @@ async ngOnInit() {
         observable.subscribe(
           (data: any) => {
             this.fasesFlujo = data.sort((a: any, b: any) => a.numero - b.numero);
-            this.numeros = this.fasesFlujo.map((fase: any) => fase.numero);
             resolve();
           },
           (error: any) => {
@@ -128,7 +131,7 @@ async ngOnInit() {
       this.httpRequestService.getFasesTema(this.tema.id).then(observable => {
         observable.subscribe(
           (data: any) => {
-            let fasesConSubfases: FaseConSubfase[] = []; // Explicitly typed as FaseConSubfase[]
+            let fasesConSubfases: FaseConSubfase[] = [];
             for (const fase of this.fasesFlujo) {
               let faseConSubfase: FaseConSubfase = {
                 id: fase.id,
@@ -142,9 +145,10 @@ async ngOnInit() {
                 id_flujo: fase.id_flujo,
                 subfases: [],
               };
+              data = data.sort((a: any, b: any) => a.numero - b.numero);
               for (const subfase of data) {
                 if (fase.id === subfase.id_padre) {
-                  const faseSub: fase = {
+                  const faseSub: FaseConSubfase = {
                     id: subfase.id,
                     numero: subfase.numero,
                     nombre: subfase.nombre,
@@ -153,13 +157,31 @@ async ngOnInit() {
                     fecha_inicio: subfase.fecha_inicio,
                     fecha_termino: subfase.fecha_termino,
                     rut_creador: subfase.rut_creador,
-                    id_flujo: subfase.id_flujo
+                    id_flujo: subfase.id_flujo,
+                    subfases: [],
+                  }
+                  for (const subsubfase of data) {
+                    if (subfase.id === subsubfase.id_padre) {
+                      const subsubfaseObj: fase = {
+                        id: subsubfase.id,
+                        numero: subsubfase.numero,
+                        nombre: subsubfase.nombre,
+                        descripcion: subsubfase.descripcion,
+                        tipo: subsubfase.tipo,
+                        fecha_inicio: subsubfase.fecha_inicio,
+                        fecha_termino: subsubfase.fecha_termino,
+                        rut_creador: subsubfase.rut_creador,
+                        id_flujo: subsubfase.id_flujo,
+                      }
+                      faseSub.subfases.push(subsubfaseObj);
+                    }
                   }
                   faseConSubfase.subfases.push(faseSub);
                 }
               }
               fasesConSubfases.push(faseConSubfase);
             }
+            console.log(fasesConSubfases);
             this.fasesFlujo = fasesConSubfases;
             resolve();
           },
@@ -218,5 +240,9 @@ async ngOnInit() {
   toggleSubfasesGuia(i: number) {
     this.subfasesGuia = !this.subfasesGuia;
     this.faseShowNumero = i;
+  }
+  toggleSubfasesAlumno(i: number) {
+    this.subfasesAlumno = !this.subfasesAlumno;
+    this.subfaseShowNumero = i;
   }
 }

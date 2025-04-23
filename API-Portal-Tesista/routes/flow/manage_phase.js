@@ -258,6 +258,137 @@ async function getPhasesTopic(id_topic, type, connection) {
     }
 }
 
+async function move_phase_forward(req, res) {
+    const { id_tema } = req.params;
+    const connection = await beginTransaction(); // Iniciar transacción
+    const alumno_phases = await getPhasesTopic(id_tema, 'alumno', connection);
+    connection.release(); // Liberar conexión
+
+    const query_update_topic = `
+        UPDATE tema
+        SET id_fase = ?, numero_fase = ?
+        WHERE id = ?
+    `;
+    const query_get_topic = `
+        SELECT *
+        FROM tema
+        WHERE id = ?
+    `;
+    const params_get_topic = [id_tema];
+
+    const query_get_phase = `
+        SELECT *
+        FROM fase
+        WHERE id = ?
+    `;
+
+    let currentPhase = null;
+    let nextPhase = null;
+    try{
+        const topic = await runParametrizedQuery(query_get_topic, params_get_topic);
+        currentPhase = await runParametrizedQuery(query_get_phase, [topic[0].id_fase]);
+        currentPhase = currentPhase[0];
+        nextPhase = currentPhase;
+        for (let i = 0; i < alumno_phases.length; i++) {
+            const phase = alumno_phases[i];
+            if (currentPhase.tipo != 'alumno') {
+                // la fase no es de alumno
+                if (phase.fecha_inicio >= currentPhase.fecha_inicio && phase.fecha_termino <= currentPhase.fecha_termino) {
+                    // La fase está dentro del rango de fechas de la fase actual
+                    if (nextPhase.fecha_inicio > phase.fecha_inicio) {
+                        // La fase es la más cercana a la actual
+                        nextPhase = phase; 
+                    }
+                }
+            } else {
+                // la fase es de alumno
+                if (phase.fecha_inicio > currentPhase.fecha_inicio && phase.fecha_termino > currentPhase.fecha_termino) {
+                    // La fase está fuera del rango de fechas de la fase actual
+                    if (nextPhase.fecha_inicio > phase.fecha_inicio) {
+                        // La fase es la más cercana a la actual
+                        nextPhase = phase; 
+                    }
+                }
+            }
+        }
+        if (nextPhase.id == currentPhase.id) {
+            // No se encontró una fase siguiente
+            res.status(200).send('No se encontró una fase siguiente');
+            return;
+        }
+        const params_update_topic = [nextPhase.id, nextPhase.numero, id_tema];
+        await runParametrizedQuery(query_update_topic, params_update_topic);
+        console.log('Fase movida hacia adelante:', nextPhase);
+        res.status(200).send('Fase movida hacia adelante: ' + nextPhase.id);
+    } catch (error) {
+        console.error('Error moviendo fase hacia adelante:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error moviendo fase hacia adelante');
+    }
+}
+
+async function move_phase_backward(req, res) {
+    const { id_tema } = req.params;
+    const connection = await beginTransaction
+    const alumno_phases = await getPhasesTopic(id_tema, 'alumno', connection);
+    connection.release(); // Liberar conexión
+    const query_update_topic = `
+        UPDATE tema
+        SET id_fase = ?, numero_fase = ?
+        WHERE id = ?
+    `;
+    const query_get_topic = `
+        SELECT *
+        FROM tema
+        WHERE id = ?
+    `;
+    const params_get_topic = [id_tema];
+    const query_get_phase = `
+        SELECT *
+        FROM fase
+        WHERE id = ?
+    `;
+
+    let currentPhase = null;
+    let previousPhase = null;
+
+    try{
+        const topic = await runParametrizedQuery(query_get_topic, params_get_topic);
+        currentPhase = await runParametrizedQuery(query_get_phase, [topic[0].id_fase]);
+        currentPhase = currentPhase[0];
+        previousPhase = currentPhase;
+        for (let i = 0; i < alumno_phases.length; i++) {
+            const phase = alumno_phases[i];
+            if (currentPhase.tipo != 'alumno') {
+                // la fase no es de alumno
+                res.status(200).send('No se encontró una fase anterior');
+                return;
+            } else {
+                // la fase es de alumno
+                if (phase.fecha_inicio < currentPhase.fecha_inicio && phase.fecha_termino < currentPhase.fecha_termino) {
+                    // La fase está fuera del rango de fechas de la fase actual
+                    if (previousPhase.fecha_inicio < phase.fecha_inicio) {
+                        // La fase es la más cercana a la actual
+                        previousPhase = phase; 
+                    }
+                }
+            }
+        }
+        if (previousPhase.id == currentPhase.id) {
+            // No se encontró una fase anterior
+            res.status(200).send('No se encontró una fase anterior');
+            return;
+        }
+        const params_update_topic = [previousPhase.id, previousPhase.numero, id_tema];
+        await runParametrizedQuery(query_update_topic, params_update_topic);
+        console.log('Fase movida hacia atrás:', previousPhase);
+        res.status(200).send('Fase movida hacia atrás: ' + previousPhase.id);
+    } catch (error) {
+        console.error('Error moviendo fase hacia atrás:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error moviendo fase hacia atrás');
+    }
+}
+
+
 module.exports = {
     create_phase,
     read_phase,
@@ -267,4 +398,6 @@ module.exports = {
     getPhasesTopic,
     read_topic_phase,
     create_subphase,
+    move_phase_forward,
+    move_phase_backward,
 };
