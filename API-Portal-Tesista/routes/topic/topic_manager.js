@@ -398,7 +398,7 @@ async function change_topic_status(req, res) {
     const query_set_end_date = `UPDATE alumno_trabaja SET fecha_termino = ? WHERE id_tema = ?;`;
     const params_set_end_date = [new Date(), id];
     try {
-        if(estado != 'Pendiente'){
+        if(estado !== 'Pendiente'){
             await runParametrizedQuery(query_set_end_date, params_set_end_date);
         }
         await runParametrizedQuery(query_change_status, params_change_status);
