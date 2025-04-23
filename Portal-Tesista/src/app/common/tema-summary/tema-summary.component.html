@@ -48,14 +48,28 @@
         <i class="bi bi-pencil-square font-24 bold pointer" (click)="edicionTema()" ></i>
       </div>
     </div>
-    <div class="row px-3 pt-4">
-      <div class="progress custom-progress p-0">
-        <div class="progress-bar custom-progress-bar" role="progressbar"
-             [style.width]="avance+'%'"
-             [attr.aria-valuenow]="avance"
-             [attr.aria-label]="avance+'%'"
-             aria-valuemin="0"
-             aria-valuemax="100">
+    <div class="row container-fluid px-3 pt-4">
+      <div class="row d-flex justify-content-center align-items-center">
+        <div class="col-auto" *ngIf="userRepresentation.tipo === 'alumno'">
+          <button class="button secondary bold" (click)="faseAnterior()">
+            <i class="bi bi-arrow-left-circle font-24"></i>
+          </button>
+        </div>
+        <div class="col">
+          <div class="progress custom-progress p-0">
+            <div class="progress-bar custom-progress-bar" role="progressbar"
+                 [style.width]="avance+'%'"
+                 [attr.aria-valuenow]="avance"
+                 [attr.aria-label]="avance+'%'"
+                 aria-valuemin="0"
+                 aria-valuemax="100">
+            </div>
+          </div>
+        </div>
+        <div class="col-auto" *ngIf="userRepresentation.tipo === 'alumno'">
+          <button class="button secondary bold" (click)="faseSiguiente()">
+            <i class="bi bi-arrow-right-circle font-24"></i>
+          </button>
         </div>
       </div>
     </div>
