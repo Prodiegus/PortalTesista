@@ -6546,3 +6546,8 @@
 2025/04/22 21:59:17 [alert] 187#187: 512 worker_connections are not enough
 2025/04/22 21:59:17 [error] 186#186: *2406 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:80/favicon.ico", host: "34.176.220.92"
 2025/04/22 21:59:18 [error] 186#186: *2408 open() "/var/www/html/robots.txt" failed (2: No such file or directory), client: 139.59.17.107, server: localhost-nginx-proxy-manager, request: "GET /robots.txt HTTP/1.1", host: "34.176.220.92:80"
+2025/04/23 00:11:44 [error] 191#191: *3 open() "/var/www/html/.git/config" failed (2: No such file or directory), client: 195.182.25.122, server: localhost-nginx-proxy-manager, request: "GET /.git/config HTTP/1.1", host: "34.176.220.92"
+2025/04/23 00:16:59 [alert] 190#190: 512 worker_connections are not enough
+2025/04/23 00:16:59 [error] 191#191: *1002 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /admin/assets/js/views/login.js HTTP/1.1", upstream: "http://127.0.0.1:80/admin/assets/js/views/login.js", host: "34.176.220.92"
+2025/04/23 01:00:21 [error] 191#191: *1346 open() "/var/www/html/.env" failed (2: No such file or directory), client: 45.55.90.27, server: localhost-nginx-proxy-manager, request: "GET /.env HTTP/1.1", host: "34.176.220.92"
+2025/04/23 01:00:21 [error] 191#191: *1347 open() "/var/www/html/.git/config" failed (2: No such file or directory), client: 45.55.90.27, server: localhost-nginx-proxy-manager, request: "GET /.git/config HTTP/1.1", host: "34.176.220.92"
