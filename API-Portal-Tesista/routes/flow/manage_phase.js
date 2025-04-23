@@ -371,8 +371,8 @@ async function move_phase_backward(req, res) {
                 res.status(200).send('No se encontró una fase anterior');
                 return;
             } else {
-                if (phase.fecha_inicio < currentPhase.fecha_inicio && phase.fecha_termino < currentPhase.fecha_termino) {
-                    if (previousPhase.fecha_inicio < phase.fecha_inicio) {
+                if (phase.fecha_inicio < currentPhase.fecha_inicio) {
+                    if (phase.fecha_inicio > previousPhase.fecha_inicio) {
                         previousPhase = phase;
                     }
                 }
