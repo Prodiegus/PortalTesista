@@ -302,7 +302,7 @@ async function move_phase_forward(req, res) {
             const phase = alumno_phases[i];
             if (currentPhase.tipo != 'alumno') {
                 // Seleccionar la fase alumno con la fecha de inicio más pequeña
-                if (phase.fecha_inicio >= nextPhase.fecha_inicio) {
+                if (phase.fecha_inicio <= nextPhase.fecha_inicio) {
                     nextPhase = phase;
                 }
             } else {
