@@ -301,12 +301,9 @@ async function move_phase_forward(req, res) {
         for (let i = 0; i < alumno_phases.length; i++) {
             const phase = alumno_phases[i];
             if (currentPhase.tipo != 'alumno') {
-                if (phase.fecha_inicio >= currentPhase.fecha_inicio && phase.fecha_termino <= currentPhase.fecha_termino) {
-                    // Si la fase es del tipo alumno y está dentro de la fase actual 
-                    if (nextPhase.fecha_inicio >= phase.fecha_inicio && currentPhase.id != phase.id) {
-                        // Si la fase siguiente tiene una fecha de inicio mayor a la fase actual
-                        nextPhase = phase;
-                    }
+                // Seleccionar la fase alumno con la fecha de inicio más pequeña
+                if (!nextPhase || phase.fecha_inicio < nextPhase.fecha_inicio) {
+                    nextPhase = phase;
                 }
             } else {
                 if (phase.fecha_inicio > currentPhase.fecha_inicio && phase.fecha_termino > currentPhase.fecha_termino) {
@@ -316,8 +313,6 @@ async function move_phase_forward(req, res) {
                 }
             }
         }
-
-        console.log('Fase siguiente:', nextPhase);
 
         const params_update_topic = [nextPhase.id, nextPhase.numero, id_tema];
         await runParametrizedQuery(query_update_topic, params_update_topic);
