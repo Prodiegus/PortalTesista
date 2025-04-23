@@ -264,6 +264,11 @@ async function move_phase_forward(req, res) {
 
     try {
         const alumno_phases = await getPhasesTopic(id_tema, 'alumno', connection);
+        console.log('Fases de alumno:', alumno_phases);
+        if (alumno_phases.length == 0) {
+            res.status(200).send('No se encontraron fases de alumno');
+            return;
+        }
 
         await commitTransaction(connection); // Confirmar transacción
 
