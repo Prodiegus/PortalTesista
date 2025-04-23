@@ -372,6 +372,7 @@ async function move_phase_backward(req, res) {
             } else {
                 console.log('Fase actual:', currentPhase);
                 console.log('Fase anterior:', previousPhase);
+                console.log('Fase seleccionada:', phase);
                 console.log('phase.fecha_inicio < currentPhase.fecha_inicio:', phase.fecha_inicio < currentPhase.fecha_inicio);
                 if (phase.fecha_inicio < currentPhase.fecha_inicio) {
                     // Seleccionar la fase con la fecha de inicio más próxima
