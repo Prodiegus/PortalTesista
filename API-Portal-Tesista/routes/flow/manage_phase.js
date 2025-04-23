@@ -315,6 +315,7 @@ async function move_phase_forward(req, res) {
             return;
         }
 
+        console.log('Fase siguiente:', nextPhase);
         const params_update_topic = [nextPhase.id, nextPhase.numero, id_tema];
         await runParametrizedQuery(query_update_topic, params_update_topic);
 
