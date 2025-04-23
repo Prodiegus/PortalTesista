@@ -335,7 +335,7 @@ async function move_phase_backward(req, res) {
 
     try {
         const alumno_phases = await getPhasesTopic(id_tema, 'alumno', connection);
-
+        console.log('Fases de alumno:', alumno_phases);
         await commitTransaction(connection); // Confirmar transacción
 
         const query_update_topic = `
