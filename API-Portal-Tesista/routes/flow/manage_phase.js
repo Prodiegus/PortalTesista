@@ -361,7 +361,7 @@ async function move_phase_backward(req, res) {
         const topic = await runParametrizedQuery(query_get_topic, params_get_topic);
         currentPhase = await runParametrizedQuery(query_get_phase, [topic[0].id_fase]);
         currentPhase = currentPhase[0];
-        previousPhase = currentPhase;
+        previousPhase = null;
 
         for (let i = 0; i < alumno_phases.length; i++) {
             const phase = alumno_phases[i];
@@ -370,13 +370,9 @@ async function move_phase_backward(req, res) {
                 res.status(200).send('No se encontró una fase anterior');
                 return;
             } else {
-                console.log('Fase actual:', currentPhase);
-                console.log('Fase anterior:', previousPhase);
-                console.log('Fase seleccionada:', phase);
-                console.log('phase.fecha_inicio < currentPhase.fecha_inicio:', phase.fecha_inicio < currentPhase.fecha_inicio);
                 if (phase.fecha_inicio < currentPhase.fecha_inicio) {
                     // Seleccionar la fase con la fecha de inicio más próxima
-                    if (phase.fecha_inicio > previousPhase.fecha_inicio) {
+                    if (!previousPhase || phase.fecha_inicio > previousPhase.fecha_inicio) {
                         previousPhase = phase;
                     }
                 }
