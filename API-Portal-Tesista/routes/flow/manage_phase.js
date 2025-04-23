@@ -372,7 +372,8 @@ async function move_phase_backward(req, res) {
                 return;
             } else {
                 if (phase.fecha_inicio < currentPhase.fecha_inicio) {
-                    if (phase.fecha_inicio > previousPhase.fecha_inicio) {
+                    // Seleccionar la fase con la fecha de inicio más próxima
+                    if (!previousPhase || phase.fecha_inicio > previousPhase.fecha_inicio) {
                         previousPhase = phase;
                     }
                 }
