@@ -50,7 +50,7 @@
         {{fase.descripcion}}
       </div>
       @for (subfase of fase.subfases; track subfase.id) {
-        <div class="row h-60 mb-1 px-5 mx-0 secondary-bg bold d-flex align-items-center">
+        <div class="row h-60 mb-1 px-5 mx-0 secondary-bg bold d-flex align-items-center" (click)="toggleSubfasesAlumno(subfase.id)">
           <div class="col-2 text-center ">
             {{subfase.nombre}}
           </div>
@@ -71,8 +71,44 @@
                 ver
               </button>
             </div>
+          } @else if (userRepresentation.tipo === 'alumno') {
+            <div class="col-2 d-flex justify-content-center align-items-center ">
+              <button class="button secondary btn-size-170 bold" (click)="agregarFase(subfase)">
+                <span class="me-1">Agregar fase</span> <span> <i class="bi bi-plus-circle font-24"></i></span>
+              </button>
+            </div>
           }
         </div>
+        @if (subfasesAlumno && subfase.id === subfaseShowNumero){
+          <div class="row h-60 mb-1 px-5 mx-0 secondary-bg font-20 d-flex align-items-center justify-content-center">
+            {{subfase.descripcion}}
+          </div>
+          @for (subsubfase of subfase.subfases; track subsubfase.id) {
+            <div class="row h-60 mb-1 px-5 mx-0 secondary-bg bold d-flex align-items-center">
+              <div class="col-2 text-center ">
+                {{subsubfase.nombre}}
+              </div>
+              <div class="col-2 text-center ">
+                {{subsubfase.rut_creador}}
+              </div>
+              <div class="col-2 text-center ">
+                {{subsubfase.fecha_inicio | dateFormat}}
+              </div>
+              <div class="col"></div>
+              <div class="col-2 text-center">
+                {{subsubfase.fecha_termino | dateFormat}}
+              </div>
+              <div class="col"></div>
+              @if (userRepresentation.tipo === 'alumno'){
+                <div class="col-2 d-flex justify-content-center align-items-center ">
+                  <button class="button secondary btn-size-150 bold" (click)="abrirDetalleFase(subfase, subsubfase)">
+                    ver
+                  </button>
+                </div>
+              }
+            </div>
+          }
+        }
       }
     }
   }

@@ -3,7 +3,7 @@ const express = require('express');
 const create = require('./user/create');
 const { read, readAll} = require('./user/read');
 const { create_flow, read_flow, read_school_flow, edit_flow } = require('./flow/manage_flow');
-const { create_phase, read_phase, edit_phase, read_flow_phase, delete_phase, read_topic_phase, create_subphase } = require('./flow/manage_phase');
+const { create_phase, read_phase, edit_phase, read_flow_phase, delete_phase, read_topic_phase, create_subphase, move_phase_backward, move_phase_forward } = require('./flow/manage_phase');
 const { create_topic, read_topic, read_all_topics, edit_topic, change_topic_status, requestTopic, acept_topic_request, read_topic_request} = require('./topic/topic_manager');
 const disable = require('./user/disable');
 const enable = require('./user/enable');
@@ -97,6 +97,16 @@ router.post('/create/phase', async (req, res) => {
 router.delete('/delete/phase', async (req, res) => {
   console.log('Consulta delete a /delete/phase: ', req.body);
   await delete_phase(req, res);
+});
+
+router.post('/move/phase/forward/:id_tema', async (req, res) => {
+  console.log('Consulta post a /move/phase/forward/:id_tema: ', req.body);
+  await move_phase_forward(req, res);
+});
+
+router.post('/move/phase/backward/:id_tema', async (req, res) => {
+  console.log('Consulta post a /move/phase/backward/:id_tema: ', req.body);
+  await move_phase_backward(req, res);
 });
 
 // leer todos los temas
