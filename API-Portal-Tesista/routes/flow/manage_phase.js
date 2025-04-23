@@ -301,8 +301,9 @@ async function move_phase_forward(req, res) {
         for (let i = 0; i < alumno_phases.length; i++) {
             const phase = alumno_phases[i];
             if (currentPhase.tipo != 'alumno') {
+                console.log('La fase actual no es de tipo alumno');
                 // Seleccionar la fase alumno con la fecha de inicio más pequeña
-                if (!nextPhase || phase.fecha_inicio < nextPhase.fecha_inicio) {
+                if (phase.fecha_inicio < nextPhase.fecha_inicio) {
                     nextPhase = phase;
                 }
             } else {
