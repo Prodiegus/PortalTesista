@@ -156,4 +156,20 @@ export class HttpRequestService {
     return this.http.post<any>(endpoint, avance);
   }
 
+  async faseSiguiente(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/move/phase/forward/${id_tema}`;
+    const requestBody = {
+      "id_tema": id_tema
+    }
+    return this.http.post<any>(endpoint, requestBody);
+  }
+
+  async faseAnterior(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/move/phase/backward/${id_tema}`;
+    const requestBody = {
+      "id_tema": id_tema
+    }
+    return this.http.post<any>(endpoint, requestBody);
+  }
+
 }
