@@ -305,8 +305,9 @@ async function move_phase_forward(req, res) {
                     nextPhase = phase;
                 }
             } else {
-                if (phase.fecha_inicio > currentPhase.fecha_inicio && phase.fecha_termino > currentPhase.fecha_termino) {
-                    if (nextPhase.fecha_inicio > phase.fecha_inicio) {
+                if (phase.fecha_inicio > currentPhase.fecha_inicio && phase.fecha_termino >= currentPhase.fecha_termino) {
+                    // la fase actual es posterior a la fase seleccionada
+                    if (nextPhase.fecha_inicio < phase.fecha_inicio) {
                         nextPhase = phase;
                     }
                 }
@@ -366,6 +367,7 @@ async function move_phase_backward(req, res) {
         for (let i = 0; i < alumno_phases.length; i++) {
             const phase = alumno_phases[i];
             if (currentPhase.tipo != 'alumno') {
+                console.log('No se encontró una fase anterior');
                 res.status(200).send('No se encontró una fase anterior');
                 return;
             } else {
@@ -377,6 +379,8 @@ async function move_phase_backward(req, res) {
             }
         }
 
+
+        console.log('Fase anterior:', previousPhase);
         if (previousPhase.id == currentPhase.id) {
             res.status(200).send('No se encontró una fase anterior');
             return;
