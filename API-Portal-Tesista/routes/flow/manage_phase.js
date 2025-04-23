@@ -266,7 +266,6 @@ async function move_phase_forward(req, res) {
         const alumno_phases = await getPhasesTopic(id_tema, 'alumno', connection);
 
         await commitTransaction(connection); // Confirmar transacción
-        connection.release(); // Liberar conexión
 
         const query_update_topic = `
             UPDATE tema
@@ -339,7 +338,6 @@ async function move_phase_backward(req, res) {
         const alumno_phases = await getPhasesTopic(id_tema, 'alumno', connection);
 
         await commitTransaction(connection); // Confirmar transacción
-        connection.release(); // Liberar conexión
 
         const query_update_topic = `
             UPDATE tema
