@@ -433,3 +433,5 @@
 [21/Apr/2025:23:18:28 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 23.27.145.185] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (X11; Linux i686; rv:109.0) Gecko/20100101 Firefox/120.0" "-"
 [22/Apr/2025:00:03:41 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 23.27.145.92] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (X11; Linux i686; rv:109.0) Gecko/20100101 Firefox/120.0" "-"
 [22/Apr/2025:01:01:49 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 149.57.180.72] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (X11; Linux i686; rv:109.0) Gecko/20100101 Firefox/120.0" "-"
+[23/Apr/2025:12:13:48 +0000] - 200 200 - GET http api-login.portaltesista.me "/" [Client 172.111.15.144] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (iPad; CPU OS 11_4 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.0 Mobile/15E148 Safari/604.1" "-"
+[23/Apr/2025:15:31:21 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 104.152.52.140] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "curl/7.61.1" "-"
