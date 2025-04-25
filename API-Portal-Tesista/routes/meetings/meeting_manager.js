@@ -1,3 +1,4 @@
+const { json } = require('express');
 const { runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, commitTransaction } = require('../utils/query');
 
 function getFechas(fecha_inicio, fecha_termino, frecuencia_dias) {
@@ -19,14 +20,27 @@ async function create_meetings(req, res) {
         VALUES (?, ?, ?, ?, ?);
     `;
     const fechas = getFechas(fecha_inicio, fecha_termino, frecuencia_dias);
-    const params_insert_meeting = fechas.map(fecha => [fecha, '', 'Pendiente', rut_coordinador, id_tema]);
+    const params_insert_meeting = [];
+    for (const fecha of fechas) {
+        const params = [fecha, 'Resumen de la reunión', 'Pendiente', rut_coordinador, id_tema];
+        params_insert_meeting.push(params);
+    }
+    const json = {
+        message: 'Reuniones creadas exitosamente',
+        meetings: params_insert_meeting.map(params => ({
+            fecha: params[0],
+            resumen: params[1],
+            estado: params[2],
+            rut_coordinador: params[3],
+            id_tema: params[4]
+        }))
+    };
     
     try {
         for (const params of params_insert_meeting) {
             await runParametrizedQuery(query_insert_meeting, params);
         }
-    
-        res.status(200).send('Reuniones creadas exitosamente');
+        res.status(200).send(json);
     }
     catch (error) {
         console.error('Error creando reuniones:', error.response ? error.response.data : error.message);

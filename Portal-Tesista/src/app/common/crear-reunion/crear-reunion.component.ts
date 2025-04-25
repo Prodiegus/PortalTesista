@@ -9,8 +9,8 @@ import {addWarning} from '@angular-devkit/build-angular/src/utils/webpack-diagno
   styleUrls: ['./crear-reunion.component.scss']
 })
 export class CrearReunionComponent {
-  @Input() userRepresentation!: any;
-  @Input() tema!: any;
+  @Input() userRepresentation: any;
+  @Input() tema: any;
   @Output() close = new EventEmitter<void>();
 
   fecha_inicio = new Date();
@@ -40,11 +40,11 @@ export class CrearReunionComponent {
 
   async crearReunion() {
     const nuevaReunion = {
+      id_tema: this.tema.id,
+      rut_coordinador: this.userRepresentation.rut,
       fecha_inicio: this.fecha_inicio,
       fecha_termino: this.fecha_termino,
       frecuencia: this.frecuencia_dias,
-      rut_coordinador: this.userRepresentation.rut,
-      id_tema: this.tema.id_tema,
     };
     this.loading = true;
     await this.crearReunionHttp(nuevaReunion);

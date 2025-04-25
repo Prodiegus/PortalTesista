@@ -27,7 +27,7 @@ export class VerReunionesComponent implements OnInit{
     } catch (error) {
       console.error('Error fetching reuniones:', error);
     } finally {
-      this.loading = false; 
+      this.loading = false;
     }
   }
 
