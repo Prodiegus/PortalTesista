@@ -1,3 +1,4 @@
+const { json } = require('express');
 const { runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, commitTransaction } = require('../utils/query');
 
 function getFechas(fecha_inicio, fecha_termino, frecuencia_dias) {
@@ -25,8 +26,8 @@ async function create_meetings(req, res) {
         for (const params of params_insert_meeting) {
             await runParametrizedQuery(query_insert_meeting, params);
         }
-    
-        res.status(200).send('Reuniones creadas exitosamente');
+        json({ message: 'Reuniones creadas exitosamente' });
+        res.status(200).send(json);
     }
     catch (error) {
         console.error('Error creando reuniones:', error.response ? error.response.data : error.message);
