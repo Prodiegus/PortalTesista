@@ -7,15 +7,14 @@ export class ExtractTimePipe implements PipeTransform {
   transform(value: string): string {
     if (!value) return '';
 
-    const date = new Date(value);
-    let hours = date.getHours();
-    const minutes = date.getMinutes();
-    const ampm = hours >= 12 ? 'pm' : 'am';
+    // Extract the time part from the ISO string
+    const [timePart] = value.split('T')[1].split('.');
+    const [hours, minutes] = timePart.split(':').map(Number);
 
-    hours = hours % 12;
-    hours = hours ? hours : 12; // Convert 0 to 12 for 12-hour format
+    const ampm = hours >= 12 ? 'pm' : 'am';
+    const adjustedHours = hours % 12 || 12; // Convert 0 to 12 for 12-hour format
 
     const minutesStr = minutes < 10 ? '0' + minutes : minutes;
-    return `${hours}:${minutesStr} ${ampm}`;
+    return `${adjustedHours}:${minutesStr} ${ampm}`;
   }
 }

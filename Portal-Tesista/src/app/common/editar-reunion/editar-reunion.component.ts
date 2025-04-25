@@ -12,7 +12,7 @@ export class EditarReunionComponent implements OnInit {
   @Input() reunion!: any;
   @Output() close = new EventEmitter<void>();
 
-  fecha = new Date();
+  fecha: any = '';
   completado = false;
   resumen = '';
 
@@ -23,16 +23,16 @@ export class EditarReunionComponent implements OnInit {
     private httpRequestService: HttpRequestService
   ) {}
 
-  ngOnInit() {
-    console.log(this.reunion);
-    if (this.reunion) {
-      this.fecha = new Date(this.reunion.fecha);
-      this.completado = this.reunion.estado === 'completado';
-      this.resumen = this.reunion.resumen;
-    } else {
-      this.error = true;
-    }
+ngOnInit() {
+  if (this.reunion) {
+    const date = new Date(this.reunion.fecha);
+    this.fecha = date.toISOString().slice(0, 16); // Format as 'YYYY-MM-DDTHH:mm'
+    this.completado = this.reunion.estado === 'completado';
+    this.resumen = this.reunion.resumen;
+  } else {
+    this.error = true;
   }
+}
 
   @HostListener('document:click', ['$event'])
   clickout(event: MouseEvent) {
@@ -58,25 +58,39 @@ export class EditarReunionComponent implements OnInit {
   }
 
   async editar() {
+    const date = new Date(this.fecha);
+    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1)
+      .toString()
+      .padStart(2, '0')}-${date.getDate()
+      .toString()
+      .padStart(2, '0')} ${date.getHours()
+      .toString()
+      .padStart(2, '0')}:${date.getMinutes()
+      .toString()
+      .padStart(2, '0')}:${date.getSeconds()
+      .toString()
+      .padStart(2, '0')}`;
+
     const reunion = {
       id: this.reunion.id,
-      fecha: this.fecha,
+      fecha: formattedDate,
       resumen: this.resumen,
       estado: this.completado ? 'completado' : 'pendiente',
     };
+
     this.loading = true;
     try {
       await this.editarReunion(reunion);
     } catch (error) {
       console.error('Error al editar la reunión:', error);
       this.error = true;
-    }finally {
+    } finally {
       this.loading = false;
       this.closeOverlay();
     }
   }
 
-  async editarReunion(reunion: { id: any; fecha: Date; resumen: string; estado: string; }) {
+  async editarReunion(reunion: { id: any; fecha: any; resumen: string; estado: string; }) {
     return new Promise<void>((resolve, reject) => {
       this.httpRequestService.editarReunion(reunion).then(observable => {
         observable.subscribe(
