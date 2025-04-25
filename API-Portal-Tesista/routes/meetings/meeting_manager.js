@@ -5,14 +5,20 @@ function getFechas(fecha_inicio, fecha_termino, frecuencia_dias) {
     const fechaInicio = new Date(fecha_inicio);
     const fechaTermino = new Date(fecha_termino);
     
-    console.log('Fecha inicio:', fechaInicio);
-    console.log('Fecha término:', fechaTermino);
-    console.log('Frecuencia días:', frecuencia_dias);
+    if (isNaN(fechaInicio.getTime()) || isNaN(fechaTermino.getTime())) {
+        throw new Error('Fechas inválidas');
+    }
+    if (frecuencia_dias <= 0) {
+        fechas.push(new Date(fechaInicio));
+        return fechas;
+    }
+    if (frecuencia_dias > 365) {
+        throw new Error('La frecuencia no puede ser mayor a 365 días');
+    }
     
     while (fechaInicio <= fechaTermino) {
         fechas.push(new Date(fechaInicio));
         fechaInicio.setDate(fechaInicio.getDate() + frecuencia_dias);
-        console.log('Fecha generada:', fechaInicio);
     }
     return fechas;
 }
