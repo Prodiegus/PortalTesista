@@ -60,7 +60,10 @@
       ></app-ver-avances>
     </ng-template>
     <ng-template class="row" [ngIf]="reuniones">
-      <app-ver-reuniones></app-ver-reuniones>
+      <app-ver-reuniones
+        [userRepresentation]="userRepresentation"
+        [tema]="tema"
+      ></app-ver-reuniones>
     </ng-template>
     <ng-template class="row" [ngIf]="duenos">
       <app-editar-duenos></app-editar-duenos>

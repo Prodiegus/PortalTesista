@@ -1,0 +1,91 @@
+<div class="container mt-5 p-4">
+    <form (ngSubmit)="crearReunion()" #reunionForm="ngForm">
+      <div class="text-center mb-5">
+        <p class="fw-bold font-20">Crear Reunión</p>
+      </div>
+
+      <!-- Error display -->
+      <div *ngIf="error" class="alert alert-danger text-center" role="alert">
+        No se pudo crear la reunión. Por favor, verifica los datos ingresados.
+      </div>
+
+     <!-- Fecha de inicio -->
+      <div class="mb-3 mt-5 row align-items-center">
+        <label for="fechaInicio" class="col-md-4 col-form-label text-end fw-bold">Fecha Inicio:</label>
+        <div class="col-md-6">
+          <input
+            id="fechaInicio"
+            type="datetime-local"
+            class="form-control shadow-sm"
+            [(ngModel)]="fecha_inicio"
+            name="fecha_inicio"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Fecha de término -->
+      <div class="mb-3 row align-items-center">
+        <label for="fechaTermino" class="col-md-4 col-form-label text-end fw-bold">Fecha Término:</label>
+        <div class="col-md-6">
+          <input
+            id="fechaTermino"
+            type="datetime-local"
+            class="form-control shadow-sm"
+            [(ngModel)]="fecha_termino"
+            name="fecha_termino"
+            required
+          />
+        </div>
+      </div>
+
+      <!-- Frecuencia en días -->
+      <div class="mb-3 row align-items-center">
+        <label for="frecuencia" class="col-md-4 col-form-label text-end fw-bold">Frecuencia:</label>
+        <div class="col-md-6">
+          <select
+            id="frecuencia"
+            class="form-select shadow-sm"
+            [(ngModel)]="frecuencia"
+            name="frecuencia"
+            (change)="actualizarFrecuencia()"
+            required
+          >
+            <option value="unica">Única</option>
+            <option value="diaria">Diaria</option>
+            <option value="semanal">Semanal</option>
+            <option value="bisemanal">Bisemanal</option>
+          </select>
+        </div>
+      </div>
+      <!-- Botones -->
+      <div class="container-fluid">
+        <div class="row d-flex align-items-center justify-content-center">
+          <div class="col d-flex align-items-center justify-content-end">
+            <button
+              type="button"
+              class="button secondary px-4 py-2 fw-bold shadow-sm me-3"
+              (click)="cancelar()"
+            >
+              Cancelar
+            </button>
+          </div>
+          <div class="col d-flex align-items-center justify-content-start">
+            <button
+              type="submit"
+              class="button primary round px-4 py-2 fw-bold shadow-sm"
+              [disabled]="!reunionForm.valid"
+            >
+              <span>Crear</span>
+              <span
+                class="ms-1 spinner-border spinner-border-sm"
+                role="status"
+                *ngIf="loading"
+                aria-hidden="true"
+              ></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
