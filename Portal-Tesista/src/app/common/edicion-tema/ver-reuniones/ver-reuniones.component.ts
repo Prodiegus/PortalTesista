@@ -14,7 +14,8 @@ export class VerReunionesComponent implements OnInit{
   crearReunion = false;
   editarReunion = false;
 
-  reuniones: Array<any> = [];
+  reuniones: any = [];
+  reunion: any = null;
 
   constructor(
     private httpRequestService: HttpRequestService
@@ -52,7 +53,18 @@ export class VerReunionesComponent implements OnInit{
     this.crearReunion = true;
   }
 
-  cerrarCrearReunion() {
+  async cerrarCrearReunion() {
     this.crearReunion = false;
+    await this.getReuniones();
+  }
+
+  verDetalleReunion(reunion: any) {
+    this.editarReunion = true;
+    this.reunion = reunion;
+  }
+
+  async cerrarEditarReunion() {
+    this.editarReunion = false;
+    await this.getReuniones();
   }
 }

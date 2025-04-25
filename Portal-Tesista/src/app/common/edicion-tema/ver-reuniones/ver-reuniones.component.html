@@ -12,14 +12,34 @@
   </div>
   <!-- Header -->
   <div class="row rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
-    <div class="col-4 text-center">
+    <div class="col-3 text-center">
       Fecha
     </div>
-    <div class="col-4 text-center ">
+    <div class="col-3 text-center">
+      Hora
+    </div>
+    <div class="col-3 text-center ">
       Estado
     </div>
-    <div class="col-4 text-center d-flex justify-content-center ">
+    <div class="col-3 text-center d-flex justify-content-center ">
       Detalle
+    </div>
+  </div>
+  <!-- Body -->
+  <div class="row h-100 mb-1 secondary-bg bold d-flex align-items-center" *ngFor="let reunion of reuniones">
+    <div class="col-3 text-center ">
+      {{reunion.fecha | dateFormat}}
+    </div>
+    <div class="col-3 text-center ">
+      {{reunion.fecha | extractTime}}
+    </div>
+    <div class="col-3 text-center ">
+      {{reunion.estado}}
+    </div>
+    <div class="col-3 d-flex justify-content-center align-items-center">
+      <button class="button secondary btn-size-150 bold" (click)="verDetalleReunion(reunion)">
+        Ver
+      </button>
     </div>
   </div>
 </div>
@@ -40,5 +60,16 @@
       (close)="cerrarCrearReunion()"
     >
     </app-crear-reunion>
+  </div>
+</div>
+
+<div *ngIf="editarReunion" class="overlay">
+  <div class="overlay-content">
+    <app-editar-reunion
+      [userRepresentation]="userRepresentation"
+      [tema]="tema"
+      [reunion]="reunion"
+      (close)="cerrarEditarReunion()"
+    ></app-editar-reunion>
   </div>
 </div>
