@@ -172,4 +172,24 @@ export class HttpRequestService {
     return this.http.post<any>(endpoint, requestBody);
   }
 
+  async crearReuniones(reunion: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/create/meeting`;
+    return this.http.post<any>(endpoint, reunion);
+  }
+
+  async getReuniones(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/meeting/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async editarReunion(reunion: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/edit/meeting`;
+    return this.http.post<any>(endpoint, reunion);
+  }
+
+  async eliminarReunion(reunion: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/delete/meeting`;
+    return this.http.post<any>(endpoint, reunion);
+  }
+
 }
