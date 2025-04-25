@@ -1,4 +1,3 @@
-const { json } = require('express');
 const { runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, commitTransaction } = require('../utils/query');
 
 function getFechas(fecha_inicio, fecha_termino, frecuencia_dias) {
@@ -6,9 +5,14 @@ function getFechas(fecha_inicio, fecha_termino, frecuencia_dias) {
     const fechaInicio = new Date(fecha_inicio);
     const fechaTermino = new Date(fecha_termino);
     
+    console.log('Fecha inicio:', fechaInicio);
+    console.log('Fecha término:', fechaTermino);
+    console.log('Frecuencia días:', frecuencia_dias);
+    
     while (fechaInicio <= fechaTermino) {
         fechas.push(new Date(fechaInicio));
         fechaInicio.setDate(fechaInicio.getDate() + frecuencia_dias);
+        console.log('Fecha generada:', fechaInicio);
     }
     return fechas;
 }
