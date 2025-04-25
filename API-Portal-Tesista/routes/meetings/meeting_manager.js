@@ -1,4 +1,4 @@
-const { runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, commitTransaction } = require('../utils/query');
+const { runParametrizedQuery } = require('../utils/query');
 
 function getFechas(fecha_inicio, fecha_termino, frecuencia_dias) {
     const fechas = [];
@@ -77,7 +77,16 @@ async function edit_meeting(req, res) {
     const params = [fecha, resumen, estado, id];
     try {
         await runParametrizedQuery(query, params);
-        res.status(200).send('Reunión editada exitosamente');
+        const json = {
+            message: 'Reunión editada exitosamente',
+            meeting: {
+                id,
+                fecha,
+                resumen,
+                estado
+            }
+        };
+        res.status(200).send(json);
     } catch (error) {
         console.error('Error editando reunión:', error.response ? error.response.data : error.message);
         res.status(500).send('Error editando reunión');
@@ -93,7 +102,13 @@ async function delete_meeting(req, res) {
     
     try {
         await runParametrizedQuery(query, params);
-        res.status(200).send('Reunión eliminada exitosamente');
+        const json = {
+            message: 'Reunión eliminada exitosamente',
+            meeting: {
+                id
+            }
+        };
+        res.status(200).send(json);
     } catch (error) {
         console.error('Error eliminando reunión:', error.response ? error.response.data : error.message);
         res.status(500).send('Error eliminando reunión');

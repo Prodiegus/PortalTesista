@@ -44,7 +44,7 @@ export class CrearReunionComponent {
       rut_coordinador: this.userRepresentation.rut,
       fecha_inicio: this.fecha_inicio,
       fecha_termino: this.fecha_termino,
-      frecuencia: this.frecuencia_dias,
+      frecuencia_dias: this.frecuencia_dias,
     };
     this.loading = true;
     await this.crearReunionHttp(nuevaReunion);
