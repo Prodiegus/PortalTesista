@@ -59,6 +59,8 @@ import {MatSort, MatSortHeader} from '@angular/material/sort';
 import {CustomPaginatorIntl} from './common/custom-paginator-intl';
 import { AgregarFaseTemaComponent } from './common/agregar-fase-tema/agregar-fase-tema.component';
 import { CrearReunionComponent } from './common/crear-reunion/crear-reunion.component';
+import { ExtractTimePipe } from './pipe/extract-time.pipe';
+import { EditarReunionComponent } from './common/editar-reunion/editar-reunion.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +99,8 @@ import { CrearReunionComponent } from './common/crear-reunion/crear-reunion.comp
     TwoDigitDayPipe,
     AgregarFaseTemaComponent,
     CrearReunionComponent,
+    ExtractTimePipe,
+    EditarReunionComponent,
   ],
   imports: [
     BrowserModule,
