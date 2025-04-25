@@ -22,20 +22,25 @@ export class CalendarioTemaComponent implements OnInit {
   currentDate: Date = new Date();
   mes: number = 0;
   year: number = 0;
+  reuniones: any = [];
 
   constructor(
     private httpRequestService: HttpRequestService,
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.loading = true;
     this.currentDate = new Date();
     this.mes = this.currentDate.getMonth();
     this.year = this.currentDate.getFullYear();
     this.calendario = this.getCalendarDays(this.year, this.mes);
-    setTimeout(() => {
+    try {
+      await this.getReuniones();
+    } catch (error) {
+      console.error('Error obteniendo reuniones:', error);
+    } finally {
       this.loading = false;
-    }, 1000);
+    }
   }
 
   getCalendarDays(year: number, month: number): (number | null)[][] {
@@ -51,12 +56,12 @@ export class CalendarioTemaComponent implements OnInit {
       calendarDays.push(day);
     }
 
-    while (calendarDays.length < 35) {
+    while (calendarDays.length < 36) {
       calendarDays.push(null);
     }
 
     const calendarMatrix: (number | null)[][] = [];
-    for (let i = 0; i < 35; i += 7) {
+    for (let i = 1; i < 36; i += 7) {
       calendarMatrix.push(calendarDays.slice(i, i + 7));
     }
 
@@ -95,33 +100,56 @@ export class CalendarioTemaComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
 
-onFileSelected(event: Event): void {
-  const input = event.target as HTMLInputElement;
-  if (input.files && input.files.length > 0) {
-    const file = input.files[0];
-    if (file.type === 'application/pdf') {
-      console.log('PDF file selected:', file);
-      const reader = new FileReader();
-      reader.onload = () => {
-        const fileContent = (reader.result as string).split(',')[1]; // Remove the Data URL prefix
-        const formattedDate = this.currentDate.toISOString().slice(0, 19).replace('T', ' ');
-        const formData = {
-          id_tema: this.tema.id,
-          nombre_archivo: file.name,
-          archivo64: fileContent,
-          fecha: formattedDate,
+  hayReunionEnDia(dia: number | null): boolean {
+    if (!dia) return false; // Si el día es nulo, no hay reunión
+    const fechaDia = new Date(this.year, this.mes, dia).toISOString().slice(0, 10);
+    return this.reuniones.some((reunion: any) => reunion.fecha.slice(0, 10) === fechaDia);
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      if (file.type === 'application/pdf') {
+        console.log('PDF file selected:', file);
+        const reader = new FileReader();
+        reader.onload = () => {
+          const fileContent = (reader.result as string).split(',')[1]; // Remove the Data URL prefix
+          const formattedDate = this.currentDate.toISOString().slice(0, 19).replace('T', ' ');
+          const formData = {
+            id_tema: this.tema.id,
+            nombre_archivo: file.name,
+            archivo64: fileContent,
+            fecha: formattedDate,
+          };
+          this.loading = true;
+          this.subirAvance(formData).then(() => {
+            this.loading = false;
+          });
         };
-        this.loading = true;
-        this.subirAvance(formData).then(() => {
-          this.loading = false;
-        });
-      };
-      reader.readAsDataURL(file);
-    } else {
-      console.error('Solo se acepta PDF.');
+        reader.readAsDataURL(file);
+      } else {
+        console.error('Solo se acepta PDF.');
+      }
     }
   }
-}
+
+  async getReuniones(){
+    return new Promise<any>((resolve, reject) => {
+      this.httpRequestService.getReuniones(this.tema.id).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.reuniones = data;
+            resolve(data);
+          },
+          (error: any) => {
+            console.error('Error obteniendo reuniones');
+            reject(error);
+          }
+        );
+      });
+    });
+  }
 
   async subirAvance(avance: any) {
     return new Promise<void>((resolve, reject) => {

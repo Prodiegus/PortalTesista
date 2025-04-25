@@ -21,11 +21,14 @@
   <!-- Body -->
   <div class="row" *ngFor="let semana of calendario; index as i">
     <div
-      class="col square secondary-bg bold border primary base-style"
+      class="col square bold border secondary-bg primary base-style"
       *ngFor="let dia of semana; index as j"
       (mouseenter)="onMouseEnter(i, j)"
       (mouseleave)="onMouseLeave()"
-      [ngClass]="{'hovered': hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j}"
+      [ngClass]="{
+        'hovered': hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j,
+        'reunion-dia': hayReunionEnDia(dia)
+      }"
     >
       <ng-container *ngIf="hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j; else showDay">
         <i class="bi bi-plus-circle pointer" (click)="triggerFileInput()"></i>
