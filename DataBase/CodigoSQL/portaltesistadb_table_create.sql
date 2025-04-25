@@ -66,7 +66,7 @@ CREATE TABLE reunion (
     resumen TEXT,
     estado VARCHAR(255),
     rut_coordinador VARCHAR(255),
-    id_temas INT,
+    id_tema INT,
     PRIMARY KEY (id)
 );
 

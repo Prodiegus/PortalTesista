@@ -10,6 +10,7 @@ const enable = require('./user/enable');
 const {getSchools} = require('./school/school_manager');
 const {addPreview, getTopicPreviews} = require('./update/topic_preview_manager');
 const {addReviewer, getTopicReviewers, deleteReviewer, startPreviewReview} = require('./reviewer/reviewer_manager');
+const { create_meetings, edit_meeting, read_topic_meetings, delete_meeting } = require('./meetings/meeting_manager');
 
 const router = express.Router();
 
@@ -192,6 +193,28 @@ router.post('/delete/reviewer', async (req, res) => {
 router.post('/start/review', async (req, res) => {
   console.log('Consulta post a /start/review: ', req.body);
   await startPreviewReview(req, res);
+});
+
+
+// reuniones
+router.post('/create/meeting', async (req, res) => {
+  console.log('Consulta post a /create/meeting: ', req.body);
+  await create_meetings(req, res);
+});
+
+router.get('/read/meeting/:id_tema', async (req, res) => {
+  console.log('Consulta get a /read/meeting/:id_tema: ', req.body);
+  await read_topic_meetings(req, res);
+});
+
+router.post('/edit/meeting', async (req, res) => {
+  console.log('Consulta post a /edit/meeting: ', req.body);
+  await edit_meeting(req, res);
+});
+
+router.post('/delete/meeting', async (req, res) => {
+  console.log('Consulta delete a /delete/meeting: ', req.body);
+  await delete_meeting(req, res);
 });
 
 module.exports = router;
