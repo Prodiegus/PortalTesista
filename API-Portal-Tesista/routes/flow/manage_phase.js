@@ -308,7 +308,6 @@ async function move_phase_forward(req, res) {
                 console.log('La fase actual es de tipo alumno');
                 if (phase.id == currentPhase.id) {
                     nextPhase = i>=alumno_phases.length - 1 ? null : alumno_phases[i + 1]; // Seleccionar la siguiente fase
-                    break; // Salir del bucle una vez encontrada la fase siguiente
                 }
             }
         }
