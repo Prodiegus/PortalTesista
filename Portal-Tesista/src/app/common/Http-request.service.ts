@@ -192,4 +192,9 @@ export class HttpRequestService {
     return this.http.post<any>(endpoint, reunion);
   }
 
+  async getResumenTema(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/topic/summary/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
 }
