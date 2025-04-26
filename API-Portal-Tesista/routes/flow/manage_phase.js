@@ -264,11 +264,10 @@ async function move_phase_forward(req, res) {
     try {
         const alumno_phases = await getPhasesTopic(id_tema, 'alumno', connection);
         if (alumno_phases.length == 0) {
+            connection.release(); // Liberar conexión si no hay fases
             res.status(200).send('No se encontraron fases de alumno');
             return;
         }
-
-        await commitTransaction(connection); // Confirmar transacción
 
         const query_update_topic = `
             UPDATE tema
@@ -291,10 +290,11 @@ async function move_phase_forward(req, res) {
         let currentPhase = null;
         let nextPhase = null;
 
-        const topic = await runParametrizedQuery(query_get_topic, params_get_topic);
-        currentPhase = await runParametrizedQuery(query_get_phase, [topic[0].id_fase]);
+        const topic = await runParametrizedQuery(query_get_topic, params_get_topic, connection);
+        currentPhase = await runParametrizedQuery(query_get_phase, [topic[0].id_fase], connection);
         currentPhase = currentPhase[0];
         nextPhase = currentPhase;
+
         alumno_phases = sortPhasesByDate(alumno_phases); // Ordenar fases por fecha de inicio
         for (let i = 0; i < alumno_phases.length; i++) {
             const phase = alumno_phases[i];
@@ -307,20 +307,23 @@ async function move_phase_forward(req, res) {
             } else {
                 console.log('La fase actual es de tipo alumno');
                 if (phase.id == currentPhase.id) {
-                    nextPhase = i>=alumno_phases.length - 1 ? null : alumno_phases[i + 1]; // Seleccionar la siguiente fase
+                    nextPhase = i >= alumno_phases.length - 1 ? null : alumno_phases[i + 1]; // Seleccionar la siguiente fase
                 }
             }
         }
 
         console.log('Fase siguiente:', nextPhase);
         if (!nextPhase) {
+            connection.release(); // Liberar conexión si no hay una fase siguiente
             res.status(200).send('No se encontró una fase siguiente');
             return;
         }
 
         const params_update_topic = [nextPhase.id, nextPhase.numero, id_tema];
-        await runParametrizedQuery(query_update_topic, params_update_topic);
+        await runParametrizedQuery(query_update_topic, params_update_topic, connection);
 
+        await commitTransaction(connection); // Confirmar transacción
+        connection.release(); // Liberar conexión después de confirmar
         console.log('Fase movida hacia adelante:', nextPhase);
         res.status(200).send('Fase movida hacia adelante: ' + nextPhase.id);
     } catch (error) {
