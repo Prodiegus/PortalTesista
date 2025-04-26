@@ -310,8 +310,8 @@ async function move_phase_forward(req, res) {
                     // la fase actual es posterior a la fase seleccionada
                     if (nextPhase.fecha_inicio <= phase.fecha_inicio) {
                         console.log('La fase seleccionada es anterior a la fase actual');
-                        console.log('Fase seleccionada:', nextPhase);
-                        console.log('Fase actual:', phase);
+                        console.log('Fase seleccionada:', nextPhase.fecha_inicio);
+                        console.log('Fase actual:', phase.fecha_inicio);
                         nextPhase = phase;
                     }
                 }
