@@ -295,7 +295,7 @@ async function move_phase_forward(req, res) {
         currentPhase = await runParametrizedQuery(query_get_phase, [topic[0].id_fase]);
         currentPhase = currentPhase[0];
         nextPhase = currentPhase;
-
+        alumno_phases = sortPhasesByDate(alumno_phases); // Ordenar fases por fecha de inicio
         for (let i = 0; i < alumno_phases.length; i++) {
             const phase = alumno_phases[i];
             if (currentPhase.tipo != 'alumno') {
@@ -306,14 +306,9 @@ async function move_phase_forward(req, res) {
                 }
             } else {
                 console.log('La fase actual es de tipo alumno');
-                if (phase.fecha_inicio > currentPhase.fecha_inicio && phase.fecha_termino >= currentPhase.fecha_termino) {
-                    // la fase actual es posterior a la fase seleccionada
-                    if (nextPhase.fecha_inicio <= phase.fecha_inicio && phase.fecha_termino < nextPhase.fecha_termino) {
-                        console.log('La fase seleccionada es anterior a la fase actual');
-                        console.log('Fase seleccionada:', nextPhase.fecha_inicio);
-                        console.log('Fase actual:', phase.fecha_inicio);
-                        nextPhase = phase;
-                    }
+                if (phase.id == currentPhase.id) {
+                    nextPhase = i>=alumno_phases.length - 1 ? null : alumno_phases[i + 1]; // Seleccionar la siguiente fase
+                    break; // Salir del bucle una vez encontrada la fase siguiente
                 }
             }
         }
@@ -337,6 +332,14 @@ async function move_phase_forward(req, res) {
         console.error('Error moviendo fase hacia adelante:', error.response ? error.response.data : error.message);
         res.status(500).send('Error moviendo fase hacia adelante');
     }
+}
+
+function sortPhasesByDate(phases) {
+    return phases.sort((a, b) => {
+        const dateA = new Date(a.fecha_inicio);
+        const dateB = new Date(b.fecha_inicio);
+        return dateA - dateB;
+    });
 }
 
 async function move_phase_backward(req, res) {
