@@ -308,7 +308,7 @@ async function move_phase_forward(req, res) {
                 console.log('La fase actual es de tipo alumno');
                 if (phase.fecha_inicio > currentPhase.fecha_inicio && phase.fecha_termino >= currentPhase.fecha_termino) {
                     // la fase actual es posterior a la fase seleccionada
-                    if (nextPhase.fecha_inicio <= phase.fecha_inicio) {
+                    if (nextPhase.fecha_inicio <= phase.fecha_inicio && phase.fecha_termino < nextPhase.fecha_termino) {
                         console.log('La fase seleccionada es anterior a la fase actual');
                         console.log('Fase seleccionada:', nextPhase.fecha_inicio);
                         console.log('Fase actual:', phase.fecha_inicio);
