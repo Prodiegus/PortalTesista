@@ -162,7 +162,6 @@ async function read_topic_phase(req, res) {
     const params = [id_tema];
     try {
         const results = await runParametrizedQuery(query, params);
-        console.log('Fases del tema:', results);
         res.status(200).send(results);
     } catch (error) {
         console.error('Error obteniendo fase:', error.response ? error.response.data : error.message);
@@ -301,13 +300,18 @@ async function move_phase_forward(req, res) {
             const phase = alumno_phases[i];
             if (currentPhase.tipo != 'alumno') {
                 // Seleccionar la fase alumno con la fecha de inicio más pequeña
+                console.log('La fase actual no es de tipo alumno');
                 if (phase.fecha_inicio <= nextPhase.fecha_inicio) {
                     nextPhase = phase;
                 }
             } else {
+                console.log('La fase actual es de tipo alumno');
                 if (phase.fecha_inicio > currentPhase.fecha_inicio && phase.fecha_termino >= currentPhase.fecha_termino) {
                     // la fase actual es posterior a la fase seleccionada
-                    if (nextPhase.fecha_inicio < phase.fecha_inicio) {
+                    if (nextPhase.fecha_inicio <= phase.fecha_inicio) {
+                        console.log('La fase seleccionada es anterior a la fase actual');
+                        console.log('Fase seleccionada:', nextPhase);
+                        console.log('Fase actual:', phase);
                         nextPhase = phase;
                     }
                 }
