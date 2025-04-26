@@ -259,10 +259,9 @@ async function getPhasesTopic(id_topic, type, connection) {
 
 async function move_phase_forward(req, res) {
     const { id_tema } = req.params;
-    const connection = await beginTransaction(); // Iniciar transacción
 
     try {
-        const alumno_phases = await getPhasesTopic(id_tema, 'alumno', connection);
+        const alumno_phases = await getPhasesTopic(id_tema, 'alumno', await beginTransaction()); // Obtener fases de tipo 'alumno'
         if (alumno_phases.length == 0) {
             connection.release(); // Liberar conexión si no hay fases
             res.status(200).send('No se encontraron fases de alumno');
@@ -290,8 +289,8 @@ async function move_phase_forward(req, res) {
         let currentPhase = null;
         let nextPhase = null;
 
-        const topic = await runParametrizedQuery(query_get_topic, params_get_topic, connection);
-        currentPhase = await runParametrizedQuery(query_get_phase, [topic[0].id_fase], connection);
+        const topic = await runParametrizedQuery(query_get_topic, params_get_topic);
+        currentPhase = await runParametrizedQuery(query_get_phase, [topic[0].id_fase]);
         currentPhase = currentPhase[0];
         nextPhase = currentPhase;
 
@@ -320,16 +319,11 @@ async function move_phase_forward(req, res) {
         }
 
         const params_update_topic = [nextPhase.id, nextPhase.numero, id_tema];
-        await runParametrizedQuery(query_update_topic, params_update_topic, connection);
+        await runParametrizedQuery(query_update_topic, params_update_topic);
 
-        await commitTransaction(connection); // Confirmar transacción
         console.log('Fase movida hacia adelante:', nextPhase);
         res.status(200).send('Fase movida hacia adelante: ' + nextPhase.id);
     } catch (error) {
-        if (connection) {
-            await rollbackTransaction(connection); // Revertir transacción en caso de error
-            connection.release(); // Liberar conexión
-        }
         console.error('Error moviendo fase hacia adelante:', error.response ? error.response.data : error.message);
         res.status(500).send('Error moviendo fase hacia adelante');
     }
