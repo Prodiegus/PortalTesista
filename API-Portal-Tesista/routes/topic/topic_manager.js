@@ -8,6 +8,7 @@ const getToken = require('../utils/getToken');
 const createUsuario = require('../keycloak/crearUsuario');
 const getRandomPassword = require('../utils/getRandomPassword');
 const { get } = require('http');
+const { json } = require('stream/consumers');
 
 const scheduledChangesFilePath = path.join(__dirname, 'scheduled_changes.json');
 
@@ -581,6 +582,128 @@ async function read_topic_request(req, res) {
     }
 }
 
+async function get_topic_summary(req, res) {
+    const {id_tema} = req.params;
+    const query_get_tema_estado_fase = `
+        SELECT estado, id_fase
+        FROM tema
+        WHERE id = ?;
+    `;
+    const params = [id_tema];
+    const query_get_tema_fases = `
+        SELECT *
+        FROM fase
+        JOIN (
+            SELECT flujo.*
+            FROM flujo JOIN (
+                SELECT * FROM flujo_tiene_tema WHERE id_tema = ?
+            ) as flujo_tema ON flujo.id = flujo_tema.id_flujo
+            WHERE tipo = 'alumno'
+        ) as flujo_alumno ON fase.id_flujo = flujo_alumno.id;
+    `;
+    const params_fases = [id_tema];
+    const query_get_fase_padre = `
+        SELECT fase.*
+        FROM fase JOIN fase_tiene_padre ON fase.id = fase_tiene_padre.id_padre
+        WHERE id_hijo = ?;
+    `;
+    const query_get_duenos = `
+        SELECT usuario.nombre, usuario.apellido, usuario.correo
+        FROM dueno JOIN usuario ON dueno.rut = usuario.rut
+        WHERE id_tema = ?;
+    `;
+    const params_duenos = [id_tema];
+    let connection;
+    try {
+        let estado = '';
+        let flujo = '';
+        let avance = '';
+        let dueno = [];
+        connection = await beginTransaction();
+
+        const owners_res = await runParametrizedQuery(query_get_duenos, params_duenos, connection);
+        for (let i = 0; i < owners_res.length; i++) {
+            const owner = owners_res[i];
+            const owner_data = owner.nombre+" "+owner.apellido+" ("+owner.correo+")";
+            dueno.push(owner_data);
+        }
+
+        const state_phase_res = await runParametrizedQuery(query_get_tema_estado_fase, params, connection);
+        if (state_phase_res.length === 0) {
+            throw new Error('No se encontró el tema');
+        }
+        estado = state_phase_res[0].estado;
+        const id_fase = state_phase_res[0].id_fase;
+        const phases_res = await runParametrizedQuery(query_get_tema_fases, params_fases, connection);
+        if (phases_res.length === 0) {
+            throw new Error('No se encontraron fases para el tema');
+        }
+        avance = estimate_progress(id_fase, phases_res)+'%';
+        const student_flow = get_current_phase(id_fase, phases_res);
+        if (!student_flow) {
+            throw new Error('No se encontró la fase actual del flujo del estudiante');
+        }
+        let fase_padre_res = await runParametrizedQuery(query_get_fase_padre, [student_flow.id], connection);
+        if (fase_padre_res.length === 0) {
+            throw new Error('No se encontró la fase padre del flujo del estudiante');
+        }
+        const guide_flow = fase_padre_res[0];
+        fase_padre_res = await runParametrizedQuery(query_get_fase_padre, [guide_flow.id], connection);
+        if (fase_padre_res.length === 0) {
+            throw new Error('No se encontró la fase padre del flujo del guía');
+        }
+        const school_flow = fase_padre_res[0];
+        flujo = school_flow.nombre + ' -> ' + guide_flow.nombre + ' -> ' + student_flow.nombre;
+        
+        const json = {
+            id_tema: id_tema,
+            estado: estado,
+            flujo: flujo,
+            avance: avance,
+            dueno: dueno
+        }
+        connection.commitTransaction();
+        res.status(200).send(json);
+    } catch (error) {
+        if (connection) {
+            await rollbackTransaction(connection);
+        }
+        console.error('Error obteniendo solicitudes de tema:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error obteniendo solicitudes de tema');
+    }
+}
+
+function estimate_progress(current_phase_id, phases) {
+    let progress = 0;
+    sort_phases(phases);
+    for (let i = 0; i < phases.length; i++) {
+        if (phases[i].id === current_phase_id) {
+            progress = Math.round((i + 1) / phases.length * 100);
+            break;
+        }
+    }
+    return progress;
+}
+
+function sort_phases(phases) {
+    return phases.sort((a, b) => {
+        const dateA = new Date(a.fecha_inicio);
+        const dateB = new Date(b.fecha_inicio);
+        return dateA - dateB;
+    });
+}
+
+function get_current_phase(current_phase_id, phases) {
+    let current_phase = null;
+    for (let i = 0; i < phases.length; i++) {
+        if (phases[i].id === current_phase_id) {
+            current_phase = phases[i];
+            break;
+        }
+    }
+    return current_phase;
+}
+
 module.exports = {
     create_topic,
     read_topic,
@@ -589,5 +712,6 @@ module.exports = {
     change_topic_status,
     requestTopic,
     read_topic_request,
-    acept_topic_request
+    acept_topic_request,
+    get_topic_summary,
 };
