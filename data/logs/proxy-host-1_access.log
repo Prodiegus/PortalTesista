@@ -1169,3 +1169,7 @@
 [26/Apr/2025:18:06:40 +0000] - 200 200 - GET https portaltesista.me "/" [Client 159.65.173.195] [Length 12392] [Gzip 5.64] [Sent-to 34.176.220.92] "Mozilla/5.0 (compatible)" "-"
 [26/Apr/2025:19:40:44 +0000] - 200 200 - GET https portaltesista.me "/home/tema/1" [Client 181.163.47.134] [Length 12392] [Gzip 5.64] [Sent-to 34.176.220.92] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" "-"
 [26/Apr/2025:20:16:22 +0000] - 304 304 - GET https portaltesista.me "/home" [Client 181.163.47.134] [Length 0] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" "-"
+[26/Apr/2025:21:32:09 +0000] - 200 200 - GET https portaltesista.me "/" [Client 34.22.198.16] [Length 12392] [Gzip 5.64] [Sent-to 34.176.220.92] "python-requests/2.32.3" "-"
+[26/Apr/2025:21:32:09 +0000] - 200 200 - GET https portaltesista.me "/" [Client 34.22.198.16] [Length 12392] [Gzip 5.64] [Sent-to 34.176.220.92] "python-requests/2.32.3" "-"
+[26/Apr/2025:21:32:09 +0000] - 200 200 - GET https portaltesista.me "/" [Client 34.22.198.16] [Length 12392] [Gzip 5.64] [Sent-to 34.176.220.92] "python-requests/2.32.3" "-"
+[26/Apr/2025:21:32:09 +0000] - 200 200 - GET https portaltesista.me "/" [Client 34.22.198.16] [Length 12392] [Gzip 5.64] [Sent-to 34.176.220.92] "python-requests/2.32.3" "-"
