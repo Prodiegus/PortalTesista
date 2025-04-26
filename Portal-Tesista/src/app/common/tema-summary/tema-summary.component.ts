@@ -16,13 +16,23 @@ export class TemaSummaryComponent implements OnInit {
 
   avance: number = 70;
 
+  resumen: any = {};
+
   constructor(
     private router: Router,
     private httpRequestService: HttpRequestService
   ) { }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.avance = 70;
+    this.loading = true;
+    try {
+      await this.fetchResumenTema();
+    } catch (error) {
+      console.error('Error fetching resumen tema:', error);
+    } finally {
+      this.loading = false;
+    }
   }
 
   edicionTema() {
@@ -31,6 +41,23 @@ export class TemaSummaryComponent implements OnInit {
         tema: this.tema,
         userRepresentation: this.userRepresentation
       }
+    });
+  }
+
+  async fetchResumenTema() {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.getResumenTema(this.tema.id).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.resumen = data;
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error fetching resumen tema');
+            reject(error);
+          }
+        );
+      });
     });
   }
 

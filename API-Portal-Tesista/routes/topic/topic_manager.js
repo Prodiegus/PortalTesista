@@ -662,7 +662,8 @@ async function get_topic_summary(req, res) {
             avance: avance,
             dueno: dueno
         }
-        connection.commitTransaction();
+        await commitTransaction(connection);
+        console.log("summary: "+JSON.stringify(json));
         res.status(200).send(json);
     } catch (error) {
         if (connection) {
