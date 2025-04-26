@@ -24,7 +24,6 @@ export class TemaSummaryComponent implements OnInit {
   ) { }
 
   async ngOnInit() {
-    this.avance = 70;
     this.loading = true;
     try {
       await this.fetchResumenTema();
@@ -50,6 +49,7 @@ export class TemaSummaryComponent implements OnInit {
         observable.subscribe(
           (data: any) => {
             this.resumen = data;
+            this.avance = data.avance.split('%')[0];
             resolve();
           },
           (error: any) => {
@@ -70,6 +70,7 @@ export class TemaSummaryComponent implements OnInit {
       console.error('Error al avanzar a la fase anterior:', error);
     } finally {
       this.loading = false;
+      await this.fetchResumenTema();
     }
   }
   async faseSiguiente() {
@@ -80,6 +81,7 @@ export class TemaSummaryComponent implements OnInit {
       console.error('Error al avanzar a la siguiente fase:', error);
     } finally {
       this.loading = false;
+      await this.fetchResumenTema();
     }
   }
 

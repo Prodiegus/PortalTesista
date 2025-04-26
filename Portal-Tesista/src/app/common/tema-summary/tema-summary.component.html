@@ -25,11 +25,11 @@
             </tr>
             <tr>
               <td class="text-end bold pe-1">Flujo: </td>
-              <td> Funcion no implementada </td>
+              <td> {{resumen.flujo}} </td>
             </tr>
             <tr>
               <td class="text-end bold pe-1">Avance: </td>
-              <td>{{avance}}% Funcion no implementada </td>
+              <td>{{avance}}%</td>
             </tr>
           </tbody>
         </table>
@@ -39,7 +39,10 @@
           <tbody>
             <tr>
               <td class="text-end bold pe-1">Dueño: </td>
-              <td>Funcion no implementada</td>
+              <td *ngFor="let owner of resumen.dueno">
+                <div class="text-center">
+                  {{owner}}
+                </div>
             </tr>
           </tbody>
         </table>
