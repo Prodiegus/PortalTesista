@@ -323,7 +323,6 @@ async function move_phase_forward(req, res) {
         await runParametrizedQuery(query_update_topic, params_update_topic, connection);
 
         await commitTransaction(connection); // Confirmar transacción
-        connection.release(); // Liberar conexión después de confirmar
         console.log('Fase movida hacia adelante:', nextPhase);
         res.status(200).send('Fase movida hacia adelante: ' + nextPhase.id);
     } catch (error) {
