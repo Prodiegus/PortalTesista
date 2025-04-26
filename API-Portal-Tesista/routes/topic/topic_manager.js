@@ -696,8 +696,6 @@ function sort_phases(phases) {
 
 function get_current_phase(current_phase_id, phases) {
     let current_phase = null;
-    console.log("phases: "+JSON.stringify(phases));
-    console.log("current_phase_id: "+current_phase_id);
     for (let i = 0; i < phases.length; i++) {
         if (phases[i].id === current_phase_id) {
             current_phase = phases[i];

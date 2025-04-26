@@ -314,6 +314,12 @@ async function move_phase_forward(req, res) {
             }
         }
 
+        console.log('Fase siguiente:', nextPhase);
+        if (!nextPhase) {
+            res.status(200).send('No se encontró una fase siguiente');
+            return;
+        }
+
         const params_update_topic = [nextPhase.id, nextPhase.numero, id_tema];
         await runParametrizedQuery(query_update_topic, params_update_topic);
 
@@ -381,6 +387,11 @@ async function move_phase_backward(req, res) {
 
 
         console.log('Fase anterior:', previousPhase);
+        if (!previousPhase){
+            res.status(200).send('No se encontró una fase anterior');
+            return;
+        }
+
         if (previousPhase.id == currentPhase.id) {
             res.status(200).send('No se encontró una fase anterior');
             return;
