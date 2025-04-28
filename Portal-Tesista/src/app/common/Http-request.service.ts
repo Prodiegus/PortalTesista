@@ -197,4 +197,18 @@ export class HttpRequestService {
     return this.http.get<any>(endpoint);
   }
 
+  async addDuenoTema(dueno: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/add/owner`;
+    return this.http.post<any>(endpoint, dueno);
+  }
+
+  async getDuenoTema(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/owner/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async borrarDuenoTema(dueno: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/delete/owner`;
+    return this.http.post<any>(endpoint, dueno);
+  }
 }

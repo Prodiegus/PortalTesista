@@ -97,6 +97,17 @@ async function readAll(req, res) {
         
     }
 }
+
+async function readAlles(req, res) {
+    try {
+        const query = `SELECT  nombre, apellido, escuela, correo, rut FROM usuario`;
+        const results = await runQuery(query);
+        res.status(200).send(results);
+    } catch (error) {
+        console.error('Error obteniendo usuarios:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error obteniendo usuarios');
+    }
+}
 module.exports = {
     read,
     readAll

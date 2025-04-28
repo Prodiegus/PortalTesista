@@ -40,7 +40,7 @@ async function delete_owner(req, res) {
 async function read_topic_owner(req, res) {
     const { id_tema } = req.params;
     const query = `
-       SELECT nombre, apellido, escuela, correo
+       SELECT nombre, apellido, escuela, correo, usuario.rut
         FROM dueno JOIN usuario ON dueno.rut = usuario.rut
         WHERE id_tema = ?;
     `;
