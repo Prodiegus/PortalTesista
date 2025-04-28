@@ -110,5 +110,6 @@ async function readAlles(req, res) {
 }
 module.exports = {
     read,
-    readAll
+    readAll,
+    readAlles
 }; 
