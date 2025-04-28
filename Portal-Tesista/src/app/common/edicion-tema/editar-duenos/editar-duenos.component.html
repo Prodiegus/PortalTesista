@@ -7,10 +7,29 @@
           Dueños de {{tema.titulo}}
         </div>
         <div class="col-3 d-flex justify-content-end">
-          <button class="button primary r-16 btn-size-150 bold" (click)="agregarDueno()">
-            Agregar
-            <i class="ps-2 bi bi-plus-circle font-30"></i>
-          </button>
+          <div class="container-fluid">
+            <div class="row">
+              <div class="input-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Agregar dueño"
+                       [(ngModel)]="nuevoDueno"
+                       (input)="filtrarUsuarios()" />
+                <button class="button primary r-16 bold" (click)="agregarDueno()"><i class="ps-2 bi bi-plus-circle font-30"></i></button>
+              </div>
+            </div>
+            <div class="row position-absolute">
+              @if (usuariosFiltrados.length) {
+                <ul class="list-group">
+                  @for (usuario of usuariosFiltrados; track usuario.rut) {
+                    <li class="list-group-item font-16 pointer" (click)="seleccionarUsuario(usuario)">
+                      {{ usuario.nombre }} {{ usuario.apellido }} ({{ usuario.correo }})
+                    </li>
+                  }
+                </ul>
+              }
+            </div>
+          </div>
         </div>
       </div>
     </div>

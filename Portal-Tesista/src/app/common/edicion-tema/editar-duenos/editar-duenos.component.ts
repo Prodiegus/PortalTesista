@@ -14,6 +14,10 @@ export class EditarDuenosComponent implements OnInit{
   agregarDuenoPopup = false;
 
   duenos: any[] = [];
+  usuarios: any[] = [];
+  usuariosFiltrados: any[] = [];
+  nuevoDueno: any;
+  duenoSeleccionado: any;
 
   constructor(
     private httpsRequestService: HttpRequestService
@@ -23,6 +27,7 @@ export class EditarDuenosComponent implements OnInit{
     this.loading = true;
     try {
       await this.getDuenos();
+      await this.getAllUsuarios();
     } catch (error) {
       console.error('Error fetching duenos:', error);
     } finally {
@@ -47,12 +52,55 @@ export class EditarDuenosComponent implements OnInit{
     });
   }
 
-  agregarDueno() {
-    this.agregarDuenoPopup = true;
+  async getAllUsuarios() {
+    return new Promise<void>((resolve, reject) => {
+      this.httpsRequestService.getUsuarios().then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.usuarios = data;
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error fetching usuarios');
+            reject(error);
+          }
+        );
+      });
+    });
   }
 
-  cerrarAgregarDueno() {
-    this.agregarDuenoPopup = false;
+  async agregarDueno() {
+    const dueno = {
+      rut: this.duenoSeleccionado.rut,
+      id_tema: this.tema.id
+    };
+    try {
+      await this.addDueno(dueno);
+    } catch (error) {
+      console.error('Error adding dueno:', error);
+    } finally {
+      this.agregarDuenoPopup = false;
+      this.nuevoDueno = null;
+      this.duenoSeleccionado = null;
+      await this.getDuenos();
+    }
+  }
+
+  async addDueno(dueno: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.httpsRequestService.addDuenoTema(dueno).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.getDuenos();
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error adding dueno');
+            reject(error);
+          }
+        );
+      });
+    });
   }
 
   async quitarDueno(rut: any) {
@@ -88,6 +136,24 @@ export class EditarDuenosComponent implements OnInit{
         );
       });
     });
+  }
+
+  filtrarUsuarios() {
+    if (!this.nuevoDueno) {
+      this.usuariosFiltrados = [];
+      return;
+    }
+    const texto = this.nuevoDueno?.toLowerCase() || '';
+    this.usuariosFiltrados = this.usuarios.filter(usuario =>
+      usuario.nombre.toLowerCase().includes(texto) ||
+      usuario.correo.toLowerCase().includes(texto)
+    );
+  }
+
+  seleccionarUsuario(usuario: any) {
+    this.nuevoDueno = usuario.nombre + ' ' + usuario.apellido;
+    this.duenoSeleccionado = usuario;
+    this.usuariosFiltrados = []; // Limpia la lista después de seleccionar
   }
 
 }
