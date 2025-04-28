@@ -583,127 +583,140 @@ async function read_topic_request(req, res) {
 }
 
 async function get_topic_summary(req, res) {
-    const {id_tema} = req.params;
+    const { id_tema } = req.params;
+
     const query_get_tema_estado_fase = `
         SELECT estado, id_fase
         FROM tema
         WHERE id = ?;
     `;
     const params = [id_tema];
+
     const query_get_tema_fases = `
         SELECT fase.*
         FROM fase
         JOIN (
             SELECT flujo.*
             FROM flujo JOIN (
-                SELECT * FROM flujo_tiene_tema WHERE id_tema = 1
+                SELECT * FROM flujo_tiene_tema WHERE id_tema = ?
             ) as flujo_tema ON flujo.id = flujo_tema.id_flujo
             WHERE tipo = 'alumno'
-        ) as flujo_alumno ON fase.id_flujo = flujo_alumno.id ORDER BY \`fecha_inicio\` asc;
+        ) as flujo_alumno ON fase.id_flujo = flujo_alumno.id
+        ORDER BY \`fecha_inicio\` ASC;
     `;
     const params_fases = [id_tema];
+
     const query_get_fase_padre = `
         SELECT fase.*
         FROM fase JOIN fase_tiene_padre ON fase.id = fase_tiene_padre.id_padre
         WHERE id_hijo = ?;
     `;
+
     const query_get_duenos = `
         SELECT usuario.nombre, usuario.apellido, usuario.correo
         FROM dueno JOIN usuario ON dueno.rut = usuario.rut
         WHERE id_tema = ?;
     `;
     const params_duenos = [id_tema];
-    let connection;
-    try {
-        let estado = '';
-        let flujo = '';
-        let avance = '';
-        let dueno = [];
-        connection = await beginTransaction();
-        let json = {};
-        const owners_res = await runParametrizedQuery(query_get_duenos, params_duenos, connection);
-        for (let i = 0; i < owners_res.length; i++) {
-            const owner = owners_res[i];
-            const owner_data = owner.nombre+" "+owner.apellido+" ("+owner.correo+")";
-            dueno.push(owner_data);
-        }
 
+    let connection;
+    let json = {};
+
+    try {
+        connection = await beginTransaction();
+
+        // Obtener dueños
+        const owners_res = await runParametrizedQuery(query_get_duenos, params_duenos, connection);
+        const dueno = owners_res.map(owner => `${owner.nombre} ${owner.apellido} (${owner.correo})`);
+
+        // Obtener estado y fase actual
         const state_phase_res = await runParametrizedQuery(query_get_tema_estado_fase, params, connection);
         if (state_phase_res.length === 0) {
             json = {
-                id_tema: id_tema,
+                id_tema,
                 estado: 'No se encontró el tema',
                 flujo: 'No se encontró el tema',
                 avance: 'No se encontró el tema',
-                dueno: dueno
+                dueno
             };
             await commitTransaction(connection);
-            res.status(200).send(json);
+            return res.status(200).send(json);
         }
-        estado = state_phase_res[0].estado;
+
+        const estado = state_phase_res[0].estado;
         const id_fase = state_phase_res[0].id_fase;
+
+        // Obtener fases del tema
         const phases_res = await runParametrizedQuery(query_get_tema_fases, params_fases, connection);
         if (phases_res.length === 0) {
             json = {
-                id_tema: id_tema,
-                estado: estado,
+                id_tema,
+                estado,
                 flujo: 'No se encontraron fases para el tema',
                 avance: 'No se encontraron fases para el tema',
-                dueno: dueno
+                dueno
             };
             await commitTransaction(connection);
-            res.status(200).send(json);
+            return res.status(200).send(json);
         }
-        avance = estimate_progress(id_fase, phases_res)+'%';
+
+        // Calcular avance y flujo
+        const avance = estimate_progress(id_fase, phases_res) + '%';
         const student_flow = get_current_phase(id_fase, phases_res);
         if (!student_flow) {
             json = {
-                id_tema: id_tema,
-                estado: estado,
+                id_tema,
+                estado,
                 flujo: 'No se encontró el flujo del estudiante',
-                avance: avance,
-                dueno: dueno
+                avance,
+                dueno
             };
             await commitTransaction(connection);
-            res.status(200).send(json);
+            return res.status(200).send(json);
         }
+
+        // Obtener flujo del guía
         let fase_padre_res = await runParametrizedQuery(query_get_fase_padre, [student_flow.id], connection);
         if (fase_padre_res.length === 0) {
             json = {
-                id_tema: id_tema,
-                estado: estado,
+                id_tema,
+                estado,
                 flujo: 'No se encontró la fase padre del flujo del estudiante',
-                avance: avance,
-                dueno: dueno
+                avance,
+                dueno
             };
             await commitTransaction(connection);
-            res.status(200).send(json);
+            return res.status(200).send(json);
         }
         const guide_flow = fase_padre_res[0];
+
+        // Obtener flujo de la escuela
         fase_padre_res = await runParametrizedQuery(query_get_fase_padre, [guide_flow.id], connection);
         if (fase_padre_res.length === 0) {
             json = {
-                id_tema: id_tema,
-                estado: estado,
+                id_tema,
+                estado,
                 flujo: 'No se encontró la fase padre del flujo del guía',
-                avance: avance,
-                dueno: dueno
+                avance,
+                dueno
             };
             await commitTransaction(connection);
-            res.status(200).send(json);
+            return res.status(200).send(json);
         }
         const school_flow = fase_padre_res[0];
-        flujo = school_flow.nombre + ' -> ' + guide_flow.nombre + ' -> ' + student_flow.nombre;
-        
+
+        const flujo = `${school_flow.nombre} -> ${guide_flow.nombre} -> ${student_flow.nombre}`;
+
+        // Construir respuesta final
         json = {
-            id_tema: id_tema,
-            estado: estado,
-            flujo: flujo,
-            avance: avance,
-            dueno: dueno
-        }
+            id_tema,
+            estado,
+            flujo,
+            avance,
+            dueno
+        };
+
         await commitTransaction(connection);
-        console.log("summary: "+JSON.stringify(json));
         res.status(200).send(json);
     } catch (error) {
         if (connection) {
