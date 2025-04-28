@@ -591,15 +591,15 @@ async function get_topic_summary(req, res) {
     `;
     const params = [id_tema];
     const query_get_tema_fases = `
-        SELECT *
+        SELECT fase.*
         FROM fase
         JOIN (
             SELECT flujo.*
             FROM flujo JOIN (
-                SELECT * FROM flujo_tiene_tema WHERE id_tema = ?
+                SELECT * FROM flujo_tiene_tema WHERE id_tema = 1
             ) as flujo_tema ON flujo.id = flujo_tema.id_flujo
             WHERE tipo = 'alumno'
-        ) as flujo_alumno ON fase.id_flujo = flujo_alumno.id;
+        ) as flujo_alumno ON fase.id_flujo = flujo_alumno.id ORDER BY \`fecha_inicio\` asc;
     `;
     const params_fases = [id_tema];
     const query_get_fase_padre = `
@@ -669,8 +669,8 @@ async function get_topic_summary(req, res) {
         if (connection) {
             await rollbackTransaction(connection);
         }
-        console.error('Error obteniendo solicitudes de tema:', error.response ? error.response.data : error.message);
-        res.status(500).send('Error obteniendo solicitudes de tema');
+        console.error('Error obteniendo resumen de tema:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error obteniendo resumen de tema');
     }
 }
 

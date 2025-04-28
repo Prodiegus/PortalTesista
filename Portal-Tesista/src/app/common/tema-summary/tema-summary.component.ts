@@ -63,24 +63,20 @@ export class TemaSummaryComponent implements OnInit {
 
 
   async faseAnterior() {
-    this.loading = true;
     try {
       await this.fasePrevia(this.tema.id);
     } catch (error) {
       console.error('Error al avanzar a la fase anterior:', error);
     } finally {
-      this.loading = false;
       await this.fetchResumenTema();
     }
   }
   async faseSiguiente() {
-    this.loading = true;
     try {
       await this.siguenteFase(this.tema.id);
     } catch (error) {
       console.error('Error al avanzar a la siguiente fase:', error);
     } finally {
-      this.loading = false;
       await this.fetchResumenTema();
     }
   }
