@@ -11,6 +11,7 @@ const {getSchools} = require('./school/school_manager');
 const {addPreview, getTopicPreviews} = require('./update/topic_preview_manager');
 const {addReviewer, getTopicReviewers, deleteReviewer, startPreviewReview} = require('./reviewer/reviewer_manager');
 const { create_meetings, edit_meeting, read_topic_meetings, delete_meeting } = require('./meetings/meeting_manager');
+const { add_owner, delete_owner, read_topic_owner } = require('./user/owner_manager');
 
 const router = express.Router();
 
@@ -220,6 +221,22 @@ router.post('/delete/meeting', async (req, res) => {
 router.get('/topic/summary/:id_tema', async (req, res) => {
   console.log('Consulta get a /get_topic_summary/:id_tema: ', req.body);
   await get_topic_summary(req, res);
+});
+
+// duenos de tema
+router.post('/add/owner', async (req, res) => {
+  console.log('Consulta post a /add/owner: ', req.body);
+  await add_owner(req, res);
+});
+
+router.post('/delete/owner', async (req, res) => {
+  console.log('Consulta post a /delete/owner: ', req.body);
+  await delete_owner(req, res);
+});
+
+router.get('/read/owner/:id_tema', async (req, res) => {
+  console.log('Consulta get a /read/owner/:id_tema: ', req.body);
+  await read_topic_owner(req, res);
 });
 
 module.exports = router;
