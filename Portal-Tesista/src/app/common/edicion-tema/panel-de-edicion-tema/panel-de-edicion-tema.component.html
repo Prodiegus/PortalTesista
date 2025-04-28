@@ -32,7 +32,7 @@
            [ngClass]="{'primary-bg': !duenos, 'secondary-bg': duenos}"
            (click)="selectDuenos()"
       >
-        Duenos
+        Dueños
       </div>
       <div class="col d-flex justify-content-end align-self-center">
         <button class="button secondary btn-size-150 bold" (click)="goVistaGenera()">Vista General</button>
@@ -66,7 +66,10 @@
       ></app-ver-reuniones>
     </ng-template>
     <ng-template class="row" [ngIf]="duenos">
-      <app-editar-duenos></app-editar-duenos>
+      <app-editar-duenos
+        [userRepresentation]="userRepresentation"
+        [tema]="tema"
+      ></app-editar-duenos>
     </ng-template>
   </div>
 </div>
