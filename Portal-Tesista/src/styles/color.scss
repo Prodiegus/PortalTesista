@@ -29,6 +29,31 @@ $text-dark: #fff; // Un color claro para contrastar con el color oscuro
 .secondary-bg {
     background-color: $secondary-color;
     color: $text-secondary;
+    &.hover:hover {
+      background-color: var(--darker-bg-color, darken($secondary-color, 10%));
+      color: $text-secondary;
+    }
+
+    &.dynamic {
+      --current-bg-color: $secondary-color;
+      --darker-bg-color: darken($secondary-color, 10%);
+    }
+    &.darked-10{
+      background-color: mix($secondary-color, $primary-color, 80%);
+      --current-bg-color: mix($secondary-color, $primary-color, 80%);
+      color: $text-secondary;
+    }
+    &.darked-20{
+      background-color: mix($secondary-color, $primary-color, 60%);
+      --current-bg-color: mix($secondary-color, $primary-color, 60%);
+      color: $text-secondary;
+    }
+    &.darked-30{
+      background-color: mix($secondary-color, $primary-color, 50%);
+      --current-bg-color: mix($secondary-color, $primary-color, 50%);
+      color: $text-secondary;
+    }
+
 }
 
 .accent-bg {

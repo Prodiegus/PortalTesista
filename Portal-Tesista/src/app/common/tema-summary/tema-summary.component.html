@@ -38,11 +38,15 @@
         <table>
           <tbody>
             <tr>
-              <td class="text-end bold pe-1">Dueño: </td>
-              <td *ngFor="let owner of resumen.dueno">
-                <div class="text-center">
-                  {{owner}}
-                </div>
+              <td class="text-end bold pe-1 align-top">Dueño: </td>
+              <td >
+                <ul class="list-unstyled">
+                  @for (owner of resumen.dueno; track owner){
+                    <li>
+                      {{owner}}
+                    </li>
+                  }
+                </ul>
             </tr>
           </tbody>
         </table>
