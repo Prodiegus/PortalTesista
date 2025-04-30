@@ -46,6 +46,8 @@ export class EditarFlujoComponent implements OnInit{
   fasesFlujo: any;
   numeros: number[] = [];
 
+  guia = false;
+
   subfasesGuia = false;
   subfasesAlumno = false;
   faseShowNumero = 0;
@@ -77,6 +79,9 @@ async ngOnInit() {
   if (this.userRepresentation.tipo !== 'alumno' && this.tema.estado !== 'Pendiente') {
     alert('El flujo solo puede ser editado cuando el tema no está en trabajo');
     return;
+  }
+  if(this.userRepresentation.rut === this.tema.rut_guia){
+    this.guia = true;
   }
   try {
     await this.fetchFlujoGeneral();
