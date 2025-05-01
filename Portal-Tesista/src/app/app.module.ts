@@ -61,6 +61,15 @@ import { AgregarFaseTemaComponent } from './common/agregar-fase-tema/agregar-fas
 import { CrearReunionComponent } from './common/crear-reunion/crear-reunion.component';
 import { ExtractTimePipe } from './pipe/extract-time.pipe';
 import { EditarReunionComponent } from './common/editar-reunion/editar-reunion.component';
+import { ConfirmDialogComponent } from './common/confirm-dialog/confirm-dialog.component';
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose, MatDialogContent,
+  MatDialogModule,
+  MatDialogRef,
+  MatDialogTitle
+} from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -101,6 +110,7 @@ import { EditarReunionComponent } from './common/editar-reunion/editar-reunion.c
     CrearReunionComponent,
     ExtractTimePipe,
     EditarReunionComponent,
+    ConfirmDialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -129,7 +139,12 @@ import { EditarReunionComponent } from './common/editar-reunion/editar-reunion.c
     MatPaginator,
     MatSortHeader,
     MatNoDataRow,
-    MatSort
+    MatSort,
+    MatDialogModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogContent
   ],
   providers: [
     {
@@ -148,6 +163,7 @@ import { EditarReunionComponent } from './common/editar-reunion/editar-reunion.c
     { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl},
   ],
   bootstrap: [AppComponent],
+  exports: [ConfirmDialogComponent]
 
 })
 export class AppModule { }

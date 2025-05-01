@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {MatDialog} from '@angular/material/dialog';
 import {HttpRequestService} from '../../Http-request.service';
+import {ConfirmDialogComponent} from '../../confirm-dialog/confirm-dialog.component';
 
 interface FaseConSubfase {
   id: number;
@@ -62,6 +63,7 @@ export class EditarFlujoComponent implements OnInit{
   constructor(
     private router: Router,
     private httpRequestService: HttpRequestService,
+    private dialog: MatDialog,
   ) {
     const navigation = this.router.getCurrentNavigation();
     if (navigation && navigation?.extras?.state) {
@@ -77,8 +79,13 @@ async ngOnInit() {
   }
 
   if (this.userRepresentation.tipo !== 'alumno' && this.tema.estado !== 'Pendiente') {
-    alert('El flujo solo puede ser editado cuando el tema no está en trabajo');
-    return;
+    this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Error',
+        message: 'El flujo solo puede ser editado cuando el tema no está en trabajo',
+        confirmButtonText: 'Aceptar',
+      },
+    });
   }
   if(this.userRepresentation.rut === this.tema.rut_guia){
     this.guia = true;
@@ -200,6 +207,15 @@ async ngOnInit() {
   }
 
   agregarFase(fase: any) {
+    if (this.userRepresentation.tipo !== 'alumno' && this.tema.estado !== 'Pendiente') {
+      this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Error',
+          message: 'El flujo solo puede ser editado cuando el tema no está en trabajo',
+          confirmButtonText: 'Aceptar',
+        },
+      });
+    }
     this.id_padre = fase.id;
     this.agregarFasePopup = true;
   }
