@@ -1,5 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpRequestService} from '../../Http-request.service';
+import {MatDialog} from '@angular/material/dialog';
+import { ConfirmDialogComponent} from '../../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-editar-duenos',
@@ -20,7 +22,8 @@ export class EditarDuenosComponent implements OnInit{
   duenoSeleccionado: any;
 
   constructor(
-    private httpsRequestService: HttpRequestService
+    private httpsRequestService: HttpRequestService,
+    private dialog: MatDialog
   ) {}
 
   async ngOnInit() {
@@ -33,6 +36,10 @@ export class EditarDuenosComponent implements OnInit{
     } finally {
       this.loading = false;
     }
+  }
+
+  rutEsDueno(rut: string) {
+    return this.duenos.some(dueno => dueno.rut === rut);
   }
 
   async getDuenos() {
@@ -70,6 +77,36 @@ export class EditarDuenosComponent implements OnInit{
   }
 
   async agregarDueno() {
+    if (!this.duenoSeleccionado) {
+      this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Agregar dueño',
+          message: 'Debes seleccionar un dueño antes de agregarlo.',
+          isAlert: true
+        }
+      });
+      return;
+    }
+    if (this.rutEsDueno(this.duenoSeleccionado.rut)) {
+      this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Agregar dueño',
+          message: 'El usuario ya es dueño del tema.',
+          isAlert: true
+        }
+      });
+      return;
+    }
+    if(!this.rutEsDueno(this.userRepresentation.rut)){
+      this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Agregar dueño',
+          message: 'No puedes agregar un dueño si no eres dueño del tema.',
+          isAlert: true
+        }
+      });
+      return;
+    }
     const dueno = {
       rut: this.duenoSeleccionado.rut,
       id_tema: this.tema.id
@@ -103,11 +140,46 @@ export class EditarDuenosComponent implements OnInit{
     });
   }
 
-  async quitarDueno(rut: any) {
-    if (this.duenos.length < 2) {
-      alert('No se puede eliminar el último dueño');
+  confirmarEliminarDueno(dueno: any) {
+    if (!this.rutEsDueno(this.userRepresentation.rut)){
+      this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Eliminar dueño',
+          message: 'No puedes eliminar a un dueño si no eres dueño del tema.',
+          isAlert: true
+        }
+      });
       return;
     }
+
+    if (this.duenos.length < 2) {
+      this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Eliminar dueño',
+          message: 'No puedes eliminar al último dueño del tema.',
+          isAlert: true
+        }
+      });
+      return;
+    }
+
+
+    const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+      data: {
+        title: 'Eliminar dueño',
+        message: '¿Estás seguro de que deseas eliminar a '+dueno.nombre+' '+dueno.apellido+' de la lista de dueños?',
+        isAlert: false
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.quitarDueno(dueno.rut);
+      }
+    });
+  }
+
+  async quitarDueno(rut: any) {
     const json = {
       rut: rut,
       id_tema: this.tema.id

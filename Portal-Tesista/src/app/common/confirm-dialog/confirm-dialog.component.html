@@ -1,0 +1,8 @@
+<script src="../edicion-tema/editar-duenos/editar-duenos.component.ts"></script><h2 mat-dialog-title>{{ data.title }}</h2>
+<mat-dialog-content>
+  <p>{{ data.message }}</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button class="button naked secondary round me-3" *ngIf="!data.isAlert" mat-button (click)="cerrar(false)">Cancelar</button>
+  <button class="button primary round" mat-raised-button color="primary" (click)="cerrar(true)">Aceptar</button>
+</mat-dialog-actions>
