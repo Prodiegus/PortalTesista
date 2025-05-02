@@ -1,0 +1,17 @@
+<div class="container-fluid m-0 px-5" >
+  <div class="row font-20 bold d-flex align-items-center justify-content-center mt-24 r-16 border primary px-3 mb-3 mx-1">
+    <div class="col d-flex justify-content-start pointer" (click)="cerrar()">
+      <i class="bi bi-arrow-left primary-normal font-40"></i>
+    </div>
+    <div class="col bold d-flex justify-content-center">
+      {{ avance.fecha | dateFormat }}
+    </div>
+    <div class="col d-flex justify-content-start pointer">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-6">
+      <iframe [attr.src]="archivo" width="100%" height="500px"></iframe>
+    </div>
+  </div>
+</div>

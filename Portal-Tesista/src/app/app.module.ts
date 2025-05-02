@@ -70,6 +70,7 @@ import {
   MatDialogRef,
   MatDialogTitle
 } from '@angular/material/dialog';
+import { AvanceTemaComponent } from './common/avance-tema/avance-tema.component';
 
 @NgModule({
   declarations: [
@@ -111,6 +112,7 @@ import {
     ExtractTimePipe,
     EditarReunionComponent,
     ConfirmDialogComponent,
+    AvanceTemaComponent,
   ],
   imports: [
     BrowserModule,
