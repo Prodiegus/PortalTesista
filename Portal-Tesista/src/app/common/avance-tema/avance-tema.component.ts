@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-avance-tema',
@@ -11,14 +10,25 @@ export class AvanceTemaComponent implements OnInit{
   @Input() userRepresentation: any;
   @Input() avance: any;
 
-  archivo: any;
-
   @Output() close = new EventEmitter<void>();
 
-  constructor(private sanitizer: DomSanitizer) {}
+  pdfSrc?: string;
+
+  pageInput: number = 1;
+  page = 1;
+  totalPages = 0;
+  zoom: number = 1.0;
+
+  feedbackFile?: File;
 
   ngOnInit() {
-    this.archivo = this.avance.archivo;
+    if (this.avance?.archivo && this.avance.archivo.trim() !== '') {
+      this.pdfSrc = this.avance.archivo.startsWith('data:application/pdf;base64,')
+        ? this.avance.archivo
+        : 'data:application/pdf;base64,' + this.avance.archivo;
+    } else {
+      this.pdfSrc = undefined;
+    }
   }
 
   cerrar() {
@@ -60,20 +70,43 @@ export class AvanceTemaComponent implements OnInit{
     }
   }
 
-  visualizarArchivo(archivo: any): SafeResourceUrl | null {
-    if (!archivo) {
-      console.error('No file available to display');
-      return null;
+  goToPage() {
+    if (this.pageInput >= 1 && this.pageInput <= this.totalPages) {
+      this.page = this.pageInput;
     }
+  }
+  onPdfLoad(pdf: any) {
+    this.totalPages = pdf.numPages;
+    this.pageInput = this.page; // Sync input with current page
+  }
+  goToPreviousPage() {
+    if (this.page > 1) {
+      this.page--;
+      this.pageInput = this.page;
+    }
+  }
+  goToNextPage() {
+    if (this.page < this.totalPages) {
+      this.page++;
+      this.pageInput = this.page;
+    }
+  }
+  zoomIn() {
+    this.zoom += 0.1;
+  }
 
-    try {
-      if (!archivo.startsWith('data:application/pdf;base64,')) {
-        archivo = 'data:application/pdf;base64,' + archivo;
-      }
-      return this.sanitizer.bypassSecurityTrustResourceUrl(archivo);
-    } catch (error) {
-      console.error('Error preparing file for display:', error);
-      return null;
+  zoomOut() {
+    if (this.zoom > 0.2) {
+      this.zoom -= 0.1;
+    }
+  }
+
+  onFeedbackFileSelected(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      this.feedbackFile = input.files[0];
+    } else {
+      this.feedbackFile = undefined;
     }
   }
 

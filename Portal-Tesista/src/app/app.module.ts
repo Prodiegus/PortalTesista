@@ -71,6 +71,7 @@ import {
   MatDialogTitle
 } from '@angular/material/dialog';
 import { AvanceTemaComponent } from './common/avance-tema/avance-tema.component';
+import {PdfViewerModule} from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -146,7 +147,8 @@ import { AvanceTemaComponent } from './common/avance-tema/avance-tema.component'
     MatDialogActions,
     MatDialogClose,
     MatDialogTitle,
-    MatDialogContent
+    MatDialogContent,
+    PdfViewerModule
   ],
   providers: [
     {

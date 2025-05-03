@@ -64,7 +64,44 @@ async function deleteReviewer(req, res){
     } 
 }
 
-async function startPreviewReview(req, res){}
+async function startPreviewReview(req, res){
+    const { 
+        nota, 
+        aprobado, 
+        comentario, 
+        archivo, 
+        id_avance,
+        nombre
+    } = req.body;
+
+    const query_edit_review = `
+        UPDATE avance
+        SET nota = ?, aprobado = ?, comentario = ?
+        WHERE id = ?;
+    `;
+    const params_edit_review = [nota, aprobado, comentario, id_avance];
+
+    query_add_file = `
+        INSERT INTO archivo (id_avance, nombre, file, fecha, tipo)
+        VALUES (?, ?, ?, ?, ?);
+    `;
+
+    const params_add_file = [id_avance, nombre, archivo, new Date(), 'feedback'];
+
+    try{
+        await runParametrizedQuery(query_edit_review, params_edit_review);
+        if(archivo){
+            await runParametrizedQuery(query_add_file, params_add_file);
+        }
+
+
+        res.status(200).json({ message: 'Revision enviada con exito' });
+
+    }catch(error){
+        console.error('Error starting preview review:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error starting preview review');
+    }
+}
 
 module.exports = {
     addReviewer,
