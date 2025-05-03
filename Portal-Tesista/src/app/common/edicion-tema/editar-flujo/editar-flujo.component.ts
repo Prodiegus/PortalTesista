@@ -81,9 +81,10 @@ async ngOnInit() {
   if (this.userRepresentation.tipo !== 'alumno' && this.tema.estado !== 'Pendiente') {
     this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Error',
+        title: 'Aviso',
         message: 'El flujo solo puede ser editado cuando el tema no está en trabajo',
         confirmButtonText: 'Aceptar',
+        isAlert: true,
       },
     });
   }
@@ -210,9 +211,10 @@ async ngOnInit() {
     if (this.userRepresentation.tipo !== 'alumno' && this.tema.estado !== 'Pendiente') {
       this.dialog.open(ConfirmDialogComponent, {
         data: {
-          title: 'Error',
+          title: 'Aviso',
           message: 'El flujo solo puede ser editado cuando el tema no está en trabajo',
           confirmButtonText: 'Aceptar',
+          isAlert: true,
         },
       });
     }

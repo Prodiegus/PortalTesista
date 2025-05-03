@@ -72,33 +72,82 @@ async function getTopicPreviews(req, res) {
         WHERE a.id_tema = ?
     `;
 
+    const feedbackQuery = `
+        SELECT ar.nombre AS nombre_archivo, ar.file AS archivo
+        FROM avance a
+        JOIN (
+            SELECT id_avance, MAX(fecha) AS fecha_reciente
+            FROM archivo
+            WHERE tipo = 'feedback'
+            GROUP BY id_avance
+        ) subquery ON a.id = subquery.id_avance
+        JOIN archivo ar ON subquery.id_avance = ar.id_avance AND subquery.fecha_reciente = ar.fecha
+        WHERE a.id_tema = 1
+    `;
+
+
     const params = [id_tema];
     const connection = await beginTransaction();
 
     try {
         const results = await runParametrizedQuery(query, params, connection);
+        const feedbackResults = await runParametrizedQuery(feedbackQuery, params, connection);
         await commitTransaction(connection);
+
+        
 
         if (results.length === 0) {
             return res.status(404).send('No se encontraron avances para el tema especificado');
         }
-
+        let res = {
+            ...results,
+            archivo: results.map(result => {
+                return {
+                    nombre_archivo: result.nombre_archivo,
+                    archivo: result.archivo
+                };
+            }),
+            feedback: feedbackResults.map(feedback => {
+                return {
+                    nombre_archivo: feedback.nombre_archivo,
+                    archivo: feedback.archivo
+                };
+            })
+        }
         const processedResults = results.map(result => {
             if (result.archivo) {
                 const archivo = result.archivo.toString(); // Convertir a cadena
                 // Verificar si ya es Base64 con prefijo
                 if (archivo.startsWith('data:application/pdf;base64,')) {
-                    return { ...result, archivo }; // Enviar tal cual
+                    res.archivo = archivo; // Mantener el formato original
                 } else {
                     // Convertir a Base64 si no tiene el prefijo
                     const base64String = Buffer.from(result.archivo).toString('base64');
-                    return {
-                        ...result,
-                        archivo: `data:application/pdf;base64,${base64String}`
-                    };
+                    res.archivo = `data:application/pdf;base64,${base64String}`; // Agregar el prefijo
                 }
+            } else {
+                res.archivo = null; // Manejar el caso donde no hay archivo
             }
-            return { ...result, archivo: null };
+            if (feedbackResults.length > 0) {
+                res.feedback = feedbackResults.map(feedback => {
+                    if (feedback.archivo) {
+                        const archivo = feedback.archivo.toString(); // Convertir a cadena
+                        // Verificar si ya es Base64 con prefijo
+                        if (archivo.startsWith('data:application/pdf;base64,')) {
+                            return archivo; // Mantener el formato original
+                        } else {
+                            // Convertir a Base64 si no tiene el prefijo
+                            const base64String = Buffer.from(feedback.archivo).toString('base64');
+                            return `data:application/pdf;base64,${base64String}`; // Agregar el prefijo
+                        }
+                    } else {
+                        return null; // Manejar el caso donde no hay archivo
+                    }
+                });
+            } else {
+                res.feedback = null; // Manejar el caso donde no hay archivo
+            }
+            return res;
         });
 
         res.status(200).json(processedResults);
