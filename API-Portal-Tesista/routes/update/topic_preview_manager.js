@@ -92,6 +92,7 @@ async function getTopicPreviews(req, res) {
     try {
         const results = await runParametrizedQuery(query, params, connection);
         const feedbackResults = await runParametrizedQuery(feedbackQuery, params, connection);
+        
         await commitTransaction(connection);
 
         
