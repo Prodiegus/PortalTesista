@@ -43,11 +43,15 @@ function beginTransaction() {
 
 function commitTransaction(connection) {
     return new Promise((resolve, reject) => {
+        if (!connection || connection._pool._closed) {
+            console.error('Error: La conexión ya ha sido liberada o cerrada.');
+            return reject(new Error('La conexión ya ha sido liberada o cerrada.'));
+        }
         connection.commit((err) => {
             if (err) {
                 return rollbackTransaction(connection).then(() => reject(err));
             }
-            connection.release();
+            safeRelease(connection);
             resolve();
         });
     });
@@ -55,12 +59,27 @@ function commitTransaction(connection) {
 
 function rollbackTransaction(connection) {
     return new Promise((resolve) => {
+        if (!connection || connection._pool._closed) {
+            console.error('Error: La conexión ya ha sido liberada o cerrada.');
+            return resolve(); 
+        }
         connection.rollback(() => {
-            connection.release();
+            safeRelease(connection);
             resolve();
         });
     });
 }
+
+function safeRelease(connection) {
+    if (connection && !connection._pool._closed) {
+        try {
+            connection.release();
+        } catch (error) {
+            console.error('Error liberando la conexión: ', error.message);
+        }
+    }
+}
+
 
 module.exports = {
     runQuery,
