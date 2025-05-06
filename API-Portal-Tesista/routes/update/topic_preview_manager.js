@@ -144,7 +144,11 @@ async function getTopicPreviews(req, res) {
             } else {
                 respose.feedback = null; // Manejar el caso donde no hay archivo
             }
-            return respose;
+            return {
+                ...result,
+                archivo: respose.archivo,
+                feedback: respose.feedback
+            };
         });
 
         if (connection){
