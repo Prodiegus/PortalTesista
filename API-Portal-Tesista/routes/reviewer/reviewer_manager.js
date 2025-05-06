@@ -80,7 +80,7 @@ async function startPreviewReview(req, res){
         WHERE id = ?;
     `;
     const params_edit_review = [nota, aprobado, comentario, id_avance];
-
+    console.log('params_edit_review', params_edit_review);
     query_add_file = `
         INSERT INTO archivo (id_avance, nombre, file, fecha, tipo)
         VALUES (?, ?, ?, ?, ?);
