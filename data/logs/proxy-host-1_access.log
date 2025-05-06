@@ -1419,3 +1419,4 @@
 [06/May/2025:17:10:56 +0000] - 200 200 - GET https portaltesista.me "/robots.txt" [Client 66.249.72.139] [Length 12389] [Gzip 5.64] [Sent-to 34.176.220.92] "Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)" "-"
 [06/May/2025:19:45:23 +0000] - 200 200 - GET https portaltesista.me "/" [Client 35.240.66.201] [Length 12389] [Gzip 5.64] [Sent-to 34.176.220.92] "python-requests/2.32.3" "-"
 [06/May/2025:20:05:29 +0000] - 200 200 - GET https portaltesista.me "/" [Client 149.57.180.193] [Length 12389] [Gzip 5.64] [Sent-to 34.176.220.92] "Mozilla/5.0 (X11; Linux i686; rv:109.0) Gecko/20100101 Firefox/120.0" "-"
+[06/May/2025:20:59:33 +0000] - 200 200 - GET https portaltesista.me "/home" [Client 181.163.73.91] [Length 12391] [Gzip 5.64] [Sent-to 34.176.220.92] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" "-"
