@@ -1,5 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {HttpRequestService} from '../Http-request.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-avance-tema',
@@ -22,7 +24,8 @@ export class AvanceTemaComponent implements OnInit{
   zoom: number = 1.0;
 
   constructor(
-    private httpRequestService: HttpRequestService
+    private httpRequestService: HttpRequestService,
+    private dialog: MatDialog,
   ) {}
 
   ngOnInit() {
@@ -109,19 +112,24 @@ export class AvanceTemaComponent implements OnInit{
     const input = event.target as HTMLInputElement;
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
-      const reader = new FileReader();
-      reader.onload = () => {
-        // Remove the prefix if present
-        let base64 = (reader.result as string);
-        if (base64.startsWith('data:application/pdf;base64,')) {
-          base64 = base64.replace('data:application/pdf;base64,', '');
-        } else if (base64.startsWith('data:')) {
-          base64 = base64.substring(base64.indexOf(',') + 1);
+      if (file.type === 'application/pdf') {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const fileContent = (reader.result as string).split(',')[1]; // Remove the Data URL prefix
+          this.avance.feedback = fileContent;
+          this.avance.nombre_archivo_feedback = file.name;
         }
-        this.avance.feedback = [base64];
-        this.avance.nombre_archivo_feedback = file.name;
-      };
-      reader.readAsDataURL(file);
+        reader.readAsDataURL(file);
+      } else {
+        this.dialog.open(ConfirmDialogComponent, {
+          data: {
+            title: 'Aviso',
+            message: 'El flujo solo puede ser editado cuando el tema no está en trabajo',
+            confirmButtonText: 'Aceptar',
+            isAlert: true,
+          }
+        })
+      }
     } else {
       this.avance.feedback = null;
     }
