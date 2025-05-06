@@ -76,7 +76,7 @@ async function startPreviewReview(req, res){
 
     const query_edit_review = `
         UPDATE avance
-        SET nota = ?, aprobado = ?, comentario = ?
+        SET nota = ?, aprobado = ?, comentarios = ?
         WHERE id = ?;
     `;
     const params_edit_review = [nota, aprobado, comentario, id_avance];
