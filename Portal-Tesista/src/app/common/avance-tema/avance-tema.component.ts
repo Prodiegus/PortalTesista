@@ -118,10 +118,8 @@ export class AvanceTemaComponent implements OnInit{
         } else if (base64.startsWith('data:')) {
           base64 = base64.substring(base64.indexOf(',') + 1);
         }
-        this.avance.feedback = {
-          nombre_archivo: file.name,
-          archivo: base64
-        };
+        this.avance.feedback = [base64];
+        this.avance.nombre_archivo_feedback = file.name;
       };
       reader.readAsDataURL(file);
     } else {
@@ -130,12 +128,12 @@ export class AvanceTemaComponent implements OnInit{
   }
 
   descargarFeedbackArchivo() {
-    if (!this.avance.feedback || !this.avance.feedback.archivo) {
+    if (!this.avance.feedback) {
       console.error('No feedback file available to download');
       return;
     }
     try {
-      let base64String = this.avance.feedback.archivo;
+      let base64String = this.avance.feedback;
       const byteCharacters = atob(base64String);
       const byteNumbers = Array.from(byteCharacters, char => char.charCodeAt(0));
       const byteArray = new Uint8Array(byteNumbers);
@@ -143,11 +141,11 @@ export class AvanceTemaComponent implements OnInit{
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = this.avance.feedback.nombre_archivo || 'archivo_retroalimentacion.pdf';
+      a.download = this.tema.titulo+'_retroalimentacion.pdf';
       a.click();
       URL.revokeObjectURL(url);
     } catch (error) {
-      console.error('Error decoding or downloading feedback file:', error);
+      this.descargarArchivo(this.avance.feedback, this.tema.titulo+'_retroalimentacion.pdf');
     }
   }
 
@@ -156,15 +154,14 @@ export class AvanceTemaComponent implements OnInit{
       nota: this.avance.nota ?? null,
       aprobado: this.avance.aprobado ?? null,
       comentario: this.avance.comentario ?? null,
-      archivo: this.avance.feedback?.archivo ?? null,
+      archivo: this.avance.feedback?? null,
       id_avance: this.avance.id,
-      nombre: this.avance.feedback?.nombre_archivo ?? null,
+      nombre: this.avance.nombre_archivo_feedback ?? null,
     };
-    console.log(data);
     if (this.revision) {
       // your logic here
     } else {
-      await this.subirGuiaReview(data.nota);
+      await this.subirGuiaReview(data);
     }
   }
 

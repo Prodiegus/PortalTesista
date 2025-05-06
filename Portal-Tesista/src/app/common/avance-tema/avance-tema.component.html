@@ -50,35 +50,50 @@
           <div class="col-3 text-end me-1 bold">Creación:</div>
           <div class="col text-start">{{avance.fecha | dateFormat}}</div>
         </div>
-        <div class="row my-1">
-          <div class="col-3 text-end me-1 bold">Aprobado:</div>
-          <div class="col text-start">
-            <select class="form-select" [(ngModel)]="avance.aprobado" name="aprobado">
-              <option [ngValue]="true">Sí</option>
-              <option [ngValue]="false">No</option>
-            </select>
+        @if (revision){
+          <div class="row my-1">
+            <div class="col-3 text-end me-1 bold">Aprobado:</div>
+            <div class="col text-start">
+              <select class="form-select" [(ngModel)]="avance.aprobado" name="aprobado">
+                <option [ngValue]="true">Sí</option>
+                <option [ngValue]="false">No</option>
+              </select>
+            </div>
           </div>
-        </div>
-        <div class="row my-1">
-          <div class="col-3 text-end me-1 bold">Nota:</div>
-          <div class="col text-start">
-            <input type="number" class="form-control" [(ngModel)]="avance.nota" name="nota" min="1" max="7" step="0.1">
+          <div class="row my-1">
+            <div class="col-3 text-end me-1 bold">Nota:</div>
+            <div class="col text-start">
+              <input type="number" class="form-control" [(ngModel)]="avance.nota" name="nota" min="1" max="7" step="0.1">
+            </div>
           </div>
-        </div>
+        } @else {
+          <div class="row my-1">
+            <div class="col-3 text-end me-1 bold">Aprobado:</div>
+            <div class="col text-start">{{ avance.aprobado }}</div>
+          </div>
+          <div class="row my-1">
+            <div class="col-3 text-end me-1 bold">Nota:</div>
+            <div class="col text-start">{{ avance.nota }}</div>
+          </div>
+        }
         <div class="row my-1">
           <div class="col-3 text-end me-1 bold">Archivo de retroalimentación:</div>
           <div class="col text-start">
             <div class="input-group">
-              <input type="file" class="form-control" id="inputGroupFile04"
-                     (change)="onFeedbackFileSelected($event)"
-                     aria-describedby="inputGroupFileAddon04" aria-label="Upload">
-              @if (avance.feedback?.archivo) {
+              @if (userRepresentation.tipo !== 'alumno') {
+                <input type="file" class="form-control" id="inputGroupFile04"
+                       (change)="onFeedbackFileSelected($event)"
+                       aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+              }
+              @if (avance?.feedback) {
                 <button class="button primary r16 naked"
                         type="button"
                         id="inputGroupFileAddon04"
                         (click)="descargarFeedbackArchivo()">
                   Descargar
                 </button>
+              } @else if (userRepresentation.tipo === 'alumno') {
+                <label class="text-start form-control" id="inputGroupFile04">Archivo no cargado</label>
               }
             </div>
           </div>

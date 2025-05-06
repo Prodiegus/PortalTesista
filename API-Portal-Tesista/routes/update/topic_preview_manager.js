@@ -147,7 +147,7 @@ async function getTopicPreviews(req, res) {
             return {
                 ...result,
                 archivo: respose.archivo,
-                feedback: respose.feedback
+                feedback: respose.feedback[0] 
             };
         });
 
