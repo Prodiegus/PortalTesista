@@ -92,14 +92,11 @@ async function getTopicPreviews(req, res) {
     try {
         const results = await runParametrizedQuery(query, params, connection);
         const feedbackResults = await runParametrizedQuery(feedbackQuery, params, connection);
-        await commitTransaction(connection);
-
         
-
         if (results.length === 0) {
             return res.status(404).send('No se encontraron avances para el tema especificado');
         }
-        let res = {
+        let respose = {
             ...results,
             archivo: results.map(result => {
                 return {
@@ -119,17 +116,17 @@ async function getTopicPreviews(req, res) {
                 const archivo = result.archivo.toString(); // Convertir a cadena
                 // Verificar si ya es Base64 con prefijo
                 if (archivo.startsWith('data:application/pdf;base64,')) {
-                    res.archivo = archivo; // Mantener el formato original
+                    respose.archivo = archivo; // Mantener el formato original
                 } else {
                     // Convertir a Base64 si no tiene el prefijo
                     const base64String = Buffer.from(result.archivo).toString('base64');
-                    res.archivo = `data:application/pdf;base64,${base64String}`; // Agregar el prefijo
+                    respose.archivo = `data:application/pdf;base64,${base64String}`; // Agregar el prefijo
                 }
             } else {
-                res.archivo = null; // Manejar el caso donde no hay archivo
+                respose.archivo = null; // Manejar el caso donde no hay archivo
             }
             if (feedbackResults.length > 0) {
-                res.feedback = feedbackResults.map(feedback => {
+                respose.feedback = feedbackResults.map(feedback => {
                     if (feedback.archivo) {
                         const archivo = feedback.archivo.toString(); // Convertir a cadena
                         // Verificar si ya es Base64 con prefijo
@@ -145,11 +142,18 @@ async function getTopicPreviews(req, res) {
                     }
                 });
             } else {
-                res.feedback = null; // Manejar el caso donde no hay archivo
+                respose.feedback = null; // Manejar el caso donde no hay archivo
             }
-            return res;
+            return respose;
         });
 
+        if (connection){
+            try{
+                await commitTransaction(connection);
+            }catch (error) {
+                console.error('Error en la transacción:', error.message)
+            }
+        }
         res.status(200).json(processedResults);
     } catch (error) {
         if (connection) {
