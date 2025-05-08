@@ -47,7 +47,9 @@ async function addPreview(req, res) {
         res.status(500).send('Error adding preview');
     } finally {
         if (connection) {
-            connection.release(); // Liberar la conexión al pool
+            commitTransaction(connection).catch(error => {
+                console.error('Error committing transaction:', error.message);
+            }   );
         }
     }
 }
