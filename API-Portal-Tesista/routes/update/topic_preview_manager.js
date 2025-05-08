@@ -132,7 +132,7 @@ async function getTopicPreviews(req, res) {
         const processedResults = results.map(result => {
             const archivo = result.archivo
                     ? (() => {
-                        const archivo = feedback.archivo.toString();
+                        const archivo = result.archivo.toString();
                         const prefix = 'data:application/pdf;base64,';
                 
                         // 1. Si ya tiene el prefijo, devolver tal cual
