@@ -4,11 +4,11 @@ const create = require('./user/create');
 const { read, readAll, readAlles} = require('./user/read');
 const { create_flow, read_flow, read_school_flow, edit_flow } = require('./flow/manage_flow');
 const { create_phase, read_phase, edit_phase, read_flow_phase, delete_phase, read_topic_phase, create_subphase, move_phase_backward, move_phase_forward } = require('./flow/manage_phase');
-const { get_topic_summary, create_topic, read_topic, read_all_topics, edit_topic, change_topic_status, requestTopic, acept_topic_request, read_topic_request} = require('./topic/topic_manager');
+const { get_topic_summary, create_topic, read_topic, read_all_topics, edit_topic, change_topic_status, requestTopic, acept_topic_request, read_topic_request, read_review_topic} = require('./topic/topic_manager');
 const disable = require('./user/disable');
 const enable = require('./user/enable');
 const {getSchools} = require('./school/school_manager');
-const {addPreview, getTopicPreviews} = require('./update/topic_preview_manager');
+const {addPreview, getTopicPreviews, getLatetsTopicPreview} = require('./update/topic_preview_manager');
 const {addReviewer, getTopicReviewers, deleteReviewer, startPreviewReview} = require('./reviewer/reviewer_manager');
 const { create_meetings, edit_meeting, read_topic_meetings, delete_meeting } = require('./meetings/meeting_manager');
 const { add_owner, delete_owner, read_topic_owner } = require('./user/owner_manager');
@@ -128,6 +128,11 @@ router.get('/read/topic/:rut', async (req, res) => {
   await read_topic(req, res);
 });
 
+router.get('/read/review/topic/:rut', async (req, res) => {
+  console.log('Consulta get a /read/review/topic/:rut: ', req.body);
+  await read_review_topic(req, res);
+});
+
 router.post('/create/topic', async (req, res) => {
   console.log('Consulta post a /create/topic: ', req.body);
   await create_topic(req, res);
@@ -175,6 +180,11 @@ router.post('/upload/preview', async (req, res) => {
 router.get('/read/preview/:id_tema', async (req, res) => {
   console.log('Consulta get a /read/preview/:id_tema: ', req.body);
   await getTopicPreviews(req, res);
+});
+
+router.get('/read/latest/preview/:id_tema', async (req, res) => {
+  console.log('Consulta get a /read/latest/preview/:id_tema: ', req.body);
+  await getLatetsTopicPreview(req, res);
 });
 
 // agregar revisor a un tema

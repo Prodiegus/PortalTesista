@@ -140,7 +140,6 @@ export class AvanceTemaComponent implements OnInit{
       console.error('No feedback file available to download');
       return;
     }
-    console.log(this.avance)
     try {
       let base64String = this.avance.feedback;
 
