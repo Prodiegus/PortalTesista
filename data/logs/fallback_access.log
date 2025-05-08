@@ -17747,3 +17747,4 @@
 [08/May/2025:22:28:21 +0000] 400 - GET http 34.176.220.92 "/aaa9" [Client 64.227.150.86] [Length 252] [Gzip -] "Mozilla/5.0 zgrab/0.x" "-"
 [08/May/2025:22:28:33 +0000] 400 - GET http 34.176.220.92 "/aab8" [Client 64.227.150.86] [Length 252] [Gzip -] "Mozilla/5.0 zgrab/0.x" "-"
 [08/May/2025:22:28:39 +0000] 400 - GET http 34.176.220.92 "/" [Client 64.227.150.86] [Length 252] [Gzip -] "Mozilla/5.0 zgrab/0.x" "-"
+[08/May/2025:22:48:32 +0000] 400 - - http localhost-nginx-proxy-manager "-" [Client 185.224.128.132] [Length 154] [Gzip -] "-" "-"
