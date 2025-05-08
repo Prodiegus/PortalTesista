@@ -1406,3 +1406,8 @@
 [05/May/2025:06:31:13 +0000] - 404 404 - GET http api-login.portaltesista.me "/sftp-config.json" [Client 15.237.210.33] [Length 116] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0" "-"
 [05/May/2025:06:31:16 +0000] - 404 404 - GET http api-login.portaltesista.me "/.vscode/sftp.json" [Client 15.237.210.33] [Length 117] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:77.0) Gecko/20100101 Firefox/77.0" "-"
 [06/May/2025:13:16:12 +0000] - 404 404 - GET https api-login.portaltesista.me "/.git/config" [Client 93.123.109.91] [Length 111] [Gzip -] [Sent-to 34.176.220.92] "Nokia6230/2.0 (04.44) Profile/MIDP-2.0 Configuration/CLDC-1.1" "-"
+[07/May/2025:16:32:46 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 104.152.52.164] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "curl/7.61.1" "-"
+[07/May/2025:23:03:32 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 23.27.145.15] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (X11; Linux i686; rv:109.0) Gecko/20100101 Firefox/120.0" "-"
+[08/May/2025:00:09:56 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 149.57.180.24] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (X11; Linux i686; rv:109.0) Gecko/20100101 Firefox/120.0" "-"
+[08/May/2025:02:17:12 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 149.57.180.90] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (X11; Linux i686; rv:109.0) Gecko/20100101 Firefox/120.0" "-"
+[08/May/2025:16:51:09 +0000] - 200 200 - HEAD https api-login.portaltesista.me "/" [Client 202.170.91.69] [Length 0] [Gzip -] [Sent-to 34.176.220.92] "Java/1.8.0_322" "-"
