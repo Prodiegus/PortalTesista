@@ -125,20 +125,28 @@ async function getTopicPreviews(req, res) {
             } else {
                 respose.archivo = null; // Manejar el caso donde no hay archivo
             }
+            
             if (feedbackResults.length > 0) {
                 respose.feedback = feedbackResults.map(feedback => {
                     if (feedback.archivo) {
-                        const archivo = feedback.archivo.toString(); // Convertir a cadena
-                        // Verificar si ya es Base64 con prefijo
-                        if (archivo.startsWith('data:application/pdf;base64,')) {
-                            return archivo; // Mantener el formato original
-                        } else {
-                            // Convertir a Base64 si no tiene el prefijo
-                            const base64String = Buffer.from(feedback.archivo).toString('base64');
-                            return `data:application/pdf;base64,${base64String}`; // Agregar el prefijo
+                        const archivo = feedback.archivo.toString();
+                        const prefix = 'data:application/pdf;base64,';
+            
+                        // 1. If already has the prefix, return as is
+                        if (archivo.startsWith(prefix)) {
+                            return archivo;
                         }
+            
+                        // 2. If it looks like a base64 string (only base64 chars, long enough), just add the prefix
+                        if (/^[A-Za-z0-9+/=]+$/.test(archivo) && archivo.length > 100) {
+                            return prefix + archivo;
+                        }
+            
+                        // 3. Otherwise, treat as Buffer and convert to base64
+                        const base64String = Buffer.from(feedback.archivo).toString('base64');
+                        return prefix + base64String;
                     } else {
-                        return null; // Manejar el caso donde no hay archivo
+                        return null;
                     }
                 });
             } else {

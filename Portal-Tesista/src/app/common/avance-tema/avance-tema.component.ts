@@ -118,13 +118,13 @@ export class AvanceTemaComponent implements OnInit{
           const fileContent = (reader.result as string).split(',')[1]; // Remove the Data URL prefix
           this.avance.feedback = fileContent;
           this.avance.nombre_archivo_feedback = file.name;
-        }
+        };
         reader.readAsDataURL(file);
       } else {
         this.dialog.open(ConfirmDialogComponent, {
           data: {
             title: 'Aviso',
-            message: 'El flujo solo puede ser editado cuando el tema no está en trabajo',
+            message: 'Solo se acepta PDF.',
             confirmButtonText: 'Aceptar',
             isAlert: true,
           }
@@ -143,15 +143,24 @@ export class AvanceTemaComponent implements OnInit{
     console.log(this.avance)
     try {
       let base64String = this.avance.feedback;
+
+      if (base64String.startsWith('data:application/pdf;base64,')) {
+        base64String = base64String.replace('data:application/pdf;base64,', '');
+      }
+
       const byteCharacters = atob(base64String);
       const byteNumbers = Array.from(byteCharacters, char => char.charCodeAt(0));
       const byteArray = new Uint8Array(byteNumbers);
+
+
       const blob = new Blob([byteArray], { type: 'application/pdf' });
       const url = URL.createObjectURL(blob);
+
       const a = document.createElement('a');
       a.href = url;
       a.download = this.tema.titulo+'_retroalimentacion.pdf';
       a.click();
+
       URL.revokeObjectURL(url);
     } catch (error) {
       this.descargarArchivo(this.avance.feedback, this.tema.titulo+'_retroalimentacion.pdf');

@@ -111,7 +111,6 @@ export class CalendarioTemaComponent implements OnInit {
     if (input.files && input.files.length > 0) {
       const file = input.files[0];
       if (file.type === 'application/pdf') {
-        console.log('PDF file selected:', file);
         const reader = new FileReader();
         reader.onload = () => {
           const fileContent = (reader.result as string).split(',')[1]; // Remove the Data URL prefix
