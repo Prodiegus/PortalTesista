@@ -17701,3 +17701,7 @@
 [08/May/2025:17:52:35 +0000] 200 - GET http 34.176.220.92 "/" [Client 185.218.84.178] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
 [08/May/2025:17:56:18 +0000] 200 - GET http 34.176.220.92 "/" [Client 154.81.156.35] [Length 1033] [Gzip -] "curl/7.81.0" "-"
 [08/May/2025:18:03:34 +0000] 200 - GET http 34.176.220.92 "/" [Client 107.174.224.18] [Length 568] [Gzip 1.86] "Mozilla/5.0" "-"
+[08/May/2025:18:18:26 +0000] 200 - GET http 34.176.220.92 "/" [Client 154.81.156.7] [Length 1033] [Gzip -] "-" "-"
+[08/May/2025:18:24:32 +0000] 200 - GET http 34.176.220.92 "/" [Client 185.218.86.4] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
+[08/May/2025:18:25:51 +0000] 404 - GET http 34.176.220.92 "/.git/index" [Client 195.211.191.76] [Length 183] [Gzip 3.21] "Mozilla/5.0 (Linux; Android 9; SAMSUNG SM-G975U Build/PPR1.180610.011) AppleWebKit/537.36 (KHTML, like Gecko) SamsungBrowser/9.4 Chrome/67.0.3396.87 Mobile Safari/537.36" "-"
+[08/May/2025:18:41:34 +0000] 404 - GET http 34.176.220.92 "/admin/login.asp" [Client 34.235.48.77] [Length 150] [Gzip -] "Mozilla/5.0 (compatible)" "-"
