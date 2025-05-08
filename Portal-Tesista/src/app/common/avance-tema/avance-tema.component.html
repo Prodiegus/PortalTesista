@@ -118,7 +118,13 @@
               <textarea class="form-control" [(ngModel)]="avance.comentarios" name="comentario" rows="5"></textarea>
             </div>
           } @else {
-            <div class="col text-start">{{ avance.comentarios }}</div>
+            <div class="col text-start">
+              @if (avance.comentarios) {
+                {{ avance.comentarios }}
+              } @else {
+                No comentado
+              }
+            </div>
           }
         </div>
         <div class="row mt-3">

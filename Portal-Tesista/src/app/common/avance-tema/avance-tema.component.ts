@@ -116,8 +116,8 @@ export class AvanceTemaComponent implements OnInit{
         const reader = new FileReader();
         reader.onload = () => {
           const fileContent = (reader.result as string).split(',')[1]; // Remove the Data URL prefix
-          this.avance.feedback = fileContent;
-          this.avance.nombre_archivo_feedback = file.name;
+          this.avance.feedback.archivo = fileContent;
+          this.avance.feedback.nombre_archivo = file.name;
         };
         reader.readAsDataURL(file);
       } else {
@@ -141,7 +141,7 @@ export class AvanceTemaComponent implements OnInit{
       return;
     }
     try {
-      let base64String = this.avance.feedback;
+      let base64String = this.avance.feedback.archivo;
 
       if (base64String.startsWith('data:application/pdf;base64,')) {
         base64String = base64String.replace('data:application/pdf;base64,', '');
@@ -157,12 +157,12 @@ export class AvanceTemaComponent implements OnInit{
 
       const a = document.createElement('a');
       a.href = url;
-      a.download = this.tema.titulo+'_retroalimentacion.pdf';
+      a.download = this.avance.feedback.nombre_archivo || this.tema.titulo+'_retroalimentacion.pdf';
       a.click();
 
       URL.revokeObjectURL(url);
     } catch (error) {
-      this.descargarArchivo(this.avance.feedback, this.tema.titulo+'_retroalimentacion.pdf');
+      this.descargarArchivo(this.avance.feedback.archivo,(this.avance.feedback.nombre_archivo || this.tema.titulo+'_retroalimentacion.pdf'));
     }
   }
 
@@ -171,9 +171,9 @@ export class AvanceTemaComponent implements OnInit{
       nota: this.avance.nota ?? null,
       aprobado: this.avance.aprobado ?? null,
       comentario: this.avance.comentarios ?? null,
-      archivo: this.avance.feedback?? null,
+      archivo: this.avance.feedback.archivo ?? null,
       id_avance: this.avance.id,
-      nombre: this.avance.nombre_archivo_feedback ?? null,
+      nombre: this.avance.feedback.nombre_archivo ?? null,
     };
     if (this.revision) {
       // your logic here
