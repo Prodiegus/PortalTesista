@@ -131,8 +131,25 @@ async function getTopicPreviews(req, res) {
         // Procesar los resultados y asociar el feedback correspondiente
         const processedResults = results.map(result => {
             const archivo = result.archivo
-                ? Buffer.from(result.archivo).toString('base64') // Solo el contenido en Base64
-                : null;
+                    ? (() => {
+                        const archivo = feedback.archivo.toString();
+                        const prefix = 'data:application/pdf;base64,';
+                
+                        // 1. Si ya tiene el prefijo, devolver tal cual
+                        if (archivo.startsWith(prefix)) {
+                            return archivo;
+                        }
+                
+                        // 2. Si parece una cadena Base64 válida, agregar el prefijo
+                        if (/^[A-Za-z0-9+/=]+$/.test(archivo) && archivo.length > 100) {
+                            return prefix + archivo;
+                        }
+                
+                        // 3. De lo contrario, tratar como Buffer y convertir a Base64
+                        const base64String = Buffer.from(feedback.archivo).toString('base64');
+                        return prefix + base64String;
+                    })()
+                    : null
 
             const feedback = feedbackMap.get(result.id_avance) || null;
 
