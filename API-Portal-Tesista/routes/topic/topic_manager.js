@@ -245,6 +245,25 @@ async function create_topic(req, res) {
     }
 }
 
+async function read_review_topic(req, res) {
+    const {rut} = req.params;
+    const query_temas_revisor = `
+        SELECT tema.* 
+        FROM tema JOIN revisor_asignado 
+        ON tema.id = revisor_asignado.id_tema 
+        WHERE revisor_asignado.rut_revisor = ?;
+    `;
+    const params = [rut];
+    try {
+        const topics_res = await runParametrizedQuery(query_temas_revisor, params);
+        res.status(200).send(topics_res);
+    } catch (error) {
+        console.error('Error obteniendo temas de revisor:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error obteniendo temas de revisor');
+    }
+    
+}
+
 async function read_topic(req, res) {
     const {rut} = req.params;
     const quey_get_user_tipe = `SELECT tipo FROM usuario WHERE rut = ?;`;
@@ -256,12 +275,7 @@ async function read_topic(req, res) {
         AND (alumno_trabaja.fecha_termino IS NULL OR alumno_trabaja.fecha_termino <= CURRENT_DATE);
     `;
     const query_alumnos_guia = `SELECT rut_alumno FROM guia WHERE rut_guia = ?;`;
-    const query_temas_revisor = `
-        SELECT tema.* 
-        FROM tema JOIN revisor_asignado 
-        ON tema.id = revisor_asignado.id_tema 
-        WHERE revisor_asignado.rut_revisor = ?;
-    `;
+    
     const query_guia_temas = `SELECT * FROM tema WHERE rut_guia = ?;`;
     const query_escuela_user = `SELECT escuela FROM usuario WHERE rut = ?;`;
     const query_temas_escuela = `SELECT * FROM tema WHERE nombre_escuela = ?;`;
@@ -287,9 +301,8 @@ async function read_topic(req, res) {
                 const topics_res = await runParametrizedQuery(query_tema_alumno, [alumnos_res[i].rut_alumno]);
                 topics_JSON = [...topics_JSON, ...topics_res];
             }
-            const temas_revisor_res = await runParametrizedQuery(query_temas_revisor, params);
             const guia_temas_res = await runParametrizedQuery(query_guia_temas, params);
-            topics_JSON = [...topics_JSON, ...temas_revisor_res, ...guia_temas_res];
+            topics_JSON = [...topics_JSON, ...guia_temas_res];
         } else if (user_type === 'cargo') {
             const escuela_res = await runParametrizedQuery(query_escuela_user, params);
             for (let i = 0; i < escuela_res.length; i++) {
@@ -768,4 +781,5 @@ module.exports = {
     read_topic_request,
     acept_topic_request,
     get_topic_summary,
+    read_review_topic
 };

@@ -1,4 +1,6 @@
+const { json } = require('express');
 const {runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, commitTransaction} = require('../utils/query');
+const { get } = require('..');
 
 async function addPreview(req, res) {
     const { id_tema, nombre_archivo, archivo64, fecha } = req.body;
@@ -62,7 +64,7 @@ async function getTopicPreviews(req, res) {
     }
 
     const query = `
-        SELECT a.*, ar.nombre AS nombre_archivo, ar.file AS archivo
+        SELECT a.*, ar.id_avance, ar.nombre AS nombre_archivo, ar.file AS archivo
         FROM avance a
         JOIN (
             SELECT id_avance, MAX(fecha) AS fecha_reciente
@@ -75,7 +77,7 @@ async function getTopicPreviews(req, res) {
     `;
 
     const feedbackQuery = `
-        SELECT ar.nombre AS nombre_archivo, ar.file AS archivo
+        SELECT ar.id_avance, ar.nombre AS nombre_archivo, ar.file AS archivo
         FROM avance a
         JOIN (
             SELECT id_avance, MAX(fecha) AS fecha_reciente
@@ -84,9 +86,77 @@ async function getTopicPreviews(req, res) {
             GROUP BY id_avance
         ) subquery ON a.id = subquery.id_avance
         JOIN archivo ar ON subquery.id_avance = ar.id_avance AND subquery.fecha_reciente = ar.fecha
-        WHERE a.id_tema = 1
+        WHERE a.id_tema = ?
     `;
 
+    const params = [id_tema];
+    const connection = await beginTransaction();
+
+    try {
+        const results = await runParametrizedQuery(query, params, connection);
+        const feedbackResults = await runParametrizedQuery(feedbackQuery, params, connection);
+
+        if (results.length === 0) {
+            return res.status(404).send('No se encontraron avances para el tema especificado');
+        }
+
+        // Crear un mapa de feedbacks por id_avance
+        const feedbackMap = new Map();
+        feedbackResults.forEach(feedback => {
+            feedbackMap.set(feedback.id_avance, {
+                nombre_archivo: feedback.nombre_archivo,
+                archivo: feedback.archivo
+                    ? Buffer.from(feedback.archivo).toString('base64') // Solo el contenido en Base64
+                    : null
+            });
+        });
+
+        // Procesar los resultados y asociar el feedback correspondiente
+        const processedResults = results.map(result => {
+            const archivo = result.archivo
+                ? Buffer.from(result.archivo).toString('base64') // Solo el contenido en Base64
+                : null;
+
+            const feedback = feedbackMap.get(result.id_avance) || null;
+
+            return {
+                ...result,
+                archivo,
+                feedback
+            };
+        });
+
+        await commitTransaction(connection);
+        res.status(200).json(processedResults);
+    } catch (error) {
+        if (connection) {
+            await rollbackTransaction(connection);
+        }
+        console.error('Error fetching topic previews:', error.message);
+        res.status(500).send('Error fetching topic previews');
+    }
+}
+
+async function getLatetsTopicPreview(req, res) {
+    const { id_tema } = req.params;
+
+    if (!id_tema) {
+        return res.status(400).send('Falta el id_tema en la solicitud');
+    }
+
+    const query = `
+        SELECT a.*, ar.nombre AS nombre_archivo, ar.file AS archivo
+        FROM avance a
+        JOIN (
+            SELECT id_avance, MAX(fecha) AS fecha_reciente
+            FROM archivo
+            WHERE tipo = 'avance'
+            GROUP BY id_avance
+        ) subquery ON a.id = subquery.id_avance
+        JOIN archivo ar ON subquery.id_avance = ar.id_avance AND subquery.fecha_reciente = ar.fecha
+        WHERE a.id_tema = ? ORDER BY a.fecha DESC
+        limit 1
+    `;
 
     const params = [id_tema];
     const connection = await beginTransaction();
@@ -180,5 +250,6 @@ async function getTopicPreviews(req, res) {
 
 module.exports = {
     addPreview,
-    getTopicPreviews
+    getTopicPreviews,
+    getLatetsTopicPreview
 };

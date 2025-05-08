@@ -101,6 +101,11 @@ export class HttpRequestService {
     return this.http.get<any>(endpoint);
   }
 
+  async getTemasRevisionUsuario(rut: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/review/topic/${rut}`;
+    return this.http.get<any>(endpoint);
+  }
+
   async addTema(tema: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/create/topic`;
     return this.http.post<any>(endpoint, tema);
@@ -138,6 +143,11 @@ export class HttpRequestService {
 
   async getAvancesTema(id_tema: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/read/preview/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async getUltimoAvanceTema(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/latest/preview/${id_tema}`;
     return this.http.get<any>(endpoint);
   }
 
