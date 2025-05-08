@@ -171,7 +171,7 @@ export class AvanceTemaComponent implements OnInit{
     const data = {
       nota: this.avance.nota ?? null,
       aprobado: this.avance.aprobado ?? null,
-      comentario: this.avance.comentario ?? null,
+      comentario: this.avance.comentarios ?? null,
       archivo: this.avance.feedback?? null,
       id_avance: this.avance.id,
       nombre: this.avance.nombre_archivo_feedback ?? null,

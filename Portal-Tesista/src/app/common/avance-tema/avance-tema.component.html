@@ -70,18 +70,30 @@
         } @else {
           <div class="row my-1">
             <div class="col-3 text-end me-1 bold">Aprobado:</div>
-            <div class="col text-start">{{ avance.aprobado }}</div>
+            <div class="col text-start">
+              @if (avance?.aprobado) {
+                {{ avance.aprobado }}
+              } @else {
+                No definido
+              }
+            </div>
           </div>
           <div class="row my-1">
             <div class="col-3 text-end me-1 bold">Nota:</div>
-            <div class="col text-start">{{ avance.nota }}</div>
+            <div class="col text-start">
+              @if (avance?.nota) {
+                {{ avance.nota }}
+              } @else {
+                No definido
+              }
+            </div>
           </div>
         }
         <div class="row my-1">
           <div class="col-3 text-end me-1 bold">Archivo de retroalimentación:</div>
           <div class="col text-start">
             <div class="input-group">
-              @if (userRepresentation.tipo !== 'alumno') {
+              @if (userRepresentation.tipo !== 'alumno' && !avance?.feedback) {
                 <input type="file" class="form-control" id="inputGroupFile04"
                        (change)="onFeedbackFileSelected($event)"
                        aria-describedby="inputGroupFileAddon04" aria-label="Upload">
@@ -99,16 +111,22 @@
             </div>
           </div>
         </div>
-        <div class="row my-1 bold">
+        <div class="row my-1">
           <div class="col-3 text-end me-1 bold">Comentarios:</div>
-          <div class="col text-start">
-            <textarea class="form-control" [(ngModel)]="avance.comentario" name="comentario" rows="5"></textarea>
-          </div>
+          @if (userRepresentation.tipo !== 'alumno') {
+            <div class="col text-start">
+              <textarea class="form-control" [(ngModel)]="avance.comentarios" name="comentario" rows="5"></textarea>
+            </div>
+          } @else {
+            <div class="col text-start">{{ avance.comentarios }}</div>
+          }
         </div>
         <div class="row mt-3">
-          <div class="col text-end">
-            <button class="btn btn-primary" type="submit">Guardar</button>
-          </div>
+          @if (userRepresentation.tipo !=='alumno') {
+            <div class="col text-end">
+              <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
+          }
         </div>
       </form>
     </div>
