@@ -53,4 +53,9 @@ export class MenuAdminComponent {
     this.isVisible = false;
     this.router.navigate(['/home/flujo-general']);
   }
+
+  goToRevision() {
+    this.isVisible = false;
+    this.router.navigate(['/home/revision']);
+  }
 }

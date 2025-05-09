@@ -29,6 +29,17 @@
         Gestionar profesores
       </div>
     </div>
+    <div class="row h-55 r-8 my-22 light-bg-interactive  pointer d-flex align-items-center"
+         *ngIf="userRepresentation.tipo === 'cargo' || userRepresentation.tipo === 'guia'"
+         (click)="goToRevision()"
+    >
+      <div class="col-2">
+        <i class="ms-1 bi bi-file-earmark-text font-30"></i>
+      </div>
+      <div class="col font-20">
+        Revisar temas
+      </div>
+    </div>
     <div class="row h-55 r-8 my-22 light-bg-interactive d-flex align-items-center pointer"
          *ngIf="userRepresentation.tipo === 'cargo'"
     >
