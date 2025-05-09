@@ -152,7 +152,7 @@ async function getTopicPreviews(req, res) {
                     : null
 
             const feedback = feedbackMap.get(result.id_avance) || null;
-
+            result.aprobado = result.aprobado > 5 ? true : false;
             return {
                 ...result,
                 archivo,
@@ -268,7 +268,7 @@ async function getLatetsTopicPreview(req, res) {
             : null;
 
         const feedback = feedbackMap.get(result.id_avance) || null;
-
+        result.aprobado = result.aprobado > 5 ? true : false;
         const processedResult = {
             ...result,
             archivo,

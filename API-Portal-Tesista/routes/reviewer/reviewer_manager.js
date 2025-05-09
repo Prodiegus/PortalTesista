@@ -149,10 +149,10 @@ async function gradeReview(req, res){
             const currentNota = avance[0].nota !== null && avance[0].nota !== undefined ? avance[0].nota : 0;
             const currentAprobado = avance[0].aprobado !== null && avance[0].aprobado !== undefined ? avance[0].aprobado : 0;
         
-            const aprobadoValue = aprobado === true ? 1 : aprobado === false ? 0 : aprobado;
+            const aprobadoValue = aprobado === true ? 10 : aprobado === false ? 0 : aprobado;
         
-            const newNota = (currentNota + (nota !== null && nota !== undefined ? nota : 0)) / reviewers[0].revisores;
-            const newAprobado = (currentAprobado + aprobadoValue) / reviewers[0].revisores;
+            const newNota = (currentNota + (nota !== null && nota !== undefined ? nota : 0)/ reviewers[0].revisores);
+            const newAprobado = (currentAprobado + aprobadoValue/reviewers[0].revisores);
         
             const params_edit_review = [newNota, newAprobado, comentario, id_avance];
             await runParametrizedQuery(query_edit_review, params_edit_review);

@@ -171,6 +171,11 @@ export class HttpRequestService {
     return this.http.post<any>(endpoint, avance);
   }
 
+  async calificarAvance(calificacion: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/grade/review`;
+    return this.http.post<any>(endpoint, calificacion);
+  }
+
   async faseSiguiente(id_tema: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/move/phase/forward/${id_tema}`;
     const requestBody = {
