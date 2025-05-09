@@ -171,9 +171,10 @@ export class AvanceTemaComponent implements OnInit{
       nota: this.avance.nota ?? null,
       aprobado: this.avance.aprobado ?? null,
       comentario: this.avance.comentarios ?? null,
-      archivo: this.avance.feedback.archivo ?? null,
+      archivo: this.avance.feedback?.archivo ?? null,
       id_avance: this.avance.id,
-      nombre: this.avance.feedback.nombre_archivo ?? null,
+      nombre: this.avance.feedback?.nombre_archivo ?? null,
+      id_tema: this.tema.id,
     };
     if (this.revision) {
       // your logic here

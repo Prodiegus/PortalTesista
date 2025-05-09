@@ -9,7 +9,7 @@ const disable = require('./user/disable');
 const enable = require('./user/enable');
 const {getSchools} = require('./school/school_manager');
 const {addPreview, getTopicPreviews, getLatetsTopicPreview} = require('./update/topic_preview_manager');
-const {addReviewer, getTopicReviewers, deleteReviewer, startPreviewReview} = require('./reviewer/reviewer_manager');
+const {addReviewer, getTopicReviewers, deleteReviewer, startPreviewReview, gradeReview} = require('./reviewer/reviewer_manager');
 const { create_meetings, edit_meeting, read_topic_meetings, delete_meeting } = require('./meetings/meeting_manager');
 const { add_owner, delete_owner, read_topic_owner } = require('./user/owner_manager');
 
@@ -209,6 +209,11 @@ router.post('/delete/reviewer', async (req, res) => {
 router.post('/start/review', async (req, res) => {
   console.log('Consulta post a /start/review: ', req.body);
   await startPreviewReview(req, res);
+});
+
+router.post('/grade/review', async (req, res) => {
+  console.log('Consulta post a /grade/review: ', req.body);
+  await gradeReview(req, res);
 });
 
 
