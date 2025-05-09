@@ -246,22 +246,67 @@ async function create_topic(req, res) {
 }
 
 async function read_review_topic(req, res) {
-    const {rut} = req.params;
+    const { rut } = req.params;
+
     const query_temas_revisor = `
         SELECT tema.* 
         FROM tema JOIN revisor_asignado 
         ON tema.id = revisor_asignado.id_tema 
         WHERE revisor_asignado.rut_revisor = ?;
     `;
+    const query_user_name = `SELECT nombre, apellido FROM usuario WHERE rut = ?;`;
+
     const params = [rut];
+    let topics_JSON = [];
+
     try {
-        const topics_res = await runParametrizedQuery(query_temas_revisor, params);
+        // Obtener los temas asignados al revisor
+        const temas_revisor_res = await runParametrizedQuery(query_temas_revisor, params);
+        topics_JSON = [...temas_revisor_res];
+
+        // Limpiar temas duplicados por ID
+        const uniqueTopics = [];
+        const ids = new Set();
+        for (const topic of topics_JSON) {
+            if (!ids.has(topic.id)) {
+                uniqueTopics.push(topic);
+                ids.add(topic.id);
+            }
+        }
+
+        // Procesar los temas para incluir información adicional del guía
+        const topics_res = [];
+        for (const topic of uniqueTopics) {
+            const params = [topic.rut_guia];
+            try {
+                const user_name_res = await runParametrizedQuery(query_user_name, params);
+                const user_name = user_name_res[0];
+                const topic_res = {
+                    id: topic.id,
+                    titulo: topic.titulo,
+                    resumen: topic.resumen,
+                    estado: topic.estado,
+                    numero_fase: topic.numero_fase,
+                    id_fase: topic.id_fase,
+                    nombre_escuela: topic.nombre_escuela,
+                    rut_guia: topic.rut_guia,
+                    guia: user_name ? `${user_name.nombre} ${user_name.apellido}` : 'Sin guía asignado',
+                    co_guias: ['-'],
+                    creacion: topic.creacion
+                };
+                topics_res.push(topic_res);
+            } catch (error) {
+                console.error('Error obteniendo nombre de usuario:', error.response ? error.response.data : error.message);
+                res.status(500).send('Error obteniendo nombre de usuario');
+                return;
+            }
+        }
+
         res.status(200).send(topics_res);
     } catch (error) {
         console.error('Error obteniendo temas de revisor:', error.response ? error.response.data : error.message);
         res.status(500).send('Error obteniendo temas de revisor');
     }
-    
 }
 
 async function read_topic(req, res) {

@@ -72,6 +72,7 @@ import {
 } from '@angular/material/dialog';
 import { AvanceTemaComponent } from './common/avance-tema/avance-tema.component';
 import {PdfViewerModule} from 'ng2-pdf-viewer';
+import { RevisionesTemaComponent } from './common/revisiones-tema/revisiones-tema.component';
 
 @NgModule({
   declarations: [
@@ -114,6 +115,7 @@ import {PdfViewerModule} from 'ng2-pdf-viewer';
     EditarReunionComponent,
     ConfirmDialogComponent,
     AvanceTemaComponent,
+    RevisionesTemaComponent,
   ],
   imports: [
     BrowserModule,
