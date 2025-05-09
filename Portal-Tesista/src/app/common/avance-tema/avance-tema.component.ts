@@ -177,10 +177,25 @@ export class AvanceTemaComponent implements OnInit{
       id_tema: this.tema.id,
     };
     if (this.revision) {
-      // your logic here
+      await this.evaluarAvance(data);
     } else {
       await this.subirGuiaReview(data);
     }
+  }
+
+  async evaluarAvance(evaluacion: any = null) {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.calificarAvance(evaluacion).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            resolve();
+          },
+          (error: any) => {
+            reject(error);
+          }
+        );
+      });
+    });
   }
 
   async subirGuiaReview(revision: any){
