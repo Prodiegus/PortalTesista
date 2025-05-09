@@ -1,6 +1,16 @@
 @if (!loading) {
   <app-home-header [userRepresentation]="userRepresentation"></app-home-header>
   @if (!revisar){
+    <div class="container-fluid mb-5">
+      <div class="row mx-5 d-flex align-items-center justify-content-center bold font-22">
+        <div class="col-3 text-center"></div>
+        <div class="col-6 text-center bold">
+          Temas a revisar
+        </div>
+        <div class="col-3">
+        </div>
+      </div>
+    </div>
     <div class="mx-5">
       <mat-form-field appearance="fill" class="w-100">
         <mat-label>Buscar...</mat-label>
@@ -107,10 +117,10 @@
     <div class="mx-5">
       <app-avance-tema
         [tema]="temaSeleccionado"
-        [userRepresentation]="userRepresentation">
+        [userRepresentation]="userRepresentation"
         [avance]="avance"
         [revision]="true"
-        (close)="closeRevisarTema()"
+        (close)="closeRevisarTema()">
       </app-avance-tema>
     </div>
   }
