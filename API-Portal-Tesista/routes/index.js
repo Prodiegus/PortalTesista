@@ -12,6 +12,7 @@ const {addPreview, getTopicPreviews, getLatetsTopicPreview} = require('./update/
 const {addReviewer, getTopicReviewers, deleteReviewer, startPreviewReview, gradeReview} = require('./reviewer/reviewer_manager');
 const { create_meetings, edit_meeting, read_topic_meetings, delete_meeting } = require('./meetings/meeting_manager');
 const { add_owner, delete_owner, read_topic_owner } = require('./user/owner_manager');
+const { getIssue } = require('./utils/getIssue');
 
 const router = express.Router();
 
@@ -257,6 +258,11 @@ router.post('/delete/owner', async (req, res) => {
 router.get('/read/owner/:id_tema', async (req, res) => {
   console.log('Consulta get a /read/owner/:id_tema: ', req.body);
   await read_topic_owner(req, res);
+});
+
+router.get('/read/issue/:id', async (req, res) => {
+  console.log('Consulta get a /getIssue/:id: ', req.body);
+  await getIssue(req, res);
 });
 
 module.exports = router;
