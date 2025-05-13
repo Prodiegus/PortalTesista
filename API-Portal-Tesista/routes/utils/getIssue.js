@@ -54,12 +54,12 @@ async function getIssue(req, res) {
         }
         if (advances.length > 0) {
             for (let i = 0; i < advances.length; i++) {
-                response.push(
+                response.push({
                     [advances[i].fecha]: {
                         titulo: advances[i].nota ? 'Avance '+advances[i].nota : 'avance no calificado',
                         contenido: advances[i].comentarios ? advances[i].comentarios : 'No hay comentarios disponibles',
                     }
-                );
+                });
             }
         }
         response.sort((a, b) => {
