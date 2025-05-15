@@ -29,43 +29,41 @@ async function getIssue(req, res) {
         if (meeting.length > 0) {
             for (let i = 0; i < meeting.length; i++) {
                 response.push({
-                    [meeting[i].fecha]: {
-                        titulo: 'Reunion en estado '+meeting[i].estado,
-                        contenido: meeting[i].resumen ? meeting[i].resumen : 'No hay resumen disponible',
-                    }
+                    fecha: meeting[i].fecha,
+                    titulo: 'Reunion en estado '+meeting[i].estado,
+                    contenido: meeting[i].resumen ? meeting[i].resumen : 'No hay resumen disponible',
+                    
                 });
             }
         }
         if (flow.length > 0) {
             for (let i = 0; i < flow.length; i++) {
                 response.push({
-                    [flow[i].fecha_inicio]: {
-                        titulo: 'Inicio fase '+flow[i].nombre,
-                        contenido: flow[i].descripcion ? flow[i].descripcion : 'No hay descripcion disponible',
-                    }
+                    fecha: flow[i].fecha_inicio,
+                    titulo: 'Inicio fase '+flow[i].nombre,
+                    contenido: flow[i].descripcion ? flow[i].descripcion : 'No hay descripcion disponible',
+                    
                 });
                 response.push({
-                    [flow[i].fecha_termino]: {
-                        titulo: 'Termino fase '+flow[i].nombre,
-                        contenido: flow[i].descripcion ? flow[i].descripcion : 'No hay descripcion disponible',
-                    }
+                    fetcha: flow[i].fecha_termino,
+                    titulo: 'Termino fase '+flow[i].nombre,
+                    contenido: flow[i].descripcion ? flow[i].descripcion : 'No hay descripcion disponible',
                 });
             }
         }
         if (advances.length > 0) {
             for (let i = 0; i < advances.length; i++) {
                 response.push({
-                    [advances[i].fecha]: {
-                        titulo: advances[i].nota ? 'Avance '+advances[i].nota : 'avance no calificado',
-                        contenido: advances[i].comentarios ? advances[i].comentarios : 'No hay comentarios disponibles',
-                    }
+                    fecha: advances[i].fecha,
+                    titulo: advances[i].nota ? 'Avance '+advances[i].nota : 'avance no calificado',
+                    contenido: advances[i].comentarios ? advances[i].comentarios : 'No hay comentarios disponibles',
                 });
             }
         }
         response.sort((a, b) => {
-            const dateA = new Date(Object.keys(a)[0]);
-            const dateB = new Date(Object.keys(b)[0]);
-            return dateA - dateB;
+            const dateA = new Date(a.fecha);
+            const dateB = new Date(b.fecha);
+            return dateB - dateA;
         });
         res.status(200).send(response);
     } catch (error) {

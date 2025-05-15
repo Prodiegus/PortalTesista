@@ -23,6 +23,7 @@ export class CalendarioTemaComponent implements OnInit {
   mes: number = 0;
   year: number = 0;
   reuniones: any = [];
+  eventos: any = [];
 
   constructor(
     private httpRequestService: HttpRequestService,
@@ -36,10 +37,12 @@ export class CalendarioTemaComponent implements OnInit {
     this.calendario = this.getCalendarDays(this.year, this.mes);
     try {
       await this.getReuniones();
+      await this.getEventos();
     } catch (error) {
       console.error('Error obteniendo reuniones:', error);
     } finally {
       this.loading = false;
+      console.log('eventos: '+this.eventos);
     }
   }
 
@@ -100,10 +103,10 @@ export class CalendarioTemaComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
 
-  hayReunionEnDia(dia: number | null): boolean {
+  hayEvento(dia: number | null): boolean {
     if (!dia) return false; // Si el día es nulo, no hay reunión
     const fechaDia = new Date(this.year, this.mes, dia).toISOString().slice(0, 10);
-    return this.reuniones.some((reunion: any) => reunion.fecha.slice(0, 10) === fechaDia);
+    return this.eventos.some((evento: any) => evento.fecha === fechaDia);
   }
 
   onFileSelected(event: Event): void {
@@ -143,6 +146,23 @@ export class CalendarioTemaComponent implements OnInit {
           },
           (error: any) => {
             console.error('Error obteniendo reuniones');
+            reject(error);
+          }
+        );
+      });
+    });
+  }
+
+  async getEventos() {
+    return new Promise<any>((resolve, reject) => {
+      this.httpRequestService.getEventos(this.tema.id).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.eventos = data;
+            resolve(data);
+          },
+          (error: any) => {
+            console.error('Error obteniendo eventos');
             reject(error);
           }
         );
