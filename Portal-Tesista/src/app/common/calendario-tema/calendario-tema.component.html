@@ -27,7 +27,7 @@
       (mouseleave)="onMouseLeave()"
       [ngClass]="{
         'hovered': hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j,
-        'reunion-dia': hayReunionEnDia(dia)
+        'reunion-dia': hayEvento(dia)
       }"
     >
       <ng-container *ngIf="hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j; else showDay">
