@@ -8,6 +8,7 @@ import { FlujoGeneralComponent } from './common/flujo-general/flujo-general.comp
 import {TemaViewComponent} from './home/tema-view/tema-view.component';
 import {EdicionTemaComponent} from './common/edicion-tema/edicion-tema.component';
 import {RevisionesTemaComponent} from './common/revisiones-tema/revisiones-tema.component';
+import {GestionEscuelasComponent} from './common/gestion-escuelas/gestion-escuelas.component';
 
 const routes: Routes = [
   { path: '', component: LandingComponent },
@@ -17,6 +18,8 @@ const routes: Routes = [
   { path: 'home/tema/:id', component: TemaViewComponent, canActivate: [authGuard] },
   { path: 'home/editar-tema/:id', component: EdicionTemaComponent, canActivate: [authGuard] },
   { path: 'home/revision', component: RevisionesTemaComponent, canActivate: [authGuard] },
+  { path: 'home/escuelas', component: GestionEscuelasComponent, canActivate: [authGuard] },
+  { path: '**', redirectTo: '', pathMatch: 'full' },
 ];
 
 @NgModule({

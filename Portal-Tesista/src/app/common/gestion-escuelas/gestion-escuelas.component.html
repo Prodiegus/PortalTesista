@@ -1,0 +1,71 @@
+<app-home-header [userRepresentation]="userRepresentation"></app-home-header>
+@if(!loading){
+  <div class="container-fluid mb-5">
+    <div class="row d-flex align-items-center justify-content-center mx-5 mb-3 r-8 primary-border">
+      <div class="col"></div>
+      <div class="col d-flex justify-content-center align-items-center font-20 bold">Escuelas Universidad de Talca</div>
+      <div class="col d-flex justify-content-end p-1 mx-1">
+        <button class="button primary r-8 bold" (click)="fundarEscuela()">
+          <span>Fundar Escuela</span>
+          <span class="ms-1 bi bi-plus-circle font-24"></span>
+        </button>
+      </div>
+    </div>
+    <!-- Header -->
+    <div class="row mt-3 mx-5 px-5 rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
+      <div class="col-4 text-center">
+        Nombre
+      </div>
+      <div class="col-4 text-center ">
+        Profesor a cargo
+      </div>
+      <div class="col-4 text-center ">
+        Acción
+      </div>
+    </div>
+    <!-- Body -->
+    @for (escuela of escuelas; track escuela.nombre){
+      <div class="row h-100 mb-1 px-5 mx-5 secondary-bg bold d-flex align-items-center">
+        <div class="col-4 text-center ">
+          {{escuela.nombre}}
+        </div>
+        <div class="col-4 text-center ">
+          {{escuela.profesor}}
+        </div>
+        <div class="col-4 text-center d-flex justify-content-center">
+          <button class="button secondary btn-size-150 bold" (click)="verEscuela(escuela)">
+            Ver
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+  @if (fundarEscuelaPopup){
+    <div class="overlay">
+      <div class="overlay-content">
+        <app-fundar-escuela
+          [userRepresentation]="userRepresentation"
+          [escuelas]="escuelas"
+          (close)="cerrarFundarEscuela()"
+        ></app-fundar-escuela>
+      </div>
+    </div>
+  }
+  @if (editarEscuelaPopup) {
+    <div class="overlay">
+      <div class="overlay-content">
+        <app-editar-escuela
+          [userRepresentation]="userRepresentation"
+          [escuela]="escuelaSeleccionada"
+          (close)="cerrarEdicionEscuela()"
+        ></app-editar-escuela>
+      </div>
+    </div>
+  }
+} @else {
+  <div class="container-fluid d-flex justify-content-center align-items-center fullscreen" *ngIf="loading">
+    <div class="spinner-grow primary-normal div-size-72" role="status">
+      <span class="visually-hidden">cargando...</span>
+    </div>
+  </div>
+}
