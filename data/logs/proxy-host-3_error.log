@@ -1,0 +1,1 @@
+2025/05/15 20:49:02 [warn] 191#191: *598 a client request body is buffered to a temporary file /tmp/nginx/body/6/00/0000000006, client: 181.163.80.167, server: api.portaltesista.me, request: "POST /upload/preview HTTP/1.1", host: "api.portaltesista.me", referrer: "http://localhost:4200/"
