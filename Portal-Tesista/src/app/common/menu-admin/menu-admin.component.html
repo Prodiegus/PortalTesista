@@ -42,12 +42,13 @@
     </div>
     <div class="row h-55 r-8 my-22 light-bg-interactive d-flex align-items-center pointer"
          *ngIf="userRepresentation.tipo === 'cargo'"
+          (click)="goToEscuelas()"
     >
       <div class="col-2">
         <i class="ms-1 bi bi-backpack2 font-30"></i>
       </div>
       <div class="col font-20">
-        Fundar una escuela
+        Gestión escuelas
       </div>
     </div>
     <div class="row h-55 r-8 my-22 light-bg-interactive d-flex align-items-center pointer"

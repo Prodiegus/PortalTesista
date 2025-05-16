@@ -1,5 +1,7 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import { HttpRequestService } from '../Http-request.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-calendario-tema',
@@ -22,11 +24,11 @@ export class CalendarioTemaComponent implements OnInit {
   currentDate: Date = new Date();
   mes: number = 0;
   year: number = 0;
-  reuniones: any = [];
   eventos: any = [];
 
   constructor(
     private httpRequestService: HttpRequestService,
+    private dialog: MatDialog,
   ) {}
 
   async ngOnInit() {
@@ -36,13 +38,11 @@ export class CalendarioTemaComponent implements OnInit {
     this.year = this.currentDate.getFullYear();
     this.calendario = this.getCalendarDays(this.year, this.mes);
     try {
-      await this.getReuniones();
       await this.getEventos();
     } catch (error) {
       console.error('Error obteniendo reuniones:', error);
     } finally {
       this.loading = false;
-      console.log('eventos: '+this.eventos);
     }
   }
 
@@ -89,8 +89,10 @@ export class CalendarioTemaComponent implements OnInit {
     this.calendario = this.getCalendarDays(this.year, this.mes);
   }
 
-  onMouseEnter(weekIndex: number, dayIndex: number): void {
-    if(this.userRepresentation.tipo === "alumno"){
+  onMouseEnter(weekIndex: number, dayIndex: number, dia: number | null): void {
+    if(this.userRepresentation.tipo === "alumno") {
+      this.hoveredCell = { weekIndex, dayIndex };
+    } else if (this.hayEvento(dia)) {
       this.hoveredCell = { weekIndex, dayIndex };
     }
   }
@@ -103,10 +105,74 @@ export class CalendarioTemaComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
 
+  showEventos(dia: number | null) {
+    if (!dia || isNaN(this.year) || isNaN(this.mes)) return; // Validate inputs
+    const eventos = this.getEventosDia(dia);
+    if (eventos.length > 0) {
+      let htmlContent = `<ul>` + eventos.map((evento: any) => {
+        return `<li><strong>${evento.titulo}: </strong> ${evento.contenido}</li>`;
+      }).join('') + `</ul>`; // Combina el contenido HTML en una lista
+
+      if (eventos.length === 1) {
+        htmlContent = `<div><strong>${eventos[0].titulo}: </strong>${eventos[0].contenido}</div>`; // Si solo hay un evento, muestra el contenido directamente
+      }
+
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Eventos',
+          message: htmlContent,
+          isAlert: true,
+        },
+      });
+
+      // Usa `afterOpened` para establecer el contenido HTML
+      dialogRef.afterOpened().subscribe(() => {
+        const dialogContent = document.querySelector('mat-dialog-content');
+        if (dialogContent) {
+          dialogContent.innerHTML = htmlContent; // Inserta el contenido HTML
+        }
+      });
+
+      return;
+    } else {
+      console.log('No hay eventos para este día');
+      return;
+    }
+  }
+
+  getEventosDia(dia: number | null): any[] {
+    if (dia === null || isNaN(this.year) || isNaN(this.mes)) return []; // Validate inputs
+    try {
+      const fechaDia = new Date(this.year, this.mes, dia);
+      if (isNaN(fechaDia.getTime())) throw new Error('Invalid date'); // Validate fechaDia
+      const formattedFechaDia = fechaDia.toISOString().slice(0, 10); // Format the target date
+      return this.eventos.filter((evento: any) => {
+        if (!evento.fecha) return false; // Ensure evento.fecha exists
+        const eventoFecha = new Date(evento.fecha);
+        if (isNaN(eventoFecha.getTime())) return false; // Validate eventoFecha
+        return eventoFecha.toISOString().slice(0, 10) === formattedFechaDia; // Compare dates
+      });
+    } catch (error) {
+      console.error('Error parsing date:', error);
+      return []; // Return an empty array if date parsing fails
+    }
+  }
   hayEvento(dia: number | null): boolean {
-    if (!dia) return false; // Si el día es nulo, no hay reunión
-    const fechaDia = new Date(this.year, this.mes, dia).toISOString().slice(0, 10);
-    return this.eventos.some((evento: any) => evento.fecha === fechaDia);
+    if (dia === null || typeof this.year !== 'number' || typeof this.mes !== 'number') return false; // Validate inputs
+    try {
+      const fechaDia = new Date(this.year, this.mes, dia);
+      if (isNaN(fechaDia.getTime())) throw new Error('Invalid date'); // Check if the date is valid
+      const formattedFechaDia = fechaDia.toISOString().slice(0, 10); // Format the target date
+      return this.eventos.some((evento: any) => {
+        if (!evento.fecha) return false; // Ensure evento.fecha exists
+        const eventoFecha = new Date(evento.fecha);
+        if (isNaN(eventoFecha.getTime())) throw new Error('Invalid event date'); // Validate event date
+        return eventoFecha.toISOString().slice(0, 10) === formattedFechaDia; // Compare dates
+      });
+    } catch (error) {
+      console.error('Error parsing date:', error);
+      return false; // Return false if date parsing fails
+    }
   }
 
   onFileSelected(event: Event): void {
@@ -126,6 +192,7 @@ export class CalendarioTemaComponent implements OnInit {
           };
           this.loading = true;
           this.subirAvance(formData).then(() => {
+            this.getEventos();
             this.loading = false;
           });
         };
@@ -136,22 +203,7 @@ export class CalendarioTemaComponent implements OnInit {
     }
   }
 
-  async getReuniones(){
-    return new Promise<any>((resolve, reject) => {
-      this.httpRequestService.getReuniones(this.tema.id).then(observable => {
-        observable.subscribe(
-          (data: any) => {
-            this.reuniones = data;
-            resolve(data);
-          },
-          (error: any) => {
-            console.error('Error obteniendo reuniones');
-            reject(error);
-          }
-        );
-      });
-    });
-  }
+
 
   async getEventos() {
     return new Promise<any>((resolve, reject) => {

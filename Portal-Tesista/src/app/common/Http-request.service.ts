@@ -236,4 +236,5 @@ export class HttpRequestService {
     const endpoint = `${this.apiUrl}/read/issue/${id_tema}`;
     return this.http.get<any>(endpoint);
   }
+
 }

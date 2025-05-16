@@ -73,6 +73,9 @@ import {
 import { AvanceTemaComponent } from './common/avance-tema/avance-tema.component';
 import {PdfViewerModule} from 'ng2-pdf-viewer';
 import { RevisionesTemaComponent } from './common/revisiones-tema/revisiones-tema.component';
+import { GestionEscuelasComponent } from './common/gestion-escuelas/gestion-escuelas.component';
+import { EditarEscuelaComponent } from './common/gestion-escuelas/editar-escuela/editar-escuela.component';
+import { FundarEscuelaComponent } from './common/gestion-escuelas/fundar-escuela/fundar-escuela.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +119,9 @@ import { RevisionesTemaComponent } from './common/revisiones-tema/revisiones-tem
     ConfirmDialogComponent,
     AvanceTemaComponent,
     RevisionesTemaComponent,
+    GestionEscuelasComponent,
+    EditarEscuelaComponent,
+    FundarEscuelaComponent,
   ],
   imports: [
     BrowserModule,
