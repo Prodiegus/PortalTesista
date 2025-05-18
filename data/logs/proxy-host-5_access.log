@@ -919,3 +919,7 @@
 [17/May/2025:17:23:53 +0000] - 200 200 - GET https ruleta.portaltesista.me "/js/chunk-vendors.js" [Client 54.198.59.153] [Length 3096531] [Gzip -] [Sent-to 34.176.215.237] "Mozilla/5.0 (Linux; Android 9; SM-G975F) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.89 Mobile Safari/537.36" "-"
 [17/May/2025:19:25:28 +0000] - 404 404 - GET http ruleta.portaltesista.me "/.env" [Client 31.56.56.147] [Length 143] [Gzip 1.08] [Sent-to 34.176.215.237] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36" "-"
 [17/May/2025:19:25:28 +0000] - 404 404 - POST http ruleta.portaltesista.me "/" [Client 31.56.56.147] [Length 140] [Gzip 1.09] [Sent-to 34.176.215.237] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.129 Safari/537.36" "-"
+[18/May/2025:00:59:34 +0000] - 200 200 - GET https ruleta.portaltesista.me "/" [Client 54.198.55.229] [Length 629] [Gzip -] [Sent-to 34.176.215.237] "Mozilla/5.0 (compatible)" "-"
+[18/May/2025:00:59:35 +0000] - 200 200 - GET https ruleta.portaltesista.me "/" [Client 54.198.55.229] [Length 629] [Gzip -] [Sent-to 34.176.215.237] "Mozilla/5.0 (compatible)" "-"
+[18/May/2025:00:59:39 +0000] - 200 200 - GET https ruleta.portaltesista.me "/" [Client 54.156.251.192] [Length 629] [Gzip -] [Sent-to 34.176.215.237] "Mozilla/5.0 (compatible)" "-"
+[18/May/2025:00:59:57 +0000] - 200 200 - GET https ruleta.portaltesista.me "/" [Client 34.235.48.77] [Length 629] [Gzip -] [Sent-to 34.176.215.237] "Mozilla/5.0 (compatible)" "-"
