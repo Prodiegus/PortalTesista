@@ -55,7 +55,30 @@ export class EditarEscuelaComponent {
       nombre: this.nombre,
       rut_profesor_cargo: this.cargo.rut,
     };
+    this.editarEscuela(escuela).then(() => {
+      this.loading = false;
+      this.closeOverlay();
+    }).catch((error) => {
+      console.error('Error editando escuela:', error);
+      this.loading = false;
+    });
     this.loading = false;
+  }
+
+  async editarEscuela(escuela: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.editarEscuela(escuela).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error editando escuela');
+            reject(error);
+          }
+        );
+      });
+    });
   }
 
   async fetchProfesores() {
