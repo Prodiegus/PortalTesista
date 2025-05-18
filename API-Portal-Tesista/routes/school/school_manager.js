@@ -17,8 +17,10 @@ async function getSchools(req, res) {
 async function createSchool(req, res) {
     const { nombre, rut_profesor_cargo } = req.body;
     const query_create_flow = `INSERT INTO flujo (rut_creador, tipo, fecha_inicio, fecha_termino) VALUES (?, ?, ?, ?)`;
-
-    const flow_params = [rut_profesor_cargo,'general',new Date(),new Date()+86400000];// 86400000 = 1 day
+    
+    const now = new Date();
+    const nextSemester = new Date(now.getFullYear(), now.getMonth() + 6, now.getDate());
+    const flow_params = [rut_profesor_cargo, 'general', now, nextSemester];
 
     const query_create_school = `INSERT INTO escuela (nombre, id_flujo, rut_profesor_cargo) VALUES (?, ?, ?)`;
     const school_params = [nombre, null, rut_profesor_cargo];

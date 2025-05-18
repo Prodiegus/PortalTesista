@@ -52,7 +52,29 @@ export class FundarEscuelaComponent implements OnInit {
       nombre: this.nombre,
       rut_profesor_cargo: this.cargo.rut,
     };
-    this.loading = false;
+    this.crearEscuela(escuela).then(() => {
+      this.loading = false;
+      this.closeOverlay();
+    }).catch((error) => {
+      console.error('Error creando escuela:', error);
+      this.loading = false;
+    });
+  }
+
+  async crearEscuela(escuela: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.crearEscuela(escuela).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error creando escuela');
+            reject(error);
+          }
+        );
+      });
+    });
   }
 
   async fetchProfesores() {
