@@ -7,7 +7,7 @@ const { create_phase, read_phase, edit_phase, read_flow_phase, delete_phase, rea
 const { get_topic_summary, create_topic, read_topic, read_all_topics, edit_topic, change_topic_status, requestTopic, acept_topic_request, read_topic_request, read_review_topic} = require('./topic/topic_manager');
 const disable = require('./user/disable');
 const enable = require('./user/enable');
-const {getSchools} = require('./school/school_manager');
+const {getSchools, createSchool, updateSchool} = require('./school/school_manager');
 const {addPreview, getTopicPreviews, getLatetsTopicPreview} = require('./update/topic_preview_manager');
 const {addReviewer, getTopicReviewers, deleteReviewer, startPreviewReview, gradeReview} = require('./reviewer/reviewer_manager');
 const { create_meetings, edit_meeting, read_topic_meetings, delete_meeting } = require('./meetings/meeting_manager');
@@ -169,6 +169,18 @@ router.get('/read/topic-request/:topic_id', async (req, res) => {
 router.get('/read/schools', async (req, res) => {
   console.log('Consulta get a /read/schools: ', req.body);
   await getSchools(req, res);
+});
+
+// crear escuela
+router.post('/create/school', async (req, res) => {
+  console.log('Consulta post a /create/school: ', req.body);
+  await createSchool(req, res);
+});
+
+// editar escuela
+router.post('/edit/school', async (req, res) => {
+  console.log('Consulta post a /edit/school: ', req.body);
+  await updateSchool(req, res);
 });
 
 // subir un avance
