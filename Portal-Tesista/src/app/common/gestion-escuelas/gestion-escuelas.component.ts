@@ -57,13 +57,30 @@ export class GestionEscuelasComponent implements OnInit{
     this.escuelaSeleccionada = escuela;
     this.editarEscuelaPopup = true;
   }
-  cerrarFundarEscuela() {
-    this.fundarEscuelaPopup = false;
+  async cerrarFundarEscuela() {
+    try {
+        this.loading = true;
+        this.fetchEscuelas().then(() => {
+        this.fundarEscuelaPopup = false;
+        this.loading = false;
+      });
+    } catch (error) {
+      console.error('Error fetching escuelas after closing fundarEscuelaPopup:', error);
+      this.loading = false;
+    }
   }
   async cerrarEdicionEscuela() {
-    await this.fetchEscuelas();
-    this.editarEscuelaPopup = false;
+  try {
+    this.loading = true;
+    this.fetchEscuelas().then(() => {
+      this.editarEscuelaPopup = false;
+      this.loading = false;
+    });
+  } catch (error) {
+    console.error('Error fetching escuelas after closing editarEscuelaPopup:', error);
+    this.loading = false;
   }
+}
 
   protected readonly escape = escape;
 }

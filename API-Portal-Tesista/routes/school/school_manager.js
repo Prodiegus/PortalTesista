@@ -27,6 +27,9 @@ async function createSchool(req, res) {
 
     const query_get_last_insert_id = `SELECT LAST_INSERT_ID() AS id_flujo`;
 
+    const query_swap_creator_school = `UPDATE usuario SET escuela = ? WHERE rut = ?`;
+    const swap_params = [nombre, rut_profesor_cargo];
+
     const connection = await beginTransaction();
     try {
         await runParametrizedQuery(query_create_flow, flow_params, connection);
@@ -36,6 +39,7 @@ async function createSchool(req, res) {
 
         school_params[1] = id_flujo;
         await runParametrizedQuery(query_create_school, school_params, connection);
+        await runParametrizedQuery(query_swap_creator_school, swap_params, connection);
         await commitTransaction(connection);
 
         const json = {
