@@ -63,6 +63,7 @@ export class EditarEscuelaComponent {
       this.loading = false;
     });
     this.loading = false;
+    this.closeOverlay();
   }
 
   async editarEscuela(escuela: any) {

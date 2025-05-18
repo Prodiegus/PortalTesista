@@ -37,7 +37,17 @@ async function createSchool(req, res) {
         school_params[1] = id_flujo;
         await runParametrizedQuery(query_create_school, school_params, connection);
         await commitTransaction(connection);
-        res.status(201).send('Escuela creada con éxito');
+
+        const json = {
+            message: 'Escuela creada con éxito',
+            school: {
+                nombre,
+                id_flujo,
+                rut_profesor_cargo
+            }
+        };
+
+        res.status(200).send(json);
     } catch (error) {
         if (connection) {
             await rollbackTransaction(connection);
@@ -56,8 +66,15 @@ async function updateSchool(req, res) {
         if (result.affectedRows === 0) {
             return res.status(404).send('Escuela no encontrada');
         }
-        
-        res.status(200).send('Escuela actualizada con éxito');
+        const json = {
+            message: 'Escuela actualizada con éxito',
+            school: {
+                id,
+                nombre,
+                rut_profesor_cargo
+            }
+        };
+        res.status(200).send(json);
     } catch (error) {
         console.error('Error al actualizar escuela:', error);
         res.status(500).send('Error al actualizar escuela');

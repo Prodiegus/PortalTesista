@@ -59,6 +59,7 @@ export class FundarEscuelaComponent implements OnInit {
       console.error('Error creando escuela:', error);
       this.loading = false;
     });
+    this.closeOverlay();
   }
 
   async crearEscuela(escuela: any) {
