@@ -23,10 +23,13 @@ export class FundarEscuelaComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
+    this.loading = true;
     try {
       await this.fetchProfesores();
     } catch (error) {
       console.error('Error fetching profesores');
+    } finally {
+      this.loading = false;
     }
   }
 

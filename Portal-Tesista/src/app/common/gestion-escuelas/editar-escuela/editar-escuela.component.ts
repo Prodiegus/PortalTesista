@@ -1,35 +1,43 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, Output} from '@angular/core';
+import {Component, ElementRef, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {HttpRequestService} from '../../Http-request.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-editar-escuela',
   templateUrl: './editar-escuela.component.html',
   styleUrl: './editar-escuela.component.scss'
 })
-export class EditarEscuelaComponent {
+export class EditarEscuelaComponent implements OnInit{
   @Input() userRepresentation!: any;
-  @Input() escuela!: any;
+  @Input() escuela: any;
+  @Input() escuelas!: any[];
 
   @Output() close = new EventEmitter<void>();
   loading = true;
+  editando = false;
   nombre: any;
   cargo: any;
 
   profesores: any[] = [];
-  escuelas: any[] = [];
 
   constructor(
     private elementRef: ElementRef,
     private httpRequestService: HttpRequestService,
+    private dialog : MatDialog,
   ) {}
 
   async ngOnInit() {
+    this.loading = true;
     try {
       this.nombre = this.escuela.nombre ? this.escuela.nombre : null;
-      this.cargo = this.escuela.rut_profesor_cargo ? this.escuela.rut_profesor_cargo : null;
-      await this.fetchProfesores();
+      await this.fetchProfesores().then(() => {
+        this.cargo = this.profesores.find((profesor) => profesor.rut === this.escuela.rut_profesor_cargo);
+      });
     } catch (error) {
       console.error('Error fetching profesores');
+    } finally {
+      this.loading = false;
     }
   }
 
@@ -46,23 +54,19 @@ export class EditarEscuelaComponent {
   }
 
   onSubmit() {
-    this.loading = true;
-    if (!this.nombre || !this.cargo) {
-      return;
-    }
-    this.loading = true;
+    this.editando = true;
     const escuela = {
-      nombre: this.nombre,
-      rut_profesor_cargo: this.cargo.rut,
+      nombre: this.nombre ? this.nombre : this.escuela.nombre,
+      rut_profesor_cargo: this.cargo ? this.cargo.rut : this.escuela.rut_profesor_cargo,
     };
     this.editarEscuela(escuela).then(() => {
-      this.loading = false;
+      this.editando = false;
       this.closeOverlay();
     }).catch((error) => {
       console.error('Error editando escuela:', error);
-      this.loading = false;
+      this.editando = false;
     });
-    this.loading = false;
+    this.editando = false;
     this.closeOverlay();
   }
 
