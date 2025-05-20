@@ -5598,3 +5598,8 @@
 [20/May/2025:21:15:13 +0000] 200 - GET http 34.176.220.92 "/" [Client 204.76.203.206] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
 [20/May/2025:21:16:28 +0000] 404 - GET http 34.176.220.92 "/.env" [Client 78.153.140.149] [Length 183] [Gzip 3.21] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36" "-"
 [20/May/2025:21:16:29 +0000] 405 - POST http 34.176.220.92 "/" [Client 78.153.140.149] [Length 556] [Gzip -] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36" "-"
+[20/May/2025:21:21:35 +0000] 200 - GET http 34.176.220.92 "/" [Client 204.76.203.219] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
+[20/May/2025:21:41:39 +0000] 400 - - http localhost-nginx-proxy-manager "-" [Client 68.69.186.42] [Length 154] [Gzip -] "-" "-"
+[20/May/2025:22:02:22 +0000] 404 - GET http 34.176.220.92 "/.env" [Client 159.89.166.238] [Length 122] [Gzip 1.35] "Mozilla/5.0; Keydrop.io/1.0(onlyscans.com/about);" "-"
+[20/May/2025:22:02:23 +0000] 404 - GET http 34.176.220.92 "/.git/config" [Client 159.89.166.238] [Length 122] [Gzip 1.35] "Mozilla/5.0; Keydrop.io/1.0(onlyscans.com/about);" "-"
+[20/May/2025:22:02:38 +0000] 400 - GET http 34.176.220.92 "/" [Client 162.142.125.44] [Length 252] [Gzip -] "-" "-"
