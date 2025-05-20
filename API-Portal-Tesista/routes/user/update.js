@@ -1,5 +1,3 @@
-const { json } = require('express');
-const getToken = require('../utils/getToken');
 const {runParametrizedQuery} = require('../utils/query');
 
 async function updateUser(req, res) {
