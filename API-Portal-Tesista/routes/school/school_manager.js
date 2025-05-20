@@ -63,6 +63,9 @@ async function createSchool(req, res) {
 
 async function updateSchool(req, res) {
     const { nombre, rut_profesor_cargo, nuevo_nombre } = req.body;
+    if (!nombre || !rut_profesor_cargo || !nuevo_nombre) {
+        return res.status(400).send('Faltan parámetros');
+    }
     const query = `UPDATE escuela SET nombre = ?, rut_profesor_cargo = ? WHERE nombre = ?`;
     const school_params = [nuevo_nombre, rut_profesor_cargo, nombre];
     try {
