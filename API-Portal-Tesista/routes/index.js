@@ -13,7 +13,7 @@ const {addReviewer, getTopicReviewers, deleteReviewer, startPreviewReview, grade
 const { create_meetings, edit_meeting, read_topic_meetings, delete_meeting } = require('./meetings/meeting_manager');
 const { add_owner, delete_owner, read_topic_owner } = require('./user/owner_manager');
 const { getIssue } = require('./utils/getIssue');
-const { updateUser } = require('./user/updateUser');
+const { updateUser } = require('./user/update');
 
 const router = express.Router();
 
