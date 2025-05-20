@@ -29,4 +29,6 @@ async function updateUser(req, res) {
     }
 }
 
-module.exports = updateUser;
+module.exports = {
+    updateUser
+};
