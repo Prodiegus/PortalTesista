@@ -15,6 +15,7 @@ export class TablaProfesoresComponent {
   showAgregarDocente: boolean = false;
   protected loading = true;
 
+
   constructor(
     private userService: UserService,
     private httpRequestService: HttpRequestService
@@ -32,6 +33,9 @@ export class TablaProfesoresComponent {
         observable.subscribe(
           (data: any) => {
             this.profesores = data;
+            this.profesores.forEach((profesor: any) => {
+              profesor.cambiarRol = false;
+            });
             resolve();
           },
           (error: any) => {
@@ -109,6 +113,47 @@ export class TablaProfesoresComponent {
 
   agregarProfesor() {
     this.showAgregarDocente = true;
+  }
+
+  toogleCambiarRol(profesor: any) {
+    profesor.cambiarRol = !profesor.cambiarRol;
+  }
+
+  async cambiarRol(profesor: any) {
+    this.loading = true;
+    const body ={
+      nombre: profesor.nombre.split(" ")[0],
+      apellido: profesor.nombre.split(" ")[1],
+      rut: profesor.rut,
+      correo: profesor.correo,
+      tipo: profesor.tipo === 'cargo' ? 'guia' : 'cargo',
+      escuela: profesor.escuela,
+      activo: profesor.activo
+    };
+    try {
+      await this.actualizarUsuario(body);
+    } catch (error) {
+      console.error('Error cambiando rol:', error);
+    } finally {
+      await this.fetchProfesores();
+      this.loading = false;
+    }
+  }
+
+  async actualizarUsuario(profesor: any) {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.editarUsuario(profesor).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            resolve(data);
+          },
+          (error: any) => {
+            console.error('Error actualizando profesor:', error);
+            reject(error);
+          }
+        );
+      });
+    });
   }
 
   async closeAgregarDocente() {

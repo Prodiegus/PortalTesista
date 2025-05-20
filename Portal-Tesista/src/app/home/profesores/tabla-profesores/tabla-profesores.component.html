@@ -46,13 +46,27 @@
       {{profesor.correo}}
     </div>
     <div class="col"></div>
-    <div class="col-2 font-18 bold text-center d-flex justify-content-center align-items-center">
-      <div class="pill-green pill-size-170" *ngIf="profesor.tipo === 'cargo'">
-        profesor a cargo
-      </div>
-      <div class="pill-yellow pill-size-170" *ngIf="profesor.tipo === 'guia'">
-        profesor guía
-      </div>
+    <div class="col-2 font-18 bold text-center d-flex justify-content-center align-items-center position-relative">
+      @if (profesor.tipo === 'cargo') {
+        <div class="pill-green pill-size-170 pointer" (click)="toogleCambiarRol(profesor)">
+          profesor a cargo
+        </div>
+        @if (profesor.cambiarRol) {
+          <div class="pill-yellow pill-size-170 floating-pill pointer" (click)="cambiarRol(profesor)">
+            profesor guía
+          </div>
+        }
+      }
+      @if (profesor.tipo === 'guia') {
+        <div class="pill-yellow pill-size-170 pointer pointer" (click)="toogleCambiarRol(profesor)" >
+          profesor guía
+        </div>
+        @if (profesor.cambiarRol){
+          <div class="pill-green pill-size-170 floating-pill" (click)="cambiarRol(profesor)">
+            profesor a cargo
+          </div>
+        }
+      }
     </div>
     <div class="col"></div>
     <div class="col-2 d-flex justify-content-center align-items-center " *ngIf="userRepresentation.tipo === 'cargo'">

@@ -16,6 +16,11 @@ export class HttpRequestService {
     return this.http.get<any>(endpoint);
   }
 
+  async editarUsuario(usuario: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/update/user`;
+    return this.http.post<any>(endpoint, usuario);
+  }
+
   async getEscuelas() {
     const endpoint = `${this.apiUrl}/read/schools`;
     return this.http.get<any>(endpoint);

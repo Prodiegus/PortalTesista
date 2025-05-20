@@ -1,5 +1,12 @@
 @import 'color.scss';
 
+.position-relative {
+  position: relative; /* Contenedor relativo para las pills */
+  display: flex;
+  flex-direction: column; /* Asegura que las pills estén en columna */
+  align-items: center; /* Centra las pills horizontalmente */
+}
+
 .pill-gray{
     background-color: $gray;
     border-radius: 16px;
@@ -8,6 +15,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.floating-pill {
+  position: absolute;
+  top: 100%; /* Coloca la pill justo debajo de la primera */
+  margin-top: 4px; /* Espaciado opcional */
+  z-index: 10; /* Asegura que flote sobre otros elementos */
 }
 
 .pill-green{
