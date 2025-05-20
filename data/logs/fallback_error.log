@@ -2928,3 +2928,7 @@
 2025/05/20 21:16:28 [error] 193#193: *60 open() "/var/www/html/.env" failed (2: No such file or directory), client: 78.153.140.149, server: localhost-nginx-proxy-manager, request: "GET /.env HTTP/1.1", host: "34.176.220.92"
 2025/05/20 22:02:22 [error] 192#192: *181 open() "/var/www/html/.env" failed (2: No such file or directory), client: 159.89.166.238, server: localhost-nginx-proxy-manager, request: "GET /.env HTTP/1.1", host: "34.176.220.92"
 2025/05/20 22:02:23 [error] 192#192: *182 open() "/var/www/html/.git/config" failed (2: No such file or directory), client: 159.89.166.238, server: localhost-nginx-proxy-manager, request: "GET /.git/config HTTP/1.1", host: "34.176.220.92"
+2025/05/20 22:33:11 [error] 191#191: *59 open() "/var/www/html/containers/json" failed (2: No such file or directory), client: 120.26.60.11, server: localhost-nginx-proxy-manager, request: "GET /containers/json HTTP/1.1", host: "34.176.220.92"
+2025/05/20 22:58:40 [warn] 191#191: 512 worker_connections are not enough, reusing connections
+2025/05/20 22:58:40 [alert] 192#192: 512 worker_connections are not enough
+2025/05/20 22:58:40 [error] 191#191: *1441 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:80/favicon.ico", host: "92.220.176.34.bc.googleusercontent.com"
