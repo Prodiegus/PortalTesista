@@ -62,9 +62,9 @@ async function createSchool(req, res) {
 }
 
 async function updateSchool(req, res) {
-    const { nombre, rut_profesor_cargo } = req.body;
+    const { nombre, rut_profesor_cargo, nuevo_nombre } = req.body;
     const query = `UPDATE escuela SET nombre = ?, rut_profesor_cargo = ? WHERE nombre = ?`;
-    const school_params = [nombre, rut_profesor_cargo, nombre];
+    const school_params = [nuevo_nombre, rut_profesor_cargo, nombre];
     try {
         const result = await runParametrizedQuery(query, school_params);
         if (result.affectedRows === 0) {
