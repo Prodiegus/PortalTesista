@@ -1,3 +1,4 @@
+const { json } = require('express');
 const getToken = require('../utils/getToken');
 const {runParametrizedQuery} = require('../utils/query');
 
@@ -10,10 +11,20 @@ async function updateUser(req, res) {
         `;
     const params = [nombre, apellido, escuela, correo, tipo, activo, rut];
     try {
-        const token = await getToken();
-        
-        const results = await runParametrizedQuery(query, params);
-        res.status(200).send('Usuario actualizado');
+        await runParametrizedQuery(query, params);
+        json = {
+            message: 'Usuario actualizado con éxito',
+            user: {
+                nombre,
+                apellido,
+                rut,
+                escuela,
+                correo,
+                tipo,
+                activo
+            }
+        };
+        res.status(200).send(json);
     } catch (error) {
         console.error('Error actualizando usuario:', error.response ? error.response.data : error.message);
         res.status(500).send('Error actualizando usuario');
