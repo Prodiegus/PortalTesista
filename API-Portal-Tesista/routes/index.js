@@ -13,6 +13,7 @@ const {addReviewer, getTopicReviewers, deleteReviewer, startPreviewReview, grade
 const { create_meetings, edit_meeting, read_topic_meetings, delete_meeting } = require('./meetings/meeting_manager');
 const { add_owner, delete_owner, read_topic_owner } = require('./user/owner_manager');
 const { getIssue } = require('./utils/getIssue');
+const { updateUser } = require('./user/updateUser');
 
 const router = express.Router();
 
@@ -39,6 +40,11 @@ router.get('/read/allUser/:escuela', async (req, res) => {
 router.get('/read/allUser', async (req, res) => {
   console.log('Consulta get a /read/allUser: ', req.body);
   await readAlles(req, res); 
+});
+
+router.post('/update/user', async (req, res) => {
+  console.log('Consulta post a /update/user: ', req.body);
+  await updateUser(req, res); 
 });
 
 router.post('/disable/user', async (req, res) => {
