@@ -28,11 +28,17 @@
       >
         Reuniones
       </div>
-      <div class="col w-220 h-40 p-0 rt-16 d-flex justify-content-center align-items-center pointer bold"
+      <div class="col w-220 h-40 p-0 rt-16 mx-1 d-flex justify-content-center align-items-center pointer bold"
            [ngClass]="{'primary-bg': !duenos, 'secondary-bg': duenos}"
            (click)="selectDuenos()"
       >
         Dueños
+      </div>
+      <div class="col w-220 h-40 p-0 rt-16 d-flex justify-content-center align-items-center pointer bold"
+           [ngClass]="{'primary-bg': !coGuia, 'secondary-bg': coGuia}"
+           (click)="selectCoGuia()"
+        >
+        Co-Guías
       </div>
       <div class="col d-flex justify-content-end align-self-center">
         <button class="button secondary btn-size-150 bold" (click)="goVistaGenera()">Vista General</button>
@@ -70,6 +76,12 @@
         [userRepresentation]="userRepresentation"
         [tema]="tema"
       ></app-editar-duenos>
+    </ng-template>
+    <ng-template class="row" [ngIf]="coGuia">
+      <app-co-guias
+        [userRepresentation]="userRepresentation"
+        [tema]="tema"
+      ></app-co-guias>
     </ng-template>
   </div>
 </div>

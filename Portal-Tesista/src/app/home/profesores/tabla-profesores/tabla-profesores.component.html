@@ -51,7 +51,7 @@
         <div class="pill-green pill-size-170 pointer" (click)="toogleCambiarRol(profesor)">
           profesor a cargo
         </div>
-        @if (profesor.cambiarRol) {
+        @if (profesor.cambiarRol && userRepresentation.tipo === 'cargo') {
           <div class="pill-yellow pill-size-170 floating-pill pointer" (click)="cambiarRol(profesor)">
             profesor guía
           </div>
@@ -61,7 +61,7 @@
         <div class="pill-yellow pill-size-170 pointer pointer" (click)="toogleCambiarRol(profesor)" >
           profesor guía
         </div>
-        @if (profesor.cambiarRol){
+        @if (profesor.cambiarRol && userRepresentation.tipo === 'cargo') {
           <div class="pill-green pill-size-170 floating-pill" (click)="cambiarRol(profesor)">
             profesor a cargo
           </div>
