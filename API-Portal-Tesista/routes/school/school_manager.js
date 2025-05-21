@@ -73,7 +73,7 @@ async function updateSchool(req, res) {
         if (result.affectedRows === 0) {
             return res.status(404).json({ error: 'Escuela no encontrada' });
         }
-
+        swap_user_school(rut_profesor_cargo, nombre);
         const json = {
             message: 'Escuela actualizada con éxito',
             school: {
@@ -86,6 +86,12 @@ async function updateSchool(req, res) {
         console.error('Error al actualizar escuela:', error);
         res.status(500).json({ error: 'Error al actualizar escuela', details: error });
     }
+}
+
+function swap_user_school(rut, school) {
+    const query = `UPDATE usuario SET escuela = ? WHERE rut = ?`;
+    const params = [school, rut];
+    return runParametrizedQuery(query, params);
 }
 
 module.exports = {

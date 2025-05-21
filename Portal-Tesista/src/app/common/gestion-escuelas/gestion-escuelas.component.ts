@@ -60,6 +60,7 @@ export class GestionEscuelasComponent implements OnInit{
   async cerrarFundarEscuela() {
     try {
         this.loading = true;
+        await this.sleep(500); // Simulate a delay
         this.fetchEscuelas().then(() => {
         this.fundarEscuelaPopup = false;
         this.loading = false;
@@ -72,7 +73,8 @@ export class GestionEscuelasComponent implements OnInit{
   async cerrarEdicionEscuela() {
   try {
     this.loading = true;
-    this.fetchEscuelas().then(() => {
+    await this.sleep(500); // Simulate a delay
+    await this.fetchEscuelas().then(() => {
       this.editarEscuelaPopup = false;
       this.loading = false;
     });
@@ -81,6 +83,9 @@ export class GestionEscuelasComponent implements OnInit{
     this.loading = false;
   }
 }
+   async sleep(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
 
   protected readonly escape = escape;
 }
