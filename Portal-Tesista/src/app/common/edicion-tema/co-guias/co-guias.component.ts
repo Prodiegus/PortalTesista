@@ -82,8 +82,8 @@ export class CoGuiasComponent implements OnInit{
     if (!this.profesoreseleccionado) {
       this.dialog.open(ConfirmDialogComponent, {
         data: {
-          title: 'Agregar dueño',
-          message: 'Debes seleccionar un dueño antes de agregarlo.',
+          title: 'Agregar Co-Guía',
+          message: 'Debes seleccionar un profesor antes de agregarlo.',
           isAlert: true
         }
       });
@@ -92,23 +92,24 @@ export class CoGuiasComponent implements OnInit{
     if (this.rutEsprofesor(this.profesoreseleccionado.rut)) {
       this.dialog.open(ConfirmDialogComponent, {
         data: {
-          title: 'Agregar dueño',
-          message: 'El usuario ya es dueño del tema.',
+          title: 'Agregar Co-Guía',
+          message: 'El usuario ya es Co-Guía del tema.',
           isAlert: true
         }
       });
       return;
     }
-    if(!this.rutEsprofesor(this.userRepresentation.rut)){
+    if(!this.esGuia){
       this.dialog.open(ConfirmDialogComponent, {
         data: {
-          title: 'Agregar dueño',
-          message: 'No puedes agregar un dueño si no eres dueño del tema.',
+          title: 'Agregar Co-Guía',
+          message: 'No puedes agregar un Co-Guía si no guías el tema.',
           isAlert: true
         }
       });
       return;
     }
+
     const profesor = {
       rut: this.profesoreseleccionado.rut,
       id_tema: this.tema.id
@@ -143,33 +144,21 @@ export class CoGuiasComponent implements OnInit{
   }
 
   confirmarEliminarprofesor(profesor: any) {
-    if (!this.rutEsprofesor(this.userRepresentation.rut)){
+    if (!this.esGuia) {
       this.dialog.open(ConfirmDialogComponent, {
         data: {
-          title: 'Eliminar dueño',
-          message: 'No puedes eliminar a un dueño si no eres dueño del tema.',
+          title: 'Eliminar Co-Guía',
+          message: 'No puedes eliminar a un Co-Guía si no guías el tema.',
           isAlert: true
         }
       });
       return;
     }
-
-    if (this.profesores.length < 2) {
-      this.dialog.open(ConfirmDialogComponent, {
-        data: {
-          title: 'Eliminar dueño',
-          message: 'No puedes eliminar al último dueño del tema.',
-          isAlert: true
-        }
-      });
-      return;
-    }
-
 
     const dialogRef = this.dialog.open(ConfirmDialogComponent, {
       data: {
-        title: 'Eliminar dueño',
-        message: '¿Estás seguro de que deseas eliminar a '+profesor.nombre+' '+profesor.apellido+' de la lista de dueños?',
+        title: 'Eliminar Co-Guía',
+        message: '¿Estás seguro de que deseas eliminar a '+profesor.nombre+' '+profesor.apellido+' de la lista de Co-Guías?',
         isAlert: false
       }
     });
