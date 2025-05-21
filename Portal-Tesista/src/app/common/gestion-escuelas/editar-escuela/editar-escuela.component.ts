@@ -56,7 +56,7 @@ export class EditarEscuelaComponent implements OnInit{
   onSubmit() {
     this.editando = true;
     const escuela = {
-      nombre: this.nombre ? this.nombre : this.escuela.nombre,
+      nombre: this.escuela.nombre,
       rut_profesor_cargo: this.cargo ? this.cargo.rut : this.escuela.rut_profesor_cargo,
     };
     this.editarEscuela(escuela).then(() => {
