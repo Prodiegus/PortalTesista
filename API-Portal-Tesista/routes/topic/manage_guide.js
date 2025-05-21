@@ -49,7 +49,7 @@ async function readTopicGuide(req, res) {
         SELECT rut_guia, guia.fecha_termino
         FROM alumno_trabaja JOIN guia ON guia.rut_alumno = alumno_trabaja.rut_alumno
         WHERE alumno_trabaja.fecha_termino IS NULL AND alumno_trabaja.id_tema = ?
-        ) as guias JOIN usuario ON guias.rut_guia = usuario.rut;
+        ) as guias JOIN usuario ON guias.rut_guia = usuario.rut
     WHERE guias.fecha_termino IS NULL;
     `;
     const params = [id_tema];
