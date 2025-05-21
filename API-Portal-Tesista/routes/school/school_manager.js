@@ -5,7 +5,7 @@ const path = require('path');
 
 async function getSchools(req, res) {
     try {
-        const query = `SELECT escuela.nombre, usuario.correo as profesor FROM escuela JOIN usuario ON escuela.rut_profesor_cargo = usuario.rut;`;
+        const query = `SELECT escuela.nombre, usuario.correo as profesor, rut_profesor_cargo FROM escuela JOIN usuario ON escuela.rut_profesor_cargo = usuario.rut;`;
         const result = await runQuery(query);
         res.status(200).send(result);
     } catch (error) {
