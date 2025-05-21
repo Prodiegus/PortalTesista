@@ -2933,3 +2933,5 @@
 2025/05/20 22:58:40 [alert] 192#192: 512 worker_connections are not enough
 2025/05/20 22:58:40 [error] 191#191: *1441 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /favicon.ico HTTP/1.1", upstream: "http://127.0.0.1:80/favicon.ico", host: "92.220.176.34.bc.googleusercontent.com"
 2025/05/21 00:46:31 [error] 193#193: *187 open() "/var/www/html/.env" failed (2: No such file or directory), client: 78.153.140.149, server: localhost-nginx-proxy-manager, request: "GET /.env HTTP/1.1", host: "34.176.220.92"
+2025/05/21 02:36:48 [error] 192#192: *13 open() "/var/www/html/boaform/admin/formLogin" failed (2: No such file or directory), client: 176.65.148.243, server: localhost-nginx-proxy-manager, request: "POST /boaform/admin/formLogin HTTP/1.1", host: "34.176.220.92:80", referrer: "http://34.176.220.92:80/admin/login.asp"
+2025/05/21 02:45:06 [error] 191#191: *72 open() "/var/www/html/.env" failed (2: No such file or directory), client: 78.153.140.93, server: localhost-nginx-proxy-manager, request: "GET /.env HTTP/1.1", host: "34.176.220.92"
