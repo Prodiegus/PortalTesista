@@ -5,7 +5,7 @@ const path = require('path');
 
 async function getSchools(req, res) {
     try {
-        const query = `SELECT escuela.nombre, usuario.correo as profesor FROM escuela JOIN usuario ON escuela.rut_profesor_cargo = usuario.rut;`;
+        const query = `SELECT escuela.nombre, usuario.correo as profesor, rut_profesor_cargo FROM escuela JOIN usuario ON escuela.rut_profesor_cargo = usuario.rut;`;
         const result = await runQuery(query);
         res.status(200).send(result);
     } catch (error) {
@@ -63,6 +63,9 @@ async function createSchool(req, res) {
 
 async function updateSchool(req, res) {
     const { nombre, rut_profesor_cargo, nuevo_nombre } = req.body;
+    if (!nombre || !rut_profesor_cargo || !nuevo_nombre) {
+        return res.status(400).send('Faltan parámetros');
+    }
     const query = `UPDATE escuela SET nombre = ?, rut_profesor_cargo = ? WHERE nombre = ?`;
     const school_params = [nuevo_nombre, rut_profesor_cargo, nombre];
     try {
