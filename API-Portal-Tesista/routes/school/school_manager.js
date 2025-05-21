@@ -63,11 +63,11 @@ async function createSchool(req, res) {
 
 async function updateSchool(req, res) {
     const { nombre, rut_profesor_cargo} = req.body;
-    if (!nombre || !rut_profesor_cargo || !nuevo_nombre) {
+    if (!nombre || !rut_profesor_cargo) {
         return res.status(400).json({ error: 'Faltan parámetros' });
     }
     const query = `UPDATE escuela SET rut_profesor_cargo = ? WHERE nombre = ?`;
-    const school_params = [nuevo_nombre, rut_profesor_cargo, nombre];
+    const school_params = [rut_profesor_cargo, nombre];
     try {
         const result = await runParametrizedQuery(query, school_params);
         if (result.affectedRows === 0) {
@@ -77,7 +77,7 @@ async function updateSchool(req, res) {
         const json = {
             message: 'Escuela actualizada con éxito',
             school: {
-                nombre: nuevo_nombre,
+                nombre: nombre,
                 rut_profesor_cargo
             }
         };
