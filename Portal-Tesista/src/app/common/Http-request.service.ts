@@ -252,4 +252,19 @@ export class HttpRequestService {
     return this.http.get<any>(endpoint);
   }
 
+  async getCoguia(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/guide/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async addCoguia(coguia: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/add/guide`;
+    return this.http.post<any>(endpoint, coguia);
+  }
+
+  async borrarCoguia(coguia: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/delete/guide`;
+    return this.http.post<any>(endpoint, coguia);
+  }
+
 }
