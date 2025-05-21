@@ -17,6 +17,7 @@ export class PanelDeEdicionTemaComponent {
   avances: boolean = false;
   reuniones: boolean = false;
   duenos: boolean = false;
+  coGuia: boolean = false;
 
   constructor(
     private router: Router
@@ -37,6 +38,7 @@ export class PanelDeEdicionTemaComponent {
     this.avances = false;
     this.reuniones = false;
     this.duenos = false;
+    this.coGuia = false;
   }
 
   selectReunione() {
@@ -45,6 +47,7 @@ export class PanelDeEdicionTemaComponent {
     this.avances = false;
     this.reuniones = true;
     this.duenos = false;
+    this.coGuia = false;
   }
 
   selectAvances() {
@@ -53,6 +56,7 @@ export class PanelDeEdicionTemaComponent {
     this.avances = true;
     this.reuniones = false;
     this.duenos = false;
+    this.coGuia = false;
   }
 
   selectFlujo() {
@@ -61,6 +65,7 @@ export class PanelDeEdicionTemaComponent {
     this.avances = false;
     this.reuniones = false;
     this.duenos = false;
+    this.coGuia = false;
   }
 
   selectDuenos() {
@@ -69,5 +74,15 @@ export class PanelDeEdicionTemaComponent {
     this.avances = false;
     this.reuniones = false;
     this.duenos = true;
+    this.coGuia = false;
+  }
+
+  selectCoGuia() {
+    this.detalle = false;
+    this.flujo = false;
+    this.avances = false;
+    this.reuniones = false;
+    this.duenos = false;
+    this.coGuia = true;
   }
 }

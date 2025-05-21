@@ -76,6 +76,7 @@ import { RevisionesTemaComponent } from './common/revisiones-tema/revisiones-tem
 import { GestionEscuelasComponent } from './common/gestion-escuelas/gestion-escuelas.component';
 import { EditarEscuelaComponent } from './common/gestion-escuelas/editar-escuela/editar-escuela.component';
 import { FundarEscuelaComponent } from './common/gestion-escuelas/fundar-escuela/fundar-escuela.component';
+import { CoGuiasComponent } from './common/edicion-tema/co-guias/co-guias.component';
 
 @NgModule({
   declarations: [
@@ -122,6 +123,7 @@ import { FundarEscuelaComponent } from './common/gestion-escuelas/fundar-escuela
     GestionEscuelasComponent,
     EditarEscuelaComponent,
     FundarEscuelaComponent,
+    CoGuiasComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,6 +14,7 @@ const { create_meetings, edit_meeting, read_topic_meetings, delete_meeting } = r
 const { add_owner, delete_owner, read_topic_owner } = require('./user/owner_manager');
 const { getIssue } = require('./utils/getIssue');
 const { updateUser } = require('./user/update');
+const { addGuideToTopic, deleteGuideFromTopic, readTopicGuide } = require('./topic/manage_guide');
 
 const router = express.Router();
 
@@ -281,6 +282,21 @@ router.get('/read/owner/:id_tema', async (req, res) => {
 router.get('/read/issue/:id', async (req, res) => {
   console.log('Consulta get a /getIssue/:id: ', req.body);
   await getIssue(req, res);
+});
+
+router.post('/add/guide', async (req, res) => {
+  console.log('Consulta post a /add/guide: ', req.body);
+  await addGuideToTopic(req, res);
+});
+
+router.post('/delete/guide', async (req, res) => {
+  console.log('Consulta post a /delete/guide: ', req.body);
+  await deleteGuideFromTopic(req, res);
+});
+
+router.get('/read/guide/:id_tema', async (req, res) => {
+  console.log('Consulta get a /read/guide/:id_tema: ', req.body);
+  await readTopicGuide(req, res);
 });
 
 module.exports = router;
