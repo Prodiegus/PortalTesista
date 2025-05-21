@@ -29,7 +29,7 @@ async function deleteGuideFromTopic(req, res) {
     const query = `
         UPDATE guia
         SET fecha_termino = ?
-        WHERE rut_guia = ? AND;
+        WHERE rut_guia = ?;
     `;
     const params = [new Date(), rut];
     try {
