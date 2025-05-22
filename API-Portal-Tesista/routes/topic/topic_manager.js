@@ -2,13 +2,11 @@ const {runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, co
 const cron = require('node-cron');
 const fs = require('fs');
 const path = require('path');
-const {create_flow, read_flow, read_school_flow, edit_flow} = require('../flow/manage_flow');
-const {read_phase, create_phase, edit_phase, read_flow_phase, delete_phase, getPhasesTopic} = require('../flow/manage_phase');
+const {create_flow} = require('../flow/manage_flow');
+const {create_phase, read_flow_phase, getPhasesTopic} = require('../flow/manage_phase');
 const getToken = require('../utils/getToken');
 const createUsuario = require('../keycloak/crearUsuario');
 const getRandomPassword = require('../utils/getRandomPassword');
-const { get } = require('http');
-const { json } = require('stream/consumers');
 
 const scheduledChangesFilePath = path.join(__dirname, 'scheduled_changes.json');
 
