@@ -90,7 +90,7 @@ export class CalendarioTemaComponent implements OnInit {
   }
 
   onMouseEnter(weekIndex: number, dayIndex: number, dia: number | null): void {
-    if(this.userRepresentation.tipo === "alumno") {
+    if(this.userRepresentation.tipo === "alumno" || this.tema.estado === "Finalizado") {
       this.hoveredCell = { weekIndex, dayIndex };
     } else if (this.hayEvento(dia)) {
       this.hoveredCell = { weekIndex, dayIndex };
