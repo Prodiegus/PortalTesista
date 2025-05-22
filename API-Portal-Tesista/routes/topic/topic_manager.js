@@ -404,12 +404,29 @@ async function read_topic(req, res) {
 async function read_all_topics(req, res) {
     const query = `SELECT * FROM tema`;
     const query_user_name = `SELECT nombre, apellido FROM usuario WHERE rut = ?;`;
+    const query_get_co_guides = `SELECT guia.* FROM alumno_trabaja JOIN guia ON alumno_trabaja.rut_alumno = guia.rut_alumno WHERE alumno_trabaja.id_tema = ?;`;
     const topics_res = [];
     try {
         const results = await runQuery(query);
         for (const topic of results) {
             const params = [topic.rut_guia];
             const user_name_res = await runParametrizedQuery(query_user_name, params);
+            const co_guides_res = await runParametrizedQuery(query_get_co_guides, [topic.id]);
+            let co_guides = [];
+            for (let i = 0; i < co_guides_res.length; i++) {
+                const co_guide = co_guides_res[i];
+                const response = await runParametrizedQuery(query_user_name, [co_guide.rut_guia]);
+                // si no hay co-guías, se agrega un guion
+                if (response.length < 1) {
+                    co_guide.push('-');
+                }
+                // si hay co-guías, se agrega el nombre y apellido
+                // de cada uno a la lista de co-guías
+                for (let j = 0; j < response.length; j++) {
+                    const user_name = response[j];
+                    co_guides.push(user_name.nombre + ' ' + user_name.apellido);
+                }
+            }
             const user_name = user_name_res[0];
             const topic_res = {
                 id: topic.id,
@@ -421,7 +438,7 @@ async function read_all_topics(req, res) {
                 nombre_escuela: topic.nombre_escuela,
                 rut_guia: topic.rut_guia,
                 guia: user_name.nombre + ' ' + user_name.apellido,
-                co_guias: ['-'],
+                co_guias: co_guides.length > 0 ? co_guides : ['-'],
                 creacion: topic.creacion
             };
             topics_res.push(topic_res);
