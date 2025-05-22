@@ -71,14 +71,28 @@ function rollbackTransaction(connection) {
 }
 
 function safeRelease(connection) {
-    if (connection && !connection._pool._closed) {
+    // Verifica que la conexión exista, que tenga la propiedad _pool y que el pool no esté cerrado.
+    if (connection && connection._pool && !connection._pool._closed) {
         try {
             connection.release();
         } catch (error) {
-            console.error('Error liberando la conexión: ', error.message);
+            // Loguea el error si connection.release() falla, aunque generalmente es seguro.
+            console.error('Error durante connection.release() en safeRelease: ', error.message);
         }
+    } else if (connection && !connection._pool) {
+        // Esta condición puede indicar un problema con el objeto de conexión en sí,
+        console.warn('safeRelease: connection._pool no está definido. La conexión podría estar en un estado inválido o no ser del pool.');
+        // Intento de llamar a release() si el método existe, como un intento de limpieza.
+        if (typeof connection.release === 'function') {
+            try { connection.release(); } catch (e) { console.error('Error en intento de liberación forzada en safeRelease:', e.message); }
+        }
+    } else if (connection && connection._pool && connection._pool._closed) {
+        // El pool está cerrado, la conexión probablemente ya es inutilizable/liberada.
+        console.log('safeRelease: El pool de conexiones ya está cerrado.');
+    } else {
+        console.warn('safeRelease: No se proporcionó una conexión válida.');
     }
-}
+}   
 
 
 module.exports = {
