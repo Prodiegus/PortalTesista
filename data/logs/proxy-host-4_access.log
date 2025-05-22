@@ -76,3 +76,6 @@
 [19/May/2025:01:37:27 +0000] - 200 200 - GET http api-login.portaltesista.me "/" [Client 87.236.176.19] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (compatible; InternetMeasurement/1.0; +https://internet-measurement.com/)" "-"
 [20/May/2025:04:06:45 +0000] - 404 404 - GET https api-login.portaltesista.me "/robots.txt" [Client 4.227.36.72] [Length 110] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)" "-"
 [20/May/2025:04:06:52 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 20.171.207.230] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.2; +https://openai.com/gptbot)" "-"
+[21/May/2025:05:43:27 +0000] - 200 200 - GET http api-login.portaltesista.me "/" [Client 172.245.241.123] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0" "-"
+[21/May/2025:08:00:43 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 71.6.134.234] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" "-"
+[21/May/2025:19:37:27 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 104.152.52.126] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "curl/7.61.1" "-"
