@@ -11,6 +11,6 @@ ENV MYSQL_USER=${MYSQL_USER}
 ENV MYSQL_PASSWORD=${MYSQL_PASSWORD}
 
 # Copia el archivo de configuración personalizado
-COPY custom-my.cnf /etc/mysql/conf.d/custom-my.cnf
+COPY ./custom-my.cnf /etc/mysql/conf.d/custom-my.cnf
 
 EXPOSE 3306
