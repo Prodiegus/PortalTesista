@@ -10,7 +10,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - ./DataBase/custom-my.cnf /etc/mysql/conf.d/custom-my.cnf
+      - ./DataBase/custom-my.cnf:/etc/mysql/conf.d/custom-my.cnf
       - ./DataBase/data:/var/lib/mysql
     networks:
       - mysql
