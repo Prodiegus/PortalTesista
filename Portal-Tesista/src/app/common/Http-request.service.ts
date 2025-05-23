@@ -11,9 +11,29 @@ export class HttpRequestService {
 
   constructor(private http: HttpClient) { }
 
+  async getUsuarios(): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/allUser`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async editarUsuario(usuario: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/update/user`;
+    return this.http.post<any>(endpoint, usuario);
+  }
+
   async getEscuelas() {
     const endpoint = `${this.apiUrl}/read/schools`;
     return this.http.get<any>(endpoint);
+  }
+
+  async crearEscuela(escuela: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/create/school`;
+    return this.http.post<any>(endpoint, escuela);
+  }
+
+  async editarEscuela(escuela: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/edit/school`;
+    return this.http.post<any>(endpoint, escuela);
   }
 
   async getUserData(token: string | undefined): Promise<Observable<any>> {
@@ -96,6 +116,11 @@ export class HttpRequestService {
     return this.http.get<any>(endpoint);
   }
 
+  async getTemasRevisionUsuario(rut: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/review/topic/${rut}`;
+    return this.http.get<any>(endpoint);
+  }
+
   async addTema(tema: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/create/topic`;
     return this.http.post<any>(endpoint, tema);
@@ -136,6 +161,11 @@ export class HttpRequestService {
     return this.http.get<any>(endpoint);
   }
 
+  async getUltimoAvanceTema(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/latest/preview/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
   async getRevisoresTema(id_tema: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/read/reviewer/${id_tema}`;
     return this.http.get<any>(endpoint);
@@ -156,6 +186,11 @@ export class HttpRequestService {
     return this.http.post<any>(endpoint, avance);
   }
 
+  async calificarAvance(calificacion: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/grade/review`;
+    return this.http.post<any>(endpoint, calificacion);
+  }
+
   async faseSiguiente(id_tema: any): Promise<Observable<any>> {
     const endpoint = `${this.apiUrl}/move/phase/forward/${id_tema}`;
     const requestBody = {
@@ -170,6 +205,66 @@ export class HttpRequestService {
       "id_tema": id_tema
     }
     return this.http.post<any>(endpoint, requestBody);
+  }
+
+  async crearReuniones(reunion: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/create/meeting`;
+    return this.http.post<any>(endpoint, reunion);
+  }
+
+  async getReuniones(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/meeting/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async editarReunion(reunion: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/edit/meeting`;
+    return this.http.post<any>(endpoint, reunion);
+  }
+
+  async eliminarReunion(reunion: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/delete/meeting`;
+    return this.http.post<any>(endpoint, reunion);
+  }
+
+  async getResumenTema(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/topic/summary/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async addDuenoTema(dueno: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/add/owner`;
+    return this.http.post<any>(endpoint, dueno);
+  }
+
+  async getDuenoTema(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/owner/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async borrarDuenoTema(dueno: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/delete/owner`;
+    return this.http.post<any>(endpoint, dueno);
+  }
+
+  async getEventos(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/issue/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async getCoguia(id_tema: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/read/guide/${id_tema}`;
+    return this.http.get<any>(endpoint);
+  }
+
+  async addCoguia(coguia: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/add/guide`;
+    return this.http.post<any>(endpoint, coguia);
+  }
+
+  async borrarCoguia(coguia: any): Promise<Observable<any>> {
+    const endpoint = `${this.apiUrl}/delete/guide`;
+    return this.http.post<any>(endpoint, coguia);
   }
 
 }

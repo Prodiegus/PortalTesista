@@ -1,0 +1,52 @@
+@if (!loading){
+  <div class="container-fluid ligth-bg">
+    <div class="row text-center">
+      <p class="bold font-22">Fundar Escuela</p>
+    </div>
+    <form (ngSubmit)="onSubmit()">
+      <div class="row mt-3">
+        <div class="col">
+          <label for="nombre">Nombre</label>
+          <input id="nombre" [(ngModel)]="nombre" name="nombre" class="form-control" disabled />
+        </div>
+      </div>
+      <div class="row mt-3">
+        <div class="col">
+          <label for="tipo">Profesor a cargo</label>
+          <select id="tipo" [(ngModel)]="cargo" name="tipo" class="form-control" required>
+            @for (profesor of profesores; track profesor.rut) {
+              <option [ngValue]="profesor">{{profesor.rut}}|{{profesor.nombre}}</option>
+            }
+          </select>
+        </div>
+      </div>
+      <div class="row d-flex align-items-end mt-5">
+        <div class="col d-flex justify-content-end">
+          <div class="row btn-size-120">
+            <button class="btn-primary-16 bold" (click)="closeOverlay()">
+              Cancelar
+            </button>
+          </div>
+        </div>
+        <div class="col ms-5 d-flex justify-content-start">
+          <div class="row btn-size-120">
+            <button type="submit" class="btn-primary-16 bold" type="submit">
+              <span>Cambiar</span>
+              <span
+                class="ms-1 spinner-border spinner-border-sm"
+                aria-hidden="true"
+                *ngIf="editando"
+              ></span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+} @else {
+  <div class="container-fluid d-flex justify-content-center align-items-center pt-5">
+    <div class="spinner-grow primary-normal div-size-72" role="status">
+      <span class="visually-hidden">cargando...</span>
+    </div>
+  </div>
+}

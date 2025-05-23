@@ -58,6 +58,25 @@ import {MatPaginator, MatPaginatorIntl} from '@angular/material/paginator';
 import {MatSort, MatSortHeader} from '@angular/material/sort';
 import {CustomPaginatorIntl} from './common/custom-paginator-intl';
 import { AgregarFaseTemaComponent } from './common/agregar-fase-tema/agregar-fase-tema.component';
+import { CrearReunionComponent } from './common/crear-reunion/crear-reunion.component';
+import { ExtractTimePipe } from './pipe/extract-time.pipe';
+import { EditarReunionComponent } from './common/editar-reunion/editar-reunion.component';
+import { ConfirmDialogComponent } from './common/confirm-dialog/confirm-dialog.component';
+import {
+  MatDialog,
+  MatDialogActions,
+  MatDialogClose, MatDialogContent,
+  MatDialogModule,
+  MatDialogRef,
+  MatDialogTitle
+} from '@angular/material/dialog';
+import { AvanceTemaComponent } from './common/avance-tema/avance-tema.component';
+import {PdfViewerModule} from 'ng2-pdf-viewer';
+import { RevisionesTemaComponent } from './common/revisiones-tema/revisiones-tema.component';
+import { GestionEscuelasComponent } from './common/gestion-escuelas/gestion-escuelas.component';
+import { EditarEscuelaComponent } from './common/gestion-escuelas/editar-escuela/editar-escuela.component';
+import { FundarEscuelaComponent } from './common/gestion-escuelas/fundar-escuela/fundar-escuela.component';
+import { CoGuiasComponent } from './common/edicion-tema/co-guias/co-guias.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +114,16 @@ import { AgregarFaseTemaComponent } from './common/agregar-fase-tema/agregar-fas
     DetalleSolicitudComponent,
     TwoDigitDayPipe,
     AgregarFaseTemaComponent,
+    CrearReunionComponent,
+    ExtractTimePipe,
+    EditarReunionComponent,
+    ConfirmDialogComponent,
+    AvanceTemaComponent,
+    RevisionesTemaComponent,
+    GestionEscuelasComponent,
+    EditarEscuelaComponent,
+    FundarEscuelaComponent,
+    CoGuiasComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,7 +152,13 @@ import { AgregarFaseTemaComponent } from './common/agregar-fase-tema/agregar-fas
     MatPaginator,
     MatSortHeader,
     MatNoDataRow,
-    MatSort
+    MatSort,
+    MatDialogModule,
+    MatDialogActions,
+    MatDialogClose,
+    MatDialogTitle,
+    MatDialogContent,
+    PdfViewerModule
   ],
   providers: [
     {
@@ -142,6 +177,7 @@ import { AgregarFaseTemaComponent } from './common/agregar-fase-tema/agregar-fas
     { provide: MatPaginatorIntl, useClass: CustomPaginatorIntl},
   ],
   bootstrap: [AppComponent],
+  exports: [ConfirmDialogComponent]
 
 })
 export class AppModule { }

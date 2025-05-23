@@ -45,6 +45,11 @@ export class MenuAdminComponent {
     this.router.navigate(['/home/profesores']);
   }
 
+  goToEscuelas() {
+    this.isVisible = false;
+    this.router.navigate(['/home/escuelas']);
+  }
+
   async logout() {
     await this.keycloakService.logout({ redirectUri: window.location.origin });
   }
@@ -52,5 +57,10 @@ export class MenuAdminComponent {
   goToFlujoGeneral() {
     this.isVisible = false;
     this.router.navigate(['/home/flujo-general']);
+  }
+
+  goToRevision() {
+    this.isVisible = false;
+    this.router.navigate(['/home/revision']);
   }
 }

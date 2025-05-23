@@ -1,3 +1,71 @@
-<div class="background bold font-55">
-  Duenos
-</div>
+@if (!loading) {
+  <div class="container-fluid mb-200">
+    <div class="container-fluid">
+      <div class="row mx-5 d-flex align-items-center justify-content-center bold font-22">
+        <div class="col-3 text-center"></div>
+        <div class="col-6 text-center">
+          Dueños de {{tema.titulo}}
+        </div>
+        <div class="col-3 d-flex justify-content-end">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="input-group">
+                <input type="text"
+                       class="form-control"
+                       placeholder="Agregar dueño"
+                       [(ngModel)]="nuevoDueno"
+                       (input)="filtrarUsuarios()" />
+                <button class="button primary r-16 bold" (click)="agregarDueno()"><i class="ps-2 bi bi-plus-circle font-30"></i></button>
+              </div>
+            </div>
+            <div class="row position-absolute">
+              @if (usuariosFiltrados.length) {
+                <ul class="list-group">
+                  @for (usuario of usuariosFiltrados; track usuario.rut) {
+                    <li class="list-group-item font-16 pointer" (click)="seleccionarUsuario(usuario)">
+                      {{ usuario.nombre }} {{ usuario.apellido }} ({{ usuario.correo }})
+                    </li>
+                  }
+                </ul>
+              }
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Header -->
+    <div class="row mt-3 mx-5 px-5 rt-50 h-55 font-20 bold primary-bg d-flex align-items-center">
+      <div class="col-4 text-center">
+        Nombre
+      </div>
+      <div class="col-4 text-center ">
+        Correo
+      </div>
+      <div class="col-4 text-center d-flex justify-content-center">
+        Sacar
+      </div>
+    </div>
+    <!-- Body -->
+    @for (dueno of duenos; track dueno.correo) {
+      <div class="row h-100 mb-1  mx-5 px-5 secondary-bg bold d-flex align-items-center">
+        <div class="col-4 text-center">
+          {{ dueno.nombre }} {{ dueno.apellido }}
+        </div>
+        <div class="col-4 text-center">
+          {{ dueno.correo }}
+        </div>
+        <div class="col-4 text-center d-flex justify-content-center">
+          <button class="button secondary btn-size-150 bold" (click)="confirmarEliminarDueno(dueno)">
+            <i class="bi bi-x-circle font-24"></i>
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+} @else {
+  <div class="container-fluid d-flex justify-content-center align-items-center fullscreen">
+    <div class="spinner-grow primary-normal div-size-72" role="status">
+      <span class="visually-hidden">cargando...</span>
+    </div>
+  </div>
+}

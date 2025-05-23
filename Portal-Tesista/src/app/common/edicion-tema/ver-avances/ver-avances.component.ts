@@ -1,8 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {HttpRequestService} from '../../Http-request.service';
-import {FormControl} from '@angular/forms';
-import {map, Observable, startWith} from 'rxjs';
-import {forceAutocomplete} from '@angular/cli/src/utilities/environment-options';
 
 export interface Profesor {
   nombre: string;
@@ -19,8 +16,10 @@ export class VerAvancesComponent implements OnInit{
   @Input() tema!: any;
   @Input() userRepresentation!: any;
 
-  loading: boolean = false;
+  loading: boolean = true;
   esCargo: boolean = false;
+  ver_avance: boolean = false;
+  avanceSeleccionado: any;
 
   protected avances!: any;
   protected revisores!: any;
@@ -207,41 +206,49 @@ export class VerAvancesComponent implements OnInit{
     }
   }
 
-descargarAvance(avance: any) {
-  if (!avance || !avance.archivo) {
-    console.error('No file available to download');
-    return;
-  }
-
-  try {
-    let base64String = avance.archivo;
-
-    // Remove the prefix if it exists
-    if (base64String.startsWith('data:application/pdf;base64,')) {
-      base64String = base64String.replace('data:application/pdf;base64,', '');
+  descargarAvance(avance: any) {
+    if (!avance || !avance.archivo) {
+      console.error('No file available to download');
+      return;
     }
 
-    // Decode the Base64 string
-    const byteCharacters = atob(base64String);
-    const byteNumbers = Array.from(byteCharacters, char => char.charCodeAt(0));
-    const byteArray = new Uint8Array(byteNumbers);
+    try {
+      let base64String = avance.archivo;
 
-    // Create a Blob from the byte array
-    const blob = new Blob([byteArray], { type: avance.tipoMime || 'application/pdf' });
-    const url = URL.createObjectURL(blob);
+      // Remove the prefix if it exists
+      if (base64String.startsWith('data:application/pdf;base64,')) {
+        base64String = base64String.replace('data:application/pdf;base64,', '');
+      }
 
-    // Create a temporary link and trigger the download
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = avance.nombre_archivo || 'archivo.pdf';
-    a.click();
+      // Decode the Base64 string
+      const byteCharacters = atob(base64String);
+      const byteNumbers = Array.from(byteCharacters, char => char.charCodeAt(0));
+      const byteArray = new Uint8Array(byteNumbers);
 
-    // Clean up the URL object
-    URL.revokeObjectURL(url);
-  } catch (error) {
-    console.error('Error decoding or downloading file:', error);
+      // Create a Blob from the byte array
+      const blob = new Blob([byteArray], { type: avance.tipoMime || 'application/pdf' });
+      const url = URL.createObjectURL(blob);
+
+      // Create a temporary link and trigger the download
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = avance.nombre_archivo || 'archivo.pdf';
+      a.click();
+
+      // Clean up the URL object
+      URL.revokeObjectURL(url);
+    } catch (error) {
+      console.error('Error decoding or downloading file:', error);
+    }
   }
-}
+
+  abrir_avance(avance: any) {
+    this.avanceSeleccionado = avance;
+    this.ver_avance = true;
+  }
+  cerrar_avance() {
+    this.ver_avance = false;
+  }
 }
 
 

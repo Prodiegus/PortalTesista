@@ -18,13 +18,13 @@
       Término
     </div>
     <div class="col"></div>
-    <div class="col-2 text-center d-flex justify-content-center" *ngIf="userRepresentation.tipo === 'guia'">
+    <div class="col-2 text-center d-flex justify-content-center">
       Gestionar
     </div>
   </div>
   <!-- Body -->
   @for (fase of fasesFlujo; track fase.id){
-    <div class="row h-100 mb-1 px-5 mx-0 secondary-bg bold d-flex align-items-center " (click)="toggleSubfasesGuia(fase.id)">
+    <div class="row h-100 mb-1 px-5 mx-0 secondary-bg hover bold d-flex align-items-center  pointer" (click)="toggleSubfasesGuia(fase.id)">
       <div class="col-2 text-center ">
         {{fase.nombre}}
       </div>
@@ -39,18 +39,33 @@
         {{fase.fecha_termino | dateFormat}}
       </div>
       <div class="col"></div>
-      <div class="col-2 d-flex justify-content-center align-items-center " *ngIf="userRepresentation.tipo === 'guia'">
-        <button class="button secondary btn-size-170 bold" (click)="agregarFase(fase)">
-          <span class="me-1">Agregar fase</span> <span> <i class="bi bi-plus-circle font-24"></i></span>
-        </button>
-      </div>
+      @if (guia) {
+        <div class="col-2 d-flex justify-content-center align-items-center ">
+          <button class="button secondary btn-size-170 bold" (click)="agregarFase(fase)">
+            <span class="me-1">Agregar fase</span> <span> <i class="bi bi-plus-circle font-24"></i></span>
+          </button>
+        </div>
+      } @else {
+        <div class="col-2 d-flex justify-content-center align-items-center ">
+
+        </div>
+      }
     </div>
     @if (subfasesGuia && fase.id === faseShowNumero){
-      <div class="row h-60 mb-1 px-5 mx-0 secondary-bg font-20 d-flex align-items-center justify-content-center">
-        {{fase.descripcion}}
+      <div class="row h-60 mb-1 px-5 py-2 mx-0 secondary-bg">
+        <table style="table-layout: fixed; width: 100%;">
+          <tr class="mx-0 align-top">
+            <td class="align-top text-end bold " style="width: 150px;">
+              Descripción:
+            </td>
+            <td class="align-top">
+              {{fase.descripcion}}
+            </td>
+          </tr>
+        </table>
       </div>
       @for (subfase of fase.subfases; track subfase.id) {
-        <div class="row h-60 mb-1 px-5 mx-0 secondary-bg bold d-flex align-items-center" (click)="toggleSubfasesAlumno(subfase.id)">
+        <div class="row h-60 mb-1 px-5 mx-0 secondary-bg hover darked-10 pointer bold d-flex align-items-center" (click)="toggleSubfasesAlumno(subfase.id)">
           <div class="col-2 text-center ">
             {{subfase.nombre}}
           </div>
@@ -65,7 +80,7 @@
             {{subfase.fecha_termino | dateFormat}}
           </div>
           <div class="col"></div>
-          @if (userRepresentation.tipo === 'guia'){
+          @if (guia){
             <div class="col-2 d-flex justify-content-center align-items-center ">
               <button class="button secondary btn-size-150 bold" (click)="abrirDetalleFase(fase, subfase)">
                 ver
@@ -77,19 +92,31 @@
                 <span class="me-1">Agregar fase</span> <span> <i class="bi bi-plus-circle font-24"></i></span>
               </button>
             </div>
+          } @else {
+            <div class="col-2 d-flex justify-content-center align-items-center ">
+            </div>
           }
         </div>
         @if (subfasesAlumno && subfase.id === subfaseShowNumero){
-          <div class="row h-60 mb-1 px-5 mx-0 secondary-bg font-20 d-flex align-items-center justify-content-center">
-            {{subfase.descripcion}}
+          <div class="row h-60 mb-1 px-5  py-2 mx-0 secondary-bg darked-10">
+            <table style="table-layout: fixed; width: 100%;">
+              <tr class="mx-0 align-top">
+                <td class="align-top text-end bold " style="width: 150px;">
+                  Descripción:
+                </td>
+                <td class="align-top">
+                  {{subfase.descripcion}}
+                </td>
+              </tr>
+            </table>
           </div>
           @for (subsubfase of subfase.subfases; track subsubfase.id) {
-            <div class="row h-60 mb-1 px-5 mx-0 secondary-bg bold d-flex align-items-center">
+            <div class="row h-60 mb-1 px-5 mx-0 secondary-bg  darked-20 bold d-flex align-items-center">
               <div class="col-2 text-center ">
                 {{subsubfase.nombre}}
               </div>
               <div class="col-2 text-center ">
-                {{subsubfase.rut_creador}}
+
               </div>
               <div class="col-2 text-center ">
                 {{subsubfase.fecha_inicio | dateFormat}}
@@ -104,6 +131,9 @@
                   <button class="button secondary btn-size-150 bold" (click)="abrirDetalleFase(subfase, subsubfase)">
                     ver
                   </button>
+                </div>
+              } @else {
+                <div class="col-2 d-flex justify-content-center align-items-center ">
                 </div>
               }
             </div>

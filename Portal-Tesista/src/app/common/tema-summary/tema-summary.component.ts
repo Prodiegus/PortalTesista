@@ -16,13 +16,22 @@ export class TemaSummaryComponent implements OnInit {
 
   avance: number = 70;
 
+  resumen: any = {};
+
   constructor(
     private router: Router,
     private httpRequestService: HttpRequestService
   ) { }
 
-  ngOnInit() {
-    this.avance = 70;
+  async ngOnInit() {
+    this.loading = true;
+    try {
+      await this.fetchResumenTema();
+    } catch (error) {
+      console.error('Error fetching resumen tema:', error);
+    } finally {
+      this.loading = false;
+    }
   }
 
   edicionTema() {
@@ -34,25 +43,41 @@ export class TemaSummaryComponent implements OnInit {
     });
   }
 
+  async fetchResumenTema() {
+    return new Promise<void>((resolve, reject) => {
+      this.httpRequestService.getResumenTema(this.tema.id).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.resumen = data;
+            this.avance = data.avance.split('%')[0];
+            resolve();
+          },
+          (error: any) => {
+            console.error('Error fetching resumen tema');
+            reject(error);
+          }
+        );
+      });
+    });
+  }
+
 
   async faseAnterior() {
-    this.loading = true;
     try {
       await this.fasePrevia(this.tema.id);
     } catch (error) {
       console.error('Error al avanzar a la fase anterior:', error);
     } finally {
-      this.loading = false;
+      await this.fetchResumenTema();
     }
   }
   async faseSiguiente() {
-    this.loading = true;
     try {
       await this.siguenteFase(this.tema.id);
     } catch (error) {
       console.error('Error al avanzar a la siguiente fase:', error);
     } finally {
-      this.loading = false;
+      await this.fetchResumenTema();
     }
   }
 

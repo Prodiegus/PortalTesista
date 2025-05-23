@@ -1,5 +1,7 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
 import { HttpRequestService } from '../Http-request.service';
+import {MatDialog} from '@angular/material/dialog';
+import {ConfirmDialogComponent} from '../confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-calendario-tema',
@@ -22,20 +24,26 @@ export class CalendarioTemaComponent implements OnInit {
   currentDate: Date = new Date();
   mes: number = 0;
   year: number = 0;
+  eventos: any = [];
 
   constructor(
     private httpRequestService: HttpRequestService,
+    private dialog: MatDialog,
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.loading = true;
     this.currentDate = new Date();
     this.mes = this.currentDate.getMonth();
     this.year = this.currentDate.getFullYear();
     this.calendario = this.getCalendarDays(this.year, this.mes);
-    setTimeout(() => {
+    try {
+      await this.getEventos();
+    } catch (error) {
+      console.error('Error obteniendo reuniones:', error);
+    } finally {
       this.loading = false;
-    }, 1000);
+    }
   }
 
   getCalendarDays(year: number, month: number): (number | null)[][] {
@@ -51,12 +59,12 @@ export class CalendarioTemaComponent implements OnInit {
       calendarDays.push(day);
     }
 
-    while (calendarDays.length < 35) {
+    while (calendarDays.length < 36) {
       calendarDays.push(null);
     }
 
     const calendarMatrix: (number | null)[][] = [];
-    for (let i = 0; i < 35; i += 7) {
+    for (let i = 1; i < 36; i += 7) {
       calendarMatrix.push(calendarDays.slice(i, i + 7));
     }
 
@@ -81,8 +89,10 @@ export class CalendarioTemaComponent implements OnInit {
     this.calendario = this.getCalendarDays(this.year, this.mes);
   }
 
-  onMouseEnter(weekIndex: number, dayIndex: number): void {
-    if(this.userRepresentation.tipo === "alumno"){
+  onMouseEnter(weekIndex: number, dayIndex: number, dia: number | null): void {
+    if(this.userRepresentation.tipo === "alumno" || this.tema.estado === "Finalizado") {
+      this.hoveredCell = { weekIndex, dayIndex };
+    } else if (this.hayEvento(dia)) {
       this.hoveredCell = { weekIndex, dayIndex };
     }
   }
@@ -95,33 +105,122 @@ export class CalendarioTemaComponent implements OnInit {
     this.fileInput.nativeElement.click();
   }
 
-onFileSelected(event: Event): void {
-  const input = event.target as HTMLInputElement;
-  if (input.files && input.files.length > 0) {
-    const file = input.files[0];
-    if (file.type === 'application/pdf') {
-      console.log('PDF file selected:', file);
-      const reader = new FileReader();
-      reader.onload = () => {
-        const fileContent = (reader.result as string).split(',')[1]; // Remove the Data URL prefix
-        const formattedDate = this.currentDate.toISOString().slice(0, 19).replace('T', ' ');
-        const formData = {
-          id_tema: this.tema.id,
-          nombre_archivo: file.name,
-          archivo64: fileContent,
-          fecha: formattedDate,
-        };
-        this.loading = true;
-        this.subirAvance(formData).then(() => {
-          this.loading = false;
-        });
-      };
-      reader.readAsDataURL(file);
+  showEventos(dia: number | null) {
+    if (!dia || isNaN(this.year) || isNaN(this.mes)) return; // Validate inputs
+    const eventos = this.getEventosDia(dia);
+    if (eventos.length > 0) {
+      let htmlContent = `<ul>` + eventos.map((evento: any) => {
+        return `<li><strong>${evento.titulo}: </strong> ${evento.contenido}</li>`;
+      }).join('') + `</ul>`; // Combina el contenido HTML en una lista
+
+      if (eventos.length === 1) {
+        htmlContent = `<div><strong>${eventos[0].titulo}: </strong>${eventos[0].contenido}</div>`; // Si solo hay un evento, muestra el contenido directamente
+      }
+
+      const dialogRef = this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Eventos',
+          message: htmlContent,
+          isAlert: true,
+        },
+      });
+
+      // Usa `afterOpened` para establecer el contenido HTML
+      dialogRef.afterOpened().subscribe(() => {
+        const dialogContent = document.querySelector('mat-dialog-content');
+        if (dialogContent) {
+          dialogContent.innerHTML = htmlContent; // Inserta el contenido HTML
+        }
+      });
+
+      return;
     } else {
-      console.error('Solo se acepta PDF.');
+      console.log('No hay eventos para este día');
+      return;
     }
   }
-}
+
+  getEventosDia(dia: number | null): any[] {
+    if (dia === null || isNaN(this.year) || isNaN(this.mes)) return []; // Validate inputs
+    try {
+      const fechaDia = new Date(this.year, this.mes, dia);
+      if (isNaN(fechaDia.getTime())) throw new Error('Invalid date'); // Validate fechaDia
+      const formattedFechaDia = fechaDia.toISOString().slice(0, 10); // Format the target date
+      return this.eventos.filter((evento: any) => {
+        if (!evento.fecha) return false; // Ensure evento.fecha exists
+        const eventoFecha = new Date(evento.fecha);
+        if (isNaN(eventoFecha.getTime())) return false; // Validate eventoFecha
+        return eventoFecha.toISOString().slice(0, 10) === formattedFechaDia; // Compare dates
+      });
+    } catch (error) {
+      console.error('Error parsing date:', error);
+      return []; // Return an empty array if date parsing fails
+    }
+  }
+  hayEvento(dia: number | null): boolean {
+    if (dia === null || typeof this.year !== 'number' || typeof this.mes !== 'number') return false; // Validate inputs
+    try {
+      const fechaDia = new Date(this.year, this.mes, dia);
+      if (isNaN(fechaDia.getTime())) throw new Error('Invalid date'); // Check if the date is valid
+      const formattedFechaDia = fechaDia.toISOString().slice(0, 10); // Format the target date
+      return this.eventos.some((evento: any) => {
+        if (!evento.fecha) return false; // Ensure evento.fecha exists
+        const eventoFecha = new Date(evento.fecha);
+        if (isNaN(eventoFecha.getTime())) throw new Error('Invalid event date'); // Validate event date
+        return eventoFecha.toISOString().slice(0, 10) === formattedFechaDia; // Compare dates
+      });
+    } catch (error) {
+      console.error('Error parsing date:', error);
+      return false; // Return false if date parsing fails
+    }
+  }
+
+  onFileSelected(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    if (input.files && input.files.length > 0) {
+      const file = input.files[0];
+      if (file.type === 'application/pdf') {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const fileContent = (reader.result as string).split(',')[1]; // Remove the Data URL prefix
+          const formattedDate = this.currentDate.toISOString().slice(0, 19).replace('T', ' ');
+          const formData = {
+            id_tema: this.tema.id,
+            nombre_archivo: file.name,
+            archivo64: fileContent,
+            fecha: formattedDate,
+          };
+          this.loading = true;
+          this.subirAvance(formData).then(() => {
+            this.getEventos();
+            this.loading = false;
+          });
+        };
+        reader.readAsDataURL(file);
+      } else {
+        console.error('Solo se acepta PDF.');
+      }
+    }
+  }
+
+
+
+  async getEventos() {
+    return new Promise<any>((resolve, reject) => {
+      this.httpRequestService.getEventos(this.tema.id).then(observable => {
+        observable.subscribe(
+          (data: any) => {
+            this.eventos = data;
+            resolve(data);
+          },
+          (error: any) => {
+            console.error('Error obteniendo eventos');
+            reject(error);
+          }
+        );
+      });
+    });
+  }
 
   async subirAvance(avance: any) {
     return new Promise<void>((resolve, reject) => {

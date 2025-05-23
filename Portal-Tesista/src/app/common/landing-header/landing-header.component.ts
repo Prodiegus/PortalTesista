@@ -11,8 +11,12 @@ export class LandingHeaderComponent {
   constructor(private keycloakService: KeycloakService) {
   }
 
+  loading: boolean = false;
+
   async goHome() {
+    this.loading = true;
     await this.keycloakService.init();
     await this.keycloakService.login();
+    this.loading = false;
   }
 }

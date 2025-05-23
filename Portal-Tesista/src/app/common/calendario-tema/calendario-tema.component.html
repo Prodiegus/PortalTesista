@@ -21,22 +21,31 @@
   <!-- Body -->
   <div class="row" *ngFor="let semana of calendario; index as i">
     <div
-      class="col square secondary-bg bold border primary base-style"
+      class="col square bold border secondary-bg primary base-style"
       *ngFor="let dia of semana; index as j"
-      (mouseenter)="onMouseEnter(i, j)"
+      (mouseenter)="onMouseEnter(i, j, dia)"
       (mouseleave)="onMouseLeave()"
-      [ngClass]="{'hovered': hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j}"
+      [ngClass]="{
+        'hovered': hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j,
+        'reunion-dia': hayEvento(dia)
+      }"
     >
-      <ng-container *ngIf="hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j; else showDay">
-        <i class="bi bi-plus-circle pointer" (click)="triggerFileInput()"></i>
-        <input
-          type="file"
-          #fileInput
-          class="d-none"
-          accept="application/pdf"
-          (change)="onFileSelected($event)"
-        />
-      </ng-container>
+      @if (hayEvento(dia)) {
+        <ng-container *ngIf="hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j; else showDay">
+          <i class="bi bi-eye pointer"  (click)="showEventos(dia)"></i>
+        </ng-container>
+      } @else {
+        <ng-container *ngIf="hoveredCell?.weekIndex === i && hoveredCell?.dayIndex === j; else showDay">
+          <i class="bi bi-plus-circle pointer"  (click)="triggerFileInput()"></i>
+          <input
+            type="file"
+            #fileInput
+            class="d-none"
+            accept="application/pdf"
+            (change)="onFileSelected($event)"
+          />
+        </ng-container>
+      }
       <ng-template #showDay>
         {{dia | twoDigitDay}}
       </ng-template>

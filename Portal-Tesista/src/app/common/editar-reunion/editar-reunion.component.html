@@ -1,0 +1,86 @@
+<div class="container mt-5 p-4">
+  <form (ngSubmit)="editar()" #reunionForm="ngForm">
+    <div class="text-center mb-5">
+      <p class="fw-bold font-20">Reuniónes {{tema.titulo}}</p>
+    </div>
+
+    <!-- Error display -->
+    <div *ngIf="error" class="alert alert-danger text-center" role="alert">
+      No se pudo modificar la reunión. Por favor, verifica los datos ingresados.
+    </div>
+
+    <!-- Fecha -->
+    <div class="mb-3 mt-5 row align-items-center">
+      <label for="fechaInicio" class="col-md-4 col-form-label text-end fw-bold">Fecha:</label>
+      <div class="col-md-6">
+        <input
+          id="fecha"
+          type="datetime-local"
+          class="form-control shadow-sm"
+          [(ngModel)]="fecha"
+          name="fecha"
+          required
+        />
+      </div>
+    </div>
+
+    <!-- Completado -->
+    <div class="mb-3 row align-items-center">
+      <label for="completado" class="col-md-4 col-form-label text-end fw-bold">Completado:</label>
+      <div class="col-md-6 d-flex align-items-center">
+        <input
+          id="completado"
+          type="checkbox"
+          class="form-check-input me-2"
+          [(ngModel)]="completado"
+          name="completado"
+        />
+        <label for="completado" class="form-check-label">¿Está completado?</label>
+      </div>
+    </div>
+
+    <!-- Resumen -->
+    <div class="mb-3 row align-items-center">
+      <label for="resumen" class="col-md-4 col-form-label text-end fw-bold">Resumen:</label>
+      <div class="col-md-6">
+        <textarea
+          id="resumen"
+          class="form-control shadow-sm"
+          rows="4"
+          [(ngModel)]="resumen"
+          name="resumen"
+        ></textarea>
+      </div>
+    </div>
+
+    <!-- Botones -->
+    <div class="container-fluid">
+      <div class="row d-flex align-items-center justify-content-center">
+        <div class="col d-flex align-items-center justify-content-end">
+          <button
+            type="button"
+            class="button secondary px-4 py-2 fw-bold shadow-sm me-3"
+            (click)="eliminar()"
+          >
+            Eliminar
+          </button>
+        </div>
+        <div class="col d-flex align-items-center justify-content-start">
+          <button
+            type="submit"
+            class="button primary round px-4 py-2 fw-bold shadow-sm"
+            [disabled]="!reunionForm.valid"
+          >
+            <span>Editar</span>
+            <span
+              class="ms-1 spinner-border spinner-border-sm"
+              role="status"
+              *ngIf="loading"
+              aria-hidden="true"
+            ></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -162,7 +162,6 @@ async function read_topic_phase(req, res) {
     const params = [id_tema];
     try {
         const results = await runParametrizedQuery(query, params);
-        console.log('Fases del tema:', results);
         res.status(200).send(results);
     } catch (error) {
         console.error('Error obteniendo fase:', error.response ? error.response.data : error.message);
@@ -260,16 +259,13 @@ async function getPhasesTopic(id_topic, type, connection) {
 
 async function move_phase_forward(req, res) {
     const { id_tema } = req.params;
-    const connection = await beginTransaction(); // Iniciar transacción
 
     try {
-        const alumno_phases = await getPhasesTopic(id_tema, 'alumno', connection);
+        let alumno_phases = await getPhasesTopic(id_tema, 'alumno', await beginTransaction()); // Obtener fases de tipo 'alumno'
         if (alumno_phases.length == 0) {
             res.status(200).send('No se encontraron fases de alumno');
             return;
         }
-
-        await commitTransaction(connection); // Confirmar transacción
 
         const query_update_topic = `
             UPDATE tema
@@ -297,21 +293,28 @@ async function move_phase_forward(req, res) {
         currentPhase = currentPhase[0];
         nextPhase = currentPhase;
 
+        alumno_phases = sortPhasesByDate(alumno_phases); // Ordenar fases por fecha de inicio
         for (let i = 0; i < alumno_phases.length; i++) {
             const phase = alumno_phases[i];
             if (currentPhase.tipo != 'alumno') {
                 // Seleccionar la fase alumno con la fecha de inicio más pequeña
+                console.log('La fase actual no es de tipo alumno');
                 if (phase.fecha_inicio <= nextPhase.fecha_inicio) {
                     nextPhase = phase;
                 }
             } else {
-                if (phase.fecha_inicio > currentPhase.fecha_inicio && phase.fecha_termino >= currentPhase.fecha_termino) {
-                    // la fase actual es posterior a la fase seleccionada
-                    if (nextPhase.fecha_inicio < phase.fecha_inicio) {
-                        nextPhase = phase;
-                    }
+                console.log('La fase actual es de tipo alumno');
+                if (phase.id == currentPhase.id) {
+                    nextPhase = i >= alumno_phases.length - 1 ? null : alumno_phases[i + 1]; // Seleccionar la siguiente fase
                 }
             }
+        }
+
+        console.log('Fase siguiente:', nextPhase);
+        if (!nextPhase) {
+            connection.release(); // Liberar conexión si no hay una fase siguiente
+            res.status(200).send('No se encontró una fase siguiente');
+            return;
         }
 
         const params_update_topic = [nextPhase.id, nextPhase.numero, id_tema];
@@ -320,13 +323,17 @@ async function move_phase_forward(req, res) {
         console.log('Fase movida hacia adelante:', nextPhase);
         res.status(200).send('Fase movida hacia adelante: ' + nextPhase.id);
     } catch (error) {
-        if (connection) {
-            await rollbackTransaction(connection); // Revertir transacción en caso de error
-            connection.release(); // Liberar conexión
-        }
         console.error('Error moviendo fase hacia adelante:', error.response ? error.response.data : error.message);
         res.status(500).send('Error moviendo fase hacia adelante');
     }
+}
+
+function sortPhasesByDate(phases) {
+    return phases.sort((a, b) => {
+        const dateA = new Date(a.fecha_inicio);
+        const dateB = new Date(b.fecha_inicio);
+        return dateA - dateB;
+    });
 }
 
 async function move_phase_backward(req, res) {
@@ -381,6 +388,11 @@ async function move_phase_backward(req, res) {
 
 
         console.log('Fase anterior:', previousPhase);
+        if (!previousPhase){
+            res.status(200).send('No se encontró una fase anterior');
+            return;
+        }
+
         if (previousPhase.id == currentPhase.id) {
             res.status(200).send('No se encontró una fase anterior');
             return;

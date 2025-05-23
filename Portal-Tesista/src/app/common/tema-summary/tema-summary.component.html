@@ -25,11 +25,11 @@
             </tr>
             <tr>
               <td class="text-end bold pe-1">Flujo: </td>
-              <td> Funcion no implementada </td>
+              <td> {{resumen.flujo}} </td>
             </tr>
             <tr>
               <td class="text-end bold pe-1">Avance: </td>
-              <td>{{avance}}% Funcion no implementada </td>
+              <td>{{avance}}%</td>
             </tr>
           </tbody>
         </table>
@@ -38,8 +38,15 @@
         <table>
           <tbody>
             <tr>
-              <td class="text-end bold pe-1">Dueño: </td>
-              <td>Funcion no implementada</td>
+              <td class="text-end bold pe-1 align-top">Dueño: </td>
+              <td >
+                <ul class="list-unstyled">
+                  @for (owner of resumen.dueno; track owner){
+                    <li>
+                      {{owner}}
+                    </li>
+                  }
+                </ul>
             </tr>
           </tbody>
         </table>
@@ -51,9 +58,7 @@
     <div class="row container-fluid px-3 pt-4">
       <div class="row d-flex justify-content-center align-items-center">
         <div class="col-auto" *ngIf="userRepresentation.tipo === 'alumno'">
-          <button class="button secondary bold" (click)="faseAnterior()">
-            <i class="bi bi-arrow-left-circle font-24"></i>
-          </button>
+            <i class="bi bi-arrow-left-circle font-24 pointer" (click)="faseAnterior()"></i>
         </div>
         <div class="col">
           <div class="progress custom-progress p-0">
@@ -67,9 +72,7 @@
           </div>
         </div>
         <div class="col-auto" *ngIf="userRepresentation.tipo === 'alumno'">
-          <button class="button secondary bold" (click)="faseSiguiente()">
-            <i class="bi bi-arrow-right-circle font-24"></i>
-          </button>
+            <i class="bi bi-arrow-right-circle font-24" (click)="faseSiguiente()"></i>
         </div>
       </div>
     </div>

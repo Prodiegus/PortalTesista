@@ -2,12 +2,11 @@ const {runParametrizedQuery, runQuery, beginTransaction, rollbackTransaction, co
 const cron = require('node-cron');
 const fs = require('fs');
 const path = require('path');
-const {create_flow, read_flow, read_school_flow, edit_flow} = require('../flow/manage_flow');
-const {read_phase, create_phase, edit_phase, read_flow_phase, delete_phase, getPhasesTopic} = require('../flow/manage_phase');
+const {create_flow} = require('../flow/manage_flow');
+const {create_phase, read_flow_phase, getPhasesTopic} = require('../flow/manage_phase');
 const getToken = require('../utils/getToken');
 const createUsuario = require('../keycloak/crearUsuario');
 const getRandomPassword = require('../utils/getRandomPassword');
-const { get } = require('http');
 
 const scheduledChangesFilePath = path.join(__dirname, 'scheduled_changes.json');
 
@@ -244,6 +243,70 @@ async function create_topic(req, res) {
     }
 }
 
+async function read_review_topic(req, res) {
+    const { rut } = req.params;
+
+    const query_temas_revisor = `
+        SELECT tema.* 
+        FROM tema JOIN revisor_asignado 
+        ON tema.id = revisor_asignado.id_tema 
+        WHERE revisor_asignado.rut_revisor = ?;
+    `;
+    const query_user_name = `SELECT nombre, apellido FROM usuario WHERE rut = ?;`;
+
+    const params = [rut];
+    let topics_JSON = [];
+
+    try {
+        // Obtener los temas asignados al revisor
+        const temas_revisor_res = await runParametrizedQuery(query_temas_revisor, params);
+        topics_JSON = [...temas_revisor_res];
+
+        // Limpiar temas duplicados por ID
+        const uniqueTopics = [];
+        const ids = new Set();
+        for (const topic of topics_JSON) {
+            if (!ids.has(topic.id)) {
+                uniqueTopics.push(topic);
+                ids.add(topic.id);
+            }
+        }
+
+        // Procesar los temas para incluir información adicional del guía
+        const topics_res = [];
+        for (const topic of uniqueTopics) {
+            const params = [topic.rut_guia];
+            try {
+                const user_name_res = await runParametrizedQuery(query_user_name, params);
+                const user_name = user_name_res[0];
+                const topic_res = {
+                    id: topic.id,
+                    titulo: topic.titulo,
+                    resumen: topic.resumen,
+                    estado: topic.estado,
+                    numero_fase: topic.numero_fase,
+                    id_fase: topic.id_fase,
+                    nombre_escuela: topic.nombre_escuela,
+                    rut_guia: topic.rut_guia,
+                    guia: user_name ? `${user_name.nombre} ${user_name.apellido}` : 'Sin guía asignado',
+                    co_guias: ['-'],
+                    creacion: topic.creacion
+                };
+                topics_res.push(topic_res);
+            } catch (error) {
+                console.error('Error obteniendo nombre de usuario:', error.response ? error.response.data : error.message);
+                res.status(500).send('Error obteniendo nombre de usuario');
+                return;
+            }
+        }
+
+        res.status(200).send(topics_res);
+    } catch (error) {
+        console.error('Error obteniendo temas de revisor:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error obteniendo temas de revisor');
+    }
+}
+
 async function read_topic(req, res) {
     const {rut} = req.params;
     const quey_get_user_tipe = `SELECT tipo FROM usuario WHERE rut = ?;`;
@@ -255,12 +318,7 @@ async function read_topic(req, res) {
         AND (alumno_trabaja.fecha_termino IS NULL OR alumno_trabaja.fecha_termino <= CURRENT_DATE);
     `;
     const query_alumnos_guia = `SELECT rut_alumno FROM guia WHERE rut_guia = ?;`;
-    const query_temas_revisor = `
-        SELECT tema.* 
-        FROM tema JOIN revisor_asignado 
-        ON tema.id = revisor_asignado.id_tema 
-        WHERE revisor_asignado.rut_revisor = ?;
-    `;
+    
     const query_guia_temas = `SELECT * FROM tema WHERE rut_guia = ?;`;
     const query_escuela_user = `SELECT escuela FROM usuario WHERE rut = ?;`;
     const query_temas_escuela = `SELECT * FROM tema WHERE nombre_escuela = ?;`;
@@ -270,6 +328,8 @@ async function read_topic(req, res) {
         ON tema.id = dueno.id_tema 
         WHERE dueno.rut = ?;
     `;
+    const query_get_co_guides = `SELECT guia.* FROM alumno_trabaja JOIN guia ON alumno_trabaja.rut_alumno = guia.rut_alumno WHERE alumno_trabaja.id_tema = ?;`;
+
     const params = [rut];
     let topics_JSON = [];
     try {
@@ -286,9 +346,8 @@ async function read_topic(req, res) {
                 const topics_res = await runParametrizedQuery(query_tema_alumno, [alumnos_res[i].rut_alumno]);
                 topics_JSON = [...topics_JSON, ...topics_res];
             }
-            const temas_revisor_res = await runParametrizedQuery(query_temas_revisor, params);
             const guia_temas_res = await runParametrizedQuery(query_guia_temas, params);
-            topics_JSON = [...topics_JSON, ...temas_revisor_res, ...guia_temas_res];
+            topics_JSON = [...topics_JSON, ...guia_temas_res];
         } else if (user_type === 'cargo') {
             const escuela_res = await runParametrizedQuery(query_escuela_user, params);
             for (let i = 0; i < escuela_res.length; i++) {
@@ -315,6 +374,22 @@ async function read_topic(req, res) {
     const query_user_name = `SELECT nombre, apellido FROM usuario WHERE rut = ?;`;
     const topics_res = [];
     for (const topic of uniqueTopics) {
+        const co_guides_res = await runParametrizedQuery(query_get_co_guides, [topic.id]);
+        let co_guides = [];
+        for (let i = 0; i < co_guides_res.length; i++) {
+            const co_guide = co_guides_res[i]; 
+            const response = await runParametrizedQuery(query_user_name, [co_guide.rut_guia]);
+            // si no hay co-guías, se agrega un guion
+            if (response.length < 1) {
+                co_guides.push('-');
+            }
+            // si hay co-guías, se agrega el nombre y apellido
+            // de cada uno a la lista de co-guías
+            for (let j = 0; j < response.length; j++) {
+                const user_name = response[j];
+                co_guides.push(user_name.nombre + ' ' + user_name.apellido);
+            }
+        }
         const params = [topic.rut_guia];
         try {
             const user_name_res = await runParametrizedQuery(query_user_name, params);
@@ -329,7 +404,7 @@ async function read_topic(req, res) {
                 nombre_escuela: topic.nombre_escuela,
                 rut_guia: topic.rut_guia,
                 guia: user_name.nombre + ' ' + user_name.apellido,
-                co_guias: ['-'],
+                co_guias: co_guides.length > 0 ? co_guides : ['-'],
                 creacion: topic.creacion
             };
             topics_res.push(topic_res);
@@ -345,12 +420,29 @@ async function read_topic(req, res) {
 async function read_all_topics(req, res) {
     const query = `SELECT * FROM tema`;
     const query_user_name = `SELECT nombre, apellido FROM usuario WHERE rut = ?;`;
+    const query_get_co_guides = `SELECT guia.* FROM alumno_trabaja JOIN guia ON alumno_trabaja.rut_alumno = guia.rut_alumno WHERE alumno_trabaja.id_tema = ?;`;
     const topics_res = [];
     try {
         const results = await runQuery(query);
         for (const topic of results) {
             const params = [topic.rut_guia];
             const user_name_res = await runParametrizedQuery(query_user_name, params);
+            const co_guides_res = await runParametrizedQuery(query_get_co_guides, [topic.id]);
+            let co_guides = [];
+            for (let i = 0; i < co_guides_res.length; i++) {
+                const co_guide = co_guides_res[i];
+                const response = await runParametrizedQuery(query_user_name, [co_guide.rut_guia]);
+                // si no hay co-guías, se agrega un guion
+                if (response.length < 1) {
+                    co_guide.push('-');
+                }
+                // si hay co-guías, se agrega el nombre y apellido
+                // de cada uno a la lista de co-guías
+                for (let j = 0; j < response.length; j++) {
+                    const user_name = response[j];
+                    co_guides.push(user_name.nombre + ' ' + user_name.apellido);
+                }
+            }
             const user_name = user_name_res[0];
             const topic_res = {
                 id: topic.id,
@@ -362,7 +454,7 @@ async function read_all_topics(req, res) {
                 nombre_escuela: topic.nombre_escuela,
                 rut_guia: topic.rut_guia,
                 guia: user_name.nombre + ' ' + user_name.apellido,
-                co_guias: ['-'],
+                co_guias: co_guides.length > 0 ? co_guides : ['-'],
                 creacion: topic.creacion
             };
             topics_res.push(topic_res);
@@ -581,6 +673,182 @@ async function read_topic_request(req, res) {
     }
 }
 
+async function get_topic_summary(req, res) {
+    const { id_tema } = req.params;
+
+    const query_get_tema_estado_fase = `
+        SELECT estado, id_fase
+        FROM tema
+        WHERE id = ?;
+    `;
+    const params = [id_tema];
+
+    const query_get_tema_fases = `
+        SELECT fase.*
+        FROM fase
+        JOIN (
+            SELECT flujo.*
+            FROM flujo JOIN (
+                SELECT * FROM flujo_tiene_tema WHERE id_tema = ?
+            ) as flujo_tema ON flujo.id = flujo_tema.id_flujo
+            WHERE tipo = 'alumno'
+        ) as flujo_alumno ON fase.id_flujo = flujo_alumno.id
+        ORDER BY \`fecha_inicio\` ASC;
+    `;
+    const params_fases = [id_tema];
+
+    const query_get_fase_padre = `
+        SELECT fase.*
+        FROM fase JOIN fase_tiene_padre ON fase.id = fase_tiene_padre.id_padre
+        WHERE id_hijo = ?;
+    `;
+
+    const query_get_duenos = `
+        SELECT usuario.nombre, usuario.apellido, usuario.correo
+        FROM dueno JOIN usuario ON dueno.rut = usuario.rut
+        WHERE id_tema = ?;
+    `;
+    const params_duenos = [id_tema];
+
+    let connection;
+    let json = {};
+
+    try {
+        connection = await beginTransaction();
+
+        // Obtener dueños
+        const owners_res = await runParametrizedQuery(query_get_duenos, params_duenos, connection);
+        const dueno = owners_res.map(owner => `${owner.nombre} ${owner.apellido} (${owner.correo})`);
+
+        // Obtener estado y fase actual
+        const state_phase_res = await runParametrizedQuery(query_get_tema_estado_fase, params, connection);
+        if (state_phase_res.length === 0) {
+            json = {
+                id_tema,
+                estado: 'No se encontró el tema',
+                flujo: 'No se encontró el tema',
+                avance: 'No se encontró el tema',
+                dueno
+            };
+            await commitTransaction(connection);
+            return res.status(200).send(json);
+        }
+
+        const estado = state_phase_res[0].estado;
+        const id_fase = state_phase_res[0].id_fase;
+
+        // Obtener fases del tema
+        const phases_res = await runParametrizedQuery(query_get_tema_fases, params_fases, connection);
+        if (phases_res.length === 0) {
+            json = {
+                id_tema,
+                estado,
+                flujo: 'No se encontraron fases para el tema',
+                avance: 'No se encontraron fases para el tema',
+                dueno
+            };
+            await commitTransaction(connection);
+            return res.status(200).send(json);
+        }
+
+        // Calcular avance y flujo
+        const avance = estimate_progress(id_fase, phases_res) + '%';
+        const student_flow = get_current_phase(id_fase, phases_res);
+        if (!student_flow) {
+            json = {
+                id_tema,
+                estado,
+                flujo: 'No se encontró el flujo del estudiante',
+                avance,
+                dueno
+            };
+            await commitTransaction(connection);
+            return res.status(200).send(json);
+        }
+
+        // Obtener flujo del guía
+        let fase_padre_res = await runParametrizedQuery(query_get_fase_padre, [student_flow.id], connection);
+        if (fase_padre_res.length === 0) {
+            json = {
+                id_tema,
+                estado,
+                flujo: 'No se encontró la fase padre del flujo del estudiante',
+                avance,
+                dueno
+            };
+            await commitTransaction(connection);
+            return res.status(200).send(json);
+        }
+        const guide_flow = fase_padre_res[0];
+
+        // Obtener flujo de la escuela
+        fase_padre_res = await runParametrizedQuery(query_get_fase_padre, [guide_flow.id], connection);
+        if (fase_padre_res.length === 0) {
+            json = {
+                id_tema,
+                estado,
+                flujo: 'No se encontró la fase padre del flujo del guía',
+                avance,
+                dueno
+            };
+            await commitTransaction(connection);
+            return res.status(200).send(json);
+        }
+        const school_flow = fase_padre_res[0];
+
+        const flujo = `${school_flow.nombre} -> ${guide_flow.nombre} -> ${student_flow.nombre}`;
+
+        // Construir respuesta final
+        json = {
+            id_tema,
+            estado,
+            flujo,
+            avance,
+            dueno
+        };
+
+        await commitTransaction(connection);
+        res.status(200).send(json);
+    } catch (error) {
+        if (connection) {
+            await rollbackTransaction(connection);
+        }
+        console.error('Error obteniendo resumen de tema:', error.response ? error.response.data : error.message);
+        res.status(500).send('Error obteniendo resumen de tema');
+    }
+}
+
+function estimate_progress(current_phase_id, phases) {
+    let progress = 0;
+    sort_phases(phases);
+    for (let i = 0; i < phases.length; i++) {
+        if (phases[i].id === current_phase_id) {
+            progress = Math.round((i + 1) / phases.length * 100);
+            break;
+        }
+    }
+    return progress;
+}
+
+function sort_phases(phases) {
+    return phases.sort((a, b) => {
+        const dateA = new Date(a.fecha_inicio);
+        const dateB = new Date(b.fecha_inicio);
+        return dateA - dateB;
+    });
+}
+
+function get_current_phase(current_phase_id, phases) {
+    let current_phase = null;
+    for (let i = 0; i < phases.length; i++) {
+        if (phases[i].id === current_phase_id) {
+            current_phase = phases[i];
+            break;
+        }
+    }
+    return current_phase;
+}
+
 module.exports = {
     create_topic,
     read_topic,
@@ -589,5 +857,7 @@ module.exports = {
     change_topic_status,
     requestTopic,
     read_topic_request,
-    acept_topic_request
+    acept_topic_request,
+    get_topic_summary,
+    read_review_topic
 };

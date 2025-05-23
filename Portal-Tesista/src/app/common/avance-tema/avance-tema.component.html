@@ -1,0 +1,141 @@
+<script src="../calendario-tema/calendario-tema.component.ts"></script>
+<div class="container-fluid m-0 px-5" >
+  <div class="row  bold d-flex justify-content-center font-20 bold text-center">Vista avance</div>
+  <div class="row font-20 bold d-flex align-items-center justify-content-center mt-24 r-16 border primary px-3 mb-3 mx-1">
+    <div class="col d-flex justify-content-start pointer" (click)="cerrar()">
+      <i class="bi bi-arrow-left primary-normal font-40"></i>
+    </div>
+    <div class="col bold d-flex justify-content-center">
+      {{ avance.fecha | dateFormat }}
+    </div>
+    <div class="col d-flex justify-content-start pointer">
+    </div>
+  </div>
+  <div class="row mb-5">
+    <div class="col-lg-6 d-flex flex-column align-items-center justify-content-center">
+      <!-- PDF Controls -->
+      <div class="mb-2 d-flex align-items-center gap-2">
+        <button class="button naked secondary" (click)="goToPreviousPage()">Anterior</button>
+        <span>Página</span>
+        <input type="number" min="1" [max]="totalPages" [(ngModel)]="pageInput"
+               (keyup.enter)="goToPage()" style="width: 60px; text-align: center;">
+        <span>/ {{totalPages || '?' }}</span>
+        <button class="button naked secondary" (click)="goToNextPage()">Siguiente</button>
+        <button class="btn btn-primary ms-3" (click)="descargarArchivo(avance.archivo, avance.nombre_archivo)">
+          Descargar
+        </button>
+        <button class="btn btn-outline-secondary ms-3" (click)="zoomOut()">-</button>
+        <span>{{ (zoom * 100) | number:'1.0-0' }}%</span>
+        <button class="btn btn-outline-secondary" (click)="zoomIn()">+</button>
+      </div>
+      <!-- PDF Viewer -->
+      <pdf-viewer
+        [src]="pdfSrc"
+        [render-text]="true"
+        [original-size]="false"
+        [show-all]="false"
+        [autoresize]="true"
+        [page]="page"
+        [zoom]="zoom"
+        (after-load-complete)="onPdfLoad($event)"
+        style="width: 100%; height:100vh; overflow-y: auto">
+      </pdf-viewer>
+    </div>
+    <div class="col-lg-6 d-flex align-items-center justify-content-center">
+      <div class="container-fluid py-5 px-3 primary-border-16 drop-shadow secondary-bg">
+      <form #avanceForm="ngForm" (ngSubmit)="onGuardar()">
+        <div class="row mb-3 font-18 d-flex justify-content-center">
+          {{avance.titulo}}
+        </div>
+        <div class="row my-1">
+          <div class="col-3 text-end me-1 bold">Creación:</div>
+          <div class="col text-start">{{avance.fecha | dateFormat}}</div>
+        </div>
+        @if (revision){
+          <div class="row my-1">
+            <div class="col-3 text-end me-1 bold">Aprobado:</div>
+            <div class="col text-start">
+              <select class="form-select" [(ngModel)]="avance.aprobado" name="aprobado">
+                <option [ngValue]="true">Sí</option>
+                <option [ngValue]="false">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="row my-1">
+            <div class="col-3 text-end me-1 bold">Nota:</div>
+            <div class="col text-start">
+              <input type="number" class="form-control" [(ngModel)]="avance.nota" name="nota" min="1" max="7" step="0.1">
+            </div>
+          </div>
+        } @else {
+          <div class="row my-1">
+            <div class="col-3 text-end me-1 bold">Aprobado:</div>
+            <div class="col text-start">
+              @if (avance?.aprobado) {
+                {{ avance.aprobado ? 'Sí' : 'No' }}
+              } @else {
+                No definido
+              }
+            </div>
+          </div>
+          <div class="row my-1">
+            <div class="col-3 text-end me-1 bold">Nota:</div>
+            <div class="col text-start">
+              @if (avance?.nota) {
+                {{ avance.nota }}
+              } @else {
+                No definido
+              }
+            </div>
+          </div>
+        }
+        <div class="row my-1">
+          <div class="col-3 text-end me-1 bold">Archivo de retroalimentación:</div>
+          <div class="col text-start">
+            <div class="input-group">
+              @if (userRepresentation.tipo !== 'alumno' && !avance?.feedback) {
+                <input type="file" class="form-control" id="inputGroupFile04"
+                       (change)="onFeedbackFileSelected($event)"
+                       aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+              }
+              @if (avance?.feedback) {
+                <button class="button primary r16 naked"
+                        type="button"
+                        id="inputGroupFileAddon04"
+                        (click)="descargarFeedbackArchivo()">
+                  Descargar
+                </button>
+              } @else if (userRepresentation.tipo === 'alumno') {
+                <label class="text-start form-control" id="inputGroupFile04">Archivo no cargado</label>
+              }
+            </div>
+          </div>
+        </div>
+        <div class="row my-1">
+          <div class="col-3 text-end me-1 bold">Comentarios:</div>
+          @if (userRepresentation.tipo !== 'alumno') {
+            <div class="col text-start">
+              <textarea class="form-control" [(ngModel)]="avance.comentarios" name="comentario" rows="5"></textarea>
+            </div>
+          } @else {
+            <div class="col text-start">
+              @if (avance.comentarios) {
+                {{ avance.comentarios }}
+              } @else {
+                No comentado
+              }
+            </div>
+          }
+        </div>
+        <div class="row mt-3">
+          @if (userRepresentation.tipo !=='alumno') {
+            <div class="col text-end">
+              <button class="btn btn-primary" type="submit">Guardar</button>
+            </div>
+          }
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</div>

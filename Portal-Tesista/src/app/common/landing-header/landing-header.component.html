@@ -10,7 +10,12 @@
     </div>
     <div class="col-3 d-flex justify-content-end align-items-center pe-5">
       <button class="button login bold btn-size-150" (click)="goHome()">
-          Ingresar <i class="ms-1 bi bi-box-arrow-in-right font-30"></i>
+          Ingresar
+        @if (loading) {
+          <span class="spinner-border spinner-border-sm ms-1" role="status" aria-hidden="true"></span>
+        } @else {
+          <span class="ms-1 bi bi-box-arrow-in-right font-30"></span>
+        }
       </button>
     </div>
   </div>
