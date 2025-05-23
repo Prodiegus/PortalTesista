@@ -16,6 +16,7 @@ export class TemaPopupComponent {
   @Output() solicitar = new EventEmitter<void>();
 
   avance: any;
+  descargando: boolean = false;
 
   constructor(
     private elementRef: ElementRef,
@@ -40,6 +41,7 @@ export class TemaPopupComponent {
   };
 
   async descargarTema(){
+    this.descargando = true;
     try {
       await this.getUltimoAvance();
     }catch (error) {
@@ -56,6 +58,7 @@ export class TemaPopupComponent {
           }
         });
       }
+      this.descargando = false;
     }
   };
 

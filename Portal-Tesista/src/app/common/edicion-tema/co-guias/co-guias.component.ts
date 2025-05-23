@@ -79,6 +79,16 @@ export class CoGuiasComponent implements OnInit{
   }
 
   async agregarprofesor() {
+    if (!this.tema.estado || this.tema.estado === 'Pendiente') {
+      this.dialog.open(ConfirmDialogComponent, {
+        data: {
+          title: 'Agregar Co-Guía',
+          message: 'No puedes agregar un Co-Guía si el tema no está en trabajo.',
+          isAlert: true
+        }
+      });
+      return;
+    }
     if (!this.profesoreseleccionado) {
       this.dialog.open(ConfirmDialogComponent, {
         data: {
