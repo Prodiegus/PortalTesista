@@ -425,3 +425,7 @@
 [31/May/2025:00:50:39 +0000] - 304 304 - GET https portaltesista.me "/home" [Client 181.74.168.182] [Length 0] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" "-"
 [31/May/2025:09:10:23 +0000] - 200 200 - GET https portaltesista.me "/robots.txt" [Client 51.222.253.7] [Length 12416] [Gzip 5.63] [Sent-to 34.176.220.92] "Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)" "-"
 [31/May/2025:12:47:39 +0000] - 200 200 - GET https portaltesista.me "/" [Client 34.141.189.20] [Length 12416] [Gzip 5.63] [Sent-to 34.176.220.92] "Scrapy/2.12.0 (+https://scrapy.org)" "-"
+[31/May/2025:15:27:08 +0000] - 304 304 - GET https portaltesista.me "/" [Client 190.110.102.52] [Length 0] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" "-"
+[31/May/2025:15:27:12 +0000] - 304 304 - GET https portaltesista.me "/home" [Client 190.110.102.52] [Length 0] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36" "-"
+[31/May/2025:15:59:31 +0000] - 200 200 - GET https portaltesista.me "/" [Client 54.156.251.192] [Length 69887] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (compatible)" "-"
+[31/May/2025:15:59:47 +0000] - 200 200 - GET https portaltesista.me "/" [Client 34.235.48.77] [Length 69887] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (compatible)" "-"
