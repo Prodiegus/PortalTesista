@@ -116,6 +116,9 @@ export class AvanceTemaComponent implements OnInit{
         const reader = new FileReader();
         reader.onload = () => {
           const fileContent = (reader.result as string).split(',')[1]; // Remove the Data URL prefix
+          if (!this.avance.feedback) {
+            this.avance.feedback = {};
+          }
           this.avance.feedback.archivo = fileContent;
           this.avance.feedback.nombre_archivo = file.name;
         };
