@@ -79,3 +79,4 @@
 [21/May/2025:05:43:27 +0000] - 200 200 - GET http api-login.portaltesista.me "/" [Client 172.245.241.123] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0" "-"
 [21/May/2025:08:00:43 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 71.6.134.234] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36" "-"
 [21/May/2025:19:37:27 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 104.152.52.126] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "curl/7.61.1" "-"
+[31/May/2025:12:48:01 +0000] - 200 200 - GET https api-login.portaltesista.me "/" [Client 34.141.176.7] [Length 52] [Gzip -] [Sent-to 34.176.220.92] "Scrapy/2.12.0 (+https://scrapy.org)" "-"
