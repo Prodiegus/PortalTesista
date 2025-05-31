@@ -190,24 +190,20 @@ button:disabled {
   border-radius: 16px;
   padding: 10px;
   font-size: 14px;
-  color: $primary-color;
   transition: border-color 0.3s;
 }
 
 .form-control:focus {
   border-color: $primary-color;
-  color: $primary-color;
   box-shadow: 0 0 5px rgba($primary-color, 0.5);
 }
 
 .form-control:placeholder-shown {
   border-color: $primary-color;
-  color: $primary-color;
 }
 
 .form-control:-webkit-autofill {
   border-color: $primary-color;
-  color: $primary-color;
   box-shadow: 0 0 5px rgba($primary-color, 0.5);
 }
 
@@ -239,3 +235,4 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     row-item-container-height : 100px,
   ));
 }
+

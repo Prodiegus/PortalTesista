@@ -61,65 +61,89 @@
 }
 
 .font-100 {
-    font-size: 100px !important;
+    font-size: 5.2vw !important; // 100px en 1920px de ancho
 }
-
 .font-75 {
-    font-size: 75px;
+    font-size: 3.9vw;
 }
-
 .font-60 {
-    font-size: 60px;
+    font-size: 3.125vw;
 }
-
 .font-55 {
-    font-size: 55px;
+    font-size: 2.86vw;
 }
-
 .font-50 {
-    font-size: 50px;
+    font-size: 2.6vw;
 }
-
 .font-45 {
-    font-size: 45px;
+    font-size: 2.34vw;
 }
-
 .font-40 {
-    font-size: 40px;
+    font-size: 2.08vw;
 }
-
-.font-30 {
-    font-size: 30px;
-}
-
 .font-34 {
-    font-size: 34px;
+    font-size: 1.77vw;
 }
-
+.font-30 {
+    font-size: 1.56vw;
+}
 .font-28 {
-    font-size: 28px;
+    font-size: 1.46vw;
 }
-
 .font-24 {
-    font-size: 24px;
+    font-size: 1.25vw;
 }
-
 .font-22 {
-    font-size: 22px;
+    font-size: 1.15vw;
 }
-
 .font-20 {
-    font-size: 20px;
+    font-size: 1.04vw;
 }
-
-.font-16{
-    font-size: 16px;
-}
-
 .font-18 {
-    font-size: 18px;
+    font-size: 0.94vw;
+}
+.font-16 {
+    font-size: 0.83vw;
+}
+.font-12 {
+    font-size: 0.625vw;
 }
 
-.font-12 {
-    font-size: 12px;
+// Media queries para limitar tamaños mínimos y máximos
+@media (max-width: 600px) {
+  .font-100 { font-size: 48px !important; }
+  .font-75 { font-size: 36px; }
+  .font-60 { font-size: 28px; }
+  .font-55 { font-size: 26px; }
+  .font-50 { font-size: 24px; }
+  .font-45 { font-size: 22px; }
+  .font-40 { font-size: 20px; }
+  .font-34 { font-size: 18px; }
+  .font-30 { font-size: 16px; }
+  .font-28 { font-size: 15px; }
+  .font-24 { font-size: 13px; }
+  .font-22 { font-size: 12px; }
+  .font-20 { font-size: 11px; }
+  .font-18 { font-size: 10px; }
+  .font-16 { font-size: 9px; }
+  .font-12 { font-size: 8px; }
+}
+
+@media (min-width: 1920px) {
+  .font-100 { font-size: 100px !important; }
+  .font-75 { font-size: 75px; }
+  .font-60 { font-size: 60px; }
+  .font-55 { font-size: 55px; }
+  .font-50 { font-size: 50px; }
+  .font-45 { font-size: 45px; }
+  .font-40 { font-size: 40px; }
+  .font-34 { font-size: 34px; }
+  .font-30 { font-size: 30px; }
+  .font-28 { font-size: 28px; }
+  .font-24 { font-size: 24px; }
+  .font-22 { font-size: 22px; }
+  .font-20 { font-size: 20px; }
+  .font-18 { font-size: 18px; }
+  .font-16 { font-size: 16px; }
+  .font-12 { font-size: 12px; }
 }

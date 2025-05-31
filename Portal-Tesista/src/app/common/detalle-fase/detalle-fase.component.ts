@@ -12,6 +12,7 @@ export class DetalleFaseComponent implements OnInit {
   @Input() fase!: any;
   @Input() id_flujo!: number;
   @Input() numeros: number[] = [];
+  @Input() tema: any = null;
 
   @Output() close = new EventEmitter<void>();
   loading: boolean = false;
