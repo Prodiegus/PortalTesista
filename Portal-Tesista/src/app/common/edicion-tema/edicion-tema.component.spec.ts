@@ -66,4 +66,15 @@ describe('EdicionTemaComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should navigate to /home if userRepresentation or tema is missing', () => {
+    // Simulate missing userRepresentation and tema
+    const router = TestBed.inject(Router);
+    component['userRepresentation'] = null;
+    component['tema'] = null;
+
+    component.ngOnInit();
+
+    expect(router.navigate).toHaveBeenCalledWith(['/home']);
+  });
 });

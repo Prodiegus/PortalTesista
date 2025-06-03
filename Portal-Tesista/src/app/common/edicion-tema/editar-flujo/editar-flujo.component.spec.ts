@@ -9,6 +9,7 @@ import {CONST} from '../../const/const';
 describe('EditarFlujoComponent', () => {
   let component: EditarFlujoComponent;
   let fixture: ComponentFixture<EditarFlujoComponent>;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -38,6 +39,7 @@ describe('EditarFlujoComponent', () => {
 
     fixture = TestBed.createComponent(EditarFlujoComponent);
     component = fixture.componentInstance;
+    router = TestBed.inject(Router);
 
     component.userRepresentation = CONST.userRepresentation;
     component.tema = CONST.temas[0];
@@ -47,5 +49,22 @@ describe('EditarFlujoComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should navigate to /home if userRepresentation is missing', () => {
+    component.userRepresentation = null;
+    component.ngOnInit();
+    expect(router.navigate).toHaveBeenCalledWith(['/home']);
+  });
+
+  it('should navigate to /home if tema is missing', () => {
+    component.tema = null;
+    component.ngOnInit();
+    expect(router.navigate).toHaveBeenCalledWith(['/home']);
+  });
+
+  it('should not navigate if userRepresentation and tema are present', () => {
+    component.ngOnInit();
+    expect(router.navigate).not.toHaveBeenCalled();
   });
 });

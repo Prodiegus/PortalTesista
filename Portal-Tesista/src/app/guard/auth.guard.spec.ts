@@ -2,13 +2,12 @@ import { TestBed } from '@angular/core/testing';
 import { Router } from '@angular/router';
 import { KeycloakService } from '../keycloak/keycloak.service';
 import { authGuard } from './auth.guard';
-import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot } from '@angular/router';
 
-describe('AuthGuard', () => {
+describe('authGuard', () => {
   let mockKeycloakService: any;
   let mockRouter: any;
   let mockRoute: ActivatedRouteSnapshot;
-  let mockState: RouterStateSnapshot;
 
   beforeEach(() => {
     mockKeycloakService = {
@@ -22,7 +21,6 @@ describe('AuthGuard', () => {
     };
 
     mockRoute = {} as ActivatedRouteSnapshot;
-    mockState = {} as RouterStateSnapshot;
 
     TestBed.configureTestingModule({
       providers: [
@@ -33,17 +31,27 @@ describe('AuthGuard', () => {
   });
 
   it('should allow navigation if authenticated', async () => {
-    const guard = TestBed.runInInjectionContext(() => authGuard);
-    const result = await guard(mockRoute, mockState);
+    const result = await TestBed.runInInjectionContext(() =>
+      authGuard(mockRoute, {} as any)
+    );
     expect(result).toBeTrue();
     expect(mockRouter.navigate).not.toHaveBeenCalled();
   });
 
   it('should navigate to home if not authenticated', async () => {
     mockKeycloakService.isAuthenticated.and.returnValue(false);
-    const guard = TestBed.runInInjectionContext(() => authGuard);
-    const result = await guard(mockRoute, mockState);
+    const result = await TestBed.runInInjectionContext(() =>
+      authGuard(mockRoute, {} as any)
+    );
     expect(result).toBeFalse();
     expect(mockRouter.navigate).toHaveBeenCalledWith(['']);
+  });
+
+  it('should initialize Keycloak if not initialized', async () => {
+    mockKeycloakService.isInitialized.and.returnValue(false);
+    await TestBed.runInInjectionContext(() =>
+      authGuard(mockRoute, {} as any)
+    );
+    expect(mockKeycloakService.init).toHaveBeenCalled();
   });
 });
