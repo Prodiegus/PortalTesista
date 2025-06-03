@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { MenuAdminComponent } from './menu-admin.component';
+import {CONST} from '../const/const';
 
 describe('MenuAdminComponent', () => {
   let component: MenuAdminComponent;
@@ -14,6 +15,9 @@ describe('MenuAdminComponent', () => {
 
     fixture = TestBed.createComponent(MenuAdminComponent);
     component = fixture.componentInstance;
+
+    component.userRepresentation = CONST.userRepresentation;
+
     fixture.detectChanges();
   });
 

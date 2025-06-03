@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CrearReunionComponent } from './crear-reunion.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {FormsModule} from '@angular/forms';
 
 describe('CrearReunionComponent', () => {
   let component: CrearReunionComponent;
@@ -8,7 +10,11 @@ describe('CrearReunionComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [CrearReunionComponent]
+      declarations: [CrearReunionComponent],
+      imports: [
+        FormsModule,
+        HttpClientTestingModule
+      ],
     })
     .compileComponents();
 
