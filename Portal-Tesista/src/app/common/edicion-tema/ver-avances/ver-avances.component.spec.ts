@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { VerAvancesComponent } from './ver-avances.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
 
 describe('VerAvancesComponent', () => {
   let component: VerAvancesComponent;
@@ -8,7 +9,10 @@ describe('VerAvancesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [VerAvancesComponent]
+      declarations: [VerAvancesComponent],
+      imports: [
+        HttpClientTestingModule
+      ]
     })
     .compileComponents();
 

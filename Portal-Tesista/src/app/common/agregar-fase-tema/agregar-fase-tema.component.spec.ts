@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AgregarFaseTemaComponent } from './agregar-fase-tema.component';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {FormsModule} from '@angular/forms';
 
 describe('AgregarFaseTemaComponent', () => {
   let component: AgregarFaseTemaComponent;
@@ -8,7 +10,11 @@ describe('AgregarFaseTemaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AgregarFaseTemaComponent]
+      declarations: [AgregarFaseTemaComponent],
+      imports: [
+        FormsModule,
+        HttpClientTestingModule
+      ]
     })
     .compileComponents();
 

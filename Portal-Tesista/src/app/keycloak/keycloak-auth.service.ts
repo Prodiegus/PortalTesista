@@ -17,7 +17,6 @@ export class KeycloakAuthService {
 
     const body = new HttpParams()
       .set('client_id', environment.keycloak.clientId)
-      .set('client_secret', environment.keycloak.secret)
       .set('grant_type', 'client_credentials');
 
     return this.http.post(this.tokenEndpoint, body.toString(), { headers });
