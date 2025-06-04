@@ -207,6 +207,11 @@ export class CalendarioTemaComponent implements OnInit {
 
   async getEventos() {
     return new Promise<any>((resolve, reject) => {
+      if (!this.tema || !this.tema.id) {
+        console.error('Tema no disponible o sin ID');
+        reject('Tema no disponible o sin ID');
+        return;
+      }
       this.httpRequestService.getEventos(this.tema.id).then(observable => {
         observable.subscribe(
           (data: any) => {

@@ -86,6 +86,11 @@ export class RevisionesTemaComponent implements  OnInit, AfterViewInit, AfterVie
 
   async fetchTemas() {
     return new Promise<Observable<any>>((resolve, reject) => {
+      if (!this.userRepresentation || !this.userRepresentation.rut) {
+        console.error('User representation or RUT is not available');
+        reject('User representation or RUT is not available');
+        return;
+      }
       this.httpRequestService.getTemasRevisionUsuario(this.userRepresentation.rut).then(observable => {
         observable.subscribe(
           (data: any) => {

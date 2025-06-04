@@ -12,6 +12,7 @@ export class KeycloakService {
   private _profile: UserProfile | undefined;
 
   constructor(private router: Router) { }
+  
 
   get keycloak(): Keycloak {
     if (!this._keycloak) {

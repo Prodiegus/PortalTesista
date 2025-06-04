@@ -82,6 +82,11 @@ export class VerReunionesComponent implements OnInit, AfterViewInit, AfterViewCh
 
   async getReuniones() {
     return new Promise<void>((resolve, reject) => {
+      if (!this.tema || !this.tema.id) {
+        console.error('Tema no disponible o sin ID');
+        reject('Tema no disponible o sin ID');
+        return;
+      }
       this.httpRequestService.getReuniones(this.tema.id).then(observable => {
         observable.subscribe(
           (data: any) => {
