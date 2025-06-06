@@ -7,6 +7,9 @@ module.exports = function (config) {
       require('karma-coverage'),
       require('@angular-devkit/build-angular/plugins/karma'),
     ],
+    files: [
+      { pattern: 'src/assets/**/*.svg', included: false, served: true }
+    ],
     browsers: ['Chrome'],
     singleRun: false,
     restartOnFileChange: true,
