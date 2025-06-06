@@ -63,4 +63,9 @@ export class MenuAdminComponent {
     this.isVisible = false;
     this.router.navigate(['/home/revision']);
   }
+
+  goToForms() {
+    this.isVisible = false;
+    window.open('https://docs.google.com/forms/d/e/1FAIpQLSdNym4QDvCIo0HEGiB5o-PrnnogffGSxEZNNkYNgqF3pYtjyQ/viewform?usp=header', '_blank');
+  }
 }

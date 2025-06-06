@@ -27,5 +27,4 @@ export class EdicionTemaComponent implements OnInit{
       this.router.navigate(['/home']);
     }
   }
-
 }
