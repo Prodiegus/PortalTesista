@@ -24,10 +24,15 @@ export class FlujoGeneralComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    this.userRepresentation = this.userService.getUser();
-    await this.fetchFlujoGeneral();
-    await this.fetchFasesFlujo();
-    this.loading = false;
+    try {
+      this.userRepresentation = this.userService.getUser();
+      await this.fetchFlujoGeneral();
+      await this.fetchFasesFlujo();
+    } catch (error) {
+      console.error('Error initializing FlujoGeneralComponent'); 
+    } finally {
+      this.loading = false;
+    }
   }
 
   async fetchFlujoGeneral() {
@@ -35,11 +40,17 @@ export class FlujoGeneralComponent implements OnInit {
       this.httpRequestService.getFlujosGenerales(this.userRepresentation.escuela).then(observable => {
         observable.subscribe(
           (data: any) => {
+            this.flujoGeneral = undefined;
             for (const flujo of data) {
-              if(flujo.rut_creador === this.userRepresentation.rut) {
+              if (flujo.rut_creador === this.userRepresentation.rut) {
                 this.flujoGeneral = flujo;
                 break;
               }
+            }
+            if (!this.flujoGeneral) {
+              console.error('No se encontró flujo general para el usuario');
+              reject('No flujoGeneral');
+              return;
             }
             resolve();
           },
@@ -53,6 +64,10 @@ export class FlujoGeneralComponent implements OnInit {
   }
 
   async fetchFasesFlujo() {
+    if (!this.flujoGeneral || !this.flujoGeneral.id) {
+      console.error('flujoGeneral no definido o sin id');
+      return;
+    }
     return new Promise<void>((resolve, reject) => {
       this.httpRequestService.getFasesFlujo(this.flujoGeneral.id).then(observable => {
         observable.subscribe(
