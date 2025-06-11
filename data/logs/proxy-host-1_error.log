@@ -1,1 +1,0 @@
-2025/05/14 18:27:35 [warn] 222#222: *13862 using uninitialized "server" variable while logging request, client: 101.36.106.165, server: portaltesista.me, request: "GET / HTTP/1.1", host: "portaltesista.me"

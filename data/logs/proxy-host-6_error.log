@@ -1,1 +1,0 @@
-2025/06/02 20:16:00 [error] 261#261: *45860 connect() failed (111: Connection refused) while connecting to upstream, client: 205.210.31.172, server: 5furiosos.site, request: "GET / HTTP/1.1", upstream: "http://34.176.215.237:8085/", host: "5furiosos.site"
