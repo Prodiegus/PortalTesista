@@ -6,7 +6,7 @@ import {CONST} from '../const/const';
 import {FormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('TemaSummaryComponent', () => {
+describe('TemaSummaryComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: TemaSummaryComponent;
   let fixture: ComponentFixture<TemaSummaryComponent>;
 
@@ -49,3 +49,4 @@ describe('TemaSummaryComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

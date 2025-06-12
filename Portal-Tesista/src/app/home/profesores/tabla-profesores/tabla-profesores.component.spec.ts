@@ -7,7 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
 
-describe('TablaProfesoresComponent', () => {
+describe('TablaProfesoresComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: TablaProfesoresComponent;
   let fixture: ComponentFixture<TablaProfesoresComponent>;
   let mockUserService: any;

@@ -6,7 +6,7 @@ import {CONST} from '../const/const';
 import {FormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('AgregarDocenteComponent', () => {
+describe('AgregarDocenteComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: AgregarDocenteComponent;
   let fixture: ComponentFixture<AgregarDocenteComponent>;
 
@@ -48,3 +48,4 @@ describe('AgregarDocenteComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

@@ -8,7 +8,7 @@ import { CONST } from '../const/const';
 import { MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
 
-describe('AvanceTemaComponent', () => {
+describe('AvanceTemaComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: AvanceTemaComponent;
   let fixture: ComponentFixture<AvanceTemaComponent>;
   let mockHttpRequestService: any;

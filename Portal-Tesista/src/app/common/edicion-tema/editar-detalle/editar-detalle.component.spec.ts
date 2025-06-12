@@ -6,7 +6,7 @@ import {CONST} from '../../const/const';
 import {FormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('EditarDetalleComponent', () => {
+describe('EditarDetalleComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: EditarDetalleComponent;
   let fixture: ComponentFixture<EditarDetalleComponent>;
 
@@ -49,3 +49,4 @@ describe('EditarDetalleComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

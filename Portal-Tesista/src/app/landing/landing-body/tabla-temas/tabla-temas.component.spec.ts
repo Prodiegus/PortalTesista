@@ -7,7 +7,7 @@ import { MatTableModule } from '@angular/material/table';
 import { of } from 'rxjs';
 import { CONST } from '../../../common/const/const';
 
-describe('TablaTemasComponent', () => {
+describe('TablaTemasComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: TablaTemasComponent;
   let fixture: ComponentFixture<TablaTemasComponent>;
   let mockHttpRequestService: any;

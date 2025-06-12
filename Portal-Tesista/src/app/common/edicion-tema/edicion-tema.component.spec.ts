@@ -17,7 +17,7 @@ import {FooterComponent} from '../footer/footer.component';
 import {MenuAdminComponent} from '../menu-admin/menu-admin.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('EdicionTemaComponent', () => {
+describe('EdicionTemaComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: EdicionTemaComponent;
   let fixture: ComponentFixture<EdicionTemaComponent>;
 
@@ -78,3 +78,4 @@ describe('EdicionTemaComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/home']);
   });
 });
+

@@ -6,7 +6,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {DateFormatPipe} from '../../../pipe/date-format.pipe';
 import {CONST} from '../../../common/const/const';
 
-describe('FormularioSolicitudTemaComponent', () => {
+describe('FormularioSolicitudTemaComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: FormularioSolicitudTemaComponent;
   let fixture: ComponentFixture<FormularioSolicitudTemaComponent>;
 
@@ -35,3 +35,4 @@ describe('FormularioSolicitudTemaComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

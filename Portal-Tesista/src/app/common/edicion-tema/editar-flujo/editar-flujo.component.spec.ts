@@ -8,7 +8,7 @@ import { of, throwError } from 'rxjs';
 import { HttpRequestService } from '../../Http-request.service';
 import { CONST } from '../../const/const';
 
-describe('EditarFlujoComponent', () => {
+describe('EditarFlujoComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: EditarFlujoComponent;
   let fixture: ComponentFixture<EditarFlujoComponent>;
   let router: Router;

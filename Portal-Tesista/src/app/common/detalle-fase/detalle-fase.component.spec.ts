@@ -6,7 +6,7 @@ import {CONST} from '../const/const';
 import {Router} from '@angular/router';
 import {FormsModule} from '@angular/forms';
 
-describe('DetalleFaseComponent', () => {
+describe('DetalleFaseComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: DetalleFaseComponent;
   let fixture: ComponentFixture<DetalleFaseComponent>;
 
@@ -49,3 +49,4 @@ describe('DetalleFaseComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

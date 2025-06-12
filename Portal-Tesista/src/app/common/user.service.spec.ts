@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { UserService } from './user.service';
 
-describe('UserService', () => {
+describe('UserService', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let service: UserService;
 
   beforeEach(() => {
@@ -14,3 +14,4 @@ describe('UserService', () => {
     expect(service).toBeTruthy();
   });
 });
+

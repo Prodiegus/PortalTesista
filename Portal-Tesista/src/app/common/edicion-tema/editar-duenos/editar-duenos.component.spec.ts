@@ -6,7 +6,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
 
-describe('EditarDuenosComponent', () => {
+describe('EditarDuenosComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: EditarDuenosComponent;
   let fixture: ComponentFixture<EditarDuenosComponent>;
   let mockHttpRequestService: any;

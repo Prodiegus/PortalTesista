@@ -11,7 +11,7 @@ import {CONST} from '../../const/const';
 import {FormsModule} from '@angular/forms';
 import { Router } from '@angular/router';
 
-describe('PanelDeEdicionTemaComponent', () => {
+describe('PanelDeEdicionTemaComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: PanelDeEdicionTemaComponent;
   let fixture: ComponentFixture<PanelDeEdicionTemaComponent>;
   let routerSpy: jasmine.SpyObj<Router>;
@@ -104,3 +104,4 @@ describe('PanelDeEdicionTemaComponent', () => {
     expect(component.detalle).toBeFalse();
   });
 });
+

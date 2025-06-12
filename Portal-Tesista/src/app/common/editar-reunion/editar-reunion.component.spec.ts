@@ -6,7 +6,7 @@ import { CONST } from '../const/const';
 import { HttpRequestService } from '../Http-request.service';
 import { of, throwError } from 'rxjs';
 
-describe('EditarReunionComponent', () => {
+describe('EditarReunionComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: EditarReunionComponent;
   let fixture: ComponentFixture<EditarReunionComponent>;
   let httpRequestService: HttpRequestService;

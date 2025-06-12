@@ -9,7 +9,7 @@ import { HttpRequestService } from '../../Http-request.service';
 import { of, throwError } from 'rxjs';
 import { ConfirmDialogComponent } from '../../confirm-dialog/confirm-dialog.component';
 
-describe('CoGuiasComponent', () => {
+describe('CoGuiasComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: CoGuiasComponent;
   let fixture: ComponentFixture<CoGuiasComponent>;
   let mockHttpService: jasmine.SpyObj<HttpRequestService>;

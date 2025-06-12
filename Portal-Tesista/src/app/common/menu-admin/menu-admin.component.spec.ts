@@ -3,7 +3,7 @@ import { MenuAdminComponent } from './menu-admin.component';
 import { Router } from '@angular/router';
 import { CONST } from '../const/const';
 
-describe('MenuAdminComponent', () => {
+describe('MenuAdminComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: MenuAdminComponent;
   let fixture: ComponentFixture<MenuAdminComponent>;
   let router: Router;
@@ -60,3 +60,4 @@ describe('MenuAdminComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/home/revision']);
   });
 });
+

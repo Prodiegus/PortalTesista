@@ -6,7 +6,7 @@ import { ElementRef } from '@angular/core';
 import { of, throwError } from 'rxjs';
 import { HttpRequestService } from '../Http-request.service';
 
-describe('CrearReunionComponent', () => {
+describe('CrearReunionComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: CrearReunionComponent;
   let fixture: ComponentFixture<CrearReunionComponent>;
   let httpRequestServiceSpy: jasmine.SpyObj<HttpRequestService>;
@@ -89,3 +89,4 @@ describe('CrearReunionComponent', () => {
     expect(component.closeOverlay).toHaveBeenCalled();
   });
 });
+

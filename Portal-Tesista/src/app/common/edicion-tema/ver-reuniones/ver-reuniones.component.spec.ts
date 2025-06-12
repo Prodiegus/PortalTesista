@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { VerReunionesComponent } from './ver-reuniones.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('VerReunionesComponent', () => {
+describe('VerReunionesComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: VerReunionesComponent;
   let fixture: ComponentFixture<VerReunionesComponent>;
 
@@ -27,3 +27,4 @@ describe('VerReunionesComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

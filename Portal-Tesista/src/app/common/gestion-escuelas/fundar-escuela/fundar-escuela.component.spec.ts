@@ -7,7 +7,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of, throwError } from 'rxjs';
 import { HttpRequestService } from '../../Http-request.service';
 
-describe('FundarEscuelaComponent', () => {
+describe('FundarEscuelaComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: FundarEscuelaComponent;
   let fixture: ComponentFixture<FundarEscuelaComponent>;
   let httpRequestService: HttpRequestService;

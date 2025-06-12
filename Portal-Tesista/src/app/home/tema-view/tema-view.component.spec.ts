@@ -8,7 +8,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { MenuAdminComponent } from '../../common/menu-admin/menu-admin.component';
 import { Router } from '@angular/router';
 
-describe('TemaViewComponent', () => {
+describe('TemaViewComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: TemaViewComponent;
   let fixture: ComponentFixture<TemaViewComponent>;
   let router: Router;
@@ -75,3 +75,4 @@ describe('TemaViewComponent', () => {
     expect(router.navigate).not.toHaveBeenCalled();
   });
 });
+

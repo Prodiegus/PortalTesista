@@ -4,7 +4,7 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { HttpRequestService } from '../../Http-request.service';
 import { of, throwError } from 'rxjs';
 
-describe('VerAvancesComponent', () => {
+describe('VerAvancesComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: VerAvancesComponent;
   let fixture: ComponentFixture<VerAvancesComponent>;
   let httpRequestServiceSpy: jasmine.SpyObj<HttpRequestService>;
@@ -107,3 +107,4 @@ describe('VerAvancesComponent', () => {
     expect(consoleSpy).toHaveBeenCalledWith('No file available to download');
   });
 });
+

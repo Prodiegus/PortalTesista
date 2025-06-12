@@ -13,7 +13,7 @@ class MockHomeHeaderComponent {
   @Input() userRepresentation: any;
 }
 
-describe('GestionEscuelasComponent', () => {
+describe('GestionEscuelasComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: GestionEscuelasComponent;
   let fixture: ComponentFixture<GestionEscuelasComponent>;
 
@@ -41,3 +41,4 @@ describe('GestionEscuelasComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

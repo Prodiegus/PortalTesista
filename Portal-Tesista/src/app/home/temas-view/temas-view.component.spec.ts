@@ -11,7 +11,7 @@ import { CONST } from '../../common/const/const';
 const mockUserRepresentation = CONST.userRepresentation;
 const mockTemas = CONST.temas;
 
-describe('TemasViewComponent', () => {
+describe('TemasViewComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: TemasViewComponent;
   let fixture: ComponentFixture<TemasViewComponent>;
   let router: Router;
@@ -168,3 +168,4 @@ describe('TemasViewComponent', () => {
     expect(cards[0].textContent).toContain(mockTemas[0].tema);
   }));
 });
+

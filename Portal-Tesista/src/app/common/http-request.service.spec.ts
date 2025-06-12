@@ -8,7 +8,7 @@ import { environment } from '../../enviroments/enviroment';
 import { HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
-describe('HttpRequestService', () => {
+describe('HttpRequestService', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let service: HttpRequestService;
   let httpMock: HttpTestingController;
   const apiUrl = environment['api-portal-tesista'].url;

@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { CalendarioTemaComponent } from './calendario-tema.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('CalendarioTemaComponent', () => {
+describe('CalendarioTemaComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: CalendarioTemaComponent;
   let fixture: ComponentFixture<CalendarioTemaComponent>;
 
@@ -25,3 +25,4 @@ describe('CalendarioTemaComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

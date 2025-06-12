@@ -5,7 +5,7 @@ import { UserService } from '../user.service';
 import { HttpRequestService } from '../Http-request.service';
 import { of } from 'rxjs';
 
-describe('FlujoGeneralComponent', () => {
+describe('FlujoGeneralComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: FlujoGeneralComponent;
   let fixture: ComponentFixture<FlujoGeneralComponent>;
   let userServiceSpy: jasmine.SpyObj<UserService>;
@@ -84,3 +84,4 @@ describe('FlujoGeneralComponent', () => {
     expect(component.loading).toBeFalse();
   });
 });
+

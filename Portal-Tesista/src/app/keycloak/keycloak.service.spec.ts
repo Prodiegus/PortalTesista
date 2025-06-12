@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 
 import { KeycloakService } from './keycloak.service';
 
-describe('KeycloakService', () => {
+describe('KeycloakService', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let service: KeycloakService;
 
   beforeEach(() => {
@@ -14,3 +14,4 @@ describe('KeycloakService', () => {
     expect(service).toBeTruthy();
   });
 });
+

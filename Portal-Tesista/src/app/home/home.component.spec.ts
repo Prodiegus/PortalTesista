@@ -3,7 +3,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HomeComponent } from './home.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('HomeComponent', () => {
+describe('HomeComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: HomeComponent;
   let fixture: ComponentFixture<HomeComponent>;
 
@@ -25,3 +25,4 @@ describe('HomeComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

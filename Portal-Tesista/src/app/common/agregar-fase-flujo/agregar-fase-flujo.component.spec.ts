@@ -8,7 +8,7 @@ import {HttpClientTestingModule} from '@angular/common/http/testing';
 import { of, throwError } from 'rxjs';
 
 
-describe('AgregarFaseFlujoComponent', () => {
+describe('AgregarFaseFlujoComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: AgregarFaseFlujoComponent;
   let fixture: ComponentFixture<AgregarFaseFlujoComponent>;
 
@@ -110,6 +110,7 @@ describe('AgregarFaseFlujoComponent', () => {
   });
 
 });
+
 
 
 

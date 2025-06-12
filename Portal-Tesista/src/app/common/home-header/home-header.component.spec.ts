@@ -4,7 +4,7 @@ import { MenuAdminComponent } from '../menu-admin/menu-admin.component';
 import { Router } from '@angular/router';
 import { CONST } from '../const/const';
 
-describe('HomeHeaderComponent', () => {
+describe('HomeHeaderComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: HomeHeaderComponent;
   let fixture: ComponentFixture<HomeHeaderComponent>;
   let router: Router;
@@ -44,3 +44,4 @@ describe('HomeHeaderComponent', () => {
     expect(router.navigate).toHaveBeenCalledWith(['/home']);
   });
 });
+

@@ -6,7 +6,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { of, throwError } from 'rxjs';
 import { HttpRequestService } from '../../Http-request.service';
 
-describe('EditarEscuelaComponent', () => {
+describe('EditarEscuelaComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: EditarEscuelaComponent;
   let fixture: ComponentFixture<EditarEscuelaComponent>;
   let httpRequestServiceSpy: jasmine.SpyObj<HttpRequestService>;
@@ -81,3 +81,4 @@ describe('EditarEscuelaComponent', () => {
     expect(component.editando).toBeFalse();
   }));
 });
+

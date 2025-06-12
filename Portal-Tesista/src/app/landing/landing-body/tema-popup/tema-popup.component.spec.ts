@@ -7,7 +7,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { of } from 'rxjs';
 import { ElementRef } from '@angular/core';
 
-describe('TemaPopupComponent', () => {
+describe('TemaPopupComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: TemaPopupComponent;
   let fixture: ComponentFixture<TemaPopupComponent>;
   let mockHttpRequestService: any;

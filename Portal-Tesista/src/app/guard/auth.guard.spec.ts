@@ -4,7 +4,7 @@ import { KeycloakService } from '../keycloak/keycloak.service';
 import { authGuard } from './auth.guard';
 import { ActivatedRouteSnapshot } from '@angular/router';
 
-describe('authGuard', () => {
+describe('authGuard', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let mockKeycloakService: any;
   let mockRouter: any;
   let mockRoute: ActivatedRouteSnapshot;
@@ -55,3 +55,4 @@ describe('authGuard', () => {
     expect(mockKeycloakService.init).toHaveBeenCalled();
   });
 });
+

@@ -3,7 +3,7 @@ import { TestBed } from '@angular/core/testing';
 import { KeycloakAuthService } from './keycloak-auth.service';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 
-describe('KeycloakAuthService', () => {
+describe('KeycloakAuthService', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let service: KeycloakAuthService;
 
   beforeEach(() => {
@@ -17,3 +17,4 @@ describe('KeycloakAuthService', () => {
     expect(service).toBeTruthy();
   });
 });
+

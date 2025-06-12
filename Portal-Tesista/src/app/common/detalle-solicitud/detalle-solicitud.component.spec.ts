@@ -5,7 +5,7 @@ import { CONST } from '../const/const';
 import { HttpRequestService } from '../Http-request.service';
 import { of, throwError } from 'rxjs';
 
-describe('DetalleSolicitudComponent', () => {
+describe('DetalleSolicitudComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: DetalleSolicitudComponent;
   let fixture: ComponentFixture<DetalleSolicitudComponent>;
   let httpRequestService: HttpRequestService;
