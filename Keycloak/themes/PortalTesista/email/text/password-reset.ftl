@@ -13,4 +13,7 @@ ${msg("passwordResetLink")}: ${resetLink}
 ${msg("passwordResetNoLink")}
 </#if>
 
+<#if loginUrl??>
 ${msg("passwordResetLoginLink")}: ${loginUrl}
+</#if>
+
