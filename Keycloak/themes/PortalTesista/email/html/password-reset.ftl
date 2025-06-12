@@ -3,9 +3,8 @@
 <@layout.emailLayout>
   ${kcSanitize(msg(
     "passwordResetBodyHtml",
-    link,
-    linkExpiration,
     realmName,
+    link,
     linkExpirationFormatter(linkExpiration)
   ))?no_esc}
 
@@ -14,6 +13,4 @@
   <#else>
     <p>${msg("passwordResetNoLink")}</p>
   </#if>
-
-  <#-- loginUrl generalmente no está presente en el email -->
 </@layout.emailLayout>
