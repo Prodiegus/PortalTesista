@@ -5,6 +5,8 @@ import {Router} from '@angular/router';
 import {CONST} from '../const/const';
 import {FormsModule} from '@angular/forms';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
+import { of, throwError } from 'rxjs';
+
 
 describe('AgregarFaseFlujoComponent', () => {
   let component: AgregarFaseFlujoComponent;
@@ -51,13 +53,64 @@ describe('AgregarFaseFlujoComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('should return if form data is empty', () => {
+  it('should return if form data is empty', async () => {
     component.nombre = '';
     component.descripcion = '';
     component.fecha_inicio = '';
     component.fecha_termino = '';
 
-    const result = component.onSubmit();
-    expect(result).toBeFalse(); 
+    spyOn<any>(component, 'add');
+    await component.onSubmit();
+
+    expect(component.loading).toBeFalse();
+    expect(component['add']).not.toHaveBeenCalled();
   });
+
+  it('should set rangoErroneo to true if fecha_inicio is after fecha_termino', async () => {
+    component.nombre = 'Nombre';
+    component.descripcion = 'Descripción';
+    component.fecha_inicio = '2025-06-15';
+    component.fecha_termino = '2025-06-10'; // Fecha inicio posterior
+
+    await component.onSubmit();
+
+    expect(component.rangoErroneo).toBeTrue();
+    expect(component.loading).toBeFalse();
+  });
+
+  it('should call add method with valid data and close overlay on success', async () => {
+    component.nombre = 'Nombre';
+    component.descripcion = 'Descripción';
+    component.fecha_inicio = '2025-06-10';
+    component.fecha_termino = '2025-06-15';
+
+    const mockAddFaseFlujo = jasmine.createSpy().and.returnValue(Promise.resolve(of({ message: 'Success' })));
+    spyOn(component['httpRequestService'], 'addFaseFlujo').and.callFake(mockAddFaseFlujo);
+    spyOn(component.close, 'emit');
+
+    await component.onSubmit();
+
+    expect(component.loading).toBeFalse();
+    expect(component.close.emit).toHaveBeenCalled();
+  });
+
+  it('should handle error when add fails', async () => {
+    component.nombre = 'Nombre';
+    component.descripcion = 'Descripción';
+    component.fecha_inicio = '2025-06-10';
+    component.fecha_termino = '2025-06-15';
+
+    const mockAddFaseFlujo = jasmine.createSpy().and.returnValue(Promise.resolve(throwError(() => new Error('Fail'))));
+    spyOn(component['httpRequestService'], 'addFaseFlujo').and.callFake(mockAddFaseFlujo);
+    spyOn(component.close, 'emit');
+
+    await component.onSubmit();
+
+    expect(component.close.emit).toHaveBeenCalled(); // still closes
+  });
+
 });
+
+
+
+
