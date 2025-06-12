@@ -50,4 +50,14 @@ describe('AgregarFaseFlujoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  xit('should return if form data is empty', () => {
+    component.nombre = '';
+    component.descripcion = '';
+    component.fecha_inicio = '';
+    component.fecha_termino = '';
+
+    const result = component.onSubmit();
+    expect(result).toBeFalse(); 
+  });
 });

@@ -3,6 +3,7 @@ import Keycloak from 'keycloak-js';
 import { environment } from '../../enviroments/enviroment';
 import { UserProfile } from './user-profile';
 import { Router } from '@angular/router';
+import { Portal } from '@angular/cdk/portal';
 
 @Injectable({
   providedIn: 'root'
@@ -33,7 +34,7 @@ export class KeycloakService {
     const authenticated = await this.keycloak.init({
       onLoad: 'login-required',
       pkceMethod: 'S256',
-      redirectUri: window.location.origin + '/home',
+      redirectUri: window.location.origin+'/home'
     });
 
     if (authenticated) {
