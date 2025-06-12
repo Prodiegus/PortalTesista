@@ -1,5 +1,4 @@
 <#import "template.ftl" as layout>
-<#import "email-macros.ftl" as emailMacros>
 
 <@layout.emailLayout>
   ${kcSanitize(msg(
@@ -11,10 +10,10 @@
   ))?no_esc}
 
   <#if resetLink??>
-    <p><@emailMacros.msg "passwordResetLink" />: <a href="${resetLink}">${resetLink}</a></p>
+    <p>${msg("passwordResetLink")}: <a href="${resetLink}">${resetLink}</a></p>
   <#else>
-    <p><@emailMacros.msg "passwordResetNoLink" /></p>
+    <p>${msg("passwordResetNoLink")}</p>
   </#if>
 
-  <p><@emailMacros.msg "passwordResetLoginLink" />: <a href="${loginUrl}">${loginUrl}</a></p>
+  <#-- loginUrl generalmente no está presente en el email -->
 </@layout.emailLayout>
