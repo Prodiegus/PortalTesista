@@ -1,11 +1,20 @@
-<#-- email/html/password-reset.ftl -->
+<#import "template.ftl" as layout>
 <#import "email-macros.ftl" as emailMacros>
-<p><@emailMacros.msg "passwordResetBody" /></p>
 
-<#if resetLink??>
+<@layout.emailLayout>
+  ${kcSanitize(msg(
+    "passwordResetBodyHtml",
+    link,
+    linkExpiration,
+    realmName,
+    linkExpirationFormatter(linkExpiration)
+  ))?no_esc}
+
+  <#if resetLink??>
     <p><@emailMacros.msg "passwordResetLink" />: <a href="${resetLink}">${resetLink}</a></p>
-<#else>
+  <#else>
     <p><@emailMacros.msg "passwordResetNoLink" /></p>
-</#if>
+  </#if>
 
-<p><@emailMacros.msg "passwordResetLoginLink" />: <a href="${loginUrl}">${loginUrl}</a></p>
+  <p><@emailMacros.msg "passwordResetLoginLink" />: <a href="${loginUrl}">${loginUrl}</a></p>
+</@layout.emailLayout>
