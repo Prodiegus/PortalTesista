@@ -13,7 +13,7 @@ public class KeycloakProvider {
     private static final String REALM_MASTER = "master";
     private static final String ADMIN_CLI = "admin-cli";
     private static final String USER_CONSOLE = "admin";
-    private static final String USER_PASSWORD = "admin";
+    private static final String USER_PASSWORD = "portal.tesista.2025";
     private static final String CLIENT_SECRET = "h4rtyVNyy1hAx1MMdnH6jpg29cSxXPGo";
 
     public static RealmResource getRealmResource() {
