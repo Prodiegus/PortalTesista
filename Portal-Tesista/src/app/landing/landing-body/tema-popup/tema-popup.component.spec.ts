@@ -4,42 +4,51 @@ import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DateFormatPipe } from '../../../pipe/date-format.pipe';
 import { CONST } from '../../../common/const/const';
 import { MatDialog } from '@angular/material/dialog';
-import { of } from 'rxjs';
+import { of, throwError } from 'rxjs';
 import { ElementRef } from '@angular/core';
+import { HttpRequestService } from '../../../common/Http-request.service';
 
-describe('TemaPopupComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
+describe('TemaPopupComponent', () => {
   let component: TemaPopupComponent;
   let fixture: ComponentFixture<TemaPopupComponent>;
   let mockHttpRequestService: any;
   let mockDialog: any;
   let mockElementRef: any;
 
+  beforeAll(() => {
+    jasmine.DEFAULT_TIMEOUT_INTERVAL = 10000;
+  });
+
   beforeEach(async () => {
+    // Por defecto, el servicio retorna un Observable con dato válido
     mockHttpRequestService = {
-      getUltimoAvanceTema: jasmine.createSpy('getUltimoAvanceTema').and.returnValue(Promise.resolve(of({
-        archivo: 'dGVzdA==', // base64 de 'test'
-        nombre_archivo: 'avance.pdf'
-      })))
+      getUltimoAvanceTema: jasmine
+        .createSpy('getUltimoAvanceTema')
+        .and.callFake(() =>
+          Promise.resolve(
+            of({
+              archivo: 'dGVzdA==',
+              nombre_archivo: 'avance.pdf'
+            })
+          )
+        )
     };
+
     mockDialog = { open: jasmine.createSpy('open') };
-    mockElementRef = { nativeElement: { contains: () => false } };
+    mockElementRef = {
+      nativeElement: {
+        contains: jasmine.createSpy('contains').and.returnValue(false)
+      }
+    };
 
     await TestBed.configureTestingModule({
       declarations: [TemaPopupComponent, DateFormatPipe],
       imports: [HttpClientTestingModule],
       providers: [
-        { provide: 'HttpRequestService', useValue: mockHttpRequestService },
+        { provide: HttpRequestService, useValue: mockHttpRequestService },
         { provide: MatDialog, useValue: mockDialog },
         { provide: ElementRef, useValue: mockElementRef }
       ]
-    }).overrideComponent(TemaPopupComponent, {
-      set: {
-        providers: [
-          { provide: 'HttpRequestService', useValue: mockHttpRequestService },
-          { provide: MatDialog, useValue: mockDialog },
-          { provide: ElementRef, useValue: mockElementRef }
-        ]
-      }
     }).compileComponents();
 
     fixture = TestBed.createComponent(TemaPopupComponent);
@@ -64,45 +73,56 @@ describe('TemaPopupComponent', () => { afterEach(() => { TestBed.resetTestingMod
     expect(component.solicitar.emit).toHaveBeenCalled();
   });
 
-  xit('should call descargarArchivo if avance exists after descargarTema', async () => {
-    spyOn(component, 'descargarArchivo');
+  it('should call descargarArchivo if avance exists after descargarTema', async () => {
+    spyOn(component, 'descargarArchivo').and.callFake(() => {});
     await component.descargarTema();
     expect(component.descargarArchivo).toHaveBeenCalledWith('dGVzdA==', 'avance.pdf');
     expect(component.descargando).toBeFalse();
   });
 
-  xit('should open dialog if no avance after descargarTema', async () => {
+  it('should open dialog if no avance after descargarTema', async () => {
+    // Simula que el servicio devuelve un Observable<null>
     mockHttpRequestService.getUltimoAvanceTema.and.returnValue(Promise.resolve(of(null)));
-    component.avance = null;
+    spyOn(component, 'descargarArchivo').and.callFake(() => {});
     await component.descargarTema();
     expect(mockDialog.open).toHaveBeenCalled();
+    expect(component.descargarArchivo).not.toHaveBeenCalled();
     expect(component.descargando).toBeFalse();
   });
 
-  xit('should handle error in descargarTema', async () => {
-    mockHttpRequestService.getUltimoAvanceTema.and.returnValue(Promise.reject('fail'));
-    const spy = spyOn(console, 'error');
+  it('should handle error in descargarTema', async () => {
+    // Simula error en el Observable
+    mockHttpRequestService.getUltimoAvanceTema.and.returnValue(
+      Promise.resolve(throwError(() => 'fail'))
+    );
+    const consoleSpy = spyOn(console, 'error');
     await component.descargarTema();
-    expect(spy).toHaveBeenCalled();
+    // Se entra en catch y luego al finally
+    expect(consoleSpy).toHaveBeenCalledWith('Error descargando tema:', 'fail');
     expect(component.descargando).toBeFalse();
   });
 
   it('should call closeOverlay on clickout if clicked outside', () => {
     spyOn(component, 'closeOverlay');
-    component.clickout({ target: null } as any);
+    const fakeElement = document.createElement('div');
+    mockElementRef.nativeElement.contains.and.returnValue(false);
+
+    component.clickout({ target: fakeElement } as unknown as MouseEvent);
+
     expect(component.closeOverlay).toHaveBeenCalled();
   });
 
   xit('should not call closeOverlay on clickout if clicked inside', () => {
-    mockElementRef.nativeElement.contains = () => true;
     spyOn(component, 'closeOverlay');
-    component.clickout({ target: null } as any);
+    const fakeElement = document.createElement('div');
+    mockElementRef.nativeElement.contains.and.returnValue(true);
+    component.clickout({ target: fakeElement } as unknown as MouseEvent);
     expect(component.closeOverlay).not.toHaveBeenCalled();
   });
 
   it('should log error if descargarArchivo is called with no archivo', () => {
-    const spy = spyOn(console, 'error');
+    const consoleSpy = spyOn(console, 'error');
     component.descargarArchivo(null, 'test.pdf');
-    expect(spy).toHaveBeenCalledWith('No file available to download');
+    expect(consoleSpy).toHaveBeenCalledWith('No file available to download');
   });
 });
