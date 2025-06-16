@@ -1,496 +1,135 @@
 - Generating browser application bundles (phase: setup)...
 ✔ Browser application bundle generation complete.
-[32m16 06 2025 01:33:10.365:INFO [karma-server]: [39mKarma v6.4.4 server started at http://localhost:9876/
-[32m16 06 2025 01:33:10.368:INFO [launcher]: [39mLaunching browsers ChromeHeadless with concurrency unlimited
-[32m16 06 2025 01:33:10.372:INFO [launcher]: [39mStarting browser ChromeHeadless
-[32m16 06 2025 01:33:10.916:INFO [Chrome Headless 137.0.0.0 (Linux x86_64)]: [39mConnected on socket HRWixxch3vzQgIp1AAAB with id 48756186
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 0 of 373[32m SUCCESS[39m (0 secs / 0 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 1 of 373[32m SUCCESS[39m (0 secs / 0.084 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 2 of 373[32m SUCCESS[39m (0 secs / 0.12 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 3 of 373[32m SUCCESS[39m (0 secs / 0.129 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 4 of 373[32m SUCCESS[39m (0 secs / 0.136 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 5 of 373[32m SUCCESS[39m (0 secs / 0.142 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 6 of 373[32m SUCCESS[39m (0 secs / 0.147 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 7 of 373[32m SUCCESS[39m (0 secs / 0.152 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 8 of 373[32m SUCCESS[39m (0 secs / 0.157 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 9 of 373[32m SUCCESS[39m (0 secs / 0.171 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 10 of 373[32m SUCCESS[39m (0 secs / 0.174 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 11 of 373[32m SUCCESS[39m (0 secs / 0.176 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 12 of 373[32m SUCCESS[39m (0 secs / 0.177 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 13 of 373[32m SUCCESS[39m (0 secs / 0.179 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 14 of 373[32m SUCCESS[39m (0 secs / 0.181 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 15 of 373[32m SUCCESS[39m (0 secs / 0.184 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 16 of 373[32m SUCCESS[39m (0 secs / 0.186 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 17 of 373[32m SUCCESS[39m (0 secs / 0.187 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 18 of 373[32m SUCCESS[39m (0 secs / 0.188 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 19 of 373[32m SUCCESS[39m (0 secs / 0.19 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 20 of 373[32m SUCCESS[39m (0 secs / 0.192 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 21 of 373[32m SUCCESS[39m (0 secs / 0.193 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 22 of 373[32m SUCCESS[39m (0 secs / 0.195 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 23 of 373[32m SUCCESS[39m (0 secs / 0.197 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 24 of 373[32m SUCCESS[39m (0 secs / 0.199 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 25 of 373[32m SUCCESS[39m (0 secs / 0.212 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 26 of 373[32m SUCCESS[39m (0 secs / 0.217 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 27 of 373[32m SUCCESS[39m (0 secs / 0.221 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 28 of 373[32m SUCCESS[39m (0 secs / 0.225 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 29 of 373[32m SUCCESS[39m (0 secs / 0.23 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 30 of 373[32m SUCCESS[39m (0 secs / 0.234 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 31 of 373[32m SUCCESS[39m (0 secs / 0.239 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 32 of 373[32m SUCCESS[39m (0 secs / 0.243 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 33 of 373[32m SUCCESS[39m (0 secs / 0.247 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 34 of 373[32m SUCCESS[39m (0 secs / 0.25 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 35 of 373[32m SUCCESS[39m (0 secs / 0.268 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 36 of 373[32m SUCCESS[39m (0 secs / 0.292 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 37 of 373[32m SUCCESS[39m (0 secs / 0.308 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 38 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.321 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 39 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.332 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 40 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.333 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 41 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.334 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 42 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.336 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 43 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.337 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 44 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.338 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 45 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.34 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 46 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.341 secs)
-[1A[2KERROR: [36m'Error fetching reuniones'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 46 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.341 secs)
-ERROR: 'Error fetching reuniones'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 47 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.343 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 47 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.343 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 48 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.345 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 49 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.346 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 50 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.353 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 51 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.356 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 52 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.357 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 53 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.359 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 54 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.361 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 55 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.363 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 56 of 373 (skipped 1)[32m SUCCESS[39m (0 secs / 0.364 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 57 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.365 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 58 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.366 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 59 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.367 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 59 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.367 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 60 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.386 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 60 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.386 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KLOG: [36m'Error deleting fase flujo'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 60 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.386 secs)
-LOG: 'Error deleting fase flujo'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 61 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.391 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 61 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.391 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 62 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.396 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 62 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.396 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 63 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.4 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 63 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.4 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 64 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.404 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 64 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.404 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 65 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.409 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 65 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.409 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KLOG: [36m'Error editing fase flujo'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 65 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.409 secs)
-LOG: 'Error editing fase flujo'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 66 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.413 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 66 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.413 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 67 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.418 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 67 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.418 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 68 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.423 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 68 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.423 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 69 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.428 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 69 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.428 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 69 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.428 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 70 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.433 secs)
-[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 70 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.433 secs)
-LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 71 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.438 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 72 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.439 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 73 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.452 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 74 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.456 secs)
-[1A[2KERROR: [36m'User representation or RUT is not available'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 74 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.456 secs)
-ERROR: 'User representation or RUT is not available'
-[1A[2KERROR: [36m'Error fetching user representation:', 'User representation or RUT is not available'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 74 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.456 secs)
-ERROR: 'Error fetching user representation:', 'User representation or RUT is not available'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 75 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.459 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 76 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.461 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 77 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.464 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 78 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.466 secs)
-[1A[2KERROR: [36m'User representation or RUT is not available'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 78 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.466 secs)
-ERROR: 'User representation or RUT is not available'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 79 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.469 secs)
-[1A[2KERROR: [36m'Error fetching user representation:', 'User representation or RUT is not available'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 79 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.469 secs)
-ERROR: 'Error fetching user representation:', 'User representation or RUT is not available'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 80 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.471 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 81 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.472 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 82 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.472 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 83 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.478 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 84 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.481 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 85 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.482 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 86 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.484 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 87 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.485 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 88 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.487 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 89 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.488 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 90 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.491 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 91 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.492 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 92 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.497 secs)
-[1A[2KERROR: [36m'Error fetching profesores'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 92 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.497 secs)
-ERROR: 'Error fetching profesores'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 93 of 373 (skipped 2)[32m SUCCESS[39m (0 secs / 0.503 secs)
-[1A[2KERROR: [36m'Error fetching profesores'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 93 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.503 secs)
-ERROR: 'Error fetching profesores'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 94 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.505 secs)
-[1A[2KERROR: [36m'Error fetching profesores'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 94 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.505 secs)
-ERROR: 'Error fetching profesores'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 95 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.508 secs)
-[1A[2KERROR: [36m'Error fetching profesores'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 95 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.508 secs)
-ERROR: 'Error fetching profesores'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 96 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.51 secs)
-[1A[2KERROR: [36m'Error fetching profesores'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 96 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.51 secs)
-ERROR: 'Error fetching profesores'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 97 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.512 secs)
-[1A[2KERROR: [36m'Error fetching profesores'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 97 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.512 secs)
-ERROR: 'Error fetching profesores'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 98 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.513 secs)
-[1A[2KERROR: [36m'Error fetching profesores'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 98 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.513 secs)
-ERROR: 'Error fetching profesores'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 99 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.515 secs)
-[1A[2KERROR: [36m'Error fetching profesores'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 99 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.515 secs)
-ERROR: 'Error fetching profesores'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 100 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.518 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 101 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.52 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 102 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.522 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.523 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 104 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.524 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 105 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.525 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 106 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.526 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 107 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.527 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 108 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.528 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 109 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.529 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 110 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.53 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 111 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.531 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 112 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.532 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 113 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.533 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 114 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.534 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 115 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.534 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 116 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.534 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 117 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.535 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 118 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.536 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 119 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.537 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 120 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.538 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 121 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.539 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 122 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.539 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 123 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.547 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 124 of 373 (skipped 5)[32m SUCCESS[39m (0 secs / 0.549 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 125 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.551 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 126 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.552 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 127 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.552 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 128 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.552 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 129 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.552 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 130 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.553 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 131 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.554 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 132 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.555 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 133 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.556 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 134 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.557 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 135 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.558 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 136 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.559 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 137 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.56 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 138 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.561 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 139 of 373 (skipped 6)[32m SUCCESS[39m (0 secs / 0.562 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 140 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.563 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 141 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.564 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 142 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.564 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 143 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.564 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 144 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.565 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 145 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.566 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 146 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.567 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 147 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.577 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 148 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.581 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 149 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.584 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 150 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.588 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 151 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.592 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 152 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.595 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 153 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.603 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 154 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.606 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 155 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.61 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 156 of 373 (skipped 7)[32m SUCCESS[39m (0 secs / 0.613 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 157 of 373 (skipped 8)[32m SUCCESS[39m (0 secs / 0.617 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 158 of 373 (skipped 8)[32m SUCCESS[39m (0 secs / 0.625 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 159 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.628 secs)
-[1A[2KLOG: [36m'Profesor activado:', Object{estado: 'Usuario activado'}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 159 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.628 secs)
-LOG: 'Profesor activado:', Object{estado: 'Usuario activado'}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 160 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.63 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 161 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.631 secs)
-[1A[2KLOG: [36m'Profesor desactivado:', Object{estado: 'Usuario desactivado'}[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 161 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.631 secs)
-LOG: 'Profesor desactivado:', Object{estado: 'Usuario desactivado'}
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 162 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.633 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 163 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.634 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 164 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.635 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 165 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.636 secs)
-[1A[2KERROR: [36m'Error actualizando profesor:', 'err'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 165 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.636 secs)
-ERROR: 'Error actualizando profesor:', 'err'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 166 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.638 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 167 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.639 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 168 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.64 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 169 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.651 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 170 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.68 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 171 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.684 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 172 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.688 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 173 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.696 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 174 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.7 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 175 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.703 secs)
+[32m16 06 2025 01:42:17.353:INFO [karma-server]: [39mKarma v6.4.4 server started at http://localhost:9876/
+[32m16 06 2025 01:42:17.355:INFO [launcher]: [39mLaunching browsers ChromeHeadless with concurrency unlimited
+[32m16 06 2025 01:42:17.357:INFO [launcher]: [39mStarting browser ChromeHeadless
+[32m16 06 2025 01:42:17.709:INFO [Chrome Headless 137.0.0.0 (Linux x86_64)]: [39mConnected on socket mzRarIiOu2mqxq-dAAAB with id 32221481
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 0 of 382[32m SUCCESS[39m (0 secs / 0 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 1 of 382[32m SUCCESS[39m (0 secs / 0.102 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 2 of 382[32m SUCCESS[39m (0 secs / 0.127 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 3 of 382[32m SUCCESS[39m (0 secs / 0.134 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 4 of 382[32m SUCCESS[39m (0 secs / 0.141 secs)
 [1A[2KERROR: [36m'Error adding fase flujo'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 175 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.703 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 4 of 382[32m SUCCESS[39m (0 secs / 0.141 secs)
 ERROR: 'Error adding fase flujo'
 [1A[2KLOG: [36m'Error adding fase flujo'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 175 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.703 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 4 of 382[32m SUCCESS[39m (0 secs / 0.141 secs)
 LOG: 'Error adding fase flujo'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 176 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.707 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 177 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.71 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 178 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.714 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 179 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.717 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 180 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.721 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 181 of 373 (skipped 9)[32m SUCCESS[39m (0 secs / 0.73 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 182 of 373 (skipped 11)[32m SUCCESS[39m (0 secs / 0.732 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 183 of 373 (skipped 11)[32m SUCCESS[39m (0 secs / 0.733 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 184 of 373 (skipped 11)[32m SUCCESS[39m (0 secs / 0.735 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 185 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.736 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 186 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.738 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 187 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.743 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 188 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.748 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 189 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.75 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 190 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.753 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 191 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.756 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 192 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.759 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 193 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.761 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 194 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.763 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 194 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.763 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 194 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.763 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 195 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.774 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 195 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.774 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 195 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.774 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 196 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.776 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 196 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.776 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 196 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.776 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 197 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.778 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 197 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.778 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 197 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.778 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 198 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.781 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 198 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.781 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 198 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.781 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 199 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.782 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 199 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.782 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 199 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.782 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 200 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.784 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 200 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.784 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 200 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.784 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 201 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.786 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 201 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.786 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 201 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.786 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 202 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.788 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 202 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.788 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 202 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.788 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 203 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.79 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 203 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.79 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 203 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.79 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 204 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.794 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 204 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.794 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 204 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.794 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error parsing date:', Error: Invalid date
-Error: Invalid date
-    at CalendarioTemaComponent.hayEvento (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/calendario-tema/calendario-tema.component.ts:164:44)
-    at UserContext.apply (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/calendario-tema/calendario-tema.component.spec.ts:194:24)
-    at _ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:369:28)
-    at ProxyZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:2081:39)
-    at _ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:368:34)
-    at ZoneImpl.run (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:111:43)
-    at runInTestZone (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:216:38)
-    at UserContext.<anonymous> (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:234:32)
-    at ZoneQueueRunner.attempt (http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7632:40)
-    at ZoneQueueRunner.QueueRunner.run (http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7670:27)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 204 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.794 secs)
-ERROR: 'Error parsing date:', Error: Invalid date
-Error: Invalid date
-    at CalendarioTemaComponent.hayEvento (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/calendario-tema/calendario-tema.component.ts:164:44)
-    at UserContext.apply (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/calendario-tema/calendario-tema.component.spec.ts:194:24)
-    at _ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:369:28)
-    at ProxyZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:2081:39)
-    at _ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:368:34)
-    at ZoneImpl.run (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:111:43)
-    at runInTestZone (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:216:38)
-    at UserContext.<anonymous> (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:234:32)
-    at ZoneQueueRunner.attempt (http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7632:40)
-    at ZoneQueueRunner.QueueRunner.run (http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7670:27)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 205 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.797 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 205 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.797 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 205 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.797 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 206 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.8 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 206 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.8 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 206 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.8 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 207 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.803 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 207 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.803 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 207 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.803 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 208 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.806 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 208 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.806 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 208 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.806 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 209 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.809 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 209 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.809 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 209 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.809 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 210 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.812 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 210 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.812 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 210 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.812 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 211 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.825 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 211 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.825 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 211 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.825 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 212 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.828 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 212 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.828 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 212 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.828 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 213 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.831 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 213 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.831 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 213 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.831 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 214 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.835 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 214 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.835 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 214 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.835 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 215 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.839 secs)
-[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 215 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.839 secs)
-ERROR: 'Tema no disponible o sin ID'
-[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 215 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.839 secs)
-ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 216 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.841 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 217 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.841 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 218 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.841 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 219 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.842 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 220 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.842 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 221 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.842 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 222 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.842 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 223 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.845 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 224 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.847 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 225 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.855 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 5 of 382[32m SUCCESS[39m (0 secs / 0.147 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 6 of 382[32m SUCCESS[39m (0 secs / 0.152 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 7 of 382[32m SUCCESS[39m (0 secs / 0.158 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 8 of 382[32m SUCCESS[39m (0 secs / 0.164 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 9 of 382[32m SUCCESS[39m (0 secs / 0.169 secs)
+[1A[2KERROR: [36m'Error actualizando profesor:', 'err'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 9 of 382[32m SUCCESS[39m (0 secs / 0.169 secs)
+ERROR: 'Error actualizando profesor:', 'err'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 10 of 382[32m SUCCESS[39m (0 secs / 0.172 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 11 of 382[32m SUCCESS[39m (0 secs / 0.176 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 12 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.182 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 13 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.184 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 14 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.185 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 15 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.187 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 16 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.189 secs)
+[1A[2KLOG: [36m'Profesor desactivado:', Object{estado: 'Usuario desactivado'}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 16 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.189 secs)
+LOG: 'Profesor desactivado:', Object{estado: 'Usuario desactivado'}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 17 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.192 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 18 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.194 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 19 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.199 secs)
+[1A[2KLOG: [36m'Profesor activado:', Object{estado: 'Usuario activado'}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 19 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.199 secs)
+LOG: 'Profesor activado:', Object{estado: 'Usuario activado'}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 20 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.203 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 21 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.221 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 22 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.233 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 23 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.236 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 24 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.246 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 25 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.251 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 26 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.256 secs)
+[1A[2KERROR: [36m'Error adding fase flujo'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 26 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.256 secs)
+ERROR: 'Error adding fase flujo'
+[1A[2KLOG: [36m'Error adding fase flujo'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 26 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.256 secs)
+LOG: 'Error adding fase flujo'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 27 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.26 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 28 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.264 secs)
+[1A[2KERROR: [36m'Error fetching profesores'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 28 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.264 secs)
+ERROR: 'Error fetching profesores'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 29 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.275 secs)
+[1A[2KERROR: [36m'Error fetching profesores'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 29 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.275 secs)
+ERROR: 'Error fetching profesores'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 30 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.278 secs)
+[1A[2KERROR: [36m'Error fetching profesores'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 30 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.278 secs)
+ERROR: 'Error fetching profesores'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 31 of 382 (skipped 1)[32m SUCCESS[39m (0 secs / 0.28 secs)
+[1A[2KERROR: [36m'Error fetching profesores'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 31 of 382 (skipped 2)[32m SUCCESS[39m (0 secs / 0.28 secs)
+ERROR: 'Error fetching profesores'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 32 of 382 (skipped 2)[32m SUCCESS[39m (0 secs / 0.282 secs)
+[1A[2KERROR: [36m'Error fetching profesores'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 32 of 382 (skipped 2)[32m SUCCESS[39m (0 secs / 0.282 secs)
+ERROR: 'Error fetching profesores'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 33 of 382 (skipped 2)[32m SUCCESS[39m (0 secs / 0.285 secs)
+[1A[2KERROR: [36m'Error fetching profesores'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 33 of 382 (skipped 3)[32m SUCCESS[39m (0 secs / 0.285 secs)
+ERROR: 'Error fetching profesores'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 34 of 382 (skipped 3)[32m SUCCESS[39m (0 secs / 0.287 secs)
+[1A[2KERROR: [36m'Error fetching profesores'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 34 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.287 secs)
+ERROR: 'Error fetching profesores'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 35 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.289 secs)
+[1A[2KERROR: [36m'Error fetching profesores'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 35 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.289 secs)
+ERROR: 'Error fetching profesores'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 36 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.291 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 37 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.294 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 38 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.295 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 39 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.369 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 40 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.379 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 41 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.391 secs)
+[1A[2KERROR: [36mError: NG0205: Injector has already been destroyed.
+Error: NG0205: Injector has already been destroyed.
+    at R3Injector.assertNotDestroyed (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2022/core.mjs:3173:19)
+    at runInInjectionContext (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2022/core.mjs:3409:18)
+    at selector (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/router/fesm2022/router.mjs:4820:83)
+    at onError (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/catchError.js:10:39)
+    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/OperatorSubscriber.js:23:21)
+    at OperatorSubscriber.error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:40:18)
+    at onError (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/tap.js:28:28)
+    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/OperatorSubscriber.js:23:21)
+    at OperatorSubscriber.error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:40:18)
+    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:64:30)[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 41 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.391 secs)
+ERROR: Error: NG0205: Injector has already been destroyed.
+Error: NG0205: Injector has already been destroyed.
+    at R3Injector.assertNotDestroyed (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2022/core.mjs:3173:19)
+    at runInInjectionContext (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2022/core.mjs:3409:18)
+    at selector (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/router/fesm2022/router.mjs:4820:83)
+    at onError (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/catchError.js:10:39)
+    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/OperatorSubscriber.js:23:21)
+    at OperatorSubscriber.error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:40:18)
+    at onError (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/tap.js:28:28)
+    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/OperatorSubscriber.js:23:21)
+    at OperatorSubscriber.error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:40:18)
+    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:64:30)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 42 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.4 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 43 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.408 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 44 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.416 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 45 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.422 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 46 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.428 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 47 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.435 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 48 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.452 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 49 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.456 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 50 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.459 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 51 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.467 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 52 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.47 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 53 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.472 secs)
 [1A[2KERROR: [36m'Error editando escuela'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 225 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.855 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 53 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.472 secs)
 ERROR: 'Error editando escuela'
 [1A[2KERROR: [36m'Error editando escuela:', Error: Error
 Error: Error
@@ -504,7 +143,7 @@ Error: Error
     at _ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:369:28)
     at FakeAsyncTestZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:1611:29)
     at ProxyZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:2078:39)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 225 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.855 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 53 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.472 secs)
 ERROR: 'Error editando escuela:', Error: Error
 Error: Error
     at errorFactory (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/editar-escuela/editar-escuela.component.spec.ts:75:90)
@@ -517,145 +156,326 @@ Error: Error
     at _ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:369:28)
     at FakeAsyncTestZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:1611:29)
     at ProxyZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:2078:39)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 226 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.858 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 227 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.86 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 228 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.863 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 229 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.865 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 230 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.892 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 54 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.474 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 55 of 382 (skipped 4)[32m SUCCESS[39m (0 secs / 0.476 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 56 of 382 (skipped 5)[32m SUCCESS[39m (0 secs / 0.484 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 57 of 382 (skipped 7)[32m SUCCESS[39m (0 secs / 0.487 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 58 of 382 (skipped 7)[32m SUCCESS[39m (0 secs / 0.489 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 59 of 382 (skipped 7)[32m SUCCESS[39m (0 secs / 0.491 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 60 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.493 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 61 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.495 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 62 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.515 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 63 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.516 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 64 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.516 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 65 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.516 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 66 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.516 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 67 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.516 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 68 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.516 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 69 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.519 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 70 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.522 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 71 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.524 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 72 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.525 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 73 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.526 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 74 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.528 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 75 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.53 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 76 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.532 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 77 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.534 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 78 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.536 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 79 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.537 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 80 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.539 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 81 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.54 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 82 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.561 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 83 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.565 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 84 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.568 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 85 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.571 secs)
+[1A[2KERROR: [36m'User representation or RUT is not available'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 85 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.571 secs)
+ERROR: 'User representation or RUT is not available'
+[1A[2KERROR: [36m'Error fetching user representation:', 'User representation or RUT is not available'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 85 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.571 secs)
+ERROR: 'Error fetching user representation:', 'User representation or RUT is not available'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 86 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.574 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 87 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.576 secs)
+[1A[2KERROR: [36m'User representation or RUT is not available'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 87 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.576 secs)
+ERROR: 'User representation or RUT is not available'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 88 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.578 secs)
+[1A[2KERROR: [36m'Error fetching user representation:', 'User representation or RUT is not available'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 88 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.578 secs)
+ERROR: 'Error fetching user representation:', 'User representation or RUT is not available'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 89 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.586 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 90 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.592 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 91 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.619 secs)
 [1A[2KLOG: [36m'Warning: Setting up fake worker.'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 230 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.892 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 91 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.619 secs)
 LOG: 'Warning: Setting up fake worker.'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 231 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.897 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 232 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.905 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 92 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.625 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 93 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.63 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 94 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.634 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 95 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.638 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 96 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.643 secs)
 [1A[2KERROR: [36m'Error starting revision'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 232 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.905 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 96 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.643 secs)
 ERROR: 'Error starting revision'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 233 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.91 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 234 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.915 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 235 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.92 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 236 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.933 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 237 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.945 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 238 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.961 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.97 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 97 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.649 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 98 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.655 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 99 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.66 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 100 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.666 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 101 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.677 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 102 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.682 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.97 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.97 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.97 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.97 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.97 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.97 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.97 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.97 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 0.97 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 240 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.005 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 240 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.005 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 241 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.019 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 241 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.019 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 242 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.027 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 242 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.027 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 103 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.688 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 243 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.034 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 104 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.712 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 243 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.034 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 104 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.712 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 244 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.038 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 105 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.723 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 244 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.038 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 105 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.723 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 245 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.043 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 106 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.729 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 245 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.043 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 106 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.729 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 246 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.047 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 107 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.74 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 246 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.047 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 107 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.74 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 247 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.052 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 108 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.745 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 247 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.052 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 108 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.745 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 248 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.057 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 109 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.75 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 248 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.057 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 109 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.75 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 249 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.063 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 110 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.755 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 249 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.063 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 110 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.755 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 250 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.068 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 111 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.76 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 250 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.068 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 111 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.76 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 251 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.074 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 112 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.765 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 251 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.074 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 112 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.765 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 252 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.078 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 113 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.769 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 252 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.078 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 113 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.769 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 253 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.082 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 114 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.773 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 253 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.082 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 114 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.773 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 254 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.087 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 115 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.777 secs)
 [1A[2KLOG: [36m'Warning: Indexing all PDF objects'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 254 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.087 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 115 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.777 secs)
 LOG: 'Warning: Indexing all PDF objects'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 255 of 373 (skipped 13)[32m SUCCESS[39m (0 secs / 1.106 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 256 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.108 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 257 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.11 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 258 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.111 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 259 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.113 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 260 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.114 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 261 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.127 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 262 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.135 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 263 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.14 secs)
-[1A[2KERROR: [36m'Error adding fase flujo'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 263 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.14 secs)
-ERROR: 'Error adding fase flujo'
-[1A[2KLOG: [36m'Error adding fase flujo'[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 263 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.14 secs)
-LOG: 'Error adding fase flujo'
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 264 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.145 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 265 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.149 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 266 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.154 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 267 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.172 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 268 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.175 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 269 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.178 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 270 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.179 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 271 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.18 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 272 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.181 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 273 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.183 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 274 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.185 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 275 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.186 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 276 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.188 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 277 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.189 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 278 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.19 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 279 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.191 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 280 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.192 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 116 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.793 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 117 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.799 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 118 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.805 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 119 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.811 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 120 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.818 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 121 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.821 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 122 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.825 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 123 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.828 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 124 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.831 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 125 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.834 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 126 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.834 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 127 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.842 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 128 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.844 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 129 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.846 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 130 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.847 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 131 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.848 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 132 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.849 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 133 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.85 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 134 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.851 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 135 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.852 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 136 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.853 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 137 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.853 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 138 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.859 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 139 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.863 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 140 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.866 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 141 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.87 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 142 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.872 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 143 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.874 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 144 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.876 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 144 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.876 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 145 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.886 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 145 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.886 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 146 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.891 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 146 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.891 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 147 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.905 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 147 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.905 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 147 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.905 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 148 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.91 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 148 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.91 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 149 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.915 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 149 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.915 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KLOG: [36m'Error editing fase flujo'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 149 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.915 secs)
+LOG: 'Error editing fase flujo'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 150 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.919 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 150 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.919 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 151 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.922 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 151 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.922 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 152 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.925 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 152 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.925 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 153 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.929 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 153 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.929 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KLOG: [36m'Error deleting fase flujo'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 153 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.929 secs)
+LOG: 'Error deleting fase flujo'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 154 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.933 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 154 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.933 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 155 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.936 secs)
+[1A[2KLOG: [36mObject{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 155 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.936 secs)
+LOG: Object{id: 3, numero: 1, nombre: 'Etapa 1', descripcion: 'Fase auto generada', tipo: 'guia', fecha_inicio: '2024-12-11T21:00:00.000Z', fecha_termino: '2025-03-02T21:00:00.000Z', rut_creador: '20307526', id_flujo: 3, id_padre: 1}
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 156 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.94 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 157 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.942 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 158 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.943 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 159 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.945 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 160 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.946 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 161 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.947 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 162 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.948 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 163 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.949 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 164 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.953 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 165 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.955 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 166 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.96 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 167 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.962 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 168 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.963 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 169 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.964 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 170 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.966 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 171 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.967 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 172 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.968 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 173 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.969 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 174 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.97 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 175 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.971 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 176 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.973 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 177 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.974 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 178 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.975 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 178 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.975 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 179 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.976 secs)
+[1A[2KERROR: [36m'Error fetching reuniones'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 179 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.976 secs)
+ERROR: 'Error fetching reuniones'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 180 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.978 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 181 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.979 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 182 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.98 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 183 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.982 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 184 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.991 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 185 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.993 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 186 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.996 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 187 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.997 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 188 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.998 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 189 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 0.999 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 190 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.001 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 191 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.002 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 192 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.003 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 193 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.004 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 194 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.006 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 195 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.008 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 196 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.01 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 197 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.011 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 198 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.012 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 199 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.013 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 200 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.015 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 201 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.016 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 202 of 382 (skipped 8)[32m SUCCESS[39m (0 secs / 1.018 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 203 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.022 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 204 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.024 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 205 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.026 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 206 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.027 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 207 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.029 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 208 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.038 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 209 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.041 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 210 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.043 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 211 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.044 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 212 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.046 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 213 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.049 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 214 of 382 (skipped 9)[32m SUCCESS[39m (0 secs / 1.052 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 215 of 382 (skipped 10)[32m SUCCESS[39m (0 secs / 1.054 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 216 of 382 (skipped 10)[32m SUCCESS[39m (0 secs / 1.058 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 217 of 382 (skipped 10)[32m SUCCESS[39m (0 secs / 1.059 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 218 of 382 (skipped 11)[32m SUCCESS[39m (0 secs / 1.082 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 219 of 382 (skipped 11)[32m SUCCESS[39m (0 secs / 1.093 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 220 of 382 (skipped 11)[32m SUCCESS[39m (0 secs / 1.108 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 221 of 382 (skipped 11)[32m SUCCESS[39m (0 secs / 1.118 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 222 of 382 (skipped 11)[32m SUCCESS[39m (0 secs / 1.122 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 223 of 382 (skipped 11)[32m SUCCESS[39m (0 secs / 1.124 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 224 of 382 (skipped 11)[32m SUCCESS[39m (0 secs / 1.126 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 225 of 382 (skipped 11)[32m SUCCESS[39m (0 secs / 1.128 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 226 of 382 (skipped 11)[32m SUCCESS[39m (0 secs / 1.13 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 227 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.132 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 228 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.133 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 229 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.137 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 230 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.139 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 231 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.14 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 232 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.14 secs)
 [1A[2KERROR: [36m'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -668,7 +488,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 280 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.192 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 232 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.14 secs)
 ERROR: 'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -681,7 +501,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 281 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.2 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 233 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.15 secs)
 [1A[2KERROR: [36m'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -694,7 +514,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 281 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.2 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 233 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.15 secs)
 ERROR: 'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -707,7 +527,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 282 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.203 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 234 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.154 secs)
 [1A[2KERROR: [36m'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -720,7 +540,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 282 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.203 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 234 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.154 secs)
 ERROR: 'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -733,7 +553,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 283 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.205 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 235 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.157 secs)
 [1A[2KERROR: [36m'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -746,7 +566,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 283 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.205 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 235 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.157 secs)
 ERROR: 'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -759,7 +579,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 284 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.206 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 236 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.16 secs)
 [1A[2KERROR: [36m'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -772,7 +592,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 284 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.206 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 236 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.16 secs)
 ERROR: 'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -785,7 +605,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 285 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.208 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 237 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.164 secs)
 [1A[2KERROR: [36m'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -798,7 +618,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 285 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.208 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 237 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.164 secs)
 ERROR: 'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -811,7 +631,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 286 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.21 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 238 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.167 secs)
 [1A[2KERROR: [36m'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -824,7 +644,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 286 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.21 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 238 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.167 secs)
 ERROR: 'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -837,7 +657,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 287 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.212 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.17 secs)
 [1A[2KERROR: [36m'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -850,7 +670,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 287 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.212 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 239 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.17 secs)
 ERROR: 'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -863,7 +683,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 288 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.213 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 240 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.174 secs)
 [1A[2KERROR: [36m'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -876,7 +696,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 288 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.213 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 240 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.174 secs)
 ERROR: 'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -889,7 +709,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 289 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.215 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 241 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.194 secs)
 [1A[2KERROR: [36m'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -902,7 +722,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 289 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.215 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 241 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.194 secs)
 ERROR: 'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -915,7 +735,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 290 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.217 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 242 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.2 secs)
 [1A[2KERROR: [36m'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -928,7 +748,7 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 290 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.217 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 242 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.2 secs)
 ERROR: 'Error fetching user representation:', TypeError: Cannot read properties of undefined (reading 'then')
 TypeError: Cannot read properties of undefined (reading 'then')
     at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:38:44)
@@ -941,160 +761,349 @@ TypeError: Cannot read properties of undefined (reading 'then')
     at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
     at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
     at GestionEscuelasComponent.fetchEscuelas (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/gestion-escuelas/gestion-escuelas.component.ts:50:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 291 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.22 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 292 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.253 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 293 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.258 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 294 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.265 secs)
-[1A[2KERROR: [36mError: NG0205: Injector has already been destroyed.
-Error: NG0205: Injector has already been destroyed.
-    at R3Injector.assertNotDestroyed (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2022/core.mjs:3173:19)
-    at runInInjectionContext (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2022/core.mjs:3409:18)
-    at selector (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/router/fesm2022/router.mjs:4820:83)
-    at onError (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/catchError.js:10:39)
-    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/OperatorSubscriber.js:23:21)
-    at OperatorSubscriber.error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:40:18)
-    at onError (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/tap.js:28:28)
-    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/OperatorSubscriber.js:23:21)
-    at OperatorSubscriber.error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:40:18)
-    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:64:30)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 294 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.265 secs)
-ERROR: Error: NG0205: Injector has already been destroyed.
-Error: NG0205: Injector has already been destroyed.
-    at R3Injector.assertNotDestroyed (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2022/core.mjs:3173:19)
-    at runInInjectionContext (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/core/fesm2022/core.mjs:3409:18)
-    at selector (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@angular/router/fesm2022/router.mjs:4820:83)
-    at onError (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/catchError.js:10:39)
-    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/OperatorSubscriber.js:23:21)
-    at OperatorSubscriber.error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:40:18)
-    at onError (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/tap.js:28:28)
-    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/operators/OperatorSubscriber.js:23:21)
-    at OperatorSubscriber.error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:40:18)
-    at OperatorSubscriber._error (http://localhost:9876/_karma_webpack_/webpack:/node_modules/rxjs/dist/esm/internal/Subscriber.js:64:30)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 295 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.271 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 296 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.277 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 297 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.281 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 298 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.285 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 299 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.291 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 300 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.295 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 301 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.295 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 302 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.295 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 303 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.295 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 304 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.295 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 305 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.297 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 306 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.298 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 307 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.3 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 308 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.301 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 309 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.303 secs)
-[1A[2KERROR: [36m'Error fetching flujo general or fases flujo:', TypeError: Cannot read properties of undefined (reading 'id')
-TypeError: Cannot read properties of undefined (reading 'id')
-    at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:127:63)
-    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
-    at http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:126:12
-    at Generator.next (<anonymous>)
-    at asyncGeneratorStep (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:3:1)
-    at _next (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:17:1)
-    at executor (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:22:1)
-    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
-    at EditarFlujoComponent.fetchFasesFlujo (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:139:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 309 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.303 secs)
-ERROR: 'Error fetching flujo general or fases flujo:', TypeError: Cannot read properties of undefined (reading 'id')
-TypeError: Cannot read properties of undefined (reading 'id')
-    at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:127:63)
-    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
-    at http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:126:12
-    at Generator.next (<anonymous>)
-    at asyncGeneratorStep (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:3:1)
-    at _next (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:17:1)
-    at executor (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:22:1)
-    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
-    at EditarFlujoComponent.fetchFasesFlujo (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:139:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 310 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.306 secs)
-[1A[2KERROR: [36m'Error fetching flujo general or fases flujo:', TypeError: Cannot read properties of undefined (reading 'id')
-TypeError: Cannot read properties of undefined (reading 'id')
-    at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:127:63)
-    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
-    at http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:126:12
-    at Generator.next (<anonymous>)
-    at asyncGeneratorStep (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:3:1)
-    at _next (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:17:1)
-    at executor (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:22:1)
-    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
-    at EditarFlujoComponent.fetchFasesFlujo (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:139:8)[39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 310 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.306 secs)
-ERROR: 'Error fetching flujo general or fases flujo:', TypeError: Cannot read properties of undefined (reading 'id')
-TypeError: Cannot read properties of undefined (reading 'id')
-    at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:127:63)
-    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
-    at http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:126:12
-    at Generator.next (<anonymous>)
-    at asyncGeneratorStep (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:3:1)
-    at _next (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:17:1)
-    at executor (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:22:1)
-    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
-    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
-    at EditarFlujoComponent.fetchFasesFlujo (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:139:8)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 311 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.309 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 243 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.205 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 244 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.219 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 245 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.225 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 246 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.231 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 247 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.237 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 248 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.244 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 249 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.25 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 250 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.255 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 251 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.257 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 252 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.258 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 253 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.26 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 254 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.261 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 255 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.262 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 256 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.263 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 257 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.264 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 258 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.265 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 259 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.266 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 260 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.267 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 261 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.268 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 262 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.269 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 263 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.27 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 264 of 382 (skipped 12)[32m SUCCESS[39m (0 secs / 1.271 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 265 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.272 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 266 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.273 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 267 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.275 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 268 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.276 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 269 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.278 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 270 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.279 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 271 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.28 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 272 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.281 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 273 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.283 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 274 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.284 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 275 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.285 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 276 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.287 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 277 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.288 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 278 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.289 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 279 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.289 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 280 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.289 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 281 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.289 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 282 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.289 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 283 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.289 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 284 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.289 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 285 of 382 (skipped 13)[32m SUCCESS[39m (0 secs / 1.29 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 286 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.291 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 287 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.292 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 288 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.293 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 289 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.294 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 290 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.295 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 291 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.296 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 292 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.297 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 293 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.298 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 294 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.299 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 295 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.3 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 296 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.301 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 296 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.301 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 296 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.301 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 297 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.314 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 297 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.314 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 297 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.314 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 298 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.318 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 298 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.318 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 298 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.318 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 299 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.322 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 299 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.322 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 299 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.322 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 300 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.327 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 300 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.327 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 300 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.327 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 301 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.33 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 301 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.33 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 301 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.33 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 302 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.337 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 302 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.337 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 302 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.337 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error parsing date:', Error: Invalid date
+Error: Invalid date
+    at CalendarioTemaComponent.hayEvento (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/calendario-tema/calendario-tema.component.ts:164:44)
+    at UserContext.apply (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/calendario-tema/calendario-tema.component.spec.ts:194:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:369:28)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:2081:39)
+    at _ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:368:34)
+    at ZoneImpl.run (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:111:43)
+    at runInTestZone (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:216:38)
+    at UserContext.<anonymous> (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:234:32)
+    at ZoneQueueRunner.attempt (http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7632:40)
+    at ZoneQueueRunner.QueueRunner.run (http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7670:27)[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 302 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.337 secs)
+ERROR: 'Error parsing date:', Error: Invalid date
+Error: Invalid date
+    at CalendarioTemaComponent.hayEvento (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/calendario-tema/calendario-tema.component.ts:164:44)
+    at UserContext.apply (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/calendario-tema/calendario-tema.component.spec.ts:194:24)
+    at _ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:369:28)
+    at ProxyZoneSpec.onInvoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:2081:39)
+    at _ZoneDelegate.invoke (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:368:34)
+    at ZoneImpl.run (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:111:43)
+    at runInTestZone (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:216:38)
+    at UserContext.<anonymous> (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone-testing.js:234:32)
+    at ZoneQueueRunner.attempt (http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7632:40)
+    at ZoneQueueRunner.QueueRunner.run (http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7670:27)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 303 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.345 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 303 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.345 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 303 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.345 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 304 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.353 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 304 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.353 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 304 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.353 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 305 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.359 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 305 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.359 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 305 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.359 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 306 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.365 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 306 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.365 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 306 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.365 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 307 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.372 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 307 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.372 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 307 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.372 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 308 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.376 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 308 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.376 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 308 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.376 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 309 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.381 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 309 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.381 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 309 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.381 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 310 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.386 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 310 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.386 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 310 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.386 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 311 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.391 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 311 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.391 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 311 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.391 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 312 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.396 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 312 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.396 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 312 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.396 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 313 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.399 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 313 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.399 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 313 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.399 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 314 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.402 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 314 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.402 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 314 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.402 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 315 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.405 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 315 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.405 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 315 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.405 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 316 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.408 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 316 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.408 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 316 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.408 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 317 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.413 secs)
+[1A[2KERROR: [36m'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 317 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.413 secs)
+ERROR: 'Tema no disponible o sin ID'
+[1A[2KERROR: [36m'Error obteniendo reuniones:', 'Tema no disponible o sin ID'[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 317 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.413 secs)
+ERROR: 'Error obteniendo reuniones:', 'Tema no disponible o sin ID'
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 318 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.416 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 319 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.422 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 320 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.427 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 321 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.432 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 322 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.436 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 323 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.453 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 324 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.46 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 325 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.467 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 326 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.475 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 327 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.481 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 328 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.486 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 329 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.499 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 330 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.506 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 331 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.51 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 332 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.515 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 333 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.519 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 334 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.523 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 335 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.529 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 336 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.539 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 337 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.543 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 338 of 382 (skipped 14)[32m SUCCESS[39m (0 secs / 1.548 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 339 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.553 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 340 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.556 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 341 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.556 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 342 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.556 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 343 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.556 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 344 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.556 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 345 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.557 secs)
 [1A[2KLOG: [36m[Object{id: 2, numero: 1, nombre: undefined, descripcion: undefined, tipo: undefined, fecha_inicio: undefined, fecha_termino: undefined, rut_creador: undefined, id_flujo: undefined, subfases: []}, Object{id: 1, numero: 2, nombre: undefined, descripcion: undefined, tipo: undefined, fecha_inicio: undefined, fecha_termino: undefined, rut_creador: undefined, id_flujo: undefined, subfases: [...]}][39m
-Chrome Headless 137.0.0.0 (Linux x86_64): Executed 311 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.309 secs)
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 345 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.557 secs)
 LOG: [Object{id: 2, numero: 1, nombre: undefined, descripcion: undefined, tipo: undefined, fecha_inicio: undefined, fecha_termino: undefined, rut_creador: undefined, id_flujo: undefined, subfases: []}, Object{id: 1, numero: 2, nombre: undefined, descripcion: undefined, tipo: undefined, fecha_inicio: undefined, fecha_termino: undefined, rut_creador: undefined, id_flujo: undefined, subfases: [...]}]
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 312 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.312 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 313 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.314 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 314 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.316 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 315 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.318 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 316 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.323 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 317 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.326 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 318 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.328 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 319 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.33 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 320 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.331 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 321 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.333 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 322 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.334 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 323 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.335 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 324 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.337 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 325 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.337 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 326 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.343 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 327 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.345 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 328 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.346 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 329 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.348 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 330 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.349 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 331 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.351 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 332 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.352 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 333 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.353 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 334 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.354 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 335 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.358 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 336 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.365 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 337 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.378 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 338 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.381 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 339 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.383 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 340 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.385 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 341 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.386 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 342 of 373 (skipped 14)[32m SUCCESS[39m (0 secs / 1.387 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 343 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.388 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 344 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.389 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 345 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.39 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 346 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.391 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 347 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.392 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 348 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.393 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 349 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.395 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 350 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.397 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 351 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.398 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 352 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.399 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 353 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.4 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 354 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.401 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 355 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.411 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 356 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.417 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 357 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.418 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 358 of 373 (skipped 15)[32m SUCCESS[39m (0 secs / 1.418 secs)
-[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 358 of 373 (skipped 15)[32m SUCCESS[39m (1.888 secs / 1.418 secs)
-[32mTOTAL: 358 SUCCESS[39m
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 346 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.559 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 347 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.561 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 348 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.562 secs)
+[1A[2KERROR: [36m'Error fetching flujo general or fases flujo:', TypeError: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:127:63)
+    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
+    at http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:126:12
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:3:1)
+    at _next (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:17:1)
+    at executor (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:22:1)
+    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
+    at EditarFlujoComponent.fetchFasesFlujo (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:139:8)[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 348 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.562 secs)
+ERROR: 'Error fetching flujo general or fases flujo:', TypeError: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:127:63)
+    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
+    at http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:126:12
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:3:1)
+    at _next (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:17:1)
+    at executor (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:22:1)
+    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
+    at EditarFlujoComponent.fetchFasesFlujo (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:139:8)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 349 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.565 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 350 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.567 secs)
+[1A[2KERROR: [36m'Error fetching flujo general or fases flujo:', TypeError: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:127:63)
+    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
+    at http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:126:12
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:3:1)
+    at _next (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:17:1)
+    at executor (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:22:1)
+    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
+    at EditarFlujoComponent.fetchFasesFlujo (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:139:8)[39m
+Chrome Headless 137.0.0.0 (Linux x86_64): Executed 350 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.567 secs)
+ERROR: 'Error fetching flujo general or fases flujo:', TypeError: Cannot read properties of undefined (reading 'id')
+TypeError: Cannot read properties of undefined (reading 'id')
+    at executor (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:127:63)
+    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
+    at http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:126:12
+    at Generator.next (<anonymous>)
+    at asyncGeneratorStep (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:3:1)
+    at _next (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:17:1)
+    at executor (http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:22:1)
+    at new ZoneAwarePromise (http://localhost:9876/_karma_webpack_/webpack:/node_modules/zone.js/fesm2015/zone.js:2702:25)
+    at http://localhost:9876/_karma_webpack_/webpack:/node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js:14:1
+    at EditarFlujoComponent.fetchFasesFlujo (http://localhost:9876/_karma_webpack_/webpack:/src/app/common/edicion-tema/editar-flujo/editar-flujo.component.ts:139:8)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 351 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.57 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 352 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.572 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 353 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.573 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 354 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.575 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 355 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.577 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 356 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.582 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 357 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.593 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 358 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.597 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 359 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.599 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 360 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.602 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 361 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.604 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 362 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.606 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 363 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.607 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 364 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.608 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 365 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.609 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 366 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.61 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 367 of 382 (skipped 15)[32m SUCCESS[39m (0 secs / 1.611 secs)
+[1A[2KChrome Headless 137.0.0.0 (Linux x86_64): Executed 367 of 382 (skipped 15)[32m SUCCESS[39m (2.201 secs / 1.611 secs)
+[32mTOTAL: 367 SUCCESS[39m
 ✔ Browser application bundle generation complete.
 
 =============================== Coverage summary ===============================
-Statements   : 84.23% ( 1571/1865 )
-Branches     : 73.33% ( 209/285 )
-Functions    : 85.57% ( 528/617 )
-Lines        : 84.33% ( 1540/1826 )
+Statements   : 85.46% ( 1594/1865 )
+Branches     : 74.38% ( 212/285 )
+Functions    : 87.52% ( 540/617 )
+Lines        : 85.59% ( 1563/1826 )
 ================================================================================
 ✔ Browser application bundle generation complete.
