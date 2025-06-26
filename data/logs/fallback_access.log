@@ -1385,3 +1385,6 @@
 [25/Jun/2025:23:56:00 +0000] 404 - GET http 34.176.220.92 "/.env" [Client 78.153.140.93] [Length 183] [Gzip 3.21] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36" "-"
 [25/Jun/2025:23:56:00 +0000] 405 - POST http 34.176.220.92 "/" [Client 78.153.140.93] [Length 556] [Gzip -] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.5845.140 Safari/537.36" "-"
 [26/Jun/2025:00:00:28 +0000] 200 - GET http 34.176.220.92 "/" [Client 204.76.203.212] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"
+[26/Jun/2025:00:21:36 +0000] 400 - - http localhost-nginx-proxy-manager "-" [Client 83.222.191.94] [Length 154] [Gzip -] "-" "-"
+[26/Jun/2025:00:24:17 +0000] 404 - GET http 34.176.220.92 "/cgi-bin/luci/;stok=/locale" [Client 34.63.177.121] [Length 150] [Gzip -] "-" "-"
+[26/Jun/2025:00:27:56 +0000] 200 - GET http 34.176.220.92 "/" [Client 185.218.84.178] [Length 568] [Gzip 1.86] "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.85 Safari/537.36 Edg/90.0.818.46" "-"

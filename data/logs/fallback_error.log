@@ -603,3 +603,4 @@
 2025/06/25 23:24:47 [alert] 624#624: 512 worker_connections are not enough
 2025/06/25 23:24:47 [error] 625#625: *510241 recv() failed (104: Connection reset by peer) while reading response header from upstream, client: 127.0.0.1, server: localhost-nginx-proxy-manager, request: "GET /admin/assets/js/views/login.js HTTP/1.1", upstream: "http://127.0.0.1:80/admin/assets/js/views/login.js", host: "34.176.220.92"
 2025/06/25 23:56:00 [error] 625#625: *510319 open() "/var/www/html/.env" failed (2: No such file or directory), client: 78.153.140.93, server: localhost-nginx-proxy-manager, request: "GET /.env HTTP/1.1", host: "34.176.220.92"
+2025/06/26 00:24:17 [error] 625#625: *510515 open() "/var/www/html/cgi-bin/luci/;stok=/locale" failed (2: No such file or directory), client: 34.63.177.121, server: localhost-nginx-proxy-manager, request: "GET /cgi-bin/luci/;stok=/locale HTTP/1.1", host: "34.176.220.92:80"
