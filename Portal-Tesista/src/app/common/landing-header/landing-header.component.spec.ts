@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { LandingHeaderComponent } from './landing-header.component';
 
-describe('LandingHeaderComponent', () => {
+describe('LandingHeaderComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: LandingHeaderComponent;
   let fixture: ComponentFixture<LandingHeaderComponent>;
   let mockKeycloakService: any;

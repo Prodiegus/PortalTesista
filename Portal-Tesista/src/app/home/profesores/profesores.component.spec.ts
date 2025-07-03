@@ -16,7 +16,7 @@ class MockHomeHeaderComponent {
   @Input() userRepresentation: any;
 }
 
-describe('ProfesoresComponent', () => {
+describe('ProfesoresComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: ProfesoresComponent;
   let fixture: ComponentFixture<ProfesoresComponent>;
 
@@ -59,3 +59,4 @@ describe('ProfesoresComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

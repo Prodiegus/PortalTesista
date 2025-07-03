@@ -2,7 +2,7 @@ import { TestBed } from '@angular/core/testing';
 import { HttpTokenInterceptor } from './http-token.interceptor';
 import { KeycloakService } from '../keycloak/keycloak.service';
 
-describe('HttpTokenInterceptorService', () => {
+describe('HttpTokenInterceptorService', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let service: HttpTokenInterceptor;
   let mockKeycloakService: any;
 
@@ -47,3 +47,4 @@ describe('HttpTokenInterceptorService', () => {
     expect(next.handle).toHaveBeenCalled();
   });
 });
+

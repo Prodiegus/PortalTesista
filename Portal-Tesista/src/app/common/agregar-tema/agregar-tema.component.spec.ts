@@ -6,7 +6,7 @@ import { of, throwError } from 'rxjs';
 import { HttpRequestService } from '../Http-request.service';
 import { By } from '@angular/platform-browser';
 
-describe('AgregarTemaComponent', () => {
+describe('AgregarTemaComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: AgregarTemaComponent;
   let fixture: ComponentFixture<AgregarTemaComponent>;
   let httpRequestService: HttpRequestService;

@@ -11,6 +11,7 @@ module.exports = function (config) {
       { pattern: 'src/assets/**/*.svg', included: false, served: true }
     ],
     browsers: ['Chrome'],
+    browserNoActivityTimeout: 60000, // 60 segundos
     singleRun: false,
     restartOnFileChange: true,
   });

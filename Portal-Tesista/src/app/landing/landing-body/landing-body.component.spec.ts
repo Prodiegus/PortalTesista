@@ -4,7 +4,7 @@ import { LandingBodyComponent } from './landing-body.component';
 import {HttpClientTestingModule} from '@angular/common/http/testing';
 import {TablaTemasComponent} from './tabla-temas/tabla-temas.component';
 
-describe('LandingBodyComponent', () => {
+describe('LandingBodyComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: LandingBodyComponent;
   let fixture: ComponentFixture<LandingBodyComponent>;
 
@@ -29,3 +29,4 @@ describe('LandingBodyComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

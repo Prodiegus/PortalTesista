@@ -3,7 +3,7 @@ import {MatDialogRef, MAT_DIALOG_DATA, MatDialogModule} from '@angular/material/
 
 import { ConfirmDialogComponent } from './confirm-dialog.component';
 
-describe('ConfirmDialogComponent', () => {
+describe('ConfirmDialogComponent', () => { afterEach(() => { TestBed.resetTestingModule(); });
   let component: ConfirmDialogComponent;
   let fixture: ComponentFixture<ConfirmDialogComponent>;
 
@@ -29,3 +29,4 @@ describe('ConfirmDialogComponent', () => {
     expect(component).toBeTruthy();
   });
 });
+

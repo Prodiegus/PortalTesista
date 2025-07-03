@@ -6,8 +6,3 @@ ${msg(
   linkExpirationFormatter(linkExpiration)
 )}
 
-<#if resetLink??>
-${msg("passwordResetLink")}: ${resetLink}
-<#else>
-${msg("passwordResetNoLink")}
-</#if>
