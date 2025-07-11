@@ -12,7 +12,7 @@ const config = {
     sslKeyPath: process.env.SSL_KEY_PATH,
     sslCertPath: process.env.SSL_CERT_PATH,
     port: process.env.PORT || 3000,
-    host: process.env.HOST || '34.176.220.92'
+    host: process.env.HOST || '129.212.132.100'
   }
 };
 
