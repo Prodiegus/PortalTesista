@@ -8,7 +8,7 @@ import org.keycloak.admin.client.resource.RealmResource;
 import org.keycloak.admin.client.resource.UsersResource;
 
 public class KeycloakProvider {
-    private static final String SERVER_URL = "https://34.176.220.92:8443/";
+    private static final String SERVER_URL = "https://129.212.132.100:8443/";
     private static final String REALM_NAME = "portal-tesista";
     private static final String REALM_MASTER = "master";
     private static final String ADMIN_CLI = "admin-cli";
